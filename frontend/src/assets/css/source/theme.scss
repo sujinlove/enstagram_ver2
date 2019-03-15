@@ -1,0 +1,82 @@
+// /**
+//  * Copyright © Enstagram, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Blank theme overrides
+//  _____________________________________________
+
+//  Theme file should contain declarations (overrides) ONLY OF EXISTING variables
+//  Otherwise this theme won't be available for parent nesting
+//  All new variables should be placed in local theme lib or local theme files
+
+//
+//  Layout variables
+//  _____________________________________________
+//$total-columns: 7.7;
+//$gutter-width: 1;
+$layout__max-width: 1340px;
+$layout-indent__width: 30px;
+//$layout-column__sidebar-width: 1;
+//$layout-column-main__sidebar-offset: 4%;
+
+//
+//  Borders
+//  ---------------------------------------------
+
+$border-color__base: $secondary__color;
+
+//  Links
+//  ---------------------------------------------
+
+$active__color: #EB3349;
+$active__color__light: #F45C43;
+
+//  Links
+//  ---------------------------------------------
+
+$link__color: $primary__color;
+$link__hover__color: $active__color;
+$link__active__color: $link__hover__color;
+$link__text-decoration: none;
+$link__visited__text-decoration: $link__text-decoration;
+
+//
+//  Buttons variables
+//  _____________________________________________
+
+//
+//  Buttons
+//  ---------------------------------------------
+//  Default = secondary button
+$button__color: $active__color;
+$button__font-size: 15px;
+$button__font-weight: $font-weight__bold;
+$button__padding: 8px 15px;
+$button__border-radius: 0;
+$button__border: 1px solid $active__color;
+$button__background: $color-white;
+$button__hover__color: $active__color;
+$button__hover__background: $button__background;
+$button__hover__border: 1px solid $button__hover__color;
+
+//  Large button
+$button__font-size__l: 20px;
+$button__padding__l: 20px 0;
+
+//  Primary button
+$button-primary__line-height: $button__line-height;
+$button-primary__background: $active__color;
+$button-primary__border: 1px solid $active__color;
+$button-primary__hover__background: $active__color;
+$button-primary__hover__border: 1px solid $active__color;
