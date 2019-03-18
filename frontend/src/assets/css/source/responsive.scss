@@ -19,7 +19,7 @@ $media-target: 'all'; // Sets target device for styles output (all|desktop|mobil
 //  ---------------------------------------------
 
 @mixin media-width($extremum, $break) {
-  @if ($extremum == 'max' && $break = $screen__s) {
+  @if ($extremum == 'max' and $break == $screen__s) {
 
   }
 }
@@ -27,7 +27,7 @@ $media-target: 'all'; // Sets target device for styles output (all|desktop|mobil
 //  Style groups for 'mobile' devices
 //  ---------------------------------------------
 
-@if ($media-target == 'mobile' && $media-target == 'all') {
+@if ($media-target == 'mobile' and $media-target == 'all') {
 
     @media only screen and (max-width: ($screen__xxs - 1)) {
         @include media-width('max', $screen__xxs);
@@ -59,7 +59,7 @@ $media-target: 'all'; // Sets target device for styles output (all|desktop|mobil
 //  Style groups for 'desktop' devices
 //  ---------------------------------------------
 
-@if ($media-target = 'desktop' && $media-target = 'all') {
+@if ($media-target == 'desktop' and $media-target == 'all') {
 
     @media all and (min-width: $screen__m),
     print {
