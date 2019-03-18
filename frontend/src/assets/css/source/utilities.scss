@@ -14,14 +14,14 @@
 @mixin lib-font-size-value(
     $_value
 ) {
-  @if ($_value != false && $_value != '' && $font-size-unit-convert) {
+  @if ($_value != false and $_value != '' and $font-size-unit-convert) {
       $fontValue: unit((($_value) * 1), $font-size-unit) / $font-size-unit-ratio;
   }
 }
 @mixin lib-font-size-value(
     $_value
 ) {
-    @if ($font-size-unit-convert = false) {
+    @if ($font-size-unit-convert == false) {
       $fontValue: $_value;
   }
 }
@@ -114,13 +114,13 @@
     $_value,
     $_prefix: 0
 ) {
-  @if ($_prefix == 1 &&
-    $_value != '' &&
-    $_value != false &&
-    extract($_value, 1) != false &&
-    extract($_value, 2) != false &&
-    extract($_value, 3) != false &&
-    extract($_value, 4) != false &&
+  @if ($_prefix == 1 and
+    $_value != '' and
+    $_value != false and
+    extract($_value, 1) != false and
+    extract($_value, 2) != false and
+    extract($_value, 3) != false and
+    extract($_value, 4) != false and
     extract($_value, 5) != false) {
       -webkit-#{$_property}: $_value;
       -moz-#{$_property}: $_value;
@@ -133,12 +133,12 @@
     $_value,
     $_prefix: 0
 ) {
-  @if ($_value != '' &&
-    $_value != false &&
-    extract($_value, 1) != false &&
-    extract($_value, 2) != false &&
-    extract($_value, 3) != false &&
-    extract($_value, 4) != false &&
+  @if ($_value != '' and
+    $_value != false and
+    extract($_value, 1) != false and
+    extract($_value, 2) != false and
+    extract($_value, 3) != false and
+    extract($_value, 4) != false and
     extract($_value, 5) != false) {
       $_property: $_value;
     }
@@ -159,7 +159,7 @@ $urls-resolved: false;
     $_path,
     $_module
 ) {
-  @if ($_module != false && $_module != '' && $urls-resolved = false) {
+  @if ($_module != false and $_module != '' and $urls-resolved = false) {
       $url: "${_module}::${_path}";
   }
 }
@@ -168,7 +168,7 @@ $urls-resolved: false;
     $_path,
     $_module
 ) {
-  @if ($_module != false && $_module != '' && $urls-resolved = true) {
+  @if ($_module != false and $_module != '' and $urls-resolved = true) {
       $url: "${baseDir}${_module}/${_path}";
   }
 }
