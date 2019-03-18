@@ -56,7 +56,6 @@
 	</dependencies>
 
 	<!-- (4) -->
-
 	<build>
 		<plugins>
 			<plugin>
