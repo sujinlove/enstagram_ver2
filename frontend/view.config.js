@@ -6,7 +6,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://enstagram.kr',
+        target: 'http://enstagram.kr/',
         ws: true,
         changeOrigin: true
       }
