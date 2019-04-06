@@ -1,0 +1,13 @@
+// /**
+//  * Copyright © Enstagram, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+@if ($media-common == true) {
+    @include lib-font-face(
+        $family-name: $icons__font-name,
+        $font-path: $icons__font-path,
+        $font-weight: normal,
+        $font-style: normal
+    );
+}

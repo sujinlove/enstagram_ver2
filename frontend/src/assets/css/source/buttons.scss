@@ -1,0 +1,30 @@
+// /**
+//  * Copyright © Enstagram, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+@if ($media-common == true) {
+
+    //  Using buttons mixins
+    button,
+    a.action.primary {
+        @include lib-css(border-radius, $button__border-radius);
+    }
+
+    button {
+        &:active {
+        }
+    }
+
+    a.action.primary {
+        @include lib-link-as-button();
+    }
+
+    .action.primary {
+        @include lib-button-primary();
+    }
+}

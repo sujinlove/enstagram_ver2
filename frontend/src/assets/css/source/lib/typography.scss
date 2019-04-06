@@ -69,7 +69,7 @@
     @include lib-css(font-style, $_font-style);
     @include lib-css(font-weight, $_font-weight);
     @include lib-css(line-height, $_line-height);
-    @include lib-font-size($_font-size);
+    font-size: $_font-size;
 }
 
 @mixin lib-list-reset-styles($_margin: 0, $_padding: 0) {
@@ -136,12 +136,10 @@
 
     & {
         @include lib-font-size-value($_margin-top);
-        @include lib-css(margin-top, $fontValue);
     }
 
     & {
         @include lib-font-size-value($_margin-bottom);
-        @include lib-css(margin-bottom, $fontValue);
     }
 }
 

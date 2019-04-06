@@ -25,14 +25,14 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
         }
 
         .sidebar-main {
-            &:extend(.abs-add-box-sizing all);
+            @extend .abs-add-box-sizing;
             @include lib-vendor-prefix-flex-grow(1);
             @include lib-vendor-prefix-flex-basis(100%);
             @include lib-vendor-prefix-order(1);
         }
 
         .sidebar-additional {
-            &:extend(.abs-add-box-sizing all);
+            @extend .abs-add-box-sizing;
             @include lib-vendor-prefix-flex-grow(1);
             @include lib-vendor-prefix-flex-basis(100%);
             @include lib-vendor-prefix-order(2);
@@ -44,7 +44,7 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 //  Mobile
 //  _____________________________________________
 
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+@media only screen and (max-width: ($screen__m - 1)) {
     .navigation,
     .breadcrumbs,
     .page-header .header.panel,
@@ -72,7 +72,7 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 //  Desktop
 //  _____________________________________________
 
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .navigation,
     .breadcrumbs,
     .page-header .header.panel,
@@ -109,15 +109,15 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
     }
 
     .column.main {
-        @include lib-layout-columns > .main();
-        &:extend(.abs-add-box-sizing-desktop all);
+        @include lib-layout-columns @main();
+        @extend .abs-add-box-sizing-desktop;
         min-height: 300px;
     }
 
     .sidebar-main {
-        @include lib-layout-columns > .left();
+        @include lib-layout-columns @left();
         padding-right: $layout-column-main__sidebar-offset;
-        &:extend(.abs-add-box-sizing-desktop all);
+        @extend .abs-add-box-sizing-desktop;
     }
 
     .page-layout-2columns-right .sidebar-main {
@@ -126,10 +126,10 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
     }
 
     .sidebar-additional {
-        #lib-layout-columns > .right();
+        @include lib-layout-columns @right();
         clear: right;
         padding-left: $layout-column__additional-sidebar-offset;
-        &:extend(.abs-add-box-sizing-desktop all);
+        @extend .abs-add-box-sizing-desktop;
     }
 
     .page-layout-2columns-left {

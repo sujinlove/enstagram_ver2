@@ -152,6 +152,7 @@ $h1__font-style: $heading__font-style__base;
 $h1__line-height: $heading__line-height__base;
 $h1__margin-top: 0;
 $h1__margin-bottom: $heading__margin-bottom__base;
+$h1__margin-bottom__desktop: $heading__margin-bottom__base - 10px;
 $h1__font-size-desktop: ceil(($font-size__base * 2.85)); // 40px
 
 $h2__font-size: ceil(($font-size__base * 1.85)); // 26px

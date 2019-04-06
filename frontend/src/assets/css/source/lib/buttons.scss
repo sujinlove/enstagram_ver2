@@ -57,12 +57,6 @@
 ) {
     background-image: none; // Reset unusual Firefox-on-Android default style
     @include lib-css(background, $_button-background);
-    @include lib-background-gradient(
-        $_button-gradient-color-start,
-        $_button-gradient-color-end,
-        $_button-gradient-direction,
-        $_button-gradient
-    );
     @include lib-css(border, $_button-border);
     @include lib-css(color, $_button-color);
     @include lib-css(cursor, $_button-cursor);
@@ -72,8 +66,8 @@
     @include lib-css(margin, $_button-margin);
     @include lib-css(padding, $_button-padding);
     @include lib-css(width, $_button-width);
-    @include lib-font-size($_button-font-size);
-    @include lib-line-height($_button-line-height);
+    font-size: $_button-font-size;
+    line-height: $_button-line-height;
     box-sizing: border-box;
     vertical-align: middle;
 
@@ -95,24 +89,12 @@
     &:focus,
     &:active {
         @include lib-css(background, $_button-background-active);
-        @include lib-background-gradient(
-            $_button-gradient-color-start-active,
-            $_button-gradient-color-end-active,
-            $_button-gradient-direction,
-            $_button-gradient
-        );
         @include lib-css(border, $_button-border-active);
         @include lib-css(color, $_button-color-active);
     }
 
     &:hover {
         @include lib-css(background, $_button-background-hover);
-        @include lib-background-gradient(
-            $_button-gradient-color-start-hover,
-            $_button-gradient-color-end-hover,
-            $_button-gradient-direction,
-            $_button-gradient
-        );
         @include lib-css(border, $_button-border-hover);
         @include lib-css(color, $_button-color-hover);
     }
@@ -134,7 +116,7 @@
     $_button-line-height: $button__line-height,
     $_button-padding: $button__padding
 ){
-    @include lib-line-height($_button-line-height);
+    line-height: $_button-line-height;
     @include lib-css(padding, $_button-padding);
 }
 
@@ -151,7 +133,7 @@
         $_button-line-height: $_button-l-height,
         $_button-padding: $_button-l-padding
     );
-    @include lib-font-size($_button-l-font-size);
+    font-size: $_button-l-font-size;
 }
 
 //
@@ -167,7 +149,7 @@
         $_button-line-height: $_button-s-height,
         $_button-padding: $_button-s-padding
     );
-    @include lib-font-size($_button-s-font-size);
+    font-size: $_button-s-font-size;
 }
 
 //
@@ -368,7 +350,7 @@
     $_button-line-height: $button__line-height,
     $_button-padding: $button__padding
 ) {
-    @include lib-font-size($_button-font-size);
+    font-size: $_button-font-size;
     @include lib-button-size(
         $_button-line-height: $_button-line-height,
         $_button-padding: $_button-padding

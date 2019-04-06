@@ -9,5 +9,18 @@
 
 $baseDir: "../"; // Base directory path
 
-@import 'variables/variables.scss';
 @import 'lib/lib.scss';
+
+//
+//  Typography
+//  ---------------------------------------------
+
+//  Fonts
+$font-family-name__base: 'Open Sans';
+$font-family__base: $font-family-name__base, $font-family__sans-serif;
+
+//
+//  Sidebar
+//  ---------------------------------------------
+
+$sidebar__background-color: $color-white-smoke; // Used in cart sidebar, Checkout sidebar, Tier Prices, My account

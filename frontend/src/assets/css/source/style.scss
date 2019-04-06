@@ -5,12 +5,12 @@
 
 @import 'reset.scss';
 @import 'variables.scss';
-// @import 'layout.scss';
-// @import 'responsive.scss';
-// @import 'icons.scss';
-// @import 'buttons.scss';
-// @import 'typography.scss';
-// @import 'utilities.scss';
+@import 'forms.scss';
+@import 'extends.scss';
+@import 'buttons.scss';
+@import 'layout.scss';
+@import 'icons.scss';
+@import 'typography.scss';
 @import 'theme.scss';
 
 body {

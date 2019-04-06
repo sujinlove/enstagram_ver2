@@ -48,7 +48,7 @@
         overflow: hidden;
         visibility: hidden;
     }
-    @include main() {
+    @main() {
         .#{$layout-class-1column} & {
             @include lib-layout-column(1, 2, 100%);
         }
@@ -63,7 +63,7 @@
         }
     }
 
-    @include left() {
+    @left() {
         .#{$layout-class-3columns} & {
             @include lib-layout-column(3, 1, $layout-column__left-width);
         }
@@ -75,7 +75,7 @@
         }
     }
 
-    @include right() {
+    @right() {
         .#{$layout-class-3columns} & {
             @include lib-layout-column(3, 3, $layout-column__right-width);
         }
@@ -101,17 +101,8 @@
   }
 }
 
-@mixin _lib-set-column-width($_index, $_width) {
-  @if ($_index > 0) {
-      $_checkUnit: isunit($_width, extract($_units, $_index));
-      @include _lib-column-width($_width, $_checkUnit, $_index);
-      @include _lib-set-column-width($_index - 1, $_width);
-  }
-}
-
 @mixin lib-layout-column($_total-columns, $_order, $_width) {
     $_units: "px","%","em","rem","pt";
-    @include _lib-set-column-width(length($_units), $_width);
     @include lib-flex-degradation($_total-columns, $_order);
     @if ($use-flex == true) {
         @include lib-vendor-prefix-order($_order);

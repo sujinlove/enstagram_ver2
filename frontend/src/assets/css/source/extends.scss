@@ -60,7 +60,7 @@
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-product-options-list-desktop {
         @abs-product-options-list();
     }
@@ -80,16 +80,16 @@
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-button-desktop {
         width: auto;
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__m) {
-    .abs-button-responsive-smaller {
-        @abs-button-responsive();
-    }
+@media only screen and (max-width: ($screen__m - 1)) {
+  .abs-button-responsive-smaller {
+      @abs-button-responsive();
+  }
 }
 
 //
@@ -109,16 +109,16 @@
     }
 };
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
-    .abs-blocks-2columns {
-        @abs-blocks-2columns();
-    }
+@media only screen and (min-width: ($screen__m)) {
+  .abs-button-responsive-smaller {
+      @abs-button-responsive();
+  }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__s) {
-    .abs-blocks-2columns-s {
-        @abs-blocks-2columns();
-    }
+@media only screen and (min-width: ($screen__s)) {
+  .abs-blocks-2columns-s {
+      @abs-blocks-2columns();
+  }
 }
 
 //
@@ -164,8 +164,6 @@
         strong {
             font-weight: 500;
         }
-
-        @include lib-font-size(18);
         border-bottom: 1px solid $secondary__color;
         margin-bottom: 15px;
         padding-bottom: 12px;
@@ -226,21 +224,6 @@
 }
 
 //
-//  Simple Dropdown
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-dropdown-simple {
-        @include lib-dropdown(
-        $_dropdown-list-item-padding: 5px 5px 5px 23px,
-        $_dropdown-list-min-width: 200px,
-        $_icon-font-margin: 0 0 0 5px,
-        $_icon-font-vertical-align: middle
-        );
-    }
-}
-
-//
 //  Input quantity
 //  ---------------------------------------------
 
@@ -280,29 +263,6 @@
 }
 
 //
-//  Product link
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-product-link {
-        font-weight: $font-weight__regular;
-
-        > a {
-            @include lib-link(
-            $_link-color: $product-name-link__color,
-            $_link-text-decoration: $product-name-link__text-decoration,
-            $_link-color-visited: $product-name-link__color__visited,
-            $_link-text-decoration-visited: $product-name-link__text-decoration__visited,
-            $_link-color-hover: $product-name-link__color__hover,
-            $_link-text-decoration-hover: $product-name-link__text-decoration__hover,
-            $_link-color-active: $product-name-link__color__active,
-            $_link-text-decoration-active: $product-name-link__text-decoration__active
-            );
-        }
-    }
-}
-
-//
 //  Reset left margin
 //  ---------------------------------------------
 
@@ -316,13 +276,13 @@
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-reset-left-margin-desktop {
         @abs-reset-left-margin();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__s) {
+@media only screen and (min-width: ($screen__s)) {
     .abs-reset-left-margin-desktop-s {
         @abs-reset-left-margin();
     }
@@ -347,7 +307,7 @@
 //  Action with icon remove with text for desktop
 //  ---------------------------------------------
 
-@include media-width($extremum, $break) @if ($extremum == 'min' && $break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-action-remove-desktop {
        @if ($form-field-type-label-inline__width != false && $form-field-type-label-inline__width != '') {
           margin-left: $form-field-type-label-inline__width + 50%;
@@ -419,7 +379,7 @@
 //  Add Recipient for desktop
 //  ---------------------------------------------
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-add-fields-desktop {
         .fieldset {
             .field {
@@ -449,13 +409,13 @@
     @include lib-css(margin-left, $form-field-type-label-inline__width);
 };
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-margin-for-forms-desktop {
         @abs-margin-for-forms-desktop();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__s) {
+@media only screen and (min-width: ($screen__s)) {
     .abs-margin-for-forms-desktop-s {
         @abs-margin-for-forms-desktop();
     }
@@ -485,25 +445,25 @@
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__s) {
+@media only screen and (max-width: ($screen__s - 1)) {
     .abs-visually-hidden-mobile {
         @abs-visually-hidden();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__m) {
+@media only screen and (max-width: ($screen__m - 1)) {
     .abs-visually-hidden-mobile-m {
         @abs-visually-hidden();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__s) {
+@media only screen and (min-width: ($screen__s)) {
     .abs-visually-hidden-desktop-s {
         @abs-visually-hidden();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-visually-hidden-desktop {
         @abs-visually-hidden();
     }
@@ -533,25 +493,25 @@
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-add-clearfix-desktop {
         @abs-add-clearfix();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__s) {
+@media only screen and (min-width: ($screen__s)) {
     .abs-add-clearfix-desktop-s {
         @abs-add-clearfix();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__s) {
+@media only screen and (max-width: ($screen__s - 1)) {
     .abs-add-clearfix-mobile {
         @abs-add-clearfix();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__m) {
+@media only screen and (max-width: ($screen__m - 1)) {
     .abs-add-clearfix-mobile-m {
         @abs-add-clearfix();
     }
@@ -567,23 +527,23 @@
 
 @if ($media-common == true) {
     .abs-add-box-sizing {
-        @include abs-add-box-sizing();
+        @abs-add-box-sizing();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-add-box-sizing-desktop {
-        @include abs-add-box-sizing();
+        @abs-add-box-sizing();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__s) {
+@media only screen and (min-width: ($screen__s)) {
     .abs-add-box-sizing-desktop-s {
-        @include abs-add-box-sizing();
+        @abs-add-box-sizing();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-add-box-sizing-desktop-m {
         @abs-add-box-sizing();
     }
@@ -593,7 +553,7 @@
 //  Revert field type
 //  ---------------------------------------------
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-revert-field-type-desktop {
         .fieldset {
             > .field,
@@ -627,43 +587,6 @@
             right: $indent__xs;
             top: 0;
         }
-    }
-}
-
-//
-//  Split button
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-split-button {
-        @include lib-dropdown-split(
-        $_options-selector : '.items',
-        $_dropdown-split-button-border-radius-fix: true
-        );
-        vertical-align: middle;
-    }
-}
-
-//
-//  Action addto
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-action-addto-product {
-        @extend .abs-action-link-button all;
-        @include lib-button-s();
-    }
-
-    .abs-actions-addto-gridlist {
-        @include lib-icon-font(
-        $_icon-font-content: '',
-        $_icon-font-size: 29px,
-        $_icon-font-color: $addto-color,
-        $_icon-font-color-hover: $addto-hover-color,
-        $_icon-font-text-hide: true,
-        $_icon-font-vertical-align: middle,
-        $_icon-font-line-height: 24px
-        );
     }
 }
 
@@ -726,145 +649,6 @@
 }
 
 //
-//  Excl/Incl tax
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-adjustment-incl-excl-tax {
-        .price-including-tax,
-        .price-excluding-tax,
-        .weee {
-            @include lib-font-size(14);
-            display: inline-block;
-            white-space: nowrap;
-        }
-
-        .price-including-tax + .price-excluding-tax {
-            display: inline-block;
-            @include lib-font-size(11);
-
-            &:before {
-                content: '('attr(data-label)': ';
-            }
-
-            &:after {
-                content: ')';
-            }
-        }
-    }
-}
-
-//
-//  Cart tax total
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-tax-total {
-        cursor: pointer;
-        padding-right: 12px;
-        position: relative;
-        @include lib-icon-font(
-        $icon-down,
-        $_icon-font-size: 26px,
-        $_icon-font-line-height: 10px,
-        $_icon-font-margin: 3px 0 0 0,
-        $_icon-font-position: after
-        );
-
-        &:after {
-            position: absolute;
-            right: -$indent__s;
-            top: 3px;
-        }
-
-        &-expanded {
-            @include lib-icon-font-symbol(
-            $_icon-font-content: $icon-up,
-            $_icon-font-position: after
-            );
-        }
-    }
-
-    .abs-tax-total-expanded {
-        @include lib-icon-font-symbol(
-        $_icon-font-content: $icon-up,
-        $_icon-font-position: after
-        );
-    }
-}
-
-//
-//  Checkout shipping methods title
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-methods-shipping-title {
-        @include lib-font-size(14);
-        font-weight: $font-weight__bold;
-        margin: 0 0 15px;
-    }
-}
-
-//
-//  Checkout order review price
-//  ---------------------------------------------
-
-.abs-checkout-cart-price {
-}
-
-//
-//  Checkout order product name
-//  ---------------------------------------------
-
-.abs-checkout-product-name {
-}
-
-//
-//  Checkout order review
-//  ---------------------------------------------
-
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__s) {
-    .abs-checkout-order-review {
-        tbody tr {
-            &:not(:last-child) {
-                border-bottom: $border-width__base solid $border-color__base;
-            }
-
-            @extend .abs-add-clearfix-mobile all;
-
-            .col {
-                &.item {
-                    &:before {
-                        display: none;
-                    }
-                }
-
-                &.qty,
-                &.price,
-                &.subtotal {
-                    box-sizing: border-box;
-                    float: left;
-                    text-align: center;
-                    white-space: nowrap;
-                    width: 33%;
-
-                    &:before {
-                        content: attr(data-th) ':';
-                        display: block;
-                        font-weight: $font-weight__bold;
-                        padding-bottom: $indent__s;
-                    }
-                }
-            }
-
-            .product-item-name {
-                margin: 0;
-            }
-        }
-    }
-}
-
-//
 //  Add colon
 //  ---------------------------------------------
 
@@ -891,7 +675,7 @@
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__m) {
+@media only screen and (max-width: ($screen__m - 1)) {
     .abs-icon-add-mobile {
         @include lib-icon-font(
         $_icon-font-content: $icon-expand,
@@ -905,32 +689,10 @@
 }
 
 //
-//  Dropdown items - create new
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-dropdown-items-new {
-        .items .item:last-child {
-            &:hover {
-                @include lib-css(background, $dropdown-list-item__hover);
-            }
-        }
-
-        .action.new {
-            @extend .abs-icon-add all;
-            &:before {
-                margin-left: -17px;
-                margin-right: $indent__xs;
-            }
-        }
-    }
-}
-
-//
 //  Abstract toggle title block
 //  ---------------------------------------------
 
-@include media-width($extremum, $break) @if ($extremum == 'max' && $break == $screen__m) {
+@media only screen and (max-width: ($screen__m - 1)) {
     .abs-toggling-title-mobile {
         border-bottom: $border-width__base solid $border-color__base;
         border-top: $border-width__base solid $border-color__base;
@@ -976,13 +738,13 @@
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__s) {
+@media only screen and (max-width: ($screen__s - 1)) {
     .abs-no-display-s {
         @abs-no-display();
     }
 }
 
-@include media-width($extremum, $break) @if ($extremum == 'min') and ($break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-no-display-desktop {
         @abs-no-display();
     }
@@ -1003,7 +765,7 @@
 //  Pager toolbar for non-catalog pages mobile
 //  ---------------------------------------------
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__m) {
+@media only screen and (max-width: ($screen__m - 1)) {
     .abs-pager-toolbar-mobile {
         .toolbar-amount,
         .limiter,
@@ -1018,7 +780,7 @@
 //  Pager toolbar for non-catalog pages mobile
 //  ---------------------------------------------
 
-@include media-width($extremum, $break) @if ($extremum == 'max') and ($break == $screen__s) {
+@media only screen and (max-width: ($screen__s - 1)) {
     .abs-pager-toolbar-mobile-s {
         .toolbar-amount,
         .limiter,
@@ -1032,11 +794,11 @@
 //  Pager toolbar for non-catalog pages desktop
 //  ---------------------------------------------
 
-@include media-width($extremum, $break) @if ($extremum == 'min' && $break == $screen__m) {
+@media only screen and (min-width: ($screen__m)) {
     .abs-pager-toolbar {
         margin-bottom: $indent__base;
         position: relative;
-        @extend .abs-add-clearfix-desktop all;
+        @extend .abs-add-clearfix-desktop;
 
         .limiter {
             float: right;
@@ -1067,89 +829,8 @@
 @if ($media-common == true) {
     .abs-block-items-counter {
         @include lib-css(color, $primary__color__lighter);
-        @include lib-font-size(12px);
+        font-size: 12px;
         white-space: nowrap;
-    }
-}
-
-//
-//  Shopping cart items
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-shopping-cart-items {
-        .action {
-            &.continue {
-                border-radius: 3px;
-                font-weight: $font-weight__bold;
-                @include lib-link-as-button();
-                @include lib-button(
-                $_button-padding: 7px 15px 7px 0,
-                $_button-icon-use: true,
-                $_button-font-content: $icon-prev,
-                $_button-icon-font-size: 32px,
-                $_button-icon-font-line-height: 16px,
-                $_button-icon-font-position: before
-                );
-
-                &:active {
-                    @include lib-css(box-shadow, $button__shadow);
-                }
-            }
-
-            &.update {
-                @include lib-button-icon(
-                $icon-update,
-                $_icon-font-size: 32px,
-                $_icon-font-line-height: 16px
-                );
-                padding-left: $indent__xs;
-            }
-        }
-    }
-}
-
-@include media-width($extremum, $break) @if ($extremum == 'max' && $break == $screen__m) {
-    .abs-shopping-cart-items-mobile {
-        .actions {
-            text-align: center;
-        }
-
-        .action {
-            &.update,
-            &.continue,
-            &.clear {
-                margin: 0 auto $indent__s;
-            }
-
-            &.update,
-            &.clear {
-                display: block;
-            }
-        }
-    }
-}
-
-@include media-width($extremum, $break) @if ($extremum == 'min' && $break == $screen__m) {
-    .abs-shopping-cart-items-desktop {
-        float: left;
-        position: relative;
-        width: 73%;
-
-        .actions {
-            text-align: right;
-        }
-
-        .action {
-            &.clear,
-            &.update {
-                margin-left: $indent__s;
-            }
-
-            &.continue {
-                float: left;
-            }
-        }
     }
 }
 
@@ -1160,7 +841,7 @@
 @if ($media-common == true) {
     .abs-field-date {
         .control {
-            @extend .abs-add-box-sizing all;
+            @extend .abs-add-box-sizing;
             position: relative;
         }
 
