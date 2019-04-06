@@ -3,18 +3,87 @@
 //  * See COPYING.txt for license details.
 //  */
 
+@import 'reset.scss';
 @import 'variables.scss';
-@import 'layout.scss';
-@import 'responsive.scss';
-@import 'icons.scss';
-@import 'buttons.scss';
-@import 'typography.scss';
-@import 'utilities.scss';
+// @import 'layout.scss';
+// @import 'responsive.scss';
+// @import 'icons.scss';
+// @import 'buttons.scss';
+// @import 'typography.scss';
+// @import 'utilities.scss';
 @import 'theme.scss';
+
 body {
   background: $active__color; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(left, $active__color , $active__color__light); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(right, $active__color, $active__color__light); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, $active__color, $active__color__light); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, $active__color , $active__color__light);
+}
+
+.icon-sprite {
+  background: url('assets/images/common/icon-sprite.png');
+  background-size: 282px 248px;
+
+  &.instagram-logo_ver1 {
+    background-position: -183px -125px;
+  }
+
+  &.instagram-logo_ver2 {
+    width: 103px;
+    height: 29px;
+    background-position: 0 -144px;
+  }
+
+  &.explore {
+    background-position: -200px -224px;
+  }
+
+  &.heart {
+    background-position: 0 -199px;
+  }
+
+  &.user {
+    background-position: -208px -25px;
+  }
+}
+
+.bar {
+  display: inline-block;
+  width: 1px;
+  height: 28px;
+  margin: 0 16px;
+  vertical-align: middle;
+  background-color: #262626;
+
+  span {
+    display: none;
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 77px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+
+  ul {
+    display: flex;
+    height: 77px;
+    padding: 26px 20px;
+    box-sizing: border-box;
+  }
+
+  .icon-sprite {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+
+    span {
+      display: none;
+    }
+  }
 }
