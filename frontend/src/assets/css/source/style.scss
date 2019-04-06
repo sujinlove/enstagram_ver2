@@ -8,8 +8,9 @@
 @import 'forms.scss';
 @import 'extends.scss';
 @import 'buttons.scss';
-@import 'layout.scss';
 @import 'icons.scss';
+@import 'layout.scss';
+@import 'navigation.scss';
 @import 'typography.scss';
 @import 'theme.scss';
 
@@ -58,32 +59,5 @@ body {
 
   span {
     display: none;
-  }
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 77px;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0,0,0,.0975);
-
-  ul {
-    display: flex;
-    height: 77px;
-    padding: 26px 20px;
-    box-sizing: border-box;
-  }
-
-  .icon-sprite {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-
-    span {
-      display: none;
-    }
   }
 }

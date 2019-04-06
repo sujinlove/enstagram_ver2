@@ -7,6 +7,8 @@
 //  Color variables
 //  _____________________________________________
 
+$text-color: #333;
+
 $color-white: #fff;
 $color-black: #000;
 
@@ -106,3 +108,6 @@ $panel__background-color: darken($page__background-color, 6%);
 
 $active__color: $color-orange-red1;
 $error__color: $color-red10;
+
+$header-icons-color: $text-color;
+$header-icons-color-hover: $text-color;
