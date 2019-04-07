@@ -25,8 +25,8 @@
 //  _____________________________________________
 //$total-columns: 7.7;
 //$gutter-width: 1;
-$layout__max-width: 1340px;
-$layout-indent__width: 30px;
+$layout__max-width: 975px;
+$layout-indent__width: 20px;
 //$layout-column__sidebar-width: 1;
 //$layout-column-main__sidebar-offset: 4%;
 
@@ -34,7 +34,7 @@ $layout-indent__width: 30px;
 //  Borders
 //  ---------------------------------------------
 
-$border-color__base: $secondary__color;
+$border-color__base: #dbdbdb;
 
 //  Links
 //  ---------------------------------------------
@@ -80,6 +80,13 @@ $button-primary__background: $active__color;
 $button-primary__border: 1px solid $active__color;
 $button-primary__hover__background: $active__color;
 $button-primary__hover__border: 1px solid $active__color;
+
+//
+//  Forms variables
+//  _____________________________________________
+$form-element-input__border-color: $border-color__base;
+$form-element-input__border-radius: 3px;
+$form-element-input__padding: 3px 10px 3px 26px;
 
 //
 //  Navigation variables

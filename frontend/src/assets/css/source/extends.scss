@@ -33,40 +33,6 @@
 }
 
 //
-//  Product options list
-//  ---------------------------------------------
-
-@abs-product-options-list: {
-    dt {
-        clear: left;
-        float: left;
-        margin: 0 $indent__s $indent__xs 0;
-
-        &:after {
-            content: ': ';
-        }
-    }
-
-    dd {
-        display: inline-block;
-        float: left;
-        margin: 0 0 $indent__xs;
-    }
-};
-
-@if ($media-common == true) {
-    .abs-product-options-list {
-        @abs-product-options-list();
-    }
-}
-
-@media only screen and (min-width: ($screen__m)) {
-    .abs-product-options-list-desktop {
-        @abs-product-options-list();
-    }
-}
-
-//
 //  Button reset width, floats, margins
 //  ---------------------------------------------
 
@@ -129,10 +95,6 @@
     .abs-reset-image-wrapper {
         height: auto;
         padding: 0 !important;
-
-        .product-image-photo {
-            position: static;
-        }
     }
 }
 
@@ -635,16 +597,6 @@
 @if ($media-common == true) {
     .abs-revert-secondary-size {
         @include lib-button-revert-secondary-size();
-    }
-}
-
-//
-//  Box-tocart block
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-box-tocart {
-        margin: $indent__s 0;
     }
 }
 

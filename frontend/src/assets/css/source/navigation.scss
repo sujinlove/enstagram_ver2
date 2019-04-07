@@ -14,7 +14,7 @@ $active-nav-indent: 54px;
 //  _____________________________________________
 
 @if ($media-common == true) {
-    .nav {
+    nav {
         @include lib-css(background, $navigation__background);
         position: fixed;
         top: 0;
@@ -26,7 +26,41 @@ $active-nav-indent: 54px;
           display: flex;
           height: 77px;
           padding: 26px 20px;
+          justify-content: center;
           box-sizing: border-box;
+
+          li {
+            &.logo,
+            &.others {
+              flex: 1;
+            }
+
+            &.search {
+              min-width: 215px;
+
+              input {
+                width: $form-element-input__width;
+                height: 24px;
+                padding: $form-element-input__padding;
+                box-sizing: border-box;
+
+                // @include lib-form-element-input(
+                //   $_type: input-text,
+                //   $_height: 24px
+                // );
+              }
+            }
+            &.others {
+              text-align: right;
+
+              .icon-sprite {
+                &:not(:first-child) {
+                  margin-left: 30px;
+                }
+              }
+            }
+
+          }
         }
 
         .icon-sprite {
@@ -47,7 +81,15 @@ $active-nav-indent: 54px;
 //  _____________________________________________
 
 @media only screen and (max-width: ($screen__m - 1)) {
-
+  nav {
+    ul {
+      li {
+        &.search {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 //
@@ -55,7 +97,4 @@ $active-nav-indent: 54px;
 //  _____________________________________________
 
 @media only screen and (min-width: ($screen__m))  {
-  .nav {
-    @include lib-main-navigation-desktop();
-  }
 }

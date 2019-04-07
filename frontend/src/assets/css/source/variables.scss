@@ -10,6 +10,14 @@
 $baseDir: "../"; // Base directory path
 
 @import 'lib/lib.scss';
+@import 'reset.scss';
+@import 'theme.scss';
+@import 'forms.scss';
+@import 'extends.scss';
+@import 'buttons.scss';
+@import 'icons.scss';
+@import 'layout.scss';
+@import 'navigation.scss';
 
 //
 //  Typography
@@ -18,6 +26,8 @@ $baseDir: "../"; // Base directory path
 //  Fonts
 $font-family-name__base: 'Open Sans';
 $font-family__base: $font-family-name__base, $font-family__sans-serif;
+
+@import 'typography.scss';
 
 //
 //  Sidebar
