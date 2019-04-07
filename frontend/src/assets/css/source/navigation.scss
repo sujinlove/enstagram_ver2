@@ -15,11 +15,11 @@ $active-nav-indent: 54px;
 
 @if ($media-common == true) {
     nav {
-        @include lib-css(background, $navigation__background);
         position: fixed;
         top: 0;
         width: 100%;
         height: 77px;
+        background: #fff;
         border-bottom: 1px solid rgba(0,0,0,.0975);
 
         ul {
@@ -42,6 +42,7 @@ $active-nav-indent: 54px;
                 width: $form-element-input__width;
                 height: 24px;
                 padding: $form-element-input__padding;
+                border: $form-element-input__border;
                 box-sizing: border-box;
 
                 // @include lib-form-element-input(
