@@ -10,7 +10,13 @@ body {
 }
 
 .icon-sprite {
-  background: url('assets/images/common/icon-sprite.png');
+  > span {
+    display: none;
+  }
+}
+
+.ico-glyph {
+  background: url('assets/images/common/icon-sprite-glyph.png');
   background-size: 282px 248px;
 
   &.instagram-logo_ver1 {
@@ -35,6 +41,11 @@ body {
     background-position: -208px -25px;
   }
 }
+
+.ico-core {
+  background: url('assets/images/common/icon-sprite-core.png');
+}
+
 
 .bar {
   display: inline-block;
