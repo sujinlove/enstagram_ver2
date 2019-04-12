@@ -12,8 +12,7 @@
       <div class="searchClear ico-core icon-sprite"><span>search clear</span></div>
     </li>
     <li class="others">
-      <a href="" class="icon-sprite ico-glyph explore"><span>explore</span></a>
-      <div class="icon-sprite ico-glyph heart"><span>heart</span></div>
+      <div class="icon-sprite ico-glyph upload"><span>upload</span></div>
       <a href="" class="icon-sprite ico-glyph user"><span>user</span></a>
     </li>
   </ul>
@@ -31,6 +30,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style lang="scss">
+@import 'src/assets/css/source/navigation.scss';
 </style>
