@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <app-layout />
+    <one-column />
   </div>
 </template>
 
 <script>
-import Layout from './components/common/Layout.vue'
+import OneColumn from './components/common/OneColumn'
 
 export default {
   name: 'App',
   components: {
-    'app-layout': Layout
+    OneColumn
   }
 }
 </script>
