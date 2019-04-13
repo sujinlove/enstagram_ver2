@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <one-column />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import OneColumn from './components/common/OneColumn'
 
 export default {
   name: 'App',
   components: {
-    OneColumn
   }
 }
 </script>

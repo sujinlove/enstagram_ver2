@@ -1,12 +1,17 @@
 <template>
-  <one-column></one-column>
+  <section>
+    <navigation />
+    <one-column />
+  </section>
 </template>
 
 <script>
-import OneColumn from './common/OneColumn'
+import Navigation from '../components/common/Navigation.vue'
+import OneColumn from '../components/common/OneColumn'
 
 export default {
   components: {
+    Navigation,
     OneColumn
   }
 }
