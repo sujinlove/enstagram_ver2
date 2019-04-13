@@ -113,6 +113,12 @@ $active-nav-indent: 54px;
     header & {
       ul {
         li {
+          &.logo {
+            .instagram-logo_ver1,
+            .bar {
+              display: none;
+            }
+          }
           &.search {
             display: none;
           }
