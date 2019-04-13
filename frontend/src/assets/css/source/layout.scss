@@ -45,12 +45,8 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 //  _____________________________________________
 
 @media only screen and (max-width: ($screen__m - 1)) {
-    nav ul,
     .breadcrumbs,
-    .page-header .header.panel,
-    .header.content,
-    .footer.content,
-    .page-main,
+    .container,
     .page-wrapper > .widget,
     .page-wrapper > .page-bottom,
     .block.category.event,
@@ -73,16 +69,12 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 //  _____________________________________________
 
 @media only screen and (min-width: ($screen__m)) {
-    nav ul,
     .breadcrumbs,
-    .page-header .header.panel,
-    .header.content,
-    .footer.content,
     .page-wrapper > .widget,
     .page-wrapper > .page-bottom,
     .block.category.event,
     .top-container,
-    .page-main {
+    .container {
         box-sizing: border-box;
         margin-left: auto;
         margin-right: auto;

@@ -2,120 +2,126 @@
 //  * Copyright © Enstagram, Inc. All rights reserved.
 //  * See COPYING.txt for license details.
 //  */
-
 //
 //  Variables
 //  _____________________________________________
-
 $active-nav-indent: 54px;
-
 //
 //  Common
 //  _____________________________________________
-
 @if ($media-common == true) {
-    nav {
+  nav {
+    header & {
+      height: 77px;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,.0975);
+
+      > div {
         position: fixed;
         top: 0;
         width: 100%;
+      }
+
+      ul {
+        display: flex;
         height: 77px;
-        background: #fff;
-        border-bottom: 1px solid rgba(0,0,0,.0975);
+        padding: 26px 20px;
+        justify-content: center;
+        box-sizing: border-box;
 
-        ul {
-          display: flex;
-          height: 77px;
-          padding: 26px 20px;
-          justify-content: center;
-          box-sizing: border-box;
+        li {
+          position: relative;
 
-          li {
-            position: relative;
+          &.logo,
+          &.others {
+            flex: 1;
+          }
 
-            &.logo,
-            &.others {
-              flex: 1;
+          &.search {
+            min-width: 215px;
+
+            input {
+              width: $form-element-input__width;
+              height: 24px;
+              padding: $form-element-input__padding;
+              border: $form-element-input__border;
+              box-sizing: border-box;
+              // @include lib-form-element-input(
+              //   $_type: input-text,
+              //   $_height: 24px
+              // );
             }
 
-            &.search {
-              min-width: 215px;
+            .ico-core {
+              position: absolute;
+              background-size: 410px 396px;
 
-              input {
-                width: $form-element-input__width;
-                height: 24px;
-                padding: $form-element-input__padding;
-                border: $form-element-input__border;
-                box-sizing: border-box;
-
-                // @include lib-form-element-input(
-                //   $_type: input-text,
-                //   $_height: 24px
-                // );
+              &.searchIcon {
+                top: 7px;
+                left: 11px;
+                width: 10px;
+                height: 10px;
+                background-position: -240px -366px;
               }
 
-              .ico-core {
-                position: absolute;
-                background-size: 410px 396px;
-
-                &.searchIcon {
-                  top: 7px;
-                  left: 11px;
-                  width: 10px;
-                  height: 10px;
-                  background-position: -240px -366px;
-                }
-
-                &.searchClear {
-                  top: 2px;
-                  right: 5px;
-                  width: 20px;
-                  height: 20px;
-                  background-position: -379px -212px;
-                }
+              &.searchClear {
+                top: 2px;
+                right: 5px;
+                width: 20px;
+                height: 20px;
+                background-position: -379px -212px;
               }
             }
+          }
 
-            &.others {
-              text-align: right;
+          &.others {
+            text-align: right;
 
-              .icon-sprite {
-                &:not(:first-child) {
-                  margin-left: 30px;
-                }
+            .icon-sprite {
+              &:not(:first-child) {
+                margin-left: 30px;
               }
             }
-
           }
         }
+      }
 
-        .ico-glyph {
-          display: inline-block;
-          width: 24px;
-          height: 24px;
-          vertical-align: middle;
-        }
+      .ico-glyph {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+      }
     }
-}
 
-//
-//  Mobile
-//  _____________________________________________
+    footer & {
+      display: inline-block;
 
-@media only screen and (max-width: ($screen__m - 1)) {
-  nav {
-    ul {
-      li {
-        &.search {
-          display: none;
+      ul {
+        li {
+          display: inline-block;
         }
       }
     }
   }
 }
-
+//
+//  Mobile
+//  _____________________________________________
+@media only screen and (max-width: ($screen__m - 1)) {
+  nav {
+    header & {
+      ul {
+        li {
+          &.search {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
 //
 //  Desktop
 //  _____________________________________________
-
-@media only screen and (min-width: ($screen__m))  {
-}
+@media only screen and (min-width: ($screen__m)) {}

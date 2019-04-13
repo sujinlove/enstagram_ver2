@@ -1,17 +1,17 @@
 <template>
   <section>
-    <navigation />
+    <app-header />
     <one-column />
   </section>
 </template>
 
 <script>
-import Navigation from '../components/common/Navigation.vue'
+import Header from '../components/common/Header.vue'
 import OneColumn from '../components/common/OneColumn'
 
 export default {
   components: {
-    Navigation,
+    'app-header': Header,
     OneColumn
   }
 }

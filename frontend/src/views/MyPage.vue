@@ -1,19 +1,19 @@
 <template>
   <section>
-    <navigation />
+    <app-header />
     <one-column />
     <footer-layout></footer-layout>
   </section>
 </template>
 
 <script>
-import Navigation from '../components/common/Navigation.vue'
+import Header from '../components/common/Header.vue'
 import OneColumn from '../components/common/OneColumn'
 import Footer from '../components/common/Footer'
 
 export default {
   components: {
-    Navigation,
+    'app-header': Header,
     OneColumn,
     'footer-layout': Footer
   }
