@@ -12,14 +12,15 @@ $active-nav-indent: 54px;
 @if ($media-common == true) {
   nav {
     header & {
-      height: 77px;
-      background: #fff;
-      border-bottom: 1px solid rgba(0,0,0,.0975);
-
+      height: 78px;
+      
       > div {
         position: fixed;
         top: 0;
         width: 100%;
+        height: 77px;
+        background: #fff;
+        border-bottom: 1px solid rgba(0,0,0,.0975);
       }
 
       ul {

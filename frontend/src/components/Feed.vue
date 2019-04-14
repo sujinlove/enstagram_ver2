@@ -9,7 +9,7 @@
     </div>
   </header>
   <div class="feed-pic">
-
+    <img src="https://scontent-hkg3-1.cdninstagram.com/vp/6f786c60347321e084fb41d4d1fc1f75/5D2D5455/t51.2885-15/e35/56618655_280173499590374_4865291580347286450_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com" alt="feed" />
   </div>
   <div class="feed-content">
     <div class="feed-btn">
@@ -57,4 +57,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+.feed-pic {
+  img {
+    width: 100%;
+  }
+}
 </style>
