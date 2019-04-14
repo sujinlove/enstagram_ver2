@@ -45,6 +45,7 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 //  _____________________________________________
 
 @media only screen and (max-width: ($screen__m - 1)) {
+    main,
     .breadcrumbs,
     .container,
     .page-wrapper > .widget,
@@ -69,6 +70,7 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 //  _____________________________________________
 
 @media only screen and (min-width: ($screen__m)) {
+    main,
     .breadcrumbs,
     .page-wrapper > .widget,
     .page-wrapper > .page-bottom,

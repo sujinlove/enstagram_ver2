@@ -1,10 +1,14 @@
 <template>
   <main>
-    <slot name="main"></slot>
+    <div class="columns">
+      <div class="column main">
+        <slot name="main"></slot>
+      </div>
+      <div class="column sidebar">
+        <slot name="sidebar"></slot>
+      </div>
+    </div>
   </main>
-  <aside>
-    <slot name="aside"></slot>
-  </aside>
 </template>
 
 <script>

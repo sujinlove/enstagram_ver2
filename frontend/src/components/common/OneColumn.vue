@@ -1,6 +1,10 @@
 <template>
   <main>
-    <slot></slot>
+    <div class="columns">
+      <div class="column main">
+        <slot></slot>
+      </div>
+    </div>
   </main>
 </template>
 
