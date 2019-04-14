@@ -1,7 +1,10 @@
 <template>
   <main>
-    <slot></slot>
+    <slot name="main"></slot>
   </main>
+  <aside>
+    <slot name="aside"></slot>
+  </aside>
 </template>
 
 <script>
