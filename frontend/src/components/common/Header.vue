@@ -14,8 +14,8 @@
             <div class="searchClear ico-core icon-sprite"><span>search clear</span></div>
           </li>
           <li class="others">
-            <a href="" class="icon-sprite ico-glyph upload"><span>upload</span></a>
-            <a href="" class="icon-sprite ico-glyph user"><span>user</span></a>
+            <router-link to ="" class="icon-sprite ico-glyph upload"><span>upload</span></router-link>
+            <router-link to ="/mypage" class="icon-sprite ico-glyph user"><span>user</span></router-link>
           </li>
         </ul>
       </div>

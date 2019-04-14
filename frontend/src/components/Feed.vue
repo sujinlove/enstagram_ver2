@@ -1,42 +1,46 @@
 <template>
-<article>
-  <header>
+<article class="feed">
+  <header class="feed-header">
     <div class="user-pic">
-      <a href=""></a>
+      <a href="">
+        <img src="https://scontent-hkg3-1.cdninstagram.com/vp/10f87370152bb3d796a1bb4088410993/5D4FEB78/t51.2885-19/s150x150/55734804_1068234573371318_7617162252218531840_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com"  alt="lalalalisa_m님의 프로필 사진"/>
+      </a>
     </div>
     <div class="user-name">
-      <a href=""></a>
+      <a href="">lalalalisa_m</a>
     </div>
   </header>
   <div class="feed-pic">
     <img src="https://scontent-hkg3-1.cdninstagram.com/vp/6f786c60347321e084fb41d4d1fc1f75/5D2D5455/t51.2885-15/e35/56618655_280173499590374_4865291580347286450_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com" alt="feed" />
   </div>
   <div class="feed-content">
-    <div class="feed-btn">
-      <dlv class="icon-sprite ico-glyph heart"><span>heart</span></dlv>
-      <dlv class="icon-sprite ico-glyph chat"><span>chat</span></dlv>
-    </div>
-    <div class="heart-count">
-      <span>좋아요 </span>
-      <span>2313</span>
-    </div>
-    <div class="content-view">
-      <ul>
-        <li class="user-comment">
-          <span class="user-name"></span>
-          <span class="user-text"></span>
-        </li>
-        <li class="more-comment">
-          <button>
-              <span>댓글</span>
-              <span>1231231</span>
-              <span>개 모두 보기</span>
-          </button>
-        </li>
-        <li class="other-comment">
+    <div class="feed-content-inner">
+      <div class="feed-btn">
+        <dlv class="icon-sprite ico-glyph heart"><span>heart</span></dlv>
+        <dlv class="icon-sprite ico-glyph chat"><span>chat</span></dlv>
+      </div>
+      <div class="heart-count">
+        <span>좋아요 </span>
+        <span>2313</span>
+      </div>
+      <div class="content-view">
+        <ul>
+          <li class="user-comment">
+            <span class="user-name"></span>
+            <span class="user-text"></span>
+          </li>
+          <li class="more-comment">
+            <button>
+                <span>댓글</span>
+                <span>1231231</span>
+                <span>개 모두 보기</span>
+            </button>
+          </li>
+          <li class="other-comment">
 
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="comment">
       <input type="text" placeholder="댓글 달기..."/>
@@ -56,10 +60,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-.feed-pic {
-  img {
-    width: 100%;
-  }
-}
+<style lang="scss" scope>
+@import '../assets/css/source/feeds.scss';
 </style>

@@ -31,6 +31,13 @@ $layout-column__sidebar-width: 4;
 $layout-column__right-width: 4;
 $layout-column-main__width-2-right: 8;
 
+//
+//  Indents
+//  ---------------------------------------------
+
+$indent__base: 16px;
+
+
 //  Colors
 //  ---------------------------------------------
 
@@ -38,6 +45,12 @@ $active__color: #EB3349;
 $active__color__light: #F45C43;
 $border-color__base: #dbdbdb;
 $page__background-color: #fafafa;
+$panel__background-color: $color-white;
+
+
+//  Fonts
+//  ---------------------------------------------
+$font-size__base: 14px;
 
 //  Links
 //  ---------------------------------------------

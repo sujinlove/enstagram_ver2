@@ -4,5 +4,36 @@
 //  */
 
 @if ($media-common == true) {
+  .icon-sprite {
+    > span {
+      display: none;
+    }
+  }
 
+  .ico-glyph {
+    background: url("assets/images/common/icon-sprite-glyph.png");
+    background-size: 282px 248px;
+
+    &.instagram-logo_ver1 {
+      background-position: -183px -125px;
+    }
+
+    &.instagram-logo_ver2 {
+      width: 103px;
+      height: 29px;
+      background-position: 0 -144px;
+    }
+
+    &.upload {
+      background-position: 49px -124px;
+    }
+
+    &.user {
+      background-position: -208px -25px;
+    }
+  }
+
+  .ico-core {
+    background: url("assets/images/common/icon-sprite-core.png");
+  }
 }

@@ -2,56 +2,35 @@
 //  * Copyright © Enstagram, Inc. All rights reserved.
 //  * See COPYING.txt for license details.
 //  */
-
 @import 'variables.scss';
-
-body {
-  background: $page__background-color;
-}
-
-.icon-sprite {
-  > span {
-    display: none;
-  }
-}
-
-.ico-glyph {
-  background: url('assets/images/common/icon-sprite-glyph.png');
-  background-size: 282px 248px;
-
-  &.instagram-logo_ver1 {
-    background-position: -183px -125px;
+@import 'icons.scss';
+//
+//  Common
+//  _____________________________________________
+@if ($media-common == true) {
+  body {
+    background: $page__background-color;
+    font-size: $font-size__base;
+    @include lib-typography-links();
   }
 
-  &.instagram-logo_ver2 {
-    width: 103px;
-    height: 29px;
-    background-position: 0 -144px;
+  .feed,
+  .follow-list {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
   }
 
-  &.upload {
-    background-position: 49px -124px;
-  }
+  .bar {
+    display: inline-block;
+    width: 1px;
+    height: 28px;
+    margin: 0 16px;
+    vertical-align: middle;
+    background-color: #262626;
 
-  &.user {
-    background-position: -208px -25px;
-  }
-}
-
-.ico-core {
-  background: url('assets/images/common/icon-sprite-core.png');
-}
-
-
-.bar {
-  display: inline-block;
-  width: 1px;
-  height: 28px;
-  margin: 0 16px;
-  vertical-align: middle;
-  background-color: #262626;
-
-  span {
-    display: none;
+    span {
+      display: none;
+    }
   }
 }

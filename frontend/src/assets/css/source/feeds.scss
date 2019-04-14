@@ -1,0 +1,26 @@
+// /**
+//  * Copyright © Enstagram, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+@import 'variables.scss';
+
+//
+//  Common
+//  _____________________________________________
+@if ($media-common == true) {
+  .feed {
+    &-header {
+      padding: $indent__base;
+    }
+
+    &-content-inner {
+      padding: $indent__base;
+    }
+
+    &-pic {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

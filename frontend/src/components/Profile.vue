@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <div class="my-pic">
-      <img src="" alt="" />
+      <img src="https://instagram.fbed1-2.fna.fbcdn.net/vp/0ad6ead8ba1fc621ef2107c6d137d264/5D2CF3F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fbed1-2.fna.fbcdn.net" alt="ensta00_1님의 프로필 사진" />
     </div>
     <div class="my-info">
       <div class="my-profile">
@@ -26,7 +26,7 @@
           </li>
         </ul>
       </div>
-      <div class="my-description">vue~~~~~enstagram~~</div>
+      <div class="my-des">vue~~~~~enstagram~~</div>
     </div>
   </div>
 </template>
@@ -42,4 +42,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+@import '../assets/css/source/profile.scss';
 </style>

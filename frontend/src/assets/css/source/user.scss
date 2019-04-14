@@ -1,0 +1,50 @@
+// /**
+//  * Copyright © Enstagram, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+//
+//  Common
+//  _____________________________________________
+@if ($media-common == true) {
+  .my-name,
+  .my-pic,
+  .user-name,
+  .user-pic,
+  .follower-info,
+  .follower-name,
+  .follower-pic {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .follower-pic,
+  .my-pic,
+  .user-pic {
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+
+  .follower-name,
+  .my-name,
+  .user-name {
+    font-weight: 600;
+  }
+
+  .follower-info,
+  .my-name,
+  .user-name {
+    margin-left: $indent__base;
+  }
+
+
+  .user-pic,
+  .follower-pic {
+    height: 34px;
+
+    img {
+      width: 34px;
+      height: 34px;
+    }
+  }
+}
