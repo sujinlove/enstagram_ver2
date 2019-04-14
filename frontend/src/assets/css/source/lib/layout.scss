@@ -15,8 +15,8 @@
 ) {
   @if ($responsive == true) {
       @include _lib-layout-width($_layout__min-width, $_layout__max-width);
-      @include lib-css(padding-left, $layout-indent__width);
-      @include lib-css(padding-right, $layout-indent__width);
+      padding-left: $layout-indent__width;
+      padding-right: $layout-indent__width;
       margin: 0 auto;
   }
 }
@@ -26,10 +26,10 @@
     $_layout__max-width: $layout__max-width
 ) {
     @if ($_layout__min-width == $_layout__max-width) {
-      @include lib-css(width, $_layout__min-width);
+      width: $_layout__min-width;
   } @else if ($_layout__min-width == $_layout__max-width) {
-    @include lib-css(max-width, $_layout__max-width);
-    @include lib-css(min-width, $_layout__min-width);
+    max-width: $_layout__max-width;
+    min-width: $_layout__min-width;
     width: auto;
   }
 }
@@ -96,7 +96,7 @@
 
 @mixin _lib-column-width($_width, $_check, $_index) {
   @if ($_check == true && $_width == auto) {
-      @include lib-css(width, $_width);
+      width: $_width;
       $_index: 1;
   }
 }

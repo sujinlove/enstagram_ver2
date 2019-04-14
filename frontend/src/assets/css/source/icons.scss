@@ -4,10 +4,5 @@
 //  */
 
 @if ($media-common == true) {
-    @include lib-font-face(
-        $family-name: $icons__font-name,
-        $font-path: $icons__font-path,
-        $font-weight: normal,
-        $font-style: normal
-    );
+
 }

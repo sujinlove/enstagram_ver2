@@ -27,7 +27,7 @@ $form-calendar-icon__color: $primary__color;
 
             &.no-label {
                 > .label {
-                    @extend .abs-visually-hidden;
+                    @extend %abs-visually-hidden;
                 }
             }
 
@@ -76,7 +76,7 @@ $form-calendar-icon__color: $primary__color;
 
     .field {
         &.date {
-            @extend .abs-field-date;
+            @extend %abs-field-date;
 
             .time-picker {
                 display: inline-block;
@@ -109,14 +109,6 @@ $form-calendar-icon__color: $primary__color;
     ._has-datepicker {
         ~ .ui-datepicker-trigger {
             @include lib-button-reset();
-            @include lib-icon-font(
-            $_icon-font-content: $icon-calendar,
-            $_icon-font-color: $primary__color__lighter,
-            $_icon-font-size: $icon-calendar__font-size,
-            $_icon-font-line-height: $icon-calendar__font-size,
-            $_icon-font-display: block,
-            $_icon-font-text-hide: true
-            );
             display: inline-block;
             vertical-align: middle;
 
@@ -163,7 +155,7 @@ $form-calendar-icon__color: $primary__color;
 @media only screen and (min-width: ($screen__m)) {
     .fieldset {
         .legend {
-            @extend .abs-margin-for-forms-desktop;
+            @extend %abs-margin-for-forms-desktop;
         }
 
         > .field {

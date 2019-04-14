@@ -1,18 +1,25 @@
 <template>
   <section>
     <app-header />
-    <one-column />
+    <two-columns>
+      <feed slot="main"></feed>
+      <follower-list slot="sidebar"></follower-list>
+    </two-columns>
   </section>
 </template>
 
 <script>
 import Header from '../components/common/Header.vue'
-import OneColumn from '../components/common/OneColumn'
+import TwoColumns from '../components/common/TwoColumns'
+import Feed from '../components/Feed'
+import FollowerList from '../components/FollowerList'
 
 export default {
   components: {
     'app-header': Header,
-    OneColumn
+    TwoColumns,
+    Feed,
+    FollowerList
   }
 }
 </script>

@@ -25,10 +25,10 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-action-link-button {
+    %abs-action-link-button {
         @include lib-button();
         @include lib-link-as-button();
-        @include lib-css(border-radius, $button__border-radius);
+        border-radius: $button__border-radius;
     }
 }
 
@@ -36,25 +36,25 @@
 //  Button reset width, floats, margins
 //  ---------------------------------------------
 
-@abs-button-responsive: {
+@mixin abs-button-responsive() {
     @include lib-button-responsive();
 };
 
 @if ($media-common == true) {
-    .abs-button-responsive {
-        @abs-button-responsive();
+    %abs-button-responsive {
+        @include abs-button-responsive();
     }
 }
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-button-desktop {
+    %abs-button-desktop {
         width: auto;
     }
 }
 
 @media only screen and (max-width: ($screen__m - 1)) {
-  .abs-button-responsive-smaller {
-      @abs-button-responsive();
+  %abs-button-responsive-smaller {
+      @include abs-button-responsive();
   }
 }
 
@@ -62,7 +62,7 @@
 //  Blocks in 2 columns
 //  ---------------------------------------------
 
-@abs-blocks-2columns: {
+@mixin abs-blocks-2columns() {
     width: 48.8%;
 
     &:nth-child(odd) {
@@ -76,14 +76,14 @@
 };
 
 @media only screen and (min-width: ($screen__m)) {
-  .abs-button-responsive-smaller {
-      @abs-button-responsive();
+  %abs-button-responsive-smaller {
+      @include abs-button-responsive();
   }
 }
 
 @media only screen and (min-width: ($screen__s)) {
-  .abs-blocks-2columns-s {
-      @abs-blocks-2columns();
+  %abs-blocks-2columns-s {
+      @include abs-blocks-2columns();
   }
 }
 
@@ -137,7 +137,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-block-title {
+    %abs-block-title {
         > strong {
             @include lib-heading(h3);
         }
@@ -153,7 +153,7 @@
 @if ($media-common == true) {
     .abs-account-blocks {
         .block-title {
-            @extend .abs-block-title;
+            @extend %abs-block-title;
             > .action {
                 margin-left: 15px;
             }
@@ -211,16 +211,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-remove-button-for-blocks {
-        @include lib-icon-font(
-        $icon-remove,
-        $_icon-font-size: 26px,
-        $_icon-font-line-height: 15px,
-        $_icon-font-text-hide: true,
-        $_icon-font-color: $color-gray19,
-        $_icon-font-color-hover: $color-gray19,
-        $_icon-font-color-active: $color-gray19
-        );
+    %abs-remove-button-for-blocks {
     }
 }
 
@@ -228,25 +219,25 @@
 //  Reset left margin
 //  ---------------------------------------------
 
-@abs-reset-left-margin: {
+@mixin abs-reset-left-margin() {
     margin-left: 0;
 };
 
 @if ($media-common == true) {
-    .abs-reset-left-margin {
-        @abs-reset-left-margin();
+    %abs-reset-left-margin {
+        @include abs-reset-left-margin();
     }
 }
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-reset-left-margin-desktop {
-        @abs-reset-left-margin();
+    %abs-reset-left-margin-desktop {
+        @include abs-reset-left-margin();
     }
 }
 
 @media only screen and (min-width: ($screen__s)) {
-    .abs-reset-left-margin-desktop-s {
-        @abs-reset-left-margin();
+    %abs-reset-left-margin-desktop-s {
+        @include abs-reset-left-margin();
     }
 }
 
@@ -255,8 +246,8 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-action-remove {
-        @extend .abs-action-button-as-link;
+    %abs-action-remove {
+        @extend %abs-action-button-as-link;
         left: $indent__s;
         margin-left: 70%;
         position: absolute;
@@ -270,7 +261,7 @@
 //  ---------------------------------------------
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-action-remove-desktop {
+    %abs-action-remove-desktop {
        @if ($form-field-type-label-inline__width != false && $form-field-type-label-inline__width != '') {
           margin-left: $form-field-type-label-inline__width + 50%;
           top: 6px;
@@ -297,7 +288,7 @@
 
             .actions-toolbar {
                 &:not(:first-child) {
-                    @extend .abs-add-clearfix;
+                    @extend %abs-add-clearfix;
 
                     > .secondary {
                         .action {
@@ -331,7 +322,7 @@
 
         .action {
             &.remove {
-                @extend.abs-action-remove;
+                @extend %abs-action-remove;
             }
         }
     }
@@ -355,7 +346,7 @@
             .additional {
                 .action {
                     &.remove {
-                        @extend .abs-action-remove-desktop;
+                        @extend %abs-action-remove-desktop;
                     }
                 }
             }
@@ -367,19 +358,19 @@
 //  Margin for forms
 //  ---------------------------------------------
 
-@abs-margin-for-forms-desktop: {
-    @include lib-css(margin-left, $form-field-type-label-inline__width);
+@mixin abs-margin-for-forms-desktop() {
+    margin-left: $form-field-type-label-inline__width;
 };
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-margin-for-forms-desktop {
-        @abs-margin-for-forms-desktop();
+    %abs-margin-for-forms-desktop {
+        @include abs-margin-for-forms-desktop();
     }
 }
 
 @media only screen and (min-width: ($screen__s)) {
-    .abs-margin-for-forms-desktop-s {
-        @abs-margin-for-forms-desktop();
+    %abs-margin-for-forms-desktop-s {
+        @include abs-margin-for-forms-desktop();
     }
 }
 
@@ -397,37 +388,37 @@
 //  Visually hidden / show visually hidden
 //  ---------------------------------------------
 
-@abs-visually-hidden: {
+@mixin abs-visually-hidden {
     @include lib-visually-hidden();
 };
 
 @if ($media-common == true) {
-    .abs-visually-hidden {
-        @abs-visually-hidden();
+    %abs-visually-hidden {
+        @include abs-visually-hidden();
     }
 }
 
 @media only screen and (max-width: ($screen__s - 1)) {
-    .abs-visually-hidden-mobile {
-        @abs-visually-hidden();
+    %abs-visually-hidden-mobile {
+        @include abs-visually-hidden();
     }
 }
 
 @media only screen and (max-width: ($screen__m - 1)) {
-    .abs-visually-hidden-mobile-m {
-        @abs-visually-hidden();
+    %abs-visually-hidden-mobile-m {
+        @include abs-visually-hidden();
     }
 }
 
 @media only screen and (min-width: ($screen__s)) {
-    .abs-visually-hidden-desktop-s {
-        @abs-visually-hidden();
+    %abs-visually-hidden-desktop-s {
+        @include abs-visually-hidden();
     }
 }
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-visually-hidden-desktop {
-        @abs-visually-hidden();
+    %abs-visually-hidden-desktop {
+        @include abs-visually-hidden();
     }
 }
 
@@ -436,7 +427,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-visually-hidden-reset {
+    %abs-visually-hidden-reset {
         @include lib-visually-hidden-reset();
     }
 }
@@ -445,37 +436,37 @@
 //  Clearfix
 //  ---------------------------------------------
 
-@abs-add-clearfix: {
+@mixin abs-add-clearfix() {
     @include lib-clearfix();
 };
 
 @if ($media-common == true) {
-    .abs-add-clearfix {
-        @abs-add-clearfix();
+    %abs-add-clearfix {
+        @include abs-add-clearfix();
     }
 }
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-add-clearfix-desktop {
-        @abs-add-clearfix();
+    %abs-add-clearfix-desktop {
+        @include abs-add-clearfix();
     }
 }
 
 @media only screen and (min-width: ($screen__s)) {
-    .abs-add-clearfix-desktop-s {
-        @abs-add-clearfix();
+    %abs-add-clearfix-desktop-s {
+        @include abs-add-clearfix();
     }
 }
 
 @media only screen and (max-width: ($screen__s - 1)) {
-    .abs-add-clearfix-mobile {
-        @abs-add-clearfix();
+    %abs-add-clearfix-mobile {
+        @include abs-add-clearfix();
     }
 }
 
 @media only screen and (max-width: ($screen__m - 1)) {
-    .abs-add-clearfix-mobile-m {
-        @abs-add-clearfix();
+    %abs-add-clearfix-mobile-m {
+        @include abs-add-clearfix();
     }
 }
 
@@ -483,31 +474,31 @@
 //  Box-sizing
 //  ---------------------------------------------
 
-@abs-add-box-sizing: {
+@mixin abs-add-box-sizing() {
     box-sizing: border-box;
 };
 
 @if ($media-common == true) {
-    .abs-add-box-sizing {
-        @abs-add-box-sizing();
+    %abs-add-box-sizing {
+        @include abs-add-box-sizing();
     }
 }
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-add-box-sizing-desktop {
-        @abs-add-box-sizing();
+    %abs-add-box-sizing-desktop {
+        @include abs-add-box-sizing();
     }
 }
 
 @media only screen and (min-width: ($screen__s)) {
-    .abs-add-box-sizing-desktop-s {
-        @abs-add-box-sizing();
+    %abs-add-box-sizing-desktop-s {
+        @include abs-add-box-sizing();
     }
 }
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-add-box-sizing-desktop-m {
-        @abs-add-box-sizing();
+    %abs-add-box-sizing-desktop-m {
+        @include abs-add-box-sizing();
     }
 }
 
@@ -516,7 +507,7 @@
 //  ---------------------------------------------
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-revert-field-type-desktop {
+    %abs-revert-field-type-desktop {
         .fieldset {
             > .field,
             .fields > .field {
@@ -531,33 +522,11 @@
 }
 
 //
-//  Settings icons
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-navigation-icon {
-        @include lib-icon-font(
-        $_icon-font-content: $icon-down,
-        $_icon-font-size: 34px,
-        $_icon-font-line-height: 1.2,
-        $_icon-font-position: after,
-        $_icon-font-display: block
-        );
-
-        &:after {
-            position: absolute;
-            right: $indent__xs;
-            top: 0;
-        }
-    }
-}
-
-//
 //  Large button
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-button-l {
+    %abs-button-l {
         @include lib-button-l();
     }
 }
@@ -567,7 +536,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-action-button-as-link {
+    %abs-action-button-as-link {
         @include lib-button-as-link($_margin: false);
         border-radius: 0;
         font-size: inherit;
@@ -585,7 +554,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-revert-secondary-color {
+    %abs-revert-secondary-color {
         @include lib-button-revert-secondary-color();
     }
 }
@@ -595,7 +564,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-revert-secondary-size {
+    %abs-revert-secondary-size {
         @include lib-button-revert-secondary-size();
     }
 }
@@ -605,7 +574,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-colon {
+    %abs-colon {
         &:after {
             content: ': ';
         }
@@ -617,49 +586,23 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-icon-add {
-        @include lib-icon-font(
-        $_icon-font-content: $icon-expand,
-        $_icon-font-size: 10px,
-        $_icon-font-line-height: 10px,
-        $_icon-font-vertical-align: middle
-        );
+    %abs-icon-add {
     }
 }
 
-@media only screen and (max-width: ($screen__m - 1)) {
-    .abs-icon-add-mobile {
-        @include lib-icon-font(
-        $_icon-font-content: $icon-expand,
-        $_icon-font-size: 10px,
-        $_icon-font-line-height: 10px,
-        $_icon-font-vertical-align: middle,
-        $_icon-font-margin: 0 5px 0 0,
-        $_icon-font-display: block
-        );
-    }
-}
 
 //
 //  Abstract toggle title block
 //  ---------------------------------------------
 
 @media only screen and (max-width: ($screen__m - 1)) {
-    .abs-toggling-title-mobile {
+    %abs-toggling-title-mobile {
         border-bottom: $border-width__base solid $border-color__base;
         border-top: $border-width__base solid $border-color__base;
         cursor: pointer;
         margin-bottom: 0;
         padding: $indent__s $indent__xl $indent__s $layout__width-xs-indent;
         position: relative;
-
-        @include lib-icon-font(
-        $_icon-font-content: $icon-down,
-        $_icon-font-size: 28px,
-        $_icon-font-text-hide: false,
-        $_icon-font-position: after,
-        $_icon-font-display: block
-        );
 
         &:after {
             position: absolute;
@@ -668,10 +611,6 @@
         }
 
         &.active {
-            @include lib-icon-font-symbol(
-                $_icon-font-content: $icon-up,
-                $_icon-font-position: after
-            );
         }
     }
 }
@@ -680,25 +619,25 @@
 //  Abstract no display
 //  ---------------------------------------------
 
-@abs-no-display: {
+@mixin abs-no-display() {
     display: none;
 };
 
 @if ($media-common == true) {
-    .abs-no-display {
-        @abs-no-display();
+    %abs-no-display {
+        @include abs-no-display();
     }
 }
 
 @media only screen and (max-width: ($screen__s - 1)) {
-    .abs-no-display-s {
-        @abs-no-display();
+    %abs-no-display-s {
+        @include abs-no-display();
     }
 }
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-no-display-desktop {
-        @abs-no-display();
+    %abs-no-display-desktop {
+        @include abs-no-display();
     }
 }
 
@@ -747,10 +686,10 @@
 //  ---------------------------------------------
 
 @media only screen and (min-width: ($screen__m)) {
-    .abs-pager-toolbar {
+    %abs-pager-toolbar {
         margin-bottom: $indent__base;
         position: relative;
-        @extend .abs-add-clearfix-desktop;
+        @extend %abs-add-clearfix-desktop;
 
         .limiter {
             float: right;
@@ -779,8 +718,8 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-block-items-counter {
-        @include lib-css(color, $primary__color__lighter);
+    %abs-block-items-counter {
+        color: $primary__color__lighter;
         font-size: 12px;
         white-space: nowrap;
     }
@@ -791,14 +730,14 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-field-date {
+    %abs-field-date {
         .control {
-            @extend .abs-add-box-sizing;
+            @extend %abs-add-box-sizing;
             position: relative;
         }
 
         input {
-            @extend .abs-field-date-input;
+            @extend %abs-field-date-input;
         }
     }
 }
@@ -808,8 +747,8 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-field-date-input {
-        @include lib-css(margin-right, $indent__s);
+    %abs-field-date-input {
+        margin-right: $indent__s;
         width: calc('100% -' $icon-calendar__font-size + $indent__s);
     }
 }

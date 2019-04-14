@@ -12,7 +12,7 @@
     //  Using buttons mixins
     button,
     a.action.primary {
-        @include lib-css(border-radius, $button__border-radius);
+        border-radius: $button__border-radius;
     }
 
     button {

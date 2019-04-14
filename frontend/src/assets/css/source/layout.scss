@@ -16,23 +16,23 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
         @include lib-layout-columns();
 
         .column.main {
-            @extend .abs-add-box-sizing;
-            @include lib-css(padding-bottom, $indent__xl);
+            @extend %abs-add-box-sizing;
             @include lib-vendor-prefix-flex-basis(100%);
             @include lib-vendor-prefix-flex-grow(1);
             @include lib-vendor-prefix-order(1);
             width: 100%;
+            padding-bottom: $indent__xl;
         }
 
         .sidebar-main {
-            @extend .abs-add-box-sizing;
+            @extend %abs-add-box-sizing;
             @include lib-vendor-prefix-flex-grow(1);
             @include lib-vendor-prefix-flex-basis(100%);
             @include lib-vendor-prefix-order(1);
         }
 
         .sidebar-additional {
-            @extend .abs-add-box-sizing;
+            @extend %abs-add-box-sizing;
             @include lib-vendor-prefix-flex-grow(1);
             @include lib-vendor-prefix-flex-basis(100%);
             @include lib-vendor-prefix-order(2);
@@ -104,14 +104,14 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 
     .column.main {
         @include lib-layout-columns @main();
-        @extend .abs-add-box-sizing-desktop;
+        @extend %abs-add-box-sizing-desktop;
         min-height: 300px;
     }
 
     .sidebar-main {
         @include lib-layout-columns @left();
         padding-right: $layout-column-main__sidebar-offset;
-        @extend .abs-add-box-sizing-desktop;
+        @extend %abs-add-box-sizing-desktop;
     }
 
     .page-layout-2columns-right .sidebar-main {
@@ -123,7 +123,7 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
         @include lib-layout-columns @right();
         clear: right;
         padding-left: $layout-column__additional-sidebar-offset;
-        @extend .abs-add-box-sizing-desktop;
+        @extend %abs-add-box-sizing-desktop;
     }
 
     .page-layout-2columns-left {
