@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="page-layout-2columns-right">
     <div class="columns">
       <div class="column main">
         <slot name="main"></slot>

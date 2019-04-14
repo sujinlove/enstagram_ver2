@@ -24,7 +24,7 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
             padding-bottom: $indent__xl;
         }
 
-        .sidebar-main {
+        .column.sidebar {
             @extend %abs-add-box-sizing;
             @include lib-vendor-prefix-flex-grow(1);
             @include lib-vendor-prefix-flex-basis(100%);
@@ -103,36 +103,26 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
     }
 
     .column.main {
-        @include lib-layout-columns @main();
+        @include lib-layout-columns();
+        @include main();
         @extend %abs-add-box-sizing-desktop;
         min-height: 300px;
     }
 
-    .sidebar-main {
-        @include lib-layout-columns @left();
-        padding-right: $layout-column-main__sidebar-offset;
-        @extend %abs-add-box-sizing-desktop;
-    }
-
-    .page-layout-2columns-right .sidebar-main {
+    .column.sidebar {
+        @include lib-layout-columns();
+        @include right();
         padding-left: $layout-column-main__sidebar-offset;
         padding-right: 0;
+        @extend %abs-add-box-sizing-desktop;
     }
 
     .sidebar-additional {
-        @include lib-layout-columns @right();
+        @include lib-layout-columns();
+        @include right();
         clear: right;
         padding-left: $layout-column__additional-sidebar-offset;
         @extend %abs-add-box-sizing-desktop;
-    }
-
-    .page-layout-2columns-left {
-        .sidebar-additional {
-            clear: left;
-            float: left;
-            padding-left: 0;
-            padding-right: $layout-column__additional-sidebar-offset;
-        }
     }
 
     .panel.header {
