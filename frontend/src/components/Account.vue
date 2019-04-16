@@ -3,7 +3,7 @@
     <div class="account-container">
       <div class="my-account">
         <div class="logo">
-          <a class="icon-sprite ico-core instagram-logo_account"><span>instagram-logo_account</span></a>
+          <a class="icon-sprite ico-core-2 instagram-logo_account"><span>logo</span></a>
         </div>
         <div class="account-form">
             <h2>친구들의 사진과 동영상을 보려면 가입하세요.</h2>
