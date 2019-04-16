@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import MainPage from '@/views/MainPage'
 import MyPage from '@/views/MyPage'
 import AccountPage from '@/views/AccountPage'
+import FeedPage from '@/views/FeedPage'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/account',
       name: 'AccountPage',
       component: AccountPage
+    },
+    {
+      path: '/feed',
+      name: 'FeedPage',
+      component: FeedPage
     }
   ]
 })
