@@ -8,4 +8,20 @@
 //  Common
 //  _____________________________________________
 @if ($media-common == true) {
+  .profile {
+    display: flex;
+    align-items: center;
+
+    .my-pic {
+      flex-grow: 1;
+    }
+
+    .my-info {
+      flex-grow: 2;
+
+      > div {
+        margin-bottom: 20px;;
+      }
+    }
+  }
 }

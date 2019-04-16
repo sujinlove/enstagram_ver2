@@ -43,6 +43,7 @@ export default {
       width: 350px;
       display: inline-block;
       vertical-align: middle;
+
     .my-account {
         background-color: #fff;
         border: 1px solid #e6e6e6;
@@ -73,6 +74,7 @@ export default {
 
   .account-form {
     height: 37px;
+    
     .form {
       fieldset {
         input {

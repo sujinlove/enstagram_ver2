@@ -15,5 +15,9 @@
       .follower-des {
         color: #999;
       }
+
+      ol {
+        @extend %abs-reset-list;
+      }
     }
 }

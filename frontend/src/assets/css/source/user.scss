@@ -11,15 +11,20 @@
   .feed-header,
   .my-count ul {
     @include abs-align-item($indent__base);
-    @extend %abs-reset-list;
+
+    li {
+      margin-bottom: 0;
+    }
   }
 
   .follower-pic,
-  .my-pic,
+  .my-pic-inner,
   .user-pic {
+    display: inline-block;
     overflow: hidden;
     border-radius: 50%;
     background-color: #fff;
+    vertical-align: middle;
   }
 
   .follower-name,
@@ -35,6 +40,14 @@
     img {
       width: 34px;
       height: 34px;
+    }
+  }
+
+  .my-pic,
+  .user-pic,
+  .follower-pic {
+    img {
+      display: block;
     }
   }
 }
