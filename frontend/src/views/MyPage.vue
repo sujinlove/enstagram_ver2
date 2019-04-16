@@ -43,7 +43,7 @@ export default {
   }
 
   .feed-item {
-    flex: 0 0 33%;
+    flex: 0 0 33.333%;
     padding: 0 14px 28px;
     box-sizing: border-box;
 
