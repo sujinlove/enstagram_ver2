@@ -41,9 +41,5 @@ export default {
       height: 50px;
     }
   }
-
-  &-name {
-    margin-left: 14px;
-  }
 }
 </style>
