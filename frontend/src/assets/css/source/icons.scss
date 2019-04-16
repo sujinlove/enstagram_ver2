@@ -35,16 +35,16 @@
 
   .ico-core {
     background: url("assets/images/common/icon-sprite-core.png");
-
-    &.instagram-logo_account {
-      background-position: 2px 122px;
-      display: inline-block;
-      width: 210px;
-      height: 61px;
-    }
   }
 
   .ico-core-2 {
     background: url("assets/images/common/icon-sprite-core_2.png");
+
+    &.instagram-logo_account {
+      background-position: -98px -150px;
+      display: inline-block;
+      width: 175px;
+      height: 51px;
+    }
   }
 }
