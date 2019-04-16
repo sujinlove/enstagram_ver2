@@ -135,11 +135,11 @@
     );
 
     & {
-        @include lib-font-size-value($_margin-top);
+        margin-top: $_margin-top;
     }
 
     & {
-        @include lib-font-size-value($_margin-bottom);
+        margin-bottom: $_margin-bottom;
     }
 }
 
@@ -178,13 +178,11 @@
 
     p {
         & {
-            @include lib-font-size-value($_p-margin-top);
-            margin-top: $fontValue;
+            margin-top: $_p-margin-top;
         }
 
         & {
-            @include lib-font-size-value($_p-margin-bottom);
-            margin-bottom: $fontValue;
+            margin-bottom: $_p-margin-bottom;
         }
     }
 
@@ -319,24 +317,20 @@
     ul,
     ol {
         & {
-            @include lib-font-size-value($_list-margin-top);
-            margin-top: $fontValue;
+            margin-top: $_list-margin-top;
         }
 
         & {
-            @include lib-font-size-value($_list-margin-bottom);
-            margin-bottom: $fontValue;
+            margin-bottom: $_list-margin-bottom;
         }
 
         > li {
             & {
-                @include lib-font-size-value($_list-item-margin-top);
-                margin-top: $fontValue;
+                margin-top: $_list-item-margin-top;
             }
 
             & {
-                @include lib-font-size-value($_list-item-margin-bottom);
-                margin-bottom: $fontValue;
+                margin-bottom: $_list-item-margin-bottom;
             }
         }
 
@@ -399,7 +393,6 @@
         background: $_code-background-color;
         color: $_code-color;
         padding: $_code-padding;
-        @include lib-font-size($_code-font-size);
         white-space: nowrap;
     }
 
@@ -408,7 +401,6 @@
         background: $_kbd-background-color;
         color: $_kbd-color;
         padding: $_kbd-padding;
-        @include lib-font-size($_kbd-font-size);
     }
 
     //  Blocks of code
@@ -419,7 +411,6 @@
         line-height: $_pre-line-height;
         margin: $_pre-margin;
         padding: $_pre-padding;
-        @include lib-font-size($_pre-font-size);
         display: block;
         word-wrap: break-word;
 
@@ -474,7 +465,6 @@
         .small {
             color: $_blockquote-small-color;
             line-height: $_blockquote-small-line-height;
-            @include lib-font-size($_blockquote-small-font-size);
             display: block;
 
             &:before {

@@ -196,17 +196,12 @@ $form-validation-note__margin: 3px 0 0;
 $form-validation-note__padding: false;
 
 $form-validation-note-icon__use: false;
-$form-validation-note-icon__font-content: $icon-pointer-up;
-$form-validation-note-icon__font: $icon-font;
 $form-validation-note-icon__font-size: $form-validation-note__font-size * 2;
 $form-validation-note-icon__font-line-height: $form-validation-note__font-size;
 $form-validation-note-icon__font-color: $form-validation-note__color-error;
 $form-validation-note-icon__font-color-hover: false;
 $form-validation-note-icon__font-color-active: false;
 $form-validation-note-icon__font-margin: false;
-$form-validation-note-icon__font-vertical-align: $icon-font__vertical-align;
-$form-validation-note-icon__font-position: $icon-font__position;
-$form-validation-note-icon__font-text-hide: $icon-font__text-hide;
 
 $form-element-validation__color-error: false;
 $form-element-validation__color-valid: false;
@@ -290,17 +285,12 @@ $form-field-note__margin: 3px 0 0;
 $form-field-note__padding: 0;
 
 //  Form field note icon
-$form-field-note-icon-font: $icon-font;
-$form-field-note-icon-font__content: $icon-pointer-up;
 $form-field-note-icon-font__size: $form-field-note__font-size * 2;
 $form-field-note-icon-font__line-height: $form-field-note__font-size;
 $form-field-note-icon-font__color: $form-field-note__color;
 $form-field-note-icon-font__color-hover: false;
 $form-field-note-icon-font__color-active: false;
 $form-field-note-icon-font__margin: false;
-$form-field-note-icon-font__vertical-align: $icon-font__vertical-align;
-$form-field-note-icon-font__position: $icon-font__position;
-$form-field-note-icon-font__text-hide: $icon-font__text-hide;
 
 //  Hasrequired
 $form-hasrequired__position: top; // [top|bottom]
