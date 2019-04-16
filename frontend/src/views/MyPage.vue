@@ -3,6 +3,14 @@
     <app-header />
     <one-column>
       <profile />
+      <div class="feed-list">
+        <ul>
+          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
+          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
+          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
+          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
+        </ul>
+      </div>
     </one-column>
     <footer-layout></footer-layout>
   </section>
@@ -26,4 +34,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+.feed-list {
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -14px;
+  }
+
+  .feed-item {
+    flex: 0 0 33%;
+    padding: 0 14px 28px;
+    box-sizing: border-box;
+
+    img {
+      width: 100%;
+    }
+  }
+}
 </style>
