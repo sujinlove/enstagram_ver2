@@ -105,6 +105,16 @@ $active-nav-indent: 54px;
       }
     }
   }
+
+  footer {
+    .container {
+      display: flex;
+    }
+
+    nav + span {
+      margin-left: auto;
+    }
+  }
 }
 //
 //  Mobile
