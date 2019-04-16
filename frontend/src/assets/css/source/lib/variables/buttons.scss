@@ -76,21 +76,6 @@ $button-primary__active__gradient-color-end: false;
 $button__gradient: false; // [true|false] - button has a gradient background
 $button__gradient-direction: false; // button gradient direction if button has a gradient background
 
-//  Button with icon
-$button-icon__use: false;
-$button-icon__content: $icon-settings;
-$button-icon__font: $icon-font;
-$button-icon__font-size: 22px;
-$button-icon__line-height: $button-icon__font-size;
-$button-icon__color: inherit;
-$button-icon__margin: 0;
-$button-icon__vertical-align: top;
-$button-icon__position: $icon__position;
-$button-icon__text-hide: false;
-
-$button-icon__hover__font-color: inherit;
-$button-icon__active__font-color: inherit;
-
 //  Large button
 $button__font-size__l: $font-size__l;
 $button__line-height__l: $font-size__l + 4;

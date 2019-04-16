@@ -11,13 +11,6 @@
 //  Fonts
 //  ---------------------------------------------
 
-//  Path
-$font-path: "../../fonts/";
-$icons__font-path: "${baseDir}fonts/Blank-Theme-Icons/Blank-Theme-Icons";
-
-//  Names
-$icons__font-name: 'icons-blank-theme'; // ToDo UI: we need to rename (it shouldn't use blank theme name) or move icon fonts to blank theme
-
 //  Font families
 $font-family__sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-family__serif: Georgia, 'Times New Roman', Times, serif;
@@ -30,8 +23,6 @@ $root__font-size: 62.5%; // Defines ratio between root font size and base font s
 $font-size-ratio__base: 1.4; // Defines ratio of the root font-size to the base font-size
 
 $font-size-unit: rem; // The unit to which most typography values will be converted by default
-$font-size-unit-ratio: unit($root__font-size * 16/100); // Ratio of the root font-size to the font-size unit
-$font-size-unit-convert: true; // Controls whether font-size values are converted to the specified font-size unit
 
 $font-size__base: 14px; // Base font size value in <b>px</b>
 $font-size__xl: ceil(1.5 * $font-size__base); // 21px

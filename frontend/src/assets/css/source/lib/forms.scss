@@ -202,18 +202,6 @@
     $_note-margin: $form-validation-note__margin,
     $_note-padding: $form-validation-note__padding,
     $_note-icon-use: $form-validation-note-icon__use,
-
-    $_note-icon-font-content: $form-validation-note-icon__font-content,
-    $_note-icon-font: $form-validation-note-icon__font,
-    $_note-icon-font-size: $form-validation-note-icon__font-size,
-    $_note-icon-font-line-height: $form-validation-note-icon__font-line-height,
-    $_note-icon-font-color: $form-validation-note-icon__font-color,
-    $_note-icon-font-color-hover: $form-validation-note-icon__font-color-hover,
-    $_note-icon-font-color-active: $form-validation-note-icon__font-color-active,
-    $_note-icon-font-margin: $form-validation-note-icon__font-margin,
-    $_note-icon-font-vertical-align: $form-validation-note-icon__font-vertical-align,
-    $_note-icon-font-position: $form-validation-note-icon__font-position,
-    $_note-icon-font-text-hide: $form-validation-note-icon__font-text-hide
 ) {
     @include lib-typography(
         $_font-size: $_note-font-size,
@@ -512,18 +500,7 @@
     $_note-line-height: $form-field-note__line-height,
     $_note-font-style: $form-field-note__font-style,
     $_note-margin: $form-field-note__margin,
-    $_note-padding: $form-field-note__padding,
-    $_note-icon-font-content: $form-field-note-icon-font__content,
-    $_note-icon-font: $form-field-note-icon-font,
-    $_note-icon-font-size: $form-field-note-icon-font__size,
-    $_note-icon-font-line-height: $form-field-note-icon-font__line-height,
-    $_note-icon-font-color: $form-field-note-icon-font__color,
-    $_note-icon-font-color-hover: $form-field-note-icon-font__color-hover,
-    $_note-icon-font-color-active: $form-field-note-icon-font__color-active,
-    $_note-icon-font-margin: $form-field-note-icon-font__margin,
-    $_note-icon-font-vertical-align: $form-field-note-icon-font__vertical-align,
-    $_note-icon-font-position: $form-field-note-icon-font__position,
-    $_note-icon-font-text-hide: $form-field-note-icon-font__text-hide
+    $_note-padding: $form-field-note__padding
 ) {
     border: $_border;
 
@@ -650,19 +627,7 @@
         $_note-line-height,
         $_note-font-style,
         $_note-margin,
-        $_note-padding,
-
-        $_note-icon-font-content,
-        $_note-icon-font,
-        $_note-icon-font-size,
-        $_note-icon-font-line-height,
-        $_note-icon-font-color,
-        $_note-icon-font-color-hover,
-        $_note-icon-font-color-active,
-        $_note-icon-font-margin,
-        $_note-icon-font-vertical-align,
-        $_note-icon-font-position,
-        $_note-icon-font-text-hide
+        $_note-padding
     );
 }
 
@@ -814,19 +779,7 @@
     $_note-line-height,
     $_note-font-style,
     $_note-margin,
-    $_note-padding,
-
-    $_note-icon-font-content,
-    $_note-icon-font,
-    $_note-icon-font-size,
-    $_note-icon-font-line-height,
-    $_note-icon-font-color,
-    $_note-icon-font-color-hover,
-    $_note-icon-font-color-active,
-    $_note-icon-font-margin,
-    $_note-icon-font-vertical-align,
-    $_note-icon-font-position,
-    $_note-icon-font-text-hide
+    $_note-padding
 ) {
     .note {
         @include lib-typography(
