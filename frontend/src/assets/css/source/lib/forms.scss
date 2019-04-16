@@ -9,11 +9,11 @@
 
 @mixin lib-form-element-input(
     $_type: $form-element-input-type,
-    $_background: $_type"__background",
-    $_border: $_type"__border",
-    $_border-radius: $_type"__border-radius",
-    $_height: $_type"__height",
-    $_width: $_type"__width",
+    $_background: #{$_type}__background,
+    $_border: #{$_type}__border,
+    $_border-radius: #{$_type}__border-radius,
+    $_height: #{$_type}__height,
+    $_width: #{$_type}__width,
     $_padding: $_type"__padding",
     $_margin: $_type"__margin",
     $_vertical-align: $_type"__vertical-align",

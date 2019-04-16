@@ -13,7 +13,7 @@ $active-nav-indent: 54px;
   nav {
     header & {
       height: 78px;
-      
+
       > div {
         position: fixed;
         top: 0;
@@ -47,10 +47,10 @@ $active-nav-indent: 54px;
               padding: $form-element-input__padding;
               border: $form-element-input__border;
               box-sizing: border-box;
-              // @include lib-form-element-input(
-              //   $_type: input-text,
-              //   $_height: 24px
-              // );
+              @include lib-form-element-input(
+                $_type: input-text,
+                $_height: 24px
+              );
             }
 
             .ico-core {
