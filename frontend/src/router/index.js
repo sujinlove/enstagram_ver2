@@ -8,7 +8,6 @@ import FeedPage from '@/views/FeedPage'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
