@@ -5,34 +5,25 @@
           <a class="icon-sprite ico-core-2 instagram-logo_account"><span>logo</span></a>
         </div>
         <div class="account-form">
-            <h2>친구들의 사진과 동영상을 보려면 가입하세요.</h2>
           <form class="form" name="form">
             <fieldset name="fieldset">
               <div class="field email">
                 <label>휴대폰번호 또는 이메일 주소</label>
                 <input name="email" type="tel"/>
               </div>
-              <div class="field name">
-                <label>성명</label>
-                <input name="name" type="text"/>
-              </div>
-              <div class="field user">
-                <label>사용자 이름</label>
-                <input name="user" type="text"/>
-              </div>
               <div class="field passwd">
                 <label>비밀번호</label>
                 <input name="passwd" type="password"/>
               </div>
-              <div class="field account_btn">
-                <button name="account_btn">가입</button>
+              <div class="field login_btn">
+                <button name="login_btn">로그인</button>
               </div>
             </fieldset>
           </form>
         </div>
       </div>
       <div class="login">
-        <div class="my-account my-login">계정이 있으신가요? <a href="/login">로그인</a></div>
+        <div class="my-account my-login">계정이 없으신가요? <a href="/account">가입하기</a></div>
       </div>
   </div>
 </template>
@@ -77,11 +68,6 @@ export default {
 
         &.my-login {
           height: auto;
-
-            a {
-              color: #3897f0;
-              text-decoration: none;
-            }
         }
     }
 
@@ -115,5 +101,15 @@ export default {
       }
     }
   }
+
+  .login {
+    a {
+      color: #003569;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
 }
+
+.main {text-align: center;}
 </style>
