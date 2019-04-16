@@ -16,8 +16,8 @@
   <div class="feed-content">
     <div class="feed-content-inner">
       <div class="feed-btn">
-        <dlv class="icon-sprite ico-glyph heart"><span>heart</span></dlv>
-        <dlv class="icon-sprite ico-glyph chat"><span>chat</span></dlv>
+        <div class="icon-sprite ico-glyph heart"><span>heart</span></div>
+        <div class="icon-sprite ico-glyph chat"><span>chat</span></div>
       </div>
       <div class="heart-count">
         <span>좋아요 </span>
