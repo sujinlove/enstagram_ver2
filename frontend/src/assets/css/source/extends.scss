@@ -28,7 +28,7 @@
 //  ---------------------------------------------
 
 @if ($media-common == true) {
-    .abs-reset-list {
+    %abs-reset-list {
         @include lib-list-reset-styles();
         > li {
             margin: 0;

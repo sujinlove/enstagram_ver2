@@ -8,8 +8,10 @@
 @if ($media-common == true) {
   .profile,
   .follower,
-  .feed-header {
+  .feed-header,
+  .my-count ul {
     @include abs-align-item($indent__base);
+    @extend %abs-reset-list;
   }
 
   .follower-pic,
