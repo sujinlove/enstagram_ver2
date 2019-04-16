@@ -6,15 +6,10 @@
 //  Common
 //  _____________________________________________
 @if ($media-common == true) {
-  .my-name,
-  .my-pic,
-  .user-name,
-  .user-pic,
-  .follower-info,
-  .follower-name,
-  .follower-pic {
-    display: inline-block;
-    vertical-align: middle;
+  .profile,
+  .follower,
+  .feed-header {
+    @include abs-align-item($indent__base);
   }
 
   .follower-pic,
@@ -30,13 +25,6 @@
   .user-name {
     font-weight: 600;
   }
-
-  .follower-info,
-  .my-name,
-  .user-name {
-    margin-left: $indent__base;
-  }
-
 
   .user-pic,
   .follower-pic {

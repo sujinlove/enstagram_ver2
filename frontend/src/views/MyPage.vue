@@ -44,10 +44,12 @@ export default {
 
   .feed-item {
     flex: 0 0 33.333%;
+    margin: 0;
     padding: 0 14px 28px;
     box-sizing: border-box;
 
     img {
+      display: block;
       width: 100%;
     }
   }
