@@ -16,7 +16,7 @@ export default {
   components: {
     'app-header': Header,
     OneColumn,
-    Feed,
+    Feed
   }
 }
 </script>
