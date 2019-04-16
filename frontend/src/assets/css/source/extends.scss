@@ -8,6 +8,22 @@
 //  _____________________________________________
 
 //
+//  Item default styles align
+//  ---------------------------------------------
+
+@mixin abs-align-item ($margin-left) {
+    > * {
+      display: inline-block;
+      vertical-align: middle;
+
+      &:last-child {
+        margin-left: $margin-left;
+      }
+    }
+}
+
+
+//
 //  List default styles reset
 //  ---------------------------------------------
 
