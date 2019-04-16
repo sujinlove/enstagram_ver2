@@ -10,7 +10,7 @@
   .follower,
   .feed-header,
   .my-count ul {
-    @include abs-align-item($indent__base);
+    @include abs-item-align($item-align__margin-left: $indent__base);
 
     li {
       margin-bottom: 0;
