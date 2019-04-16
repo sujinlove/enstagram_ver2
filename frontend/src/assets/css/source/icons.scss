@@ -35,5 +35,12 @@
 
   .ico-core {
     background: url("assets/images/common/icon-sprite-core.png");
+
+    &.instagram-logo_account {
+      background-position: 2px 122px;
+      display: inline-block;
+      width: 210px;
+      height: 61px;
+    }
   }
 }
