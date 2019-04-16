@@ -4,9 +4,9 @@
       <div>
         <ul class="container">
           <li class="logo">
-            <a href="" class="icon-sprite ico-glyph instagram-logo_ver1"><span>logo</span></a>
+            <router-link to ="/" class="icon-sprite ico-glyph instagram-logo_ver1"><span>logo</span></router-link>
             <div class="bar"><span>bar</span></div>
-            <a href="" class="icon-sprite ico-glyph instagram-logo_ver2"><span>logo</span></a>
+            <router-link to ="/" class="icon-sprite ico-glyph instagram-logo_ver2"><span>logo</span></router-link>
           </li>
           <li class="search">
             <input type="text" placeholder="검색"/>
