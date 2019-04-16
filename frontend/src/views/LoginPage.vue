@@ -22,5 +22,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-  .main {text-align: center;}
+  // .main {text-align: center;}
 </style>
