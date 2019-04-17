@@ -23,4 +23,42 @@
       }
     }
   }
+
+
+  .feed-list {
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0 -14px;
+    }
+
+    .feed-item {
+      flex: 0 0 33.333%;
+      margin: 0;
+      padding: 0 14px 28px;
+      box-sizing: border-box;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+@media only screen and (max-width: ($screen__m - 1)) {
+  .feed-list {
+    ul {
+      margin: 0 -2px;
+    }
+    
+    .feed-item {
+      padding: 2px;
+    }
+  }
 }

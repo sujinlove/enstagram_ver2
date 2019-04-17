@@ -10,10 +10,17 @@
 @if ($media-common == true) {
   .profile {
     display: flex;
+    margin-bottom: 44px;
     align-items: center;
 
     .my-pic {
       flex-grow: 1;
+      text-align: center;
+
+      img {
+        width: 150px;
+        height: 150px;
+      }
     }
 
     .my-info {
@@ -23,5 +30,16 @@
         margin-bottom: 20px;;
       }
     }
+  }
+}
+
+
+//
+//  Mobile
+//  _____________________________________________
+
+@media only screen and (max-width: ($screen__m - 1)) {
+  .profile {
+    margin: 30px 16px;
   }
 }

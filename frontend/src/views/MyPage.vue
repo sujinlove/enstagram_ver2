@@ -33,25 +33,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-.feed-list {
-  ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0 -14px;
-  }
-
-  .feed-item {
-    flex: 0 0 33.333%;
-    margin: 0;
-    padding: 0 14px 28px;
-    box-sizing: border-box;
-
-    img {
-      display: block;
-      width: 100%;
-    }
+<style lang="scss" scope>
+@import '../assets/css/source/feeds.scss';
+@media only screen and (max-width: ($screen__m - 1)) {
+  main {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 </style>
