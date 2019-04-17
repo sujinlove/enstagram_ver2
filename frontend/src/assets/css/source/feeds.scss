@@ -24,7 +24,6 @@
     }
   }
 
-
   .feed-list {
     ul {
       display: flex;
@@ -45,6 +44,34 @@
       }
     }
   }
+
+  .feed-view {
+    .feed {
+      display: flex;
+      position: relative;
+    }
+
+    .feed-header {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: calc(100% - 600px);
+      box-sizing: border-box;
+    }
+    .feed-pic {
+      order: 1;
+      max-width: 600px;
+    }
+
+    .feed-content {
+      display: flex;
+      order: 2;
+      flex-grow: 1;
+      flex-direction: column;
+      align-self: flex-end;
+      margin-top: 77px;
+    }
+  }
 }
 
 //
@@ -56,7 +83,7 @@
     ul {
       margin: 0 -2px;
     }
-    
+
     .feed-item {
       padding: 2px;
     }

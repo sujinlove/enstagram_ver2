@@ -2,7 +2,9 @@
   <section>
     <app-header />
     <one-column>
-      <feed />
+      <div class="feed-view">
+        <feed />
+      </div>
     </one-column>
   </section>
 </template>
