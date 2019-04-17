@@ -9,6 +9,7 @@ import LoginPage from '@/views/LoginPage'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -26,14 +27,14 @@ export default new Router({
       component: AccountPage
     },
     {
-      path: '/feed',
-      name: 'FeedPage',
-      component: FeedPage
-    },
-    {
       path: '/login',
       name: 'LoginPage',
       component: LoginPage
+    },
+    {
+      path: '/feed',
+      name: 'FeedPage',
+      component: FeedPage
     }
   ]
 })
