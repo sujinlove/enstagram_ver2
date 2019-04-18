@@ -9,6 +9,7 @@
     width: 24px;
     height: 24px;
     vertical-align: middle;
+    border: none;
 
     > span {
       display: none;
@@ -39,6 +40,14 @@
 
     &.setting {
       background-position: -258px -150px;
+    }
+
+    &.heart {
+      background-position: 0 -198px;
+    }
+
+    &.chat {
+      background-position: -183px -25px;
     }
   }
 

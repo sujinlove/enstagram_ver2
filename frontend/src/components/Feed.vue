@@ -24,8 +24,8 @@
         </ul>
       </div>
       <div class="feed-btn">
-        <div class="icon-sprite ico-glyph heart"><span>heart</span></div>
-        <div class="icon-sprite ico-glyph chat"><span>chat</span></div>
+        <button class="icon-sprite ico-glyph heart"><span>heart</span></button>
+        <router-link to ="/feed" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count">
         <span>좋아요 </span>
