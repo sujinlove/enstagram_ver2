@@ -14,13 +14,6 @@
     @include lib-typography-links();
   }
 
-  .feed,
-  .follow-list {
-    background: #fff;
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-  }
-
   .bar {
     display: inline-block;
     width: 1px;
@@ -32,5 +25,19 @@
     span {
       display: none;
     }
+  }
+}
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+@media only screen and (min-width: ($screen__m)) {
+  .feed,
+  .follow-list {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
   }
 }

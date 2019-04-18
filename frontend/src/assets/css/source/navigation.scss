@@ -99,16 +99,6 @@ $active-nav-indent: 54px;
       }
     }
   }
-
-  footer {
-    .container {
-      display: flex;
-    }
-
-    nav + span {
-      margin-left: auto;
-    }
-  }
 }
 //
 //  Mobile
@@ -131,8 +121,22 @@ $active-nav-indent: 54px;
       }
     }
   }
+
+  footer {
+    text-align: center;
+  }
 }
 //
 //  Desktop
 //  _____________________________________________
-@media only screen and (min-width: ($screen__m)) {}
+@media only screen and (min-width: ($screen__m)) {
+  footer {
+    .container {
+      display: flex;
+    }
+
+    nav + span {
+      margin-left: auto;
+    }
+  }
+}

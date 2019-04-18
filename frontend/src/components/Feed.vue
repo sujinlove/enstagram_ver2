@@ -30,12 +30,14 @@
       <div class="heart-count">
         <span>좋아요 </span>
         <span>2313</span>
+        <span>개</span>
       </div>
       <div class="content-view">
         <ul>
-          <li class="user-comment" v-if="page == 'MainPage'">
-            <span class="user-name">jennierubyjane</span>
-            <span class="user-text">나는 메인 제니!</span>
+          <li class="feed-comment">
+            <span class="user-name">lalalalisa_m</span>
+            <span class="feed-text">블라블라블라</span>
+            <router-link to= "/feed">더보기</router-link>
           </li>
           <li class="more-comment" v-if="page == 'MainPage'">
             <router-link to= "/feed">
@@ -44,8 +46,9 @@
                 <span>개 모두 보기</span>
             </router-link>
           </li>
-          <li class="other-comment">
-
+          <li class="user-comment" v-if="page == 'MainPage'">
+            <span class="user-name">jennierubyjane</span>
+            <span class="user-text">나는 메인 제니!</span>
           </li>
         </ul>
       </div>
