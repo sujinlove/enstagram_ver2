@@ -15,7 +15,7 @@
   </div>
   <div class="feed-content">
     <div class="feed-content-inner">
-      <div class="feed-comment">
+      <div class="feed-comment" v-if="page == 'FeedPage'">
         <ul>
             <li class="user-comment">
               <span class="user-name">jennierubyjane</span>
@@ -33,7 +33,7 @@
       </div>
       <div class="content-view">
         <ul>
-          <li class="user-comment">
+          <li class="user-comment" v-if="page == 'MainPage'">
             <span class="user-name">jennierubyjane</span>
             <span class="user-text">나는 제니!</span>
           </li>
@@ -60,6 +60,7 @@
 
 <script>
 export default {
+  props: ['page'],
   data () {
     return {
     }

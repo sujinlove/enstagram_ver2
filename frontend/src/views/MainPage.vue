@@ -2,7 +2,7 @@
   <section>
     <app-header />
     <two-columns>
-      <feed slot="main"></feed>
+      <feed slot="main" :page="PageName"></feed>
       <div slot="sidebar" class="profile">
         <div class="my-pic">
           <div class="my-pic-inner">
@@ -23,6 +23,11 @@ import Feed from '../components/Feed'
 import FollowerList from '../components/FollowerList'
 
 export default {
+  data () {
+    return {
+      PageName: 'MainPage'
+    }
+  },
   components: {
     'app-header': Header,
     TwoColumns,
