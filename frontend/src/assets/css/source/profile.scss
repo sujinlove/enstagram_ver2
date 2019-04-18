@@ -25,9 +25,28 @@
 
     .my-info {
       flex-grow: 2;
+      font-size: $font-size__m;
 
       > div {
-        margin-bottom: 20px;;
+        margin-bottom: 20px;
+      }
+
+      .my-name, .my-btn {
+        @extend %abs-item-vertical-align;
+      }
+
+      .my-name {
+        font-weight: $font-weight__light;
+
+        > span {
+            font-size: 28px;
+        }
+      }
+
+      .feed-count,
+      .follower-count,
+      .follow-count {
+        font-weight: $font-weight__semibold;
       }
     }
   }

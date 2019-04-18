@@ -27,6 +27,7 @@ $font-size-unit: rem; // The unit to which most typography values will be conver
 $font-size__base: 14px; // Base font size value in <b>px</b>
 $font-size__xl: ceil(1.5 * $font-size__base); // 21px
 $font-size__l: ceil(1.25 * $font-size__base); // 18px
+$font-size__m: 16px; // 18px
 $font-size__s: ceil(.85 * $font-size__base); // 12px
 $font-size__xs: floor(.75 * $font-size__base); // 11px
 

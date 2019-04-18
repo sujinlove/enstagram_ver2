@@ -40,6 +40,19 @@
     }
 }
 
+//
+//  Item default styles align
+//  ---------------------------------------------
+
+%abs-item-vertical-align {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0;
+
+  > span {
+    font-size: initial;
+  }
+}
 
 //
 //  List default styles reset
