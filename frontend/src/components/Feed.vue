@@ -15,6 +15,14 @@
   </div>
   <div class="feed-content">
     <div class="feed-content-inner">
+      <div class="feed-comment">
+        <ul>
+            <li class="user-comment">
+              <span class="user-name">jennierubyjane</span>
+              <span class="user-text">나는 제니</span>
+            </li>
+        </ul>
+      </div>
       <div class="feed-btn">
         <div class="icon-sprite ico-glyph heart"><span>heart</span></div>
         <div class="icon-sprite ico-glyph chat"><span>chat</span></div>
@@ -26,8 +34,8 @@
       <div class="content-view">
         <ul>
           <li class="user-comment">
-            <span class="user-name"></span>
-            <span class="user-text"></span>
+            <span class="user-name">jennierubyjane</span>
+            <span class="user-text">나는 제니!</span>
           </li>
           <li class="more-comment">
             <button>

@@ -5,6 +5,11 @@
 
 @if ($media-common == true) {
   .icon-sprite {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+
     > span {
       display: none;
     }
@@ -30,6 +35,10 @@
 
     &.user {
       background-position: -208px -25px;
+    }
+
+    &.setting {
+      background-position: -258px -150px;
     }
   }
 

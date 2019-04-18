@@ -29,6 +29,10 @@
       > div {
         margin-bottom: 20px;;
       }
+
+      .my-name, .my-btn {
+        @extend %abs-item-vertical-align;
+      }
     }
   }
 }
