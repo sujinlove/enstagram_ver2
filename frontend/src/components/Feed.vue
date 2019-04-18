@@ -35,7 +35,7 @@
       <div class="content-view">
         <ul>
           <li class="feed-comment" v-if="page == 'MainPage'">
-            <span class="user-name">lalalalisa_m</span>
+            <router-link to= "" class="user-name">lalalalisa_m</router-link>
             <span class="feed-text">블라블라블라</span>
             <router-link to= "/feed">더보기</router-link>
           </li>
@@ -47,7 +47,7 @@
             </router-link>
           </li>
           <li class="user-comment" v-if="page == 'MainPage'">
-            <span class="user-name">jennierubyjane</span>
+            <router-link to= "" class="user-name">jennierubyjane</router-link>
             <span class="user-text">나는 메인 제니!</span>
           </li>
         </ul>
