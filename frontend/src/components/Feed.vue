@@ -19,13 +19,13 @@
         <ul>
             <li class="user-comment">
               <span class="user-name">jennierubyjane</span>
-              <span class="user-text">나는 제니</span>
+              <span class="user-text">나는 피드 제니!</span>
             </li>
         </ul>
       </div>
       <div class="feed-btn">
         <button class="icon-sprite ico-glyph heart"><span>heart</span></button>
-        <router-link to ="/feed" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
+        <router-link to= "/feed" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count">
         <span>좋아요 </span>
@@ -35,14 +35,14 @@
         <ul>
           <li class="user-comment" v-if="page == 'MainPage'">
             <span class="user-name">jennierubyjane</span>
-            <span class="user-text">나는 제니!</span>
+            <span class="user-text">나는 메인 제니!</span>
           </li>
-          <li class="more-comment">
-            <button>
+          <li class="more-comment" v-if="page == 'MainPage'">
+            <router-link to= "/feed">
                 <span>댓글</span>
                 <span>1231231</span>
                 <span>개 모두 보기</span>
-            </button>
+            </router-link>
           </li>
           <li class="other-comment">
 
