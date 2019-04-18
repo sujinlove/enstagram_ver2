@@ -34,7 +34,7 @@
       </div>
       <div class="content-view">
         <ul>
-          <li class="feed-comment">
+          <li class="feed-comment" v-if="page == 'MainPage'">
             <span class="user-name">lalalalisa_m</span>
             <span class="feed-text">블라블라블라</span>
             <router-link to= "/feed">더보기</router-link>
