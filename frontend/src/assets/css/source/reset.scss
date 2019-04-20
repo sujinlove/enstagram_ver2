@@ -46,5 +46,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+button {
+	background: none;
+}
 @include lib-typography-all();
+@include lib-form-element-all();

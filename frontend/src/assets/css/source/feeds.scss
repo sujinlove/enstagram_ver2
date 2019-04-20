@@ -13,6 +13,28 @@
       padding: $indent__base;
     }
 
+    &-content {
+      .comment {
+        display: flex;
+        align-items: center;
+        height: 56px;
+        border-top: 1px solid $border-color__base;
+
+        textarea {
+          height: 18px;
+          max-height: 80px;
+          border: none;
+          box-sizing: content-box;
+          resize: none;
+        }
+
+        button {
+          border: none;
+          white-space: nowrap;
+        }
+      }
+    }
+
     &-content-inner {
       padding: $indent__base;
     }

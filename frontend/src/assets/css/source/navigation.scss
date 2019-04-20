@@ -43,14 +43,9 @@ $active-nav-indent: 54px;
             min-width: 215px;
 
             input {
-              width: $form-element-input__width;
-              height: 24px;
-              padding: $form-element-input__padding;
-              border: $form-element-input__border;
-              box-sizing: border-box;
-              @include lib-form-element-input(
-                $_type: input-text,
-                $_height: 24px
+              @include lib-form-element-input-text(
+                $_height: 24px,
+                $_padding: $form-element-input__padding
               );
             }
 

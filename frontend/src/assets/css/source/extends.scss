@@ -179,58 +179,6 @@
     }
 }
 
-//
-//  Abstract block title
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    %abs-block-title {
-        > strong {
-            @include lib-heading(h3);
-        }
-
-        margin-bottom: 15px;
-    }
-}
-
-//
-//  Account blocks
-//  ---------------------------------------------
-
-@if ($media-common == true) {
-    .abs-account-blocks {
-        .block-title {
-            @extend %abs-block-title;
-            > .action {
-                margin-left: 15px;
-            }
-        }
-
-        .box-title {
-            display: inline-block;
-            margin: 0 0 $indent__xs;
-
-            > span {
-                @include lib-heading(h4);
-            }
-
-            > .action {
-                font-weight: 400;
-                margin-left: $indent__s;
-            }
-        }
-
-        .block-content {
-            p:last-child {
-                margin-bottom: 0;
-            }
-
-            .box {
-                margin-bottom: $indent__base;
-            }
-        }
-    }
-}
 
 //
 //  Input quantity

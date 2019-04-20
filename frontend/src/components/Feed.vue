@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="comment">
-      <input type="text" placeholder="댓글 달기..."/>
+      <textarea placeholder="댓글 달기..."/>
       <button type="button">게시</button>
     </div>
   </div>

@@ -7,38 +7,37 @@
 //  Forms
 //  _____________________________________________
 
-@mixin lib-form-element-input(
-    $_type: $form-element-input-type,
-    $_background: $_type +'__background',
-    $_border: #{$_type}__border,
-    $_border-radius: #{$_type}__border-radius,
-    $_height: #{$_type}__height,
-    $_width: #{$_type}__width,
-    $_padding: $_type"__padding",
-    $_margin: $_type"__margin",
-    $_vertical-align: $_type"__vertical-align",
-    $_background-clip: $_type"__background-clip",
+@mixin lib-form-element-input-text(
+    $_background: $input-text__background,
+    $_border: $input-text__border,
+    $_border-radius: $input-text__border-radius,
+    $_height: $input-text__height,
+    $_width: $input-text__width,
+    $_padding: $input-text__padding,
+    $_margin: $input-text__margin,
+    $_vertical-align: $input-text__vertical-align,
+    $_background-clip: $input-text__background-clip,
 
-    $_font-size:  $_type"__font-size",
-    $_color: $_type"__color",
-    $_font-family: $_type"__font-family",
-    $_font-weight: $_type"__font-weight",
-    $_line-height: $_type"__line-height",
-    $_font-style: $_type"__font-style",
+    $_font-size:  $input-text__font-size,
+    $_color: $input-text__color,
+    $_font-family: $input-text__font-family,
+    $_font-weight: $input-text__font-weight,
+    $_line-height: $input-text__line-height,
+    $_font-style: $input-text__font-style,
 
-    $_placeholder-color: $_type"-placeholder__color",
-    $_placeholder-font-style: $_type"-placeholder__font-style",
+    $_placeholder-color: $input-text-placeholder__color,
+    $_placeholder-font-style: $input-text-placeholder__font-style,
 
-    $_disabled-background: $_type"__disabled__background",
-    $_disabled-border: $_type"__disabled__border",
-    $_disabled-opacity: $_type"__disabled__opacity",
-    $_disabled-color: $_type"__disabled__color",
-    $_disabled-font-style: $_type"__disabled__font-style",
+    $_disabled-background: $input-text__disabled__background,
+    $_disabled-border: $input-text__disabled__border,
+    $_disabled-opacity: $input-text__disabled__opacity,
+    $_disabled-color: $input-text__disabled__color,
+    $_disabled-font-style: $input-text__disabled__font-style,
 
-    $_focus-background: $_type"__focus__background",
-    $_focus-border: $_type"__focus__border",
-    $_focus-color: $_type"__focus__color",
-    $_focus-font-style: $_type"__focus__font-style"
+    $_focus-background: $input-text__focus__background,
+    $_focus-border: $input-text__focus__border,
+    $_focus-color: $input-text__focus__color,
+    $_focus-font-style: $input-text__focus__font-style
 ) {
     background: $_background;
     background-clip: $_background-clip;
@@ -81,18 +80,181 @@
     );
 
     @include _lib-form-element-placeholder(
-        $_type,
         $_placeholder-color,
         $_font-style,
         $_placeholder-font-style
     );
 }
 
-@mixin lib-form-element-choice(
-    $_type: $form-element-choice__type,
-    $_vertical-align: $_type"__vertical-align",
-    $_margin: $_type"__margin",
-    $_disabled-opacity: $_type"__disabled__opacity"
+@mixin lib-form-element-input-select(
+    $_background: $select__background,
+    $_border: $select__border,
+    $_border-radius: $select__border-radius,
+    $_height: $select__height,
+    $_width: $select__width,
+    $_padding: $select__padding,
+    $_margin: $select__margin,
+    $_vertical-align: $select__vertical-align,
+    $_background-clip: $select__background-clip,
+
+    $_font-size:  $select__font-size,
+    $_color: $select__color,
+    $_font-family: $select__font-family,
+    $_font-weight: $select__font-weight,
+    $_line-height: $select__line-height,
+    $_font-style: $select__font-style,
+
+    $_placeholder-color: $select-placeholder__color,
+    $_placeholder-font-style: $select-placeholder__font-style,
+
+    $_disabled-background: $select__disabled__background,
+    $_disabled-border: $select__disabled__border,
+    $_disabled-opacity: $select__disabled__opacity,
+    $_disabled-color: $select__disabled__color,
+    $_disabled-font-style: $select__disabled__font-style,
+
+    $_focus-background: $select__focus__background,
+    $_focus-border: $select__focus__border,
+    $_focus-color: $select__focus__color,
+    $_focus-font-style: $select__focus__font-style
+) {
+    background: $_background;
+    background-clip: $_background-clip;
+    border: $_border;
+    border-radius: $_border-radius;
+    color: $_color;
+    font-family: $_font-family;
+    font-size: $_font-size;
+    font-style: $_font-style;
+    font-weight: $_font-weight;
+    height: $_height;
+    line-height: $_line-height;
+    margin: $_margin;
+    padding: $_padding;
+    vertical-align: $_vertical-align;
+    width: $_width;
+    box-sizing: border-box;
+
+    @include _lib-form-element-focus(
+        $_background,
+        $_focus-background,
+        $_border,
+        $_focus-border,
+        $_color,
+        $_focus-color,
+        $_font-style,
+        $_focus-font-style
+    );
+
+    @include _lib-form-element-disabled(
+        $_background,
+        $_disabled-background,
+        $_border,
+        $_disabled-border,
+        $_color,
+        $_disabled-color,
+        $_font-style,
+        $_disabled-font-style,
+        $_disabled-opacity
+    );
+}
+
+@mixin lib-form-element-textarea(
+    $_background: $textarea__background,
+    $_border: $textarea__border,
+    $_border-radius: $textarea__border-radius,
+    $_height: $textarea__height,
+    $_width: $textarea__width,
+    $_padding: $textarea__padding,
+    $_margin: $textarea__margin,
+    $_vertical-align: $textarea__vertical-align,
+    $_background-clip: $textarea__background-clip,
+
+    $_font-size:  $textarea__font-size,
+    $_color: $textarea__color,
+    $_font-family: $textarea__font-family,
+    $_font-weight: $textarea__font-weight,
+    $_line-height: $textarea__line-height,
+    $_font-style: $textarea__font-style,
+
+    $_placeholder-color: $textarea-placeholder__color,
+    $_placeholder-font-style: $textarea-placeholder__font-style,
+
+    $_disabled-background: $textarea__disabled__background,
+    $_disabled-border: $textarea__disabled__border,
+    $_disabled-opacity: $textarea__disabled__opacity,
+    $_disabled-color: $textarea__disabled__color,
+    $_disabled-font-style: $textarea__disabled__font-style,
+
+    $_focus-background: $textarea__focus__background,
+    $_focus-border: $textarea__focus__border,
+    $_focus-color: $textarea__focus__color,
+    $_focus-font-style: $textarea__focus__font-style
+) {
+    background: $_background;
+    background-clip: $_background-clip;
+    border: $_border;
+    border-radius: $_border-radius;
+    color: $_color;
+    font-family: $_font-family;
+    font-size: $_font-size;
+    font-style: $_font-style;
+    font-weight: $_font-weight;
+    height: $_height;
+    line-height: $_line-height;
+    margin: $_margin;
+    padding: $_padding;
+    vertical-align: $_vertical-align;
+    width: $_width;
+    box-sizing: border-box;
+
+    @include _lib-form-element-focus(
+        $_background,
+        $_focus-background,
+        $_border,
+        $_focus-border,
+        $_color,
+        $_focus-color,
+        $_font-style,
+        $_focus-font-style
+    );
+
+    @include _lib-form-element-disabled(
+        $_background,
+        $_disabled-background,
+        $_border,
+        $_disabled-border,
+        $_color,
+        $_disabled-color,
+        $_font-style,
+        $_disabled-font-style,
+        $_disabled-opacity
+    );
+
+    @include _lib-form-element-placeholder(
+        $_placeholder-color,
+        $_font-style,
+        $_placeholder-font-style
+    );
+}
+
+@mixin lib-form-element-choice-input-radio(
+    $_vertical-align: $input-radio__vertical-align,
+    $_margin: $input-radio__margin,
+    $_disabled-opacity: $input-radio__disabled__opacity
+) {
+    margin: $_margin;
+    vertical-align: $_vertical-align;
+
+    &:disabled {
+        @include _lib-form-element-add-opacity($_disabled-opacity);
+    }
+}
+
+@mixin lib-form-element-choice-input-checkbox(
+    $_vertical-align: $input-checkbox__vertical-align,
+    $_margin: $input-checkbox__margin,
+    $_disabled-opacity: $input-checkbox__disabled__opacity
 ) {
     margin: $_margin;
     vertical-align: $_vertical-align;
@@ -247,7 +409,7 @@
     input[type="number"],
     input[type="datetime"],
     input[type="email"] {
-        @include lib-form-element-input($_type: input-text);
+        @include lib-form-element-input-text;
     }
 
     input[type="number"] {
@@ -259,7 +421,7 @@
     }
 
     select {
-        @include lib-form-element-input($_type: select);
+        @include lib-form-element-input-select;
     }
 
     select[multiple="multiple"] {
@@ -268,16 +430,16 @@
     }
 
     textarea {
-        @include lib-form-element-input($_type: textarea);
+        @include lib-form-element-textarea;
         @include lib-form-element-textarea-resize();
     }
 
     input[type="checkbox"] {
-        @include lib-form-element-choice($_type: input-checkbox);
+        @include lib-form-element-choice-input-checkbox;
     }
 
     input[type="radio"] {
-        @include lib-form-element-choice($_type: input-radio);
+        @include lib-form-element-choice-input-radio;
     }
 
     input,
@@ -354,12 +516,10 @@
 }
 
 @mixin _lib-form-element-placeholder(
-    $_type,
     $_color,
     $_font-style-default,
     $_font-style-state
 ) {
-  @if ($_type != select) {
     &::-moz-placeholder {
         color: $_color;
         @include _lib-form-element-state-add-font-style($_font-style-state, $_font-style-default);
@@ -374,7 +534,6 @@
         color: $_color;
         @include _lib-form-element-state-add-font-style($_font-style-state, $_font-style-default);
     }
-  }
 }
 
 @mixin _lib-form-element-state-add-background($_background-state, $_background-default) {
@@ -591,7 +750,7 @@
 
         .addbefore,
         .addafter {
-            @include lib-form-element-input($_type: input-text);
+            @include lib-form-element-input-text;
             @include lib-vendor-prefix-order(3);
             display: inline-block;
             vertical-align: middle;

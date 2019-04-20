@@ -116,33 +116,6 @@
     }
 }
 
-@mixin lib-heading($_heading_level: h1) {
-    $_font-color: "${_heading_level}__font-color";
-    $_font-size: "${_heading_level}__font-size";
-    $_font-family: "${_heading_level}__font-family";
-    $_font-weight: "${_heading_level}__font-weight";
-    $_line-height: "${_heading_level}__line-height";
-    $_font-style: "${_heading_level}__font-style";
-    $_margin-top: "${_heading_level}__margin-top";
-    $_margin-bottom: "${_heading_level}__margin-bottom";
-    @include lib-typography(
-        $_font-size,
-        $_font-color,
-        $_font-family,
-        $_font-weight,
-        $_line-height,
-        $_font-style
-    );
-
-    & {
-        margin-top: $_margin-top;
-    }
-
-    & {
-        margin-bottom: $_margin-bottom;
-    }
-}
-
 //
 //  Base typography
 //  ---------------------------------------------
@@ -239,52 +212,6 @@
         font-style: $_dfn-font-style;
     }
 }
-
-//
-//  Headings
-//  ---------------------------------------------
-
-@mixin lib-typography-headings(
-    $_heading-small-color: $heading__small-color,
-    $_heading-small-line-height: $heading__small-line-height,
-    $_heading-small-size: $heading__small-size
-) {
-    h1 {
-        @include lib-heading(h1);
-    }
-
-    h2 {
-        @include lib-heading(h2);
-    }
-
-    h3 {
-        @include lib-heading(h3);
-    }
-
-    h4 {
-        @include lib-heading(h4);
-    }
-
-    h5 {
-        @include lib-heading(h5);
-    }
-
-    h6 {
-        @include lib-heading(h6);
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        small,
-        .small {
-            @include lib-typography(
-            $_heading-small-size,
-            $_heading-small-color,
-            $_line-height: $_heading-small-line-height
-            );
-        }
-    }
-}
-
 
 //
 //  Links
@@ -503,7 +430,6 @@
 
 @mixin lib-typography-all() {
     @include lib-typography__base();
-    @include lib-typography-headings();
     @include lib-typography-links();
     @include lib-typography-lists();
     @include lib-typography-code();
