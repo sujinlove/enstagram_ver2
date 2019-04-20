@@ -49,5 +49,8 @@ table {
 button {
 	background: none;
 }
+input, select, textarea, button {
+	outline: none;
+}
 @include lib-typography-all();
 @include lib-form-element-all();
