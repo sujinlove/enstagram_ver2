@@ -62,10 +62,6 @@ $link__text-decoration: none;
 $link__visited__text-decoration: $link__text-decoration;
 
 //
-//  Buttons variables
-//  _____________________________________________
-
-//
 //  Buttons
 //  ---------------------------------------------
 //  Default = secondary button
@@ -94,6 +90,7 @@ $button-primary__hover__border: 1px solid $active__color;
 //
 //  Forms variables
 //  _____________________________________________
+$form-element-input__background: transparent;
 $form-element-input__border-color: $border-color__base;
 $form-element-input__border-radius: 3px;
 $form-element-input__padding: 3px 10px 3px 26px;
