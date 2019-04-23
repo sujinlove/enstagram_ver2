@@ -10,10 +10,10 @@ import java.util.*;
 @EnableAutoConfiguration // (2)
 public class App {
 
-    @RequestMapping("/") // (3)
-    String home() {
-        return "Hello Enstagram"; // (4) 
-    }
+//    @RequestMapping("/") // (3)
+//    String home() {
+//        return "Hello Enstagram"; // (4) 
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args); // (5)
