@@ -1,0 +1,28 @@
+// /**
+//  * Copyright © Enstagram, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+@import 'variables.scss';
+
+//
+//  Common
+//  _____________________________________________
+@if ($media-common == true) {
+  .popup {
+    position: fixed;
+
+    &:before {
+      position: fixed;
+      background: rgba(0,0,0,.5);
+    }
+  }
+}
+
+
+//
+//  Mobile
+//  _____________________________________________
+
+@media only screen and (max-width: ($screen__m - 1)) {
+
+}

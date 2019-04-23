@@ -1,7 +1,7 @@
 <template>
   <section>
     <one-column>
-      <login></login>
+      <login slot="main"></login>
     </one-column>
   </section>
 </template>

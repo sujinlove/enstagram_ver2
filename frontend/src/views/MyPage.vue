@@ -2,8 +2,8 @@
   <section>
     <app-header />
     <one-column>
-      <profile />
-      <div class="feed-list">
+      <profile slot="main"/>
+      <div class="feed-list" slot="main">
         <ul>
           <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
           <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
@@ -28,6 +28,11 @@ export default {
     OneColumn,
     Profile,
     'footer-layout': Footer
+  },
+  data () {
+    return {
+      Popup: true
+    }
   }
 }
 </script>
