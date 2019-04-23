@@ -12,6 +12,9 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      path: '*', component: MainPage
+    },
+    {
       path: '/',
       name: 'MainPage',
       component: MainPage
