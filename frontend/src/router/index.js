@@ -5,6 +5,7 @@ import MyPage from '@/views/MyPage'
 import AccountPage from '@/views/AccountPage'
 import FeedPage from '@/views/FeedPage'
 import LoginPage from '@/views/LoginPage'
+import NotFound from '@/views/NotFound'
 
 Vue.use(Router)
 
@@ -12,7 +13,9 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '*', component: MainPage
+      path: '*',
+      name: 'NotFound',
+      component: NotFound
     },
     {
       path: '/',
