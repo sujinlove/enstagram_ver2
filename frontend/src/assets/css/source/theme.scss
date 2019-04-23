@@ -43,7 +43,7 @@ $indent__base: 16px;
 
 $active__color: #EB3349;
 $active__color__light: #F45C43;
-$border-color__base: #dbdbdb;
+$border-color__base: #e6e6e6;
 $page__background-color: #fafafa;
 $panel__background-color: $color-white;
 
@@ -60,10 +60,6 @@ $link__hover__color: $active__color;
 $link__active__color: $link__hover__color;
 $link__text-decoration: none;
 $link__visited__text-decoration: $link__text-decoration;
-
-//
-//  Buttons variables
-//  _____________________________________________
 
 //
 //  Buttons
@@ -94,6 +90,7 @@ $button-primary__hover__border: 1px solid $active__color;
 //
 //  Forms variables
 //  _____________________________________________
+$form-element-input__background: transparent;
 $form-element-input__border-color: $border-color__base;
 $form-element-input__border-radius: 3px;
 $form-element-input__padding: 3px 10px 3px 26px;

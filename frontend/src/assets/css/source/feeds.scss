@@ -13,6 +13,28 @@
       padding: $indent__base;
     }
 
+    &-content {
+      .comment {
+        display: flex;
+        align-items: center;
+        height: 56px;
+        border-top: 1px solid $border-color__base;
+
+        textarea {
+          height: 18px;
+          max-height: 80px;
+          border: none;
+          box-sizing: content-box;
+          resize: none;
+        }
+
+        button {
+          border: none;
+          white-space: nowrap;
+        }
+      }
+    }
+
     &-content-inner {
       padding: $indent__base;
     }
@@ -21,6 +43,71 @@
       img {
         width: 100%;
       }
+    }
+  }
+
+  .feed-list {
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0 -14px;
+    }
+
+    .feed-item {
+      flex: 0 0 33.333%;
+      margin: 0;
+      padding: 0 14px 28px;
+      box-sizing: border-box;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  .feed-view {
+    .feed {
+      display: flex;
+      position: relative;
+    }
+
+    .feed-header {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: calc(100% - 600px);
+      box-sizing: border-box;
+    }
+    .feed-pic {
+      order: 1;
+      max-width: 600px;
+    }
+
+    .feed-content {
+      display: flex;
+      order: 2;
+      flex-grow: 1;
+      flex-direction: column;
+      align-self: flex-end;
+      margin-top: 77px;
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+@media only screen and (max-width: ($screen__m - 1)) {
+  .feed-list {
+    ul {
+      margin: 0 -2px;
+    }
+
+    .feed-item {
+      padding: 2px;
     }
   }
 }

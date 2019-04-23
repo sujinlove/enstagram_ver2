@@ -10,18 +10,55 @@
 @if ($media-common == true) {
   .profile {
     display: flex;
+    margin-bottom: 44px;
     align-items: center;
 
     .my-pic {
       flex-grow: 1;
+      text-align: center;
+
+      img {
+        width: 150px;
+        height: 150px;
+      }
     }
 
     .my-info {
       flex-grow: 2;
+      font-size: $font-size__m;
 
       > div {
-        margin-bottom: 20px;;
+        margin-bottom: 20px;
+      }
+
+      .my-name, .my-btn {
+        @extend %abs-item-vertical-align;
+      }
+
+      .my-name {
+        font-weight: $font-weight__light;
+
+        > span {
+            font-size: 28px;
+        }
+      }
+
+      .feed-count,
+      .follower-count,
+      .follow-count {
+        font-weight: $font-weight__semibold;
       }
     }
+  }
+}
+
+
+//
+//  Mobile
+//  _____________________________________________
+
+@media only screen and (max-width: ($screen__m - 1)) {
+  .profile {
+    margin: 30px 16px;
   }
 }

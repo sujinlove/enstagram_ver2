@@ -27,6 +27,7 @@ $font-size-unit: rem; // The unit to which most typography values will be conver
 $font-size__base: 14px; // Base font size value in <b>px</b>
 $font-size__xl: ceil(1.5 * $font-size__base); // 21px
 $font-size__l: ceil(1.25 * $font-size__base); // 18px
+$font-size__m: 16px; // 18px
 $font-size__s: ceil(.85 * $font-size__base); // 12px
 $font-size__xs: floor(.75 * $font-size__base); // 11px
 
@@ -98,8 +99,8 @@ $focus__box-shadow: 0 0 3px 1px $focus__color;
 //  Lists
 //  ---------------------------------------------
 
-$list__color__base: false;
-$list__font-size__base: false;
+$list__color__base: null;
+$list__font-size__base: null;
 $list__margin-top: 0;
 $list__margin-bottom: $indent__m;
 
@@ -127,11 +128,11 @@ $p__margin-bottom: $indent__s;
 //  Headings
 //  ---------------------------------------------
 
-$heading__font-family__base: false;
+$heading__font-family__base: null;
 $heading__font-weight__base: $font-weight__light;
 $heading__line-height__base: 1.1;
-$heading__color__base: false;
-$heading__font-style__base: false;
+$heading__color__base: null;
+$heading__font-style__base: null;
 $heading__margin-top__base: $indent__base;
 $heading__margin-bottom__base: $indent__base;
 
@@ -234,4 +235,4 @@ $mark__background-color: $panel__background-color;
 $abbr__border-color: $border-color__base;
 
 //  Disable filters output in css
-$disable-filters: false;
+$disable-filters: null;

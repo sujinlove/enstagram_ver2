@@ -7,7 +7,7 @@
     </div>
     <div class="my-info">
       <div class="my-profile">
-        <div class="my-name">ensta00_1</div>
+        <div class="my-name"><span>ensta00_1</span></div>
         <div class="my-btn">
           <div class="icon-sprite ico-glyph setting"><span>setting</span></div>
         </div>

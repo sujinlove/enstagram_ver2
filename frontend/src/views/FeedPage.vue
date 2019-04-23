@@ -2,7 +2,9 @@
   <section>
     <app-header />
     <one-column>
-      <feed />
+      <div class="feed-view">
+        <feed :page="PageName"/>
+      </div>
     </one-column>
   </section>
 </template>
@@ -13,6 +15,11 @@ import OneColumn from '../components/common/OneColumn'
 import Feed from '../components/Feed'
 
 export default {
+  data () {
+    return {
+      PageName: 'FeedPage'
+    }
+  },
   components: {
     'app-header': Header,
     OneColumn,

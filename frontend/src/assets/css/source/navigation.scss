@@ -21,6 +21,7 @@ $active-nav-indent: 54px;
         height: 77px;
         background: #fff;
         border-bottom: 1px solid rgba(0,0,0,.0975);
+        z-index: 1;
       }
 
       ul {
@@ -42,14 +43,9 @@ $active-nav-indent: 54px;
             min-width: 215px;
 
             input {
-              width: $form-element-input__width;
-              height: 24px;
-              padding: $form-element-input__padding;
-              border: $form-element-input__border;
-              box-sizing: border-box;
-              @include lib-form-element-input(
-                $_type: input-text,
-                $_height: 24px
+              @include lib-form-element-input-text(
+                $_height: 24px,
+                $_padding: $form-element-input__padding
               );
             }
 
@@ -86,13 +82,6 @@ $active-nav-indent: 54px;
           }
         }
       }
-
-      .ico-glyph {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        vertical-align: middle;
-      }
     }
 
     footer & {
@@ -103,16 +92,6 @@ $active-nav-indent: 54px;
           display: inline-block;
         }
       }
-    }
-  }
-
-  footer {
-    .container {
-      display: flex;
-    }
-
-    nav + span {
-      margin-left: auto;
     }
   }
 }
@@ -137,8 +116,22 @@ $active-nav-indent: 54px;
       }
     }
   }
+
+  footer {
+    text-align: center;
+  }
 }
 //
 //  Desktop
 //  _____________________________________________
-@media only screen and (min-width: ($screen__m)) {}
+@media only screen and (min-width: ($screen__m)) {
+  footer {
+    .container {
+      display: flex;
+    }
+
+    nav + span {
+      margin-left: auto;
+    }
+  }
+}

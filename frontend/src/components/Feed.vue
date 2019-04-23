@@ -15,35 +15,46 @@
   </div>
   <div class="feed-content">
     <div class="feed-content-inner">
+      <div class="feed-comment" v-if="page == 'FeedPage'">
+        <ul>
+            <li class="user-comment">
+              <span class="user-name">jennierubyjane</span>
+              <span class="user-text">나는 피드 제니!</span>
+            </li>
+        </ul>
+      </div>
       <div class="feed-btn">
-        <div class="icon-sprite ico-glyph heart"><span>heart</span></div>
-        <div class="icon-sprite ico-glyph chat"><span>chat</span></div>
+        <button class="icon-sprite ico-glyph heart"><span>heart</span></button>
+        <router-link to= "/feed" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count">
         <span>좋아요 </span>
         <span>2313</span>
+        <span>개</span>
       </div>
       <div class="content-view">
         <ul>
-          <li class="user-comment">
-            <span class="user-name"></span>
-            <span class="user-text"></span>
+          <li class="feed-comment" v-if="page == 'MainPage'">
+            <router-link to= "" class="user-name">lalalalisa_m</router-link>
+            <span class="feed-text">블라블라블라</span>
+            <router-link to= "/feed">더보기</router-link>
           </li>
-          <li class="more-comment">
-            <button>
+          <li class="more-comment" v-if="page == 'MainPage'">
+            <router-link to= "/feed">
                 <span>댓글</span>
                 <span>1231231</span>
                 <span>개 모두 보기</span>
-            </button>
+            </router-link>
           </li>
-          <li class="other-comment">
-
+          <li class="user-comment" v-if="page == 'MainPage'">
+            <router-link to= "" class="user-name">jennierubyjane</router-link>
+            <span class="user-text">나는 메인 제니!</span>
           </li>
         </ul>
       </div>
     </div>
     <div class="comment">
-      <input type="text" placeholder="댓글 달기..."/>
+      <textarea placeholder="댓글 달기..."/>
       <button type="button">게시</button>
     </div>
   </div>
@@ -52,6 +63,7 @@
 
 <script>
 export default {
+  props: ['page'],
   data () {
     return {
     }
