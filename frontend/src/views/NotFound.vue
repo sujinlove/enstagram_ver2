@@ -2,7 +2,7 @@
   <section>
     <app-header />
     <one-column>
-      <div class="not-found-message" slot="main">
+      <div class="not-found-message">
         <h2>죄송합니다. 페이지를 사용할 수 없습니다.</h2>
         <p>
           클릭하신 링크가 잘못되었거나 페이지가 삭제되었습니다.

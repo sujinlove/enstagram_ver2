@@ -3,13 +3,13 @@
 <template>
   <section>
     <one-column>
-      <div class="phone-container" slot="main">
+      <div class="phone-container">
         <img src="https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png" alt=""/>
         <!-- <div class="img-slider" id="imgSlider">
           <img :src="images[currentNumber % images.length]" />
         </div> -->
       </div>
-      <account slot="main"></account>
+      <account></account>
     </one-column>
   </section>
 </template>

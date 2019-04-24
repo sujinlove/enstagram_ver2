@@ -2,7 +2,7 @@
   <section>
     <app-header />
     <one-column>
-      <div class="feed-view" slot="main">
+      <div class="feed-view">
         <feed :page="PageName"/>
       </div>
     </one-column>

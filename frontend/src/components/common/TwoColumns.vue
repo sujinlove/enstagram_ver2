@@ -10,18 +10,12 @@
         </div>
       </div>
     </main>
-    <slot name="popup">
-      <popup></popup>
-    </slot>
   </div>
 </template>
 
 <script>
-import Popup from './Popup'
-
 export default {
   components: {
-    Popup
   }
 }
 </script>
