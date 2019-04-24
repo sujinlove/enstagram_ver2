@@ -9,11 +9,28 @@
 //  _____________________________________________
 @if ($media-common == true) {
   .popup {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: rgba(0,0,0,.5);
 
-    &:before {
-      position: fixed;
-      background: rgba(0,0,0,.5);
+    .popup-content {
+      display: inline-block;
+      min-width: 260px;
+      border-radius: 12px;
+      background: $color-white;
+
+      button {
+        width: 100%;
+        min-height: 48px;
+        border: none;
+      }
     }
   }
 }

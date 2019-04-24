@@ -12,7 +12,9 @@
         </ul>
       </div>
     </one-column>
-    <footer-layout></footer-layout>
+    <footer-layout />
+    <popup>
+    </popup>
   </section>
 </template>
 
@@ -21,17 +23,18 @@ import Header from '../components/common/Header.vue'
 import OneColumn from '../components/common/OneColumn'
 import Profile from '../components/Profile'
 import Footer from '../components/common/Footer'
+import Popup from '../components/common/Popup'
 
 export default {
   components: {
     'app-header': Header,
     OneColumn,
     Profile,
-    'footer-layout': Footer
+    'footer-layout': Footer,
+    Popup
   },
   data () {
     return {
-      Popup: true
     }
   }
 }

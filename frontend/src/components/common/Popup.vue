@@ -1,16 +1,24 @@
 <template>
-  <div class="popup">
-    <ul>
-      <li>취소</li>
-    </ul>
+  <div class="popup"  v-show="showPopup" @click.self="$EventBus.$emit('showPopup')">
+    <div class="popup-content">
+      <button @click="$EventBus.$emit('showPopup')">취소</button>
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['PopupContent'],
   data () {
     return {
+      showPopup: false
     }
+  },
+  created () {
+    this.$EventBus.$on('showPopup', () => {
+      this.showPopup = !this.showPopup
+    })
   }
 }
 </script>

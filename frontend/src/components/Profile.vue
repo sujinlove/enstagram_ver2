@@ -9,7 +9,7 @@
       <div class="my-profile">
         <div class="my-name"><span>ensta00_1</span></div>
         <div class="my-btn">
-          <div class="icon-sprite ico-glyph setting"><span>setting</span></div>
+          <div class="icon-sprite ico-glyph setting" @click="$EventBus.$emit('showPopup')"><span>setting</span></div>
         </div>
       </div>
       <div class="my-count">
