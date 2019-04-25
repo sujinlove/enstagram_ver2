@@ -10,7 +10,13 @@
           </div>
         </div>
         <div class="my-name"><span>ensta00_1</span></div>
-      </div>
+        <div id="contents">
+                <div class="lead">
+                    <strong @click="todo">Board List :</strong>
+                    <span></span>
+                 </div>
+        </div>
+          </div>
       <follower-list slot="sidebar"></follower-list>
     </two-columns>
   </section>
@@ -21,11 +27,15 @@ import Header from '../components/common/Header.vue'
 import TwoColumns from '../components/common/TwoColumns'
 import Feed from '../components/Feed'
 import FollowerList from '../components/FollowerList'
-
+import axios from 'axios'
 export default {
   data () {
     return {
-      PageName: 'MainPage'
+      PageName: 'MainPage',
+      num: '',
+      userName: '',
+      contents: '',
+      values: []
     }
   },
   components: {
@@ -33,10 +43,77 @@ export default {
     TwoColumns,
     Feed,
     FollowerList
+    // num: num,
+    // userName: userName,
+    // contents: contents
+  },
+  created () {
+    axios.get('/api').then((response) => {
+      console.log(response)
+      if (response.status === 200) {
+        this.values = response.data
+      }
+    })
+  },
+  methods: {
+    todo: function () {
+      this.userName = this.value
+      return this.userName
+    },
+    addSubmit () {
+      axios.post('/values', {
+        num: this.num,
+        userName: this.userName,
+        contents: this.contents
+      })
+    }
   }
 }
+
+// var contents = new Vue({
+//   el: '#contents',
+//   data: {
+//     num: '1',
+//     userName: 'test',
+//     contents: 'test'
+//   },
+//   methods: {
+//     this.num = this.num,
+//     this.userName = this.userName,
+//     this.contents = this.contents
+//   }
+// })
 </script>
 
+<!--<script>
+
+    // new Vue({
+    //
+    //     el: '#contents',
+    //
+    //     data: {
+    //
+    //         players: [
+    //
+    //             { id: "1",
+    //
+    //               name: "Lionel Messi",
+    //
+    //               description: "Argentina's superstar" },
+    //
+    //             { id: "2",
+    //
+    //               name: "Christiano Ronaldo",
+    //
+    //               description: "World #1-ranked player from Portugal" }
+    //
+    //         ]
+    //
+    //     }
+    //
+    // });
+
+ </script>-->
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .profile {
