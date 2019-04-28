@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: Enstagram
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: ￭ﾕﾴ￬ﾝﾸ
+Built-By: atheimuz
 Implementation-Vendor-Id: com.enstagram
 Build-Jdk: 1.8.0_201
 Created-By: Maven Integration for Eclipse
