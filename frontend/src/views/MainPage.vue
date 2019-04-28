@@ -10,12 +10,12 @@
           </div>
         </div>
         <div class="my-name"><span>ensta00_1</span></div>
-        <div id="contents">
+        <!-- <div id="contents">
                 <div class="lead">
                     <strong @click="todo">Board List :</strong>
                     <span></span>
                  </div>
-        </div>
+        </div> -->
           </div>
       <follower-list slot="sidebar"></follower-list>
     </two-columns>
@@ -54,20 +54,20 @@ export default {
         this.values = response.data
       }
     })
-  },
-  methods: {
-    todo: function () {
-      this.userName = this.value
-      return this.userName
-    },
-    addSubmit () {
-      axios.post('/values', {
-        num: this.num,
-        userName: this.userName,
-        contents: this.contents
-      })
-    }
   }
+  // methods: {
+  //   todo: function () {
+  //     this.userName = this.value
+  //     return this.userName
+  //   },
+  //   addSubmit () {
+  //     axios.post('/values', {
+  //       num: this.num,
+  //       userName: this.userName,
+  //       contents: this.contents
+  //     })
+  //   }
+  // }
 }
 
 // var contents = new Vue({
