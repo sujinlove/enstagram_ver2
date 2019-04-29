@@ -1,4 +1,7 @@
-C:\Users\해인\git\enstagram_ver2\src\main\java\com\enstagram\mapper\BoardMapper.java
-C:\Users\해인\git\enstagram_ver2\src\main\java\com\enstagram\model\Board.java
-C:\Users\해인\git\enstagram_ver2\src\main\java\com\example\App.java
-C:\Users\해인\git\enstagram_ver2\src\main\java\com\enstagram\controller\BoardController.java
+/Users/atheimuz/Documents/GitHub/enstagram_ver2/src/main/java/com/enstagram/model/Board.java
+/Users/atheimuz/Documents/GitHub/enstagram_ver2/src/main/java/com/enstagram/controller/BoardController.java
+/Users/atheimuz/Documents/GitHub/enstagram_ver2/src/main/java/com/enstagram/App.java
+/Users/atheimuz/Documents/GitHub/enstagram_ver2/src/main/java/com/enstagram/service/BoardService.java
+/Users/atheimuz/Documents/GitHub/enstagram_ver2/src/main/java/com/enstagram/db/DatabaseConfig.java
+/Users/atheimuz/Documents/GitHub/enstagram_ver2/src/main/java/com/enstagram/service/BoardServiceImpl.java
+/Users/atheimuz/Documents/GitHub/enstagram_ver2/src/main/java/com/enstagram/mapper/BoardMapper.java
