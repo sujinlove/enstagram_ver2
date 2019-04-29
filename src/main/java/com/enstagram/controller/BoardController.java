@@ -16,7 +16,7 @@ public class BoardController {
 	@Autowired
 	BoardServiceImpl boardServiceImpl;
 	
-	@RequestMapping("/api")
+	@RequestMapping("")
     public List<Board> query() throws Exception{
         return boardServiceImpl.getAll();
     }
