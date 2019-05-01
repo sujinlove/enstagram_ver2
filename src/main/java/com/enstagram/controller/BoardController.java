@@ -15,12 +15,12 @@ public class BoardController {
 	 */
 	@Autowired
 	BoardServiceImpl boardServiceImpl;
-	
-	@RequestMapping("")
+
+	@RequestMapping("/api")
     public List<Board> query() throws Exception{
         return boardServiceImpl.getAll();
     }
-	
+
 //	@RequestMapping("/test")
 //	public void testList() {
 //		List<Board> list = boardMapper.getUserName();
