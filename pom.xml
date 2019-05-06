@@ -9,7 +9,7 @@
 		<version>1.2.4.RELEASE</version>
 	</parent>
 	<groupId>com.enstagram</groupId>
-	<artifactId>Enstagram</artifactId>
+	<artifactId>enstagram</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Enstagram</name>
@@ -17,7 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-	  <docker.image.prefix>enstagram</docker.image.prefix>
+	  	<docker.image.prefix>enstagram</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -84,15 +84,15 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<executable>true</executable>
-		      <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-		      <dockerDirectory>src/main/docker</dockerDirectory>
-		      <resources>
-		         <resource>
-		            <targetPath>/</targetPath>
-		            <directory>${project.build.directory}</directory>
-		            <include>${project.build.finalName}.jar</include>
-		         </resource>
-		      </resources>
+				    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+				    <dockerDirectory>src/main/docker</dockerDirectory>
+				    <resources>
+				       <resource>
+				          <targetPath>/</targetPath>
+				          <directory>${project.build.directory}</directory>
+				          <include>${project.build.finalName}.jar</include>
+		               </resource>
+			      	</resources>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -104,5 +104,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
