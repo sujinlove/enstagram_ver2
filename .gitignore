@@ -2,5 +2,4 @@
 *.DS_Store
 
 # Directories #
-/src/main/resources/static/*
 /target/*
