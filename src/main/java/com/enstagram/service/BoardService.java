@@ -10,7 +10,7 @@ import com.enstagram.model.Board;
 
 @Service
 //@Service("boardMapper")
-public class BoardServiceImpl {	
+public class BoardService {	
 //	@Override
 //	public List<Board> getBoardList() {
 //		// TODO Auto-generated method stub

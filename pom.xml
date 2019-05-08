@@ -9,7 +9,7 @@
 		<version>1.2.4.RELEASE</version>
 	</parent>
 	<groupId>com.enstagram</groupId>
-	<artifactId>Enstagram</artifactId>
+	<artifactId>enstagram</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Enstagram</name>
@@ -17,15 +17,16 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+	  	<docker.image.prefix>enstagram</docker.image.prefix>
 	</properties>
-  
+
 	<dependencies>
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 			<version>2.4.1</version>
 		</dependency>
-		<dependency> 
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
@@ -94,5 +95,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

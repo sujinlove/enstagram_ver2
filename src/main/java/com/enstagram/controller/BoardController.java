@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.enstagram.model.Board;
-import com.enstagram.service.BoardServiceImpl;
+import com.enstagram.service.BoardService;
 
 @RestController
 public class BoardController {
@@ -14,11 +14,11 @@ public class BoardController {
 	 * Get board Table DB
 	 */
 	@Autowired
-	BoardServiceImpl boardServiceImpl;
+	BoardService boardService;
 
 	@RequestMapping("/api")
     public List<Board> query() throws Exception{
-        return boardServiceImpl.getAll();
+        return boardService.getAll();
     }
 
 //	@RequestMapping("/test")
