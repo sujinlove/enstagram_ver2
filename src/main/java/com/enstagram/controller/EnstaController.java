@@ -25,7 +25,7 @@ public class EnstaController {
 	 * Create Account
 	 */
 	
-	@RequestMapping(value="/account", method = RequestMethod.POST)
+	@RequestMapping(value="/account", method = RequestMethod.GET)
 	public void create() {
 		EnstaAccount enstaAccount = new EnstaAccount();
 		enstaAccount.setAccnt_num(enstaAccount.getAccnt_num());
