@@ -54,7 +54,7 @@ export default {
   created () {
     axios.get('/list').then((response) => {
       this.account = response.data
-      console.console.log(response)
+      console.log(response)
     })
   },
   methods: {
