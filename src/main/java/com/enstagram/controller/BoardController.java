@@ -21,20 +21,4 @@ public class BoardController {
         return boardService.getAll();
     }
 
-//	@RequestMapping("/test")
-//	public void testList() {
-//		List<Board> list = boardMapper.getUserName();
-//		for (Board board : list) {
-//			System.out.println("======>" + board);
-//		}
-//	}
-
-//	@RequestMapping("/")
-//	public String index(Model model) {
-//		model.addAttribute("eventName", "2019");
-//		// String currentDir = System.getProperty("user.dir");
-//		return "index";
-//	}
-
-
 }

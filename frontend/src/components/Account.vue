@@ -6,26 +6,27 @@
         </div>
         <div class="account-form">
             <h2>친구들의 사진과 동영상을 보려면 가입하세요.</h2>
-          <form class="form" name="form">
+          <form class="form" name="form" method="post">
             <fieldset name="fieldset">
+              <input name="accnt_num" type="hidden" v-model="accnt_num"/>{{ accnt_num }}
               <div class="field email">
-                <label>휴대폰번호 또는 이메일 주소</label>
-                <input name="email" type="tel"/>
+                <label>휴대폰번호 또는 이메일 주소{{ id }}</label>
+                <input name="id" type="text" v-model="id"/>
               </div>
               <div class="field name">
-                <label>성명</label>
-                <input name="name" type="text"/>
+                <label>성명{{ name }}</label>
+                <input name="name" type="text" v-model="name"/>
               </div>
               <div class="field user">
-                <label>사용자 이름</label>
-                <input name="user" type="text"/>
+                <label>사용자 이름{{ nickname }}</label>
+                <input name="nickname" type="text" v-model="nickname"/>
               </div>
               <div class="field passwd">
-                <label>비밀번호</label>
-                <input name="passwd" type="password"/>
+                <label>비밀번호{{ passwd }}</label>
+                <input name="passwd" type="password" v-model="passwd"/>
               </div>
               <div class="field account_btn">
-                <button name="account_btn">가입</button>
+                <button name="account_btn" type="submit" @click="addSubmit">가입</button>
               </div>
             </fieldset>
           </form>
@@ -38,9 +39,33 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
+      accnt_num: '',
+      id: '',
+      name: '',
+      nickname: '',
+      passwd: '',
+      account: []
+    }
+  },
+  created () {
+    axios.get('/list').then((response) => {
+      this.account = response.data
+      console.console.log(response)
+    })
+  },
+  methods: {
+    addSubmit () {
+      axios.post('/account', {
+        accnt_num: this.accnt_num,
+        id: this.id,
+        name: this.name,
+        nickname: this.nickname,
+        passwd: this.passwd
+      })
     }
   }
 }

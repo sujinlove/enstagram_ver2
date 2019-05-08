@@ -2,15 +2,15 @@ package com.enstagram.model;
 
 public class Board {
 
-	private Integer num;
+	private int num;
 	private String userName;
 	private String contents;
 
-	public Integer getNum() {
+	public int getNum() {
 		return num;
 	}
 
-	public void setNum(Integer num) {
+	public void setNum(int num) {
 		this.num = num;
 	}
 

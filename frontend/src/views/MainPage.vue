@@ -48,7 +48,7 @@ export default {
     // contents: contents
   },
   created () {
-    axios.get('/api').then((response) => {
+    axios.get('/').then((response) => {
       console.log(response)
       if (response.status === 200) {
         this.values = response.data
