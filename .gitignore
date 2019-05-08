@@ -1,6 +1,6 @@
 # OS Files #
-.DS_Store
+*.DS_Store
 
 # Directories #
-/src/main/resources/static
-/target/
+/src/main/resources/static/*
+/target/*
