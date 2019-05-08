@@ -16,7 +16,7 @@ public class EnstaService {
 		return enstaMapper.getList();
 	}
 
-	public String create(EnstaAccount enstaAccount) {
-		return enstaMapper.create(enstaAccount);
+	public void create(EnstaAccount enstaAccount) {
+		enstaMapper.createAccount(enstaAccount);
 	}
 }

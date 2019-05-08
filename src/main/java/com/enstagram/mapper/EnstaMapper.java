@@ -6,5 +6,5 @@ import com.enstagram.model.EnstaAccount;
 public interface EnstaMapper {
 
 	public List<EnstaAccount> getList() throws Exception;
-	public String create(EnstaAccount enstaAccount);
+	void createAccount(EnstaAccount enstaAccount);
 }
