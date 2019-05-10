@@ -33,7 +33,7 @@ export default {
     }
   },
   created () {
-    axios.get('/api').then((response) => {
+    axios.get('/api/board').then((response) => {
       if (response.status === 200) {
         this.followers = response.data
       }
