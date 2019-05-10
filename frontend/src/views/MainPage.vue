@@ -48,72 +48,15 @@ export default {
     // contents: contents
   },
   created () {
-    axios.get('/api').then((response) => {
+    axios.get('/api/board').then((response) => {
       console.log(response)
       if (response.status === 200) {
         this.values = response.data
       }
     })
   }
-  // methods: {
-  //   todo: function () {
-  //     this.userName = this.value
-  //     return this.userName
-  //   },
-  //   addSubmit () {
-  //     axios.post('/values', {
-  //       num: this.num,
-  //       userName: this.userName,
-  //       contents: this.contents
-  //     })
-  //   }
-  // }
 }
-
-// var contents = new Vue({
-//   el: '#contents',
-//   data: {
-//     num: '1',
-//     userName: 'test',
-//     contents: 'test'
-//   },
-//   methods: {
-//     this.num = this.num,
-//     this.userName = this.userName,
-//     this.contents = this.contents
-//   }
-// })
 </script>
-
-<!--<script>
-
-    // new Vue({
-    //
-    //     el: '#contents',
-    //
-    //     data: {
-    //
-    //         players: [
-    //
-    //             { id: "1",
-    //
-    //               name: "Lionel Messi",
-    //
-    //               description: "Argentina's superstar" },
-    //
-    //             { id: "2",
-    //
-    //               name: "Christiano Ronaldo",
-    //
-    //               description: "World #1-ranked player from Portugal" }
-    //
-    //         ]
-    //
-    //     }
-    //
-    // });
-
- </script>-->
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .profile {
