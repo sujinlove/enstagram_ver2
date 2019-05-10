@@ -6,7 +6,7 @@
         </div>
         <div class="account-form">
             <h2>친구들의 사진과 동영상을 보려면 가입하세요.</h2>
-          <form class="form" name="form" method="post" action="/account">
+          <form class="form" name="form" method="post" action="/api/account">
             <fieldset name="fieldset">
               <input name="accnt_num" type="hidden" v-model="accnt_num"/>{{ accnt_num }}
               <div class="field email">
@@ -26,7 +26,7 @@
                 <input name="passwd" type="password" v-model="passwd"/>
               </div>
               <div class="field account_btn">
-                <button name="account_btn" type="submit" @click="addSubmit">가입</button>
+                <button name="account_btn" type="button" @click="addSubmit">가입</button>
               </div>
             </fieldset>
           </form>
@@ -53,12 +53,24 @@ export default {
   },
   methods: {
     addSubmit () {
-      axios.post('/account', {
+      // var createFormData = new FormData()
+      // createFormData.append('id', this.id)
+      // createFormData.append('name', this.name)
+      // axios.post('/api/account', createFormData).then(response => {
+      //   console.log('1: ' + this.createFormdata.id, this.createFormData.name)
+      // }).catch(e => {
+      //   console.log('error: ' + e)
+      // })
+      axios.post('/api/account', {
         accnt_num: this.accnt_num,
         id: this.id,
         name: this.name,
         nickname: this.nickname,
         passwd: this.passwd
+      }).then(response => {
+        console.log('1: ' + this.id, this.name)
+      }).catch(e => {
+        console.log('error: ' + e)
       })
     }
   }
