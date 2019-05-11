@@ -116,7 +116,7 @@
        float: left;
    }
 
-   @if ($_total-columns == 3 && $_order == 2) {
+   @if ($_total-columns == 3 and $_order == 2) {
        display: inline-block;
    }
 }

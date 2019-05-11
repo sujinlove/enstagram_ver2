@@ -257,7 +257,7 @@
 
 @media only screen and (min-width: ($screen__m)) {
     %abs-action-remove-desktop {
-       @if ($form-field-type-label-inline__width != false && $form-field-type-label-inline__width != '') {
+       @if ($form-field-type-label-inline__width != false and $form-field-type-label-inline__width != '') {
           margin-left: $form-field-type-label-inline__width + 50%;
           top: 6px;
        }

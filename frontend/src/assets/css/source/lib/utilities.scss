@@ -106,7 +106,7 @@ $urls-resolved: false;
     $_path,
     $_module
 ) {
-  @if ($_module != false && $_module != '' && $urls-resolved = false) {
+  @if ($_module != false and $_module != '' and $urls-resolved = false) {
       $url: "${_module}::${_path}";
   }
 }
@@ -115,7 +115,7 @@ $urls-resolved: false;
     $_path,
     $_module
 ) {
-  @if ($_module != false && $_module != '' && $urls-resolved = true) {
+  @if ($_module != false and $_module != '' and $urls-resolved = true) {
       $url: "${baseDir}${_module}/${_path}";
   }
 }
@@ -131,42 +131,6 @@ $urls-resolved: false;
 @mixin lib-url-check($_path) {
   @if ($_path != false) {
       $lib-url-check-output: url($_path);
-  }
-}
-
-//
-//  Arrow
-//  ---------------------------------------------
-
-@mixin lib-arrow(
-    $_position,
-    $_size,
-    $_color
-) {
-    border: $_size solid transparent;
-    height: 0;
-    width: 0;
-    @include _lib-abbor_el($_position, $_color);
-}
-
-@mixin _lib-abbor_el(
-    $_position,
-    $_color
-) {
-  @if ($_position == left) {
-      border-right-color: $_color;
-  }
-
-  @if ($_position == right) {
-      border-left-color: $_color;
-  }
-
-  @if ($_position == up) {
-      border-bottom-color: $_color;
-  }
-
-  @if ($_position == down) {
-      border-top-color: $_color;
   }
 }
 

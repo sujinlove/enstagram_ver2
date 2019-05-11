@@ -969,7 +969,7 @@
     $_type-block-label-padding: $form-field-type-label-block__padding,
     $_type-block-label-align: $form-field-type-label-block__align
 ) {
-  @if ($_type == block && $_type != false) {
+  @if ($_type == block and $_type != false) {
       &:not(.choice) {
           > .label {
               box-sizing: content-box;
@@ -1021,7 +1021,7 @@
     $_type-block-label-padding: $form-field-type-label-block__padding,
     $_type-block-label-align: $form-field-type-label-block__align
 ) {
-  @if ($_type == inline && $_type != false) {
+  @if ($_type == inline and $_type != false) {
       > .label {
           @include _lib-revert-type-inline-label-margin(
               $_type-inline-label-margin
