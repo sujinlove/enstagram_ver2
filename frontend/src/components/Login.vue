@@ -5,18 +5,19 @@
           <a class="icon-sprite ico-core-2 instagram-logo_account"><span>logo</span></a>
         </div>
         <div class="account-form">
-          <form class="form" name="form">
+          <form class="form" name="form" method="post" action="/api/login">
             <fieldset name="fieldset">
-              <div class="field email">
+              <div class="field id">
                 <label>휴대폰번호 또는 이메일 주소</label>
-                <input name="email" type="tel"/>
+                <input name="userId" type="text" v-model="userId"/>
               </div>
               <div class="field passwd">
                 <label>비밀번호</label>
-                <input name="passwd" type="password"/>
+                <input name="userPasswd" type="password" v-model="userPasswd"/>
               </div>
+              <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
               <div class="field login_btn">
-                <button name="login_btn">로그인</button>
+                <button name="login_btn" type="submit">로그인</button>
               </div>
             </fieldset>
           </form>
@@ -29,10 +30,13 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
   data () {
     return {
     }
+  },
+  methods: {
   }
 }
 </script>

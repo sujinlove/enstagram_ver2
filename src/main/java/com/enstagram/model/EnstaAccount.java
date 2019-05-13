@@ -1,13 +1,21 @@
 package com.enstagram.model;
 
 public class EnstaAccount {
-
+	
 	private int accnt_num;
 	private String id;
 	private String name;
 	private String nickname;
 	private String passwd;
+    private int role = 1;
 
+	public EnstaAccount() {}
+	
+	public EnstaAccount(String id, String passwd) {
+		this.id = id;
+		this.passwd = passwd;
+	}
+	
 	public int getAccnt_num() {
 		return accnt_num;
 	}
@@ -46,6 +54,14 @@ public class EnstaAccount {
 
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
+	}
+	
+	public int getRole() {
+		return role;
+	}
+	
+	public void setRole(Integer role) {
+		this.role = role;
 	}
 
 }

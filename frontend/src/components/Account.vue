@@ -53,14 +53,6 @@ export default {
   },
   methods: {
     addSubmit () {
-      // var createFormData = new FormData()
-      // createFormData.append('id', this.id)
-      // createFormData.append('name', this.name)
-      // axios.post('/api/account', createFormData).then(response => {
-      //   console.log('1: ' + this.createFormdata.id, this.createFormData.name)
-      // }).catch(e => {
-      //   console.log('error: ' + e)
-      // })
       axios.post('/api/account', {
         accnt_num: this.accnt_num,
         id: this.id,
