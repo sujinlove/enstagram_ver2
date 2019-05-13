@@ -11,12 +11,13 @@ import lombok.Data;
 
 @Data
 public class MyAuthenticaion extends UsernamePasswordAuthenticationToken {
-    private  static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    EnstaAccount enstaAccount;
+	EnstaAccount enstaAccount;
 
-    public MyAuthenticaion (String id, String passwd, List<GrantedAuthority> grantedAuthorityList, EnstaAccount enstaAccount) {
-        super(id, passwd, grantedAuthorityList);
-        this.enstaAccount = enstaAccount;
-    }
+	public MyAuthenticaion(String id, String passwd, List<GrantedAuthority> grantedAuthorityList,
+			EnstaAccount enstaAccount) {
+		super(id, passwd, grantedAuthorityList);
+		this.enstaAccount = enstaAccount;
+	}
 }

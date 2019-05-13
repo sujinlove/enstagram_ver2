@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.enstagram.mapper.EnstaMapper">
+
+	<select id="getAccountList" resultType="com.enstagram.model.EnstaAccount">
+		SELECT * FROM ensta_account
+	</select>
+
+	<insert id="createAccount" parameterType="com.enstagram.model.EnstaAccount">
+		INSERT INTO ensta_account(accnt_num, id, name, nickname, passwd, role) VALUES(#{accnt_num}, #{id}, #{name}, #{nickname}, #{passwd}, #{role}) 
+	</insert>
+
+	<select id="getAccount" resultType="com.enstagram.model.EnstaAccount">
+		SELECT * FROM ensta_account WHERE id=#{id}
+	</select>
+	
+	<!-- Ensta Feed -->
+	<select id="getFeedList" resultType="com.enstagram.model.EnstaFeed">
+		SELECT * FROM ensta_feed
+	</select>
+
+	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed">
+		INSERT INTO ensta_feed (file_name, description, date) VALUES (#{file_name}, #{description}, NOW()) 
+	</insert>
+
+</mapper>
