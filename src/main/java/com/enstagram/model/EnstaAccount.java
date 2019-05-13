@@ -8,6 +8,7 @@ public class EnstaAccount {
 	private String nickname;
 	private String passwd;
     private int role = 1;
+	private String loginError;
 
 	public EnstaAccount() {}
 	
@@ -62,6 +63,10 @@ public class EnstaAccount {
 	
 	public void setRole(Integer role) {
 		this.role = role;
+	}
+	
+	public void setLoginError(String loginError) {
+		this.loginError = loginError;
 	}
 
 }

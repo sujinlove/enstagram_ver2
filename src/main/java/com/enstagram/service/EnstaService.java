@@ -2,18 +2,16 @@ package com.enstagram.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.enstagram.MyAuthenticaion;
 import com.enstagram.mapper.EnstaMapper;
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
 
 @Service
 public class EnstaService {
-
+	String loginError = null;
+	
 	@Autowired
 	EnstaMapper enstaMapper;
 
@@ -39,11 +37,24 @@ public class EnstaService {
 
 	public EnstaAccount login(String id, String passwd) {
 		EnstaAccount user = enstaMapper.getAccount(id);
-		if (user == null)
+		loginError = null;
+		
+		if (user == null) {
+			loginError = "id error";
+		}
+		else if (user.getPasswd().equals(passwd) == false) {
+			loginError = "password error";
+		}
+		
+		if(loginError == null) {
+			return user;
+		} else {
 			return null;
-		if (user.getPasswd().equals(passwd) == false)
-			return null;
-		return user;
+		}
+	}
+	
+	public String getLoginError () {
+		return loginError;
 	}
 
 	/*

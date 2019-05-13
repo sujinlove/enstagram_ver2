@@ -12,12 +12,16 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import com.enstagram.mapper.EnstaMapper;
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.service.EnstaService;
 
 @Component("authProvider")
 public class AuthProvider implements AuthenticationProvider  {
 
+	@Autowired
+	EnstaMapper enstaMapper;
+	
     @Autowired
     EnstaService enstaService;
 
@@ -30,8 +34,26 @@ public class AuthProvider implements AuthenticationProvider  {
         return authenticate(id, password);
     }
     //실행 2
+
+	public EnstaAccount login(String id, String passwd, String error) {
+		EnstaAccount user = enstaMapper.getAccount(id);
+		error = null;
+		if (user == null) {
+			error = "id error";
+		}
+		else if (user.getPasswd().equals(passwd) == false) {
+			error = "password error";
+		}
+		
+		if(error == null) {
+			return user;
+		} else {
+			return null;
+		}
+	}
+	
     public Authentication authenticate(String id, String passwd) throws AuthenticationException {
-        EnstaAccount user = enstaService.login(id, passwd);
+    	EnstaAccount user = enstaService.login(id, passwd);
         if (user == null) return null;
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<GrantedAuthority>();
         String role = "";

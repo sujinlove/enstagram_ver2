@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.ui.Model;
 
 import com.enstagram.model.EnstaAccount;
@@ -33,7 +32,7 @@ public class EnstaAccountController {
 	 * Create Account
 	 */
 	
-	@RequestMapping(value="/account", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/account", method = RequestMethod.POST)
 	public void createAccount (@RequestBody EnstaAccount enstaAccount) {
 		enstaService.createAccount(enstaAccount);
 	}
@@ -43,21 +42,14 @@ public class EnstaAccountController {
 	 */
 	
 //	@RequestMapping(value="/login", method = {RequestMethod.POST, RequestMethod.GET}) 
-//	public String login(Model model, String error, String logout) { 
+//	public void login(Model model, String error, String logout) { 
+//		model.addAttribute("msg", "test");
 //		if ( error != null ) { 
-//			model.addAttribute("errorMsg", "Your username and password are invalid."); 
+//			model.addAttribute("msg", "Your username and password are invalid."); 
 //		} 
 //		if ( logout != null ) { 
 //			model.addAttribute("msg", "You have been logged out successfully"); 
-//		} 
-//		return "/login"; 
+//		}
 //	}
-	
-	@RequestMapping(value="/login", method = {RequestMethod.POST, RequestMethod.GET})
-	public void login(@RequestBody EnstaAccount enstaAccount) {
-		System.out.println(enstaAccount.getId());
-		System.out.println(enstaAccount.getName());
-		System.out.println(enstaAccount.getNickname());
-	}
 
 }
