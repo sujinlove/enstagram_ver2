@@ -23,10 +23,10 @@ public class EnstaAccountController {
 	 * Get board_account Table DB
 	 */
 
-	@RequestMapping("/list")
-    public List<EnstaAccount> accountList() throws Exception{
-        return enstaService.accountList();
-    }
+//	@RequestMapping("/list")
+//    public List<EnstaAccount> accountList() throws Exception{
+//        return enstaService.accountList();
+//    }
 
 	/*
 	 * Create Account

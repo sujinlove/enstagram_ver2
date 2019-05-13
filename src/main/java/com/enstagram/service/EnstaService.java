@@ -19,9 +19,9 @@ public class EnstaService {
 	 * Get Account List
 	 */
 
-	public List<EnstaAccount> accountList() throws Exception {
-		return enstaMapper.getAccountList();
-	}
+//	public List<EnstaAccount> accountList() throws Exception {
+//		return enstaMapper.getAccountList();
+//	}
 
 	/*
 	 * Create Account
