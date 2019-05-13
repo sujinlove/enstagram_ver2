@@ -18,7 +18,6 @@ import com.enstagram.service.EnstaService;
 @RequestMapping("/api")
 public class EnstaAccountController {
 
-	@Autowired PasswordEncoder passwordEncoder;
 	@Autowired EnstaService enstaService;
 	 
 	/*
@@ -36,8 +35,6 @@ public class EnstaAccountController {
 	
 	@RequestMapping(value="/account", method = {RequestMethod.POST, RequestMethod.GET})
 	public void createAccount (@RequestBody EnstaAccount enstaAccount) {
-//		enstaAccount.setRole(1);
-		enstaAccount.setPasswd(passwordEncoder.encode(enstaAccount.getPasswd()));
 		enstaService.createAccount(enstaAccount);
 	}
 	
