@@ -12,7 +12,6 @@ import com.enstagram.model.EnstaFeed;
 import com.enstagram.service.EnstaService;
 
 @RestController
-@RequestMapping("/api")
 public class EnstaFeedController {
 
 	@Autowired
@@ -22,7 +21,7 @@ public class EnstaFeedController {
 	 * Get Feed List
 	 */
 
-	@RequestMapping("/feedList")
+	@RequestMapping("/api/feedList")
 	public List<EnstaFeed> feedList() {
 		return enstaService.feedList();
 	}
@@ -31,7 +30,7 @@ public class EnstaFeedController {
 	 * Create Feed
 	 */
 
-	@RequestMapping(value = "/feedUpload", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/feedUpload", method = RequestMethod.POST)
 	public void createFeed(@RequestBody EnstaFeed enstaFeed) {
 //		System.out.println(enstaFeed.get);
 		// enstaFeed.setFile_name(enstaFeed.getFile().getOriginalFilename());

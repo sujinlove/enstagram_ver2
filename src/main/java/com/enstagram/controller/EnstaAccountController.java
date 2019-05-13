@@ -14,7 +14,6 @@ import com.enstagram.model.EnstaAccount;
 import com.enstagram.service.EnstaService;
 
 @RestController
-@RequestMapping("/api")
 public class EnstaAccountController {
 
 	@Autowired EnstaService enstaService;
@@ -23,7 +22,7 @@ public class EnstaAccountController {
 	 * Get board_account Table DB
 	 */
 
-//	@RequestMapping("/list")
+//	@RequestMapping("/api/list")
 //    public List<EnstaAccount> accountList() throws Exception{
 //        return enstaService.accountList();
 //    }
@@ -32,7 +31,7 @@ public class EnstaAccountController {
 	 * Create Account
 	 */
 	
-	@RequestMapping(value="/account", method = RequestMethod.POST)
+	@RequestMapping(value="/api/account", method = RequestMethod.POST)
 	public void createAccount (@RequestBody EnstaAccount enstaAccount) {
 		enstaService.createAccount(enstaAccount);
 	}
@@ -41,7 +40,7 @@ public class EnstaAccountController {
 	 * Login
 	 */
 	
-//	@RequestMapping(value="/login", method = {RequestMethod.POST, RequestMethod.GET}) 
+//	@RequestMapping(value="/api/login", method = {RequestMethod.POST, RequestMethod.GET}) 
 //	public void login(Model model, String error, String logout) { 
 //		model.addAttribute("msg", "test");
 //		if ( error != null ) { 
