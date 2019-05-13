@@ -9,6 +9,10 @@
 	</select>
 
 	<insert id="createAccount" parameterType="com.enstagram.model.EnstaAccount">
-		INSERT INTO ensta_account(accnt_num, id, name, nickname, passwd) VALUES(#{accnt_num}, #{id}, #{name}, #{nickname}, #{passwd}) 
+		INSERT INTO ensta_account(accnt_num, id, name, nickname, passwd, role) VALUES(#{accnt_num}, #{id}, #{name}, #{nickname}, #{passwd}, #{role}) 
 	</insert>
+
+	<select id="getAccount" resultType="com.enstagram.model.EnstaAccount">
+		SELECT * FROM ensta_account WHERE id=#{id}
+	</select>
 </mapper>
