@@ -14,6 +14,7 @@
     </one-column>
     <footer-layout />
     <popup>
+      <a href="/logout">로그아웃</a>
     </popup>
   </section>
 </template>

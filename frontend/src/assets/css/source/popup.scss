@@ -26,9 +26,14 @@
       border-radius: 12px;
       background: $color-white;
 
+      a,
       button {
+        display: block;
         width: 100%;
         min-height: 48px;
+        line-height: 48px;
+        text-align: center;
+        font-size: $font-size__base;
         border: none;
       }
     }

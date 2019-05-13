@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.enstagram.service.EnstaService;
 
@@ -45,7 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 
             .logout()
-                .permitAll();
+            	.permitAll()
+            	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+
         
         	http.authenticationProvider(authProvider);
     }

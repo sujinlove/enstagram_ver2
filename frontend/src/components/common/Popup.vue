@@ -1,8 +1,8 @@
 <template>
   <div class="popup"  v-show="showPopup" @click.self="$EventBus.$emit('showPopup')">
     <div class="popup-content">
-      <button @click="$EventBus.$emit('showPopup')">취소</button>
       <slot></slot>
+      <button @click="$EventBus.$emit('showPopup')">취소</button>
     </div>
   </div>
 </template>
