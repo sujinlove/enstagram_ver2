@@ -6,6 +6,7 @@ import AccountPage from '@/views/AccountPage'
 import FeedPage from '@/views/FeedPage'
 import LoginPage from '@/views/LoginPage'
 import NotFound from '@/views/NotFound'
+import FeedUploadPage from '@/views/FeedUploadPage'
 
 Vue.use(Router)
 
@@ -41,6 +42,12 @@ export default new Router({
       path: '/feed',
       name: 'FeedPage',
       component: FeedPage
+    },
+    {
+      path: '/feedUpload',
+      name: 'FeedUploadPage',
+      component: FeedUploadPage
     }
+
   ]
 })
