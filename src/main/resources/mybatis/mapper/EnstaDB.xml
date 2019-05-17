@@ -22,7 +22,16 @@
 	</select>
 
 	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed">
-		INSERT INTO ensta_feed (file_name, description, date) VALUES (#{file_name}, #{description}, NOW()) 
+		INSERT INTO ensta_feed (file_name, description) VALUES (#{file_name}, #{description}) 
+	</insert>
+
+	<!-- Ensta Reply -->
+	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">
+		SELECT * FROM ensta_reply
+	</select>
+
+	<insert id="createReply" parameterType="com.enstagram.model.EnstaReply">
+		INSERT INTO ensta_reply (reply_num, feed_num, content, date) VALUES (#{reply_num}, #{feed_num}, #{content}, NOW()) 
 	</insert>
 
 </mapper>
