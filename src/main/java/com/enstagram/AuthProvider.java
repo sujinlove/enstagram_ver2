@@ -25,32 +25,12 @@ public class AuthProvider implements AuthenticationProvider  {
     @Autowired
     EnstaService enstaService;
 
-    //로그인 버튼을 누를 경우
-    //실행 1
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String id = authentication.getName();
         String password = authentication.getCredentials().toString();
         return authenticate(id, password);
     }
-    //실행 2
-
-	public EnstaAccount login(String id, String passwd, String error) {
-		EnstaAccount user = enstaMapper.getAccount(id);
-		error = null;
-		if (user == null) {
-			error = "id error";
-		}
-		else if (user.getPasswd().equals(passwd) == false) {
-			error = "password error";
-		}
-		
-		if(error == null) {
-			return user;
-		} else {
-			return null;
-		}
-	}
 	
     public Authentication authenticate(String id, String passwd) throws AuthenticationException {
     	EnstaAccount user = enstaService.login(id, passwd);

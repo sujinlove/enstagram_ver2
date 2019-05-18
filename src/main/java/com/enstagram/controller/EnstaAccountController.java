@@ -1,14 +1,13 @@
 package com.enstagram.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-//import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.service.EnstaService;
@@ -17,15 +16,6 @@ import com.enstagram.service.EnstaService;
 public class EnstaAccountController {
 
 	@Autowired EnstaService enstaService;
-	 
-	/*
-	 * Get board_account Table DB
-	 */
-
-//	@RequestMapping("/api/list")
-//    public List<EnstaAccount> accountList() throws Exception{
-//        return enstaService.accountList();
-//    }
 
 	/*
 	 * Create Account
@@ -37,18 +27,20 @@ public class EnstaAccountController {
 	}
 	
 	/*
-	 * Login
+	 * Login Account
 	 */
-	
-//	@RequestMapping(value="/api/login", method = {RequestMethod.POST, RequestMethod.GET}) 
-//	public void login(Model model, String error, String logout) { 
-//		model.addAttribute("msg", "test");
-//		if ( error != null ) { 
-//			model.addAttribute("msg", "Your username and password are invalid."); 
-//		} 
-//		if ( logout != null ) { 
-//			model.addAttribute("msg", "You have been logged out successfully"); 
-//		}
-//	}
 
+	@RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView viewLogin(HttpServletRequest request) {
+        String errorMessge = null;
+        ModelAndView mav = new ModelAndView();
+        String referer = request.getHeader("REFERER");
+        if(referer != null) {
+        	if (referer.equals(request.getRequestURL().toString())) {
+                errorMessge = enstaService.getLoginError();
+                mav.addObject("loginError", errorMessge);
+        	}
+        }
+        return mav;
+	}
 }

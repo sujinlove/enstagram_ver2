@@ -26,6 +26,83 @@
       display: none;
     }
   }
+
+  .message {
+    &.error {
+      color: red;
+    }
+  }
+
+  .account {
+        width: 350px;
+        display: inline-block;
+        vertical-align: middle;
+
+      .my-account {
+          background-color: #fff;
+          border: 1px solid #e6e6e6;
+          border-radius: 1px;
+          margin: 0 0 10px;
+          padding: 10px 0;
+          text-align: center;
+          overflow: hidden;
+          height: 365px;
+          padding: 6px 40px;
+
+          .logo {
+            margin: 22px auto 12px;
+          }
+
+          h2 {
+            font-weight: 600;
+            line-height: 20px;
+            font-size: 17px;
+            margin: 0 0 20px;
+            color: #999;
+          }
+
+          &.my-login {
+            height: auto;
+          }
+      }
+
+    .account-form {
+      .form {
+        fieldset {
+          input {
+              background: #fafafa;
+              border: 0;
+              padding: 9px 0;
+              font-size: 16px;
+              width: 100%;
+              box-sizing: border-box;
+              border-radius: 3px;
+              border: 1px solid #efefef;
+          }
+
+          label {
+            position: absolute;
+            font-size: $font-size__s;
+            color: #999;
+            padding: 0 8px;
+            line-height: 35px;
+            pointer-events: none;
+          }
+        }
+
+        .field {
+          margin: 0 0 6px;
+        }
+      }
+    }
+
+    .login {
+      a {
+        color: #003569;
+        font-weight: $font-weight__bold;
+      }
+    }
+  }
 }
 
 

@@ -34,11 +34,6 @@ export default new Router({
       component: AccountPage
     },
     {
-      path: '/login',
-      name: 'LoginPage',
-      component: LoginPage
-    },
-    {
       path: '/feed',
       name: 'FeedPage',
       component: FeedPage

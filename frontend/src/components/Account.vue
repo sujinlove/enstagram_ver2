@@ -109,7 +109,6 @@ export default {
     }
 
   .account-form {
-    height: 37px;
     .form {
       fieldset {
         input {

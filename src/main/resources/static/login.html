@@ -1,0 +1,52 @@
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  	<link href=/static/css/enstagram.css rel=stylesheet />
+    <title>로그인 • Enstagram</title>
+  </head>
+  <body>
+  	<section>
+	  	<div class="page-wrapper">
+	  		<main class="page-layout-1column">
+		  		<div class="columns">
+			  		<div class="column main">
+					    <div class="account">
+					      <div class="my-account">
+					        <div class="logo">
+					          <a class="icon-sprite ico-core-2 instagram-logo_account"><span>logo</span></a>
+					        </div>
+					        <div class="account-form">
+					          <form class="form" name="form" th:action="@{/login}" method="post">
+					            <fieldset name="fieldset">
+					              <div class="field id">
+					                <label>휴대폰번호 또는 이메일 주소</label>
+					                <input name="userId" type="text"/>
+					              </div>
+					              <div class="field passwd">
+					                <label>비밀번호</label>
+					                <input name="userPasswd" type="password"/>
+					              </div>
+					              <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}" />
+					              <div class="field login_btn">
+					                <button name="login_btn" type="submit">로그인</button>
+					              </div>
+					            </fieldset>
+					          </form>
+					        </div>
+					        <p class="error message" th:text="${loginError}"></p>
+					        <p class="error message" th:if="${loginError} == Id" th:text=""></p>
+					        <p class="error message" th:if="${loginError} == Password" th:text=""></p>
+					      </div>
+					      <div class="login">
+					        <div class="my-account my-login">계정이 없으신가요? <a href="/account">가입하기</a></div>
+					      </div>
+					    </div>
+			  		</div>
+		  		</div>
+	  		</main>
+	  	</div>
+ 	</section>
+  </body>
+</html>

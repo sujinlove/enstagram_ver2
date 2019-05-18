@@ -3,22 +3,15 @@ package com.enstagram;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.enstagram.service.EnstaService;
-
-
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired AuthProvider authProvider;
-    
-	@Autowired
-	EnstaService enstaService;
 	
 	@Override public void configure(WebSecurity web) throws Exception { 
 		web.ignoring().antMatchers("/static/css/**, /static/js/**, *.ico");	
@@ -36,11 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 
            .formLogin()
-           		.loginPage("/account")	
+           		.loginPage("/login")	
 	            .usernameParameter("userId") 
 	            .passwordParameter("userPasswd")
 				.defaultSuccessUrl("/")
-				.loginProcessingUrl("/api/login")
     			.failureUrl("/login")
                 .permitAll()
                 .and()
