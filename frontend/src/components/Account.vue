@@ -60,7 +60,7 @@ export default {
         nickname: this.nickname,
         passwd: this.passwd
       }).then(response => {
-        console.log('1: ' + this.id, this.name)
+        window.location.href = '/'
       }).catch(e => {
         console.log('error: ' + e)
       })

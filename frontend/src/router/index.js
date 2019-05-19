@@ -4,7 +4,6 @@ import MainPage from '@/views/MainPage'
 import MyPage from '@/views/MyPage'
 import AccountPage from '@/views/AccountPage'
 import FeedPage from '@/views/FeedPage'
-import LoginPage from '@/views/LoginPage'
 import NotFound from '@/views/NotFound'
 import FeedUploadPage from '@/views/FeedUploadPage'
 
