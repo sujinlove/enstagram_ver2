@@ -5,10 +5,10 @@ public class EnstaAccount {
 	private int accnt_num;
 	private String id;
 	private String name;
-	private String nickname;
+	private String email;
 	private String passwd;
+	private String profile = "default";
     private int role = 1;
-	private String loginError;
 
 	public EnstaAccount() {}
 	
@@ -41,12 +41,12 @@ public class EnstaAccount {
 		this.name = name;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPasswd() {
@@ -57,6 +57,14 @@ public class EnstaAccount {
 		this.passwd = passwd;
 	}
 	
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+	
 	public int getRole() {
 		return role;
 	}
@@ -64,9 +72,4 @@ public class EnstaAccount {
 	public void setRole(Integer role) {
 		this.role = role;
 	}
-	
-	public void setLoginError(String loginError) {
-		this.loginError = loginError;
-	}
-
 }

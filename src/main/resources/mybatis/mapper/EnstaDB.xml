@@ -9,7 +9,7 @@
 	</select>
 
 	<insert id="createAccount" parameterType="com.enstagram.model.EnstaAccount">
-		INSERT INTO ensta_account(accnt_num, id, name, nickname, passwd, role) VALUES(#{accnt_num}, #{id}, #{name}, #{nickname}, #{passwd}, #{role}) 
+		INSERT INTO ensta_account(accnt_num, profile, id, name, email, passwd, role) VALUES(#{accnt_num}, #{profile}, #{id}, #{name}, #{email}, #{passwd}, #{role}) 
 	</insert>
 
 	<select id="getAccount" resultType="com.enstagram.model.EnstaAccount">

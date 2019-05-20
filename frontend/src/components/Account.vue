@@ -10,19 +10,19 @@
             <fieldset name="fieldset">
               <input name="accnt_num" type="hidden" v-model="accnt_num"/>{{ accnt_num }}
               <div class="field email">
-                <label>휴대폰번호 또는 이메일 주소{{ id }}</label>
-                <input name="id" type="text" v-model="id"/>
+                <label>이메일 주소</label>
+                <input name="email" type="email" v-model="email"/>
               </div>
               <div class="field name">
-                <label>성명{{ name }}</label>
+                <label>성명</label>
                 <input name="name" type="text" v-model="name"/>
               </div>
               <div class="field user">
-                <label>사용자 이름{{ nickname }}</label>
-                <input name="nickname" type="text" v-model="nickname"/>
+                <label>사용자 이름</label>
+                <input name="id" type="text" v-model="id"/>
               </div>
               <div class="field passwd">
-                <label>비밀번호{{ passwd }}</label>
+                <label>비밀번호</label>
                 <input name="passwd" type="password" v-model="passwd"/>
               </div>
               <div class="field account_btn">
@@ -46,7 +46,7 @@ export default {
       accnt_num: '',
       id: '',
       name: '',
-      nickname: '',
+      email: '',
       passwd: '',
       account: []
     }
@@ -57,7 +57,7 @@ export default {
         accnt_num: this.accnt_num,
         id: this.id,
         name: this.name,
-        nickname: this.nickname,
+        email: this.email,
         passwd: this.passwd
       }).then(response => {
         window.location.href = '/'
