@@ -22,8 +22,12 @@
 	</select>
 
 	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed">
-		INSERT INTO ensta_feed (file_name, description) VALUES (#{file_name}, #{description}) 
+		INSERT INTO ensta_feed (feed_num, file_name, description, heart, regdate) VALUES (#{feed_num}, #{file_name}, #{description}, #{heart}, NOW()) 
 	</insert>
+
+	<select id="getFeed" resultType="com.enstagram.model.EnstaFeed">
+		SELECT * FROM ensta_feed WHERE feed_num = #{feed_num}
+	</select>
 
 	<!-- Ensta Reply -->
 <!-- 	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">
