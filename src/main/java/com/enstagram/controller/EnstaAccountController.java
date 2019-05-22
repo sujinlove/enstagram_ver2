@@ -97,7 +97,7 @@ public class EnstaAccountController {
 	 */
 
 	@RequestMapping(value = "/api/profile", method = { RequestMethod.POST, RequestMethod.GET })
-	public void createFeed(@ModelAttribute EnstaAccount enstaAccount, @RequestParam MultipartFile file) {
+	public void editProfile(@ModelAttribute EnstaAccount enstaAccount, @RequestParam MultipartFile file) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
@@ -109,6 +109,20 @@ public class EnstaAccountController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		enstaAccount.setId(authentication.getName());
+		enstaService.editProfile(enstaAccount);
+	}
+	
+
+	
+	/*
+	 * Remove Profile
+	 */
+
+	@RequestMapping(value = "/api/profile/remove", method = { RequestMethod.POST, RequestMethod.GET })
+	public void removeProfile(@ModelAttribute EnstaAccount enstaAccount, @RequestParam String filePath) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		enstaAccount.setProfile(filePath);
 		enstaAccount.setId(authentication.getName());
 		enstaService.editProfile(enstaAccount);
 	}

@@ -55,6 +55,7 @@ export default {
       formData.append('file', this.file)
       axios.post('/api/profile', formData, {
       }).then(response => {
+        this.$store.commit('setUser')
       }).catch(e => {
         console.log('error: ' + e)
       })

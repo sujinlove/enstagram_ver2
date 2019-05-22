@@ -14,13 +14,15 @@
     </one-column>
     <footer-layout />
     <popup>
-        <button @click="fileUpload" v-if="$store.state.popupContent == 'editUserProfile'">사진 업로드</button>
+        <button @click="profileUpload" v-if="$store.state.popupContent == 'editUserProfile'">사진 업로드</button>
+        <button @click="profileRemove" v-if="$store.state.popupContent == 'editUserProfile'">현재 사진 삭제</button>
         <a href="/logout" v-if="$store.state.popupContent == 'editUserInfo'">로그아웃</a>
     </popup>
   </section>
 </template>
 
 <script>
+import axios from 'axios'
 import Header from '../components/common/Header.vue'
 import OneColumn from '../components/common/OneColumn'
 import Profile from '../components/Profile'
@@ -42,8 +44,19 @@ export default {
     }
   },
   methods: {
-    fileUpload () {
+    profileUpload () {
       this.$refs.editProfile.UploadBtn()
+      this.$EventBus.$emit('showPopup')
+    },
+    profileRemove () {
+      var params = new URLSearchParams()
+      params.append('filePath', 'profile/default.jpg')
+      axios.post('/api/profile/remove', params, {
+      }).then(response => {
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
       this.$EventBus.$emit('showPopup')
     }
   }
