@@ -1,8 +1,11 @@
 <template>
   <div class="profile">
     <div class="my-pic">
-      <div class="my-pic-inner">
-        <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="$refs.file.click()"/>
+      <div class="my-pic-inner" v-if="this.$store.state.user.profile =='profile/default.jpg'" >
+        <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="UploadBtn"/>
+      </div>
+      <div class="my-pic-inner" v-else>
+        <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="editUserProfile"/>
       </div>
       <form :style="{display: 'none'}">
         <input type="file" name="file" ref="file" @change="fileUpload"/>
@@ -12,7 +15,7 @@
       <div class="my-profile">
         <div class="my-name"><span>{{ this.$store.state.user.id }}</span></div>
         <div class="my-btn">
-          <div class="icon-sprite ico-glyph setting" @click="$EventBus.$emit('showPopup')"><span>setting</span></div>
+          <div class="icon-sprite ico-glyph setting" @click="editUserInfo"><span>setting</span></div>
         </div>
       </div>
       <div class="my-count">
@@ -55,6 +58,17 @@ export default {
       }).catch(e => {
         console.log('error: ' + e)
       })
+    },
+    UploadBtn () {
+      this.$refs.file.click()
+    },
+    editUserProfile () {
+      this.$store.commit('setPopupContent', 'editUserProfile')
+      this.$EventBus.$emit('showPopup')
+    },
+    editUserInfo () {
+      this.$store.commit('setPopupContent', 'editUserInfo')
+      this.$EventBus.$emit('showPopup')
     }
   }
 }

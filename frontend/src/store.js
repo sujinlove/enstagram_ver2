@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    popupContent: ''
   },
   mutations: {
     setUser (state) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
       }).catch(e => {
         console.log('error: ' + e)
       })
+    },
+    setPopupContent (state, data) {
+      state.popupContent = data
     }
   },
   actions: {}
