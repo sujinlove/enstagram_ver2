@@ -6,16 +6,10 @@
       <div slot="sidebar" class="profile">
         <div class="my-pic">
           <div class="my-pic-inner">
-            <img src="https://instagram.fbed1-2.fna.fbcdn.net/vp/0ad6ead8ba1fc621ef2107c6d137d264/5D2CF3F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fbed1-2.fna.fbcdn.net" alt="ensta00_1님의 프로필 사진" />
+            <img :src="this.$store.state.user.profile" alt="ensta00_1님의 프로필 사진" />
           </div>
         </div>
-        <div class="my-name"><span>ensta00_1</span></div>
-        <!-- <div id="contents">
-                <div class="lead">
-                    <strong @click="todo">Board List :</strong>
-                    <span></span>
-                 </div>
-        </div> -->
+        <div class="my-name"><span>{{ this.$store.state.user.id }}</span></div>
           </div>
       <follower-list slot="sidebar"></follower-list>
     </two-columns>
@@ -49,7 +43,6 @@ export default {
   },
   created () {
     axios.get('/api/board').then((response) => {
-      console.log(response)
       if (response.status === 200) {
         this.values = response.data
       }

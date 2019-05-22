@@ -17,9 +17,13 @@ public interface EnstaMapper {
 
 	void createAccount(EnstaAccount enstaAccount);
 
-	EnstaAccount getEnstaAccount(EnstaAccount enstaAccount);
+//	EnstaAccount getEnstaAccount(EnstaAccount enstaAccount);
 
+	public List<EnstaAccount> getAccountInfo(String id);
+	
 	EnstaAccount getAccount(String id);
+	
+	EnstaAccount editProfile(EnstaAccount enstaAccount);
 
 	/*
 	 * Ensta Feed

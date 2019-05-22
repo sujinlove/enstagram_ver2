@@ -22,6 +22,18 @@ public class EnstaService {
 //	public List<EnstaAccount> accountList() throws Exception {
 //		return enstaMapper.getAccountList();
 //	}
+	
+	/*
+	 * Get Account
+	 */
+
+	public void getAccount(String id) {
+		enstaMapper.getAccount(id);
+	}
+	
+	public List<EnstaAccount> getAccountInfo(String id) {
+		return enstaMapper.getAccountInfo(id);
+	}
 
 	/*
 	 * Create Account
@@ -56,25 +68,14 @@ public class EnstaService {
 	public String getLoginError () {
 		return loginError;
 	}
-
+	
 	/*
-	 * Get current user
+	 * Edit Profile
 	 */
-
-//	public static EnstaAccount getCurrentUser() {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		if (authentication instanceof MyAuthenticaion)
-//			return ((MyAuthenticaion) authentication).getEnstaAccount();
-//		return null;
-//	}
-
-	/*
-	 * Set current user
-	 */
-
-//	public static void setCurrentUser(EnstaAccount enstaAccount) {
-//		((MyAuthenticaion) SecurityContextHolder.getContext().getAuthentication()).setEnstaAccount(enstaAccount);
-//	}
+	
+	public void editProfile(EnstaAccount enstaAccount) {
+		enstaMapper.editProfile(enstaAccount);
+	}
 	
 	/*
 	 * Get Feed List

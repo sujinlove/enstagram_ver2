@@ -2,12 +2,15 @@
   <div class="profile">
     <div class="my-pic">
       <div class="my-pic-inner">
-        <img src="https://instagram.fbed1-2.fna.fbcdn.net/vp/0ad6ead8ba1fc621ef2107c6d137d264/5D2CF3F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fbed1-2.fna.fbcdn.net" alt="ensta00_1님의 프로필 사진" />
+        <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="$refs.file.click()"/>
       </div>
+      <form :style="{display: 'none'}">
+        <input type="file" name="file" ref="file" @change="fileUpload"/>
+      </form>
     </div>
     <div class="my-info">
       <div class="my-profile">
-        <div class="my-name"><span>ensta00_1</span></div>
+        <div class="my-name"><span>{{ this.$store.state.user.id }}</span></div>
         <div class="my-btn">
           <div class="icon-sprite ico-glyph setting" @click="$EventBus.$emit('showPopup')"><span>setting</span></div>
         </div>
@@ -28,15 +31,30 @@
           </li>
         </ul>
       </div>
-      <div class="my-des">vue~~~~~enstagram~~</div>
+      <div class="my-des">{{ this.$store.state.user.name }}</div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
+      profile_alt: this.$store.state.user.id + '님의 프로필 사진',
+      file: ''
+    }
+  },
+  methods: {
+    fileUpload () {
+      this.file = this.$refs.file.files[0]
+      var formData = new FormData()
+      formData.append('file', this.file)
+      axios.post('/api/profile', formData, {
+      }).then(response => {
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
     }
   }
 }

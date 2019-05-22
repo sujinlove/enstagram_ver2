@@ -5,6 +5,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App'
 import router from './router'
+import store from './store'
 
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
@@ -14,6 +15,7 @@ Vue.prototype.$EventBus = new Vue()
 new Vue({
   el: '#app',
   render: h => h(App),
+  store,
   router,
   components: { App },
   template: '<App/>'

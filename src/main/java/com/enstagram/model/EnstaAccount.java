@@ -7,7 +7,7 @@ public class EnstaAccount {
 	private String name;
 	private String email;
 	private String passwd;
-	private String profile = "default";
+	private String profile = "profile/default.jpg";
     private int role = 1;
 
 	public EnstaAccount() {}
