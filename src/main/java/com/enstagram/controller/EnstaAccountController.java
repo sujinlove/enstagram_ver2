@@ -118,7 +118,7 @@ public class EnstaAccountController {
 		
 		enstaAccount.setId(currentUser);
 		
-		enstaAccount.setProfile("profile/" + currentUser + "/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]);
+		enstaAccount.setProfile("/profile/" + currentUser + "/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]);
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(new File("./src/main/resources/static/profile/" + currentUser + "/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]));
