@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -101,15 +102,30 @@ public class EnstaAccountController {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
-		enstaAccount.setProfile("profile/" + currentUser + "." + file.getOriginalFilename().split("\\.")[1]);
+		String profileName = RandomStringUtils.randomAlphanumeric(10);
+		File profilePath = new File("./src/main/resources/static/profile/" + currentUser);
+		
+		if(profilePath.exists() && profilePath.isDirectory()) {
+			for (File f : profilePath.listFiles()) {
+				if(f.delete()){
+					profilePath.delete();
+				}
+			}
+		}
+		if(!profilePath.exists()) {
+			profilePath.mkdirs();
+		}
+		
+		enstaAccount.setId(currentUser);
+		
+		enstaAccount.setProfile("profile/" + currentUser + "/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]);
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream(new File("./src/main/resources/static/profile/" + currentUser + "." + file.getOriginalFilename().split("\\.")[1]));
+			fos = new FileOutputStream(new File("./src/main/resources/static/profile/" + currentUser + "/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]));
 			IOUtils.copy(file.getInputStream(), fos);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		enstaAccount.setId(authentication.getName());
 		enstaService.editProfile(enstaAccount);
 	}
 	
@@ -122,6 +138,18 @@ public class EnstaAccountController {
 	@RequestMapping(value = "/api/profile/remove", method = { RequestMethod.POST, RequestMethod.GET })
 	public void removeProfile(@ModelAttribute EnstaAccount enstaAccount, @RequestParam String filePath) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentUser = authentication.getName();
+		
+		File profilePath = new File("./src/main/resources/static/profile/" + currentUser);
+		
+		if(profilePath.exists() && profilePath.isDirectory()) {
+			for (File f : profilePath.listFiles()) {
+				if(f.delete()){
+					profilePath.delete();
+				}
+			}
+		}
+		
 		enstaAccount.setProfile(filePath);
 		enstaAccount.setId(authentication.getName());
 		enstaService.editProfile(enstaAccount);

@@ -8,7 +8,7 @@
         <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="editUserProfile"/>
       </div>
       <form :style="{display: 'none'}">
-        <input type="file" name="file" ref="file" @change="fileUpload"/>
+        <input type="file" name="file" ref="file" accept="image/jpeg,image/png" @change="fileUpload"/>
       </form>
     </div>
     <div class="my-info">
