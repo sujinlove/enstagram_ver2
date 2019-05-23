@@ -93,4 +93,11 @@ public class EnstaService {
 		enstaMapper.createFeed(enstaFeed);
 	}
 	
+	/*
+	 * Get feed
+	 */
+	public List<EnstaFeed> getFeed(String feed_num) {
+		return enstaMapper.getFeed(feed_num);
+	}
+	
 }

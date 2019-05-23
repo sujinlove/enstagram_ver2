@@ -3,7 +3,7 @@
     <app-header />
     <one-column>
       <div class="feed-view">
-        <feed :page="PageName"/>
+        <feed :page="PageName" :feed_num="feed_num"/>
       </div>
     </one-column>
   </section>
@@ -15,6 +15,7 @@ import OneColumn from '../components/common/OneColumn'
 import Feed from '../components/Feed'
 
 export default {
+  props: ['feed_num'],
   data () {
     return {
       PageName: 'FeedPage'

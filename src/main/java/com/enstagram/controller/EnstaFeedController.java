@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ public class EnstaFeedController {
 
 	@RequestMapping(value = "/api/feedUpload", method = { RequestMethod.POST, RequestMethod.GET })
 	public void createFeed(@ModelAttribute EnstaFeed enstaFeed, @RequestParam MultipartFile file) {
-		enstaFeed.setFile_name(file.getOriginalFilename());
+		enstaFeed.setFile_name("/upload/" + file.getOriginalFilename());
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(new File("./src/main/resources/static/upload/" + file.getOriginalFilename()));
@@ -44,5 +45,15 @@ public class EnstaFeedController {
 			e.printStackTrace();
 		}
 		enstaService.createFeed(enstaFeed);
+	}
+	
+
+	/*
+	 * Get Feed
+	 */
+
+	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
+	public List<EnstaFeed> getFeed(@PathVariable String feed_num) {
+        return enstaService.getFeed(feed_num);
 	}
 }

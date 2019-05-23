@@ -29,7 +29,7 @@
 		SELECT * FROM ensta_feed
 	</select>
 
-	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed">
+	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed" useGeneratedKeys="true" keyProperty="feed_num">
 		INSERT INTO ensta_feed (feed_num, file_name, description, heart, regdate) VALUES (#{feed_num}, #{file_name}, #{description}, #{heart}, NOW()) 
 	</insert>
 

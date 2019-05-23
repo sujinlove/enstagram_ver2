@@ -33,9 +33,10 @@ export default new Router({
       component: AccountPage
     },
     {
-      path: '/feed',
+      path: '/feed/:feed_num',
       name: 'FeedPage',
-      component: FeedPage
+      component: FeedPage,
+      props: true
     },
     {
       path: '/feedUpload',

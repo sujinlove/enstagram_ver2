@@ -33,4 +33,6 @@ public interface EnstaMapper {
 
 	void createFeed(EnstaFeed enstaFeed);
 
+	public List<EnstaFeed> getFeed(String feed);
+
 }

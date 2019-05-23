@@ -11,7 +11,7 @@
     </div>
   </header>
   <div class="feed-pic">
-    <img src="https://scontent-hkg3-1.cdninstagram.com/vp/6f786c60347321e084fb41d4d1fc1f75/5D2D5455/t51.2885-15/e35/56618655_280173499590374_4865291580347286450_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com" alt="feed" />
+    <img :src="this.feed.feed_pic" alt="feed" />
   </div>
   <div class="feed-content">
     <div class="feed-content-inner">
@@ -29,7 +29,7 @@
       </div>
       <div class="heart-count">
         <span>좋아요 </span>
-        <span>2313</span>
+        <span>{{this.feed.heart}}</span>
         <span>개</span>
       </div>
       <div class="content-view">
@@ -62,11 +62,27 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  props: ['page'],
+  props: ['page', 'feed_num'],
   data () {
     return {
+      feed: {
+        feed_pic: '',
+        heart: '',
+        regdate: ''
+      }
     }
+  },
+  created () {
+    axios.post('/api/feed/' + this.feed_num, {
+    }).then(response => {
+      this.feed.feed_pic = response.data[0].file_name
+      this.feed.heart = response.data[0].heart
+      this.feed.regdate = response.data[0].regdate
+    }).catch(e => {
+      console.log('error: ' + e)
+    })
   }
 }
 </script>
