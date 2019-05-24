@@ -36,6 +36,10 @@
 	<select id="getFeed" resultType="com.enstagram.model.EnstaFeed">
 		SELECT * FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>
+	
+	<select id="removeFeed" parameterType="com.enstagram.model.EnstaFeed">
+		DELETE FROM ensta_feed WHERE feed_num = #{feed_num}
+	</select>
 
 	<!-- Ensta Reply -->
 <!-- 	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">

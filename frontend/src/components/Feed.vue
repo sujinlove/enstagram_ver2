@@ -9,6 +9,7 @@
     <div class="user-name">
       <a href="">lalalalisa_m</a>
     </div>
+    <button class="icon-sprite ico-glyph-2 more" type="button" @click="feedService"><span>more</span></button>
   </header>
   <div class="feed-pic">
     <img :src="this.feed.feed_pic" alt="feed" />
@@ -83,6 +84,12 @@ export default {
     }).catch(e => {
       console.log('error: ' + e)
     })
+  },
+  methods: {
+    feedService () {
+      this.$store.commit('setPopupContent', 'feedService')
+      this.$EventBus.$emit('showPopup')
+    }
   }
 }
 </script>

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
 import com.enstagram.service.EnstaService;
 
@@ -55,5 +57,14 @@ public class EnstaFeedController {
 	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public List<EnstaFeed> getFeed(@PathVariable String feed_num) {
         return enstaService.getFeed(feed_num);
+	}
+	
+	/*
+	 * Remove Feed
+	 */
+
+	@RequestMapping(value = "/api/feed/remove", method = { RequestMethod.POST, RequestMethod.GET })
+	public void removeFeed(@RequestParam Integer feed_num) {
+		enstaService.removeFeed(feed_num);
 	}
 }

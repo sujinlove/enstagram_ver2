@@ -100,4 +100,12 @@ public class EnstaService {
 		return enstaMapper.getFeed(feed_num);
 	}
 	
+	/*
+	 * Remove feed
+	 */
+	
+	public void removeFeed(Integer feed_num) {
+		enstaMapper.removeFeed(feed_num);
+	}
+	
 }

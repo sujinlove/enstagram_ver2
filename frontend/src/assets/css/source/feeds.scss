@@ -11,6 +11,12 @@
   .feed {
     &-header {
       padding: $indent__base;
+
+      .icon-sprite.more {
+        position: absolute;
+        top: 21px;
+        right: 12px;
+      }
     }
 
     &-content {
@@ -68,6 +74,8 @@
   }
 
   .feed-view {
+    width: 100%;
+
     .feed {
       display: flex;
       position: relative;
