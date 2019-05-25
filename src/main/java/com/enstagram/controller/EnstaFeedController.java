@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.enstagram.model.EnstaFeed;
-import com.enstagram.model.EnstaHeart;
 import com.enstagram.service.EnstaService;
 
 @RestController
@@ -76,9 +75,9 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/feed/like", method = { RequestMethod.POST, RequestMethod.GET })
-	public void likeFeed(@RequestBody EnstaHeart enstaHeart) {
-		enstaService.likeFeed(enstaHeart);
-		enstaService.updateHeart(enstaHeart.getFeed_num());
+	public void likeFeed(@RequestBody EnstaFeed enstaFeed) {
+		enstaService.likeFeed(enstaFeed);
+		enstaService.updateHeart(enstaFeed.getFeed_num());
 	}
 	
 	/*
@@ -86,8 +85,8 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/feed/unlike", method = { RequestMethod.POST, RequestMethod.GET })
-	public void unlikeFeed(@RequestBody EnstaHeart enstaHeart) {
-		enstaService.unlikeFeed(enstaHeart);
-		enstaService.updateHeart(enstaHeart.getFeed_num());
+	public void unlikeFeed(@RequestBody EnstaFeed enstaFeed) {
+		enstaService.unlikeFeed(enstaFeed);
+		enstaService.updateHeart(enstaFeed.getFeed_num());
 	}
 }

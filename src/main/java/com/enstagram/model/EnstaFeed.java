@@ -9,6 +9,7 @@ public class EnstaFeed {
 	private String description;
 	private int heart = 0;
 	private Date regdate;
+	private int accnt_num;
 
 	public int getFeed_num() {
 		return feed_num;
@@ -50,4 +51,11 @@ public class EnstaFeed {
 		this.regdate = regdate;
 	}
 
+	public int getAccnt_num() {
+		return accnt_num;
+	}
+
+	public void setAccnt_num(int accnt_num) {
+		this.accnt_num = accnt_num;
+	}
 }

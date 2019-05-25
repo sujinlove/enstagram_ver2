@@ -45,11 +45,11 @@
 		DELETE FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>
 	
-	<insert id="likeFeed" parameterType="com.enstagram.model.EnstaHeart">
+	<insert id="likeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		INSERT INTO ensta_heart (accnt_num, feed_num) SELECT #{accnt_num},#{feed_num} FROM DUAL WHERE NOT EXISTS (SELECT * FROM ensta_heart where accnt_num = #{accnt_num} AND feed_num = #{feed_num})
 	</insert>
 
-	<select id="unlikeFeed" parameterType="com.enstagram.model.EnstaHeart">
+	<select id="unlikeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		DELETE FROM ensta_heart WHERE accnt_num = #{accnt_num} AND feed_num = #{feed_num}
 	</select>
 	

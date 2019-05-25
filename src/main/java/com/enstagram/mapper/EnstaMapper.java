@@ -7,7 +7,6 @@ import java.util.Map;
 
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
-import com.enstagram.model.EnstaHeart;
 
 public interface EnstaMapper {
 
@@ -43,9 +42,9 @@ public interface EnstaMapper {
 	
 	void updateHeart(Integer feed_num);
 	
-	void likeFeed(EnstaHeart enstaHeart);
+	void likeFeed(EnstaFeed enstaFeed);
 	
-	void unlikeFeed(EnstaHeart enstaHeart);
+	void unlikeFeed(EnstaFeed enstaFeed);
 
 	public String[] getHeartList(Integer accnt_num);
 

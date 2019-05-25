@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.enstagram.mapper.EnstaMapper;
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
-import com.enstagram.model.EnstaHeart;
 
 @Service
 public class EnstaService {
@@ -119,16 +118,16 @@ public class EnstaService {
 	 * Like feed
 	 */
 	
-	public void likeFeed(EnstaHeart enstaHeart) {
-		enstaMapper.likeFeed(enstaHeart);
+	public void likeFeed(EnstaFeed enstaFeed) {
+		enstaMapper.likeFeed(enstaFeed);
 	}
 	
 	/*
 	 * Unlike feed
 	 */
 	
-	public void unlikeFeed(EnstaHeart enstaHeart) {
-		enstaMapper.unlikeFeed(enstaHeart);
+	public void unlikeFeed(EnstaFeed enstaFeed) {
+		enstaMapper.unlikeFeed(enstaFeed);
 	}
 	
 	/*
