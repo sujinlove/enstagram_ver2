@@ -1,12 +1,15 @@
 package com.enstagram.service;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.enstagram.mapper.EnstaMapper;
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
+import com.enstagram.model.EnstaHeart;
 
 @Service
 public class EnstaService {
@@ -31,7 +34,11 @@ public class EnstaService {
 		enstaMapper.getAccount(id);
 	}
 	
-	public List<EnstaAccount> getAccountInfo(String id) {
+	public Integer getAccountNum(String id) {
+		return enstaMapper.getAccountNum(id);
+	}
+	
+	public Map<String, Object> getAccountInfo(String id) {
 		return enstaMapper.getAccountInfo(id);
 	}
 
@@ -96,7 +103,7 @@ public class EnstaService {
 	/*
 	 * Get feed
 	 */
-	public List<EnstaFeed> getFeed(String feed_num) {
+	public Map<String, Object> getFeed(Integer feed_num) {
 		return enstaMapper.getFeed(feed_num);
 	}
 	
@@ -106,6 +113,38 @@ public class EnstaService {
 	
 	public void removeFeed(Integer feed_num) {
 		enstaMapper.removeFeed(feed_num);
+	}
+	
+	/*
+	 * Like feed
+	 */
+	
+	public void likeFeed(EnstaHeart enstaHeart) {
+		enstaMapper.likeFeed(enstaHeart);
+	}
+	
+	/*
+	 * Unlike feed
+	 */
+	
+	public void unlikeFeed(EnstaHeart enstaHeart) {
+		enstaMapper.unlikeFeed(enstaHeart);
+	}
+	
+	/*
+	 * Update heart
+	 */
+	
+	public void updateHeart(Integer feed_num) {
+		enstaMapper.updateHeart(feed_num);
+	}
+	
+	/*
+	 * Get heart list
+	 */
+	
+	public String[] getHeartList(Integer accnt_num) {
+		return enstaMapper.getHeartList(accnt_num);
 	}
 	
 }

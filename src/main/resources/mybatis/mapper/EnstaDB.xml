@@ -16,7 +16,11 @@
 		SELECT * FROM ensta_account WHERE id=#{id}
 	</select>
 	
-	<select id="getAccountInfo" resultType="com.enstagram.model.EnstaAccount">
+	<select id="getAccountNum" resultType="Integer">
+		SELECT accnt_num FROM ensta_account WHERE id=#{id}
+	</select>
+	
+	<select id="getAccountInfo" resultType="java.util.HashMap">
 		SELECT * FROM ensta_account WHERE id=#{id}
 	</select>
 	
@@ -33,12 +37,28 @@
 		INSERT INTO ensta_feed (feed_num, file_name, description, heart, regdate) VALUES (#{feed_num}, #{file_name}, #{description}, #{heart}, NOW()) 
 	</insert>
 
-	<select id="getFeed" resultType="com.enstagram.model.EnstaFeed">
+	<select id="getFeed" resultType="java.util.HashMap">
 		SELECT * FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>
 	
 	<select id="removeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		DELETE FROM ensta_feed WHERE feed_num = #{feed_num}
+	</select>
+	
+	<insert id="likeFeed" parameterType="com.enstagram.model.EnstaHeart">
+		INSERT INTO ensta_heart (accnt_num, feed_num) SELECT #{accnt_num},#{feed_num} FROM DUAL WHERE NOT EXISTS (SELECT * FROM ensta_heart where accnt_num = #{accnt_num} AND feed_num = #{feed_num})
+	</insert>
+
+	<select id="unlikeFeed" parameterType="com.enstagram.model.EnstaHeart">
+		DELETE FROM ensta_heart WHERE accnt_num = #{accnt_num} AND feed_num = #{feed_num}
+	</select>
+	
+	<select id="getHeartList" resultType="String">
+		SELECT feed_num FROM ensta_heart WHERE accnt_num = #{accnt_num}
+	</select>
+	
+	<select id="updateHeart" parameterType="com.enstagram.model.EnstaFeed">
+		UPDATE ensta_feed SET heart=(select count(feed_num) from ensta_heart where feed_num = #{feed_num}) WHERE feed_num=#{feed_num}
 	</select>
 
 	<!-- Ensta Reply -->

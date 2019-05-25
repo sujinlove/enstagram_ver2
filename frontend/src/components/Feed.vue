@@ -12,7 +12,7 @@
     <button class="icon-sprite ico-glyph-2 more" type="button" @click="feedService"><span>more</span></button>
   </header>
   <div class="feed-pic">
-    <img :src="this.feed.feed_pic" alt="feed" />
+    <img :src="this.feed.file_name" alt="feed" />
   </div>
   <div class="feed-content">
     <div class="feed-content-inner">
@@ -25,7 +25,8 @@
         </ul>
       </div>
       <div class="feed-btn">
-        <button class="icon-sprite ico-glyph heart"><span>heart</span></button>
+        <button class="icon-sprite ico-glyph-3 heart" @click="addHeart"  v-if="this.$store.state.user.heartList.indexOf(this.feed_num) === -1"><span>heart</span></button>
+        <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart" v-else><span>heart</span></button>
         <router-link to= "/feed" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count">
@@ -68,27 +69,46 @@ export default {
   props: ['page', 'feed_num'],
   data () {
     return {
-      feed: {
-        feed_pic: '',
-        heart: '',
-        regdate: ''
-      }
+      feed: {}
     }
   },
   created () {
-    axios.post('/api/feed/' + this.feed_num, {
-    }).then(response => {
-      this.feed.feed_pic = response.data[0].file_name
-      this.feed.heart = response.data[0].heart
-      this.feed.regdate = response.data[0].regdate
-    }).catch(e => {
-      console.log('error: ' + e)
-    })
+    this.getFeedInfo()
   },
   methods: {
+    getFeedInfo () {
+      axios.post('/api/feed/' + this.feed_num, {
+      }).then(response => {
+        this.feed = response.data
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
     feedService () {
       this.$store.commit('setPopupContent', 'feedService')
       this.$EventBus.$emit('showPopup')
+    },
+    addHeart () {
+      axios.post('/api/feed/like', {
+        accnt_num: this.$store.state.user.accnt_num,
+        feed_num: this.feed_num
+      }).then(response => {
+        this.getFeedInfo()
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    cancelHeart () {
+      axios.post('/api/feed/unlike', {
+        accnt_num: this.$store.state.user.accnt_num,
+        feed_num: this.feed_num
+      }).then(response => {
+        this.getFeedInfo()
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
     }
   }
 }

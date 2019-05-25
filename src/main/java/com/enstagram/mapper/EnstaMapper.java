@@ -1,11 +1,13 @@
 package com.enstagram.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 //import org.apache.ibatis.annotations.Select;
 
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
+import com.enstagram.model.EnstaHeart;
 
 public interface EnstaMapper {
 
@@ -19,9 +21,11 @@ public interface EnstaMapper {
 
 //	EnstaAccount getEnstaAccount(EnstaAccount enstaAccount);
 
-	public List<EnstaAccount> getAccountInfo(String id);
+	public Map<String, Object> getAccountInfo(String id);
 	
 	EnstaAccount getAccount(String id);
+	
+	public Integer getAccountNum (String id);
 	
 	EnstaAccount editProfile(EnstaAccount enstaAccount);
 
@@ -33,8 +37,16 @@ public interface EnstaMapper {
 
 	void createFeed(EnstaFeed enstaFeed);
 
-	public List<EnstaFeed> getFeed(String feed);
+	public Map<String, Object> getFeed(Integer feed_num);
 	
 	void removeFeed(Integer feed_num);
+	
+	void updateHeart(Integer feed_num);
+	
+	void likeFeed(EnstaHeart enstaHeart);
+	
+	void unlikeFeed(EnstaHeart enstaHeart);
+
+	public String[] getHeartList(Integer accnt_num);
 
 }

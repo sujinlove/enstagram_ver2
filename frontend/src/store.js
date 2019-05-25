@@ -6,13 +6,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {},
+    user: {
+      heartList: []
+    },
     popupContent: ''
   },
   mutations: {
     setUser (state) {
       axios.get('/api/user').then((response) => {
-        state.user = response.data[0]
+        state.user = response.data
       }).catch(e => {
         console.log('error: ' + e)
       })

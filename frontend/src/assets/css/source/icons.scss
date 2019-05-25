@@ -42,10 +42,6 @@
       background-position: -258px -150px;
     }
 
-    &.heart {
-      background-position: 0 -198px;
-    }
-
     &.chat {
       background-position: -183px -25px;
     }
@@ -57,6 +53,19 @@
 
     &.more {
       background-position: -253px -25px;
+    }
+  }
+
+  .ico-glyph-3 {
+    background: url("assets/images/common/icon-sprite-glyph_3.png");
+    background-size: 312px 298px;
+
+    &.heart {
+      background-position: -263px -50px;
+    }
+
+    &.noheart {
+      background-position: -263px -25px;
     }
   }
 

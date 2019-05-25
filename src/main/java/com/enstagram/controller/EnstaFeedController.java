@@ -3,18 +3,21 @@ package com.enstagram.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
+import com.enstagram.model.EnstaHeart;
 import com.enstagram.service.EnstaService;
 
 @RestController
@@ -55,7 +58,7 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
-	public List<EnstaFeed> getFeed(@PathVariable String feed_num) {
+	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
         return enstaService.getFeed(feed_num);
 	}
 	
@@ -66,5 +69,25 @@ public class EnstaFeedController {
 	@RequestMapping(value = "/api/feed/remove", method = { RequestMethod.POST, RequestMethod.GET })
 	public void removeFeed(@RequestParam Integer feed_num) {
 		enstaService.removeFeed(feed_num);
+	}
+	
+	/*
+	 * Like Feed
+	 */
+
+	@RequestMapping(value = "/api/feed/like", method = { RequestMethod.POST, RequestMethod.GET })
+	public void likeFeed(@RequestBody EnstaHeart enstaHeart) {
+		enstaService.likeFeed(enstaHeart);
+		enstaService.updateHeart(enstaHeart.getFeed_num());
+	}
+	
+	/*
+	 * Unlike Feed
+	 */
+
+	@RequestMapping(value = "/api/feed/unlike", method = { RequestMethod.POST, RequestMethod.GET })
+	public void unlikeFeed(@RequestBody EnstaHeart enstaHeart) {
+		enstaService.unlikeFeed(enstaHeart);
+		enstaService.updateHeart(enstaHeart.getFeed_num());
 	}
 }

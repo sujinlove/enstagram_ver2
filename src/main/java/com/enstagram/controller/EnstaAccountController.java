@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -81,16 +81,18 @@ public class EnstaAccountController {
 	/*
 	 * Account Info
 	 */
-
+	
 	@RequestMapping(value = "/api/user", method = {RequestMethod.POST, RequestMethod.GET})
-    @ResponseBody
-    public List<EnstaAccount> currentUserInfo(@ModelAttribute EnstaAccount enstaAccount){
+    public Map<String, Object> currentUserInfo(@ModelAttribute EnstaAccount enstaAccount){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
 		enstaService.getAccount(currentUser);
 		enstaAccount.setId(currentUser);
 		
-        return enstaService.getAccountInfo(currentUser);
+		Map<String, Object> map = enstaService.getAccountInfo(currentUser);
+		map.put("heartList", enstaService.getHeartList(enstaService.getAccountNum(currentUser)));
+		
+        return map;
     }
 	
 	/*
