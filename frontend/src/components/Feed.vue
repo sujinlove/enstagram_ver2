@@ -87,6 +87,9 @@ export default {
     feedService () {
       this.$store.commit('setPopupContent', 'feedService')
       this.$EventBus.$emit('showPopup')
+      if (this.page === 'MyPage') {
+        this.$store.commit('selectFeed', this.feed_num)
+      }
     },
     addHeart () {
       axios.post('/api/feed/like', {

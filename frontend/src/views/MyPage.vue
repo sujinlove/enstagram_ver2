@@ -14,7 +14,10 @@
       <div class="feed-list">
         <ul class="feed-mode grid-mode-view">
           <li class="feed-item" :key="feed" v-for="feed in this.$store.state.user.feedList">
-            <feed :feed_num="feed"/>
+            <router-link :to="{ name: 'FeedPage', params: { feed_num: feed } }" v-if="feedMode == 'grid-mode'">
+              <feed :feed_num="feed" :page="PageName"/>
+            </router-link>
+            <feed :feed_num="feed" :page="PageName" v-else />
           </li>
         </ul>
       </div>
@@ -23,7 +26,7 @@
     <popup>
         <button @click="profileUpload" v-if="$store.state.popupContent == 'editUserProfile'">사진 업로드</button>
         <button @click="profileRemove" v-if="$store.state.popupContent == 'editUserProfile'">현재 사진 삭제</button>
-        <button @click="feedRemove" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
+        <button @click="feedRemove($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
         <a href="/logout" v-if="$store.state.popupContent == 'editUserInfo'">로그아웃</a>
     </popup>
   </section>
@@ -49,6 +52,8 @@ export default {
   },
   data () {
     return {
+      PageName: 'MyPage',
+      feedMode: 'grid-mode',
       feedList: [],
       editUserProfile: true,
       editUserInfo: false
@@ -74,18 +79,20 @@ export default {
       })
       this.$EventBus.$emit('showPopup')
     },
-    feedRemove () {
+    feedRemove (feedNum) {
       var params = new URLSearchParams()
-      params.append('feed_num', this.feed_num)
+      params.append('feed_num', feedNum)
       axios.post('/api/feed/remove', params, {
       }).then(response => {
-        this.$router.push('/mypage')
+        this.$store.commit('setUser')
+        this.$store.commit('selectFeed', '')
       }).catch(e => {
         console.log('error: ' + e)
       })
       this.$EventBus.$emit('showPopup')
     },
     changeMode (mode) {
+      this.feedMode = mode
       document.querySelector('.mode button:not(.' + mode + ')').classList.remove('active')
       document.querySelector('.' + mode).classList.add('active')
       document.querySelector('.feed-mode').classList.remove('grid-mode-view')

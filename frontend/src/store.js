@@ -10,7 +10,8 @@ export default new Vuex.Store({
       heartList: [],
       feedList: []
     },
-    popupContent: ''
+    popupContent: '',
+    selectFeed: ''
   },
   mutations: {
     setUser (state) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     setPopupContent (state, data) {
       state.popupContent = data
+    },
+    selectFeed (state, data) {
+      state.selectFeed = data
     }
   },
   actions: {}
