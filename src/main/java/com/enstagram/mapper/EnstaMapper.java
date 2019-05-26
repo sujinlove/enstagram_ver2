@@ -32,8 +32,6 @@ public interface EnstaMapper {
 	 * Ensta Feed
 	 */
 
-	public List<EnstaFeed> getFeedList();
-
 	void createFeed(EnstaFeed enstaFeed);
 
 	public Map<String, Object> getFeed(Integer feed_num);
@@ -48,7 +46,9 @@ public interface EnstaMapper {
 	
 	void unlikeFeed(EnstaFeed enstaFeed);
 
-	public String[] getHeartList(Integer accnt_num);
+	public String[] getFeedHeartList(Integer feed_num);
+	
+	public String[] getMyHeartList(Integer accnt_num);
 
 	public String[] getMyFeedList(Integer feed_num);
 

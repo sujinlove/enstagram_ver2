@@ -90,7 +90,7 @@ public class EnstaAccountController {
 		enstaAccount.setId(currentUser);
 		
 		Map<String, Object> map = enstaService.getAccountInfo(currentUser);
-		map.put("heartList", enstaService.getHeartList(enstaService.getAccountNum(currentUser)));
+		map.put("heartList", enstaService.getMyHeartList(enstaService.getAccountNum(currentUser)));
 		map.put("feedList", enstaService.getMyFeedList(enstaService.getAccountNum(currentUser)));
 		
         return map;

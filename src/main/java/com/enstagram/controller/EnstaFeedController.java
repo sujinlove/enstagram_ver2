@@ -2,7 +2,6 @@ package com.enstagram.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -25,15 +24,6 @@ public class EnstaFeedController {
 
 	@Autowired
 	EnstaService enstaService;
-
-	/*
-	 * Get Feed List
-	 */
-
-	@RequestMapping("/api/feedList")
-	public List<EnstaFeed> feedList() {
-		return enstaService.feedList();
-	}
 
 	/*
 	 * Create Feed
@@ -60,7 +50,10 @@ public class EnstaFeedController {
 
 	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
-        return enstaService.getFeed(feed_num);	
+		Map<String, Object> map = enstaService.getFeed(feed_num);
+		map.put("heartList", enstaService.getFeedHeartList(feed_num));
+		
+		return map;	
 	}
 	
 	/*

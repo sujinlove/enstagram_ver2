@@ -1,6 +1,5 @@
 package com.enstagram.service;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,14 +83,6 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get Feed List
-	 */
-	
-	public List<EnstaFeed> feedList() {
-		return enstaMapper.getFeedList();
-	}
-	
-	/*
 	 * Get Feed File Name
 	 */
 	
@@ -100,7 +91,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Upload feed
+	 * Upload Feed
 	 */
 	
 	public void createFeed(EnstaFeed enstaFeed) {
@@ -108,7 +99,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get feed
+	 * Get Feed
 	 */
 	
 	public Map<String, Object> getFeed(Integer feed_num) {
@@ -116,7 +107,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Remove feed
+	 * Remove Feed
 	 */
 	
 	public void removeFeed(Integer feed_num) {
@@ -124,7 +115,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Like feed
+	 * Like Feed
 	 */
 	
 	public void likeFeed(EnstaFeed enstaFeed) {
@@ -132,7 +123,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Unlike feed
+	 * Unlike Feed
 	 */
 	
 	public void unlikeFeed(EnstaFeed enstaFeed) {
@@ -148,15 +139,23 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get heart list
+	 * Get Feed Heart List
 	 */
 	
-	public String[] getHeartList(Integer accnt_num) {
-		return enstaMapper.getHeartList(accnt_num);
+	public String[] getFeedHeartList(Integer feed_num) {
+		return enstaMapper.getFeedHeartList(feed_num);
 	}
 	
 	/*
-	 * Get my feed list
+	 * Get My Heart List
+	 */
+	
+	public String[] getMyHeartList(Integer accnt_num) {
+		return enstaMapper.getMyHeartList(accnt_num);
+	}
+	
+	/*
+	 * Get My Feed List
 	 */
 	
 	public String[] getMyFeedList(Integer accnt_num) {
