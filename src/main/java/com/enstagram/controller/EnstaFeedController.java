@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,10 +41,11 @@ public class EnstaFeedController {
 
 	@RequestMapping(value = "/api/feedUpload", method = { RequestMethod.POST, RequestMethod.GET })
 	public void createFeed(@ModelAttribute EnstaFeed enstaFeed, @RequestParam MultipartFile file) {
-		enstaFeed.setFile_name("/upload/" + file.getOriginalFilename());
+		String profileName = RandomStringUtils.randomAlphanumeric(12);
+		enstaFeed.setFile_name("/upload/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]);
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream(new File("./src/main/resources/static/upload/" + file.getOriginalFilename()));
+			fos = new FileOutputStream(new File("./src/main/resources/static/upload/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]));
 			IOUtils.copy(file.getInputStream(), fos);
 		} catch (Exception e) {
 			e.printStackTrace();
