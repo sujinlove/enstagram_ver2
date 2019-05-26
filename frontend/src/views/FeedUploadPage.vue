@@ -45,6 +45,7 @@ export default {
       var formData = new FormData()
       formData.append('file', this.file)
       formData.append('description', this.description)
+      formData.append('accnt_num', this.$store.state.user.accnt_num)
       axios.post('/api/feedUpload', formData, {
       }).then(response => {
         console.log('1: ' + this.file_name, this.description)

@@ -22,7 +22,7 @@
         <ul>
           <li>
             <span>게시물</span>
-            <span class="feed-count">1</span>
+            <span class="feed-count">{{ this.$store.state.user.feedList.length }}</span>
           </li>
           <li>
             <span>팔로워</span>

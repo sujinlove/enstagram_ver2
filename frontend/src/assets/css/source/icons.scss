@@ -67,6 +67,22 @@
     &.noheart {
       background-position: -263px -25px;
     }
+
+    &.grid-mode {
+      background-position: -288px -100px;
+
+      &.active {
+        background-position: -288px -75px;
+      }
+    }
+
+    &.list-mode {
+      background-position: -288px -150px;
+
+      &.active {
+        background-position: -288px -125px;
+      }
+    }
   }
 
   .ico-core {

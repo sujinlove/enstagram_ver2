@@ -34,11 +34,15 @@
 	</select>
 
 	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed" useGeneratedKeys="true" keyProperty="feed_num">
-		INSERT INTO ensta_feed (feed_num, file_name, description, heart, regdate) VALUES (#{feed_num}, #{file_name}, #{description}, #{heart}, NOW()) 
+		INSERT INTO ensta_feed (feed_num, file_name, description, heart, regdate, accnt_num) VALUES (#{feed_num}, #{file_name}, #{description}, #{heart}, NOW(), #{accnt_num}) 
 	</insert>
 
 	<select id="getFeed" resultType="java.util.HashMap">
 		SELECT * FROM ensta_feed WHERE feed_num = #{feed_num}
+	</select>
+	
+	<select id="getMyFeedList" resultType="String">
+		SELECT feed_num FROM ensta_feed WHERE accnt_num = #{accnt_num}
 	</select>
 	
 	<select id="removeFeed" parameterType="com.enstagram.model.EnstaFeed">

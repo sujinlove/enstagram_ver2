@@ -48,4 +48,6 @@ public interface EnstaMapper {
 
 	public String[] getHeartList(Integer accnt_num);
 
+	public String[] getMyFeedList(Integer feed_num);
+
 }

@@ -3,12 +3,19 @@
     <app-header />
     <one-column>
       <profile ref="editProfile" />
+      <div class="modes">
+        <div class="mode grid" @click="changeMode('grid-mode')">
+          <button class="icon-sprite ico-glyph-3 grid-mode active"><span>grid</span></button>
+        </div>
+        <div class="mode list" @click="changeMode('list-mode')">
+          <button class="icon-sprite ico-glyph-3 list-mode"><span>list</span></button>
+        </div>
+      </div>
       <div class="feed-list">
-        <ul>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
+        <ul class="feed-mode grid-mode-view">
+          <li class="feed-item" :key="feed" v-for="feed in this.$store.state.user.feedList">
+            <feed :feed_num="feed"/>
+          </li>
         </ul>
       </div>
     </one-column>
@@ -16,6 +23,7 @@
     <popup>
         <button @click="profileUpload" v-if="$store.state.popupContent == 'editUserProfile'">사진 업로드</button>
         <button @click="profileRemove" v-if="$store.state.popupContent == 'editUserProfile'">현재 사진 삭제</button>
+        <button @click="feedRemove" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
         <a href="/logout" v-if="$store.state.popupContent == 'editUserInfo'">로그아웃</a>
     </popup>
   </section>
@@ -26,6 +34,7 @@ import axios from 'axios'
 import Header from '../components/common/Header.vue'
 import OneColumn from '../components/common/OneColumn'
 import Profile from '../components/Profile'
+import Feed from '../components/Feed'
 import Footer from '../components/common/Footer'
 import Popup from '../components/common/Popup'
 
@@ -34,14 +43,20 @@ export default {
     'app-header': Header,
     OneColumn,
     Profile,
+    Feed,
     'footer-layout': Footer,
     Popup
   },
   data () {
     return {
+      feedList: [],
       editUserProfile: true,
       editUserInfo: false
     }
+  },
+  mounted () {
+    this.$store.commit('setUser')
+    this.feedList = this.$store.state.user.feedList
   },
   methods: {
     profileUpload () {
@@ -58,6 +73,24 @@ export default {
         console.log('error: ' + e)
       })
       this.$EventBus.$emit('showPopup')
+    },
+    feedRemove () {
+      var params = new URLSearchParams()
+      params.append('feed_num', this.feed_num)
+      axios.post('/api/feed/remove', params, {
+      }).then(response => {
+        this.$router.push('/mypage')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+      this.$EventBus.$emit('showPopup')
+    },
+    changeMode (mode) {
+      document.querySelector('.mode button:not(.' + mode + ')').classList.remove('active')
+      document.querySelector('.' + mode).classList.add('active')
+      document.querySelector('.feed-mode').classList.remove('grid-mode-view')
+      document.querySelector('.feed-mode').classList.remove('list-mode-view')
+      document.querySelector('.feed-mode').classList.add(mode + '-view')
     }
   }
 }

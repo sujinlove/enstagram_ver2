@@ -27,7 +27,7 @@
       <div class="feed-btn">
         <button class="icon-sprite ico-glyph-3 heart" @click="addHeart"  v-if="this.$store.state.user.heartList.indexOf(this.feed_num) === -1"><span>heart</span></button>
         <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart" v-else><span>heart</span></button>
-        <router-link to= "/feed" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
+        <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count">
         <span>좋아요 </span>

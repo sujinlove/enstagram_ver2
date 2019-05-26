@@ -7,7 +7,7 @@
       </div>
     </one-column>
     <popup>
-      <button @click="feedRemove" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
+      <button @click="feedRemove" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 삭제</button>
     </popup>
   </section>
 </template>

@@ -102,6 +102,7 @@ public class EnstaService {
 	/*
 	 * Get feed
 	 */
+	
 	public Map<String, Object> getFeed(Integer feed_num) {
 		return enstaMapper.getFeed(feed_num);
 	}
@@ -144,6 +145,14 @@ public class EnstaService {
 	
 	public String[] getHeartList(Integer accnt_num) {
 		return enstaMapper.getHeartList(accnt_num);
+	}
+	
+	/*
+	 * Get my feed list
+	 */
+	
+	public String[] getMyFeedList(Integer accnt_num) {
+		return enstaMapper.getMyFeedList(accnt_num);
 	}
 	
 }
