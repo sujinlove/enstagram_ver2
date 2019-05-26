@@ -68,9 +68,11 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/feed/remove", method = { RequestMethod.POST, RequestMethod.GET })
-	public void removeFeed(@RequestParam Integer feed_num) {
+	public void removeFeed(@RequestBody EnstaFeed enstaFeed) {
+		Integer feed_num = enstaFeed.getFeed_num();
 		File file = new File("./src/main/resources/static" + enstaService.getFeedFileName(feed_num));
 		file.delete();
+		enstaService.unlikeFeed(enstaFeed);
 		enstaService.removeFeed(feed_num);
 	}
 	

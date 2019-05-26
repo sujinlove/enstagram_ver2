@@ -80,9 +80,9 @@ export default {
       this.$EventBus.$emit('showPopup')
     },
     feedRemove (feedNum) {
-      var params = new URLSearchParams()
-      params.append('feed_num', feedNum)
-      axios.post('/api/feed/remove', params, {
+      axios.post('/api/feed/remove', {
+        accnt_num: this.$store.state.user.accnt_num,
+        feed_num: this.$store.state.selectFeed
       }).then(response => {
         this.$store.commit('setUser')
         this.$store.commit('selectFeed', '')

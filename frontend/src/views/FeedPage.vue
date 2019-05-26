@@ -34,9 +34,9 @@ export default {
   },
   methods: {
     feedRemove () {
-      var params = new URLSearchParams()
-      params.append('feed_num', this.feed_num)
-      axios.post('/api/feed/remove', params, {
+      axios.post('/api/feed/remove', {
+        accnt_num: this.$store.state.user.accnt_num,
+        feed_num: this.feed_num
       }).then(response => {
         this.$router.push('/mypage')
       }).catch(e => {
