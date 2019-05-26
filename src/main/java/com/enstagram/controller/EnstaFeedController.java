@@ -60,7 +60,7 @@ public class EnstaFeedController {
 
 	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
-        return enstaService.getFeed(feed_num);
+        return enstaService.getFeed(feed_num);	
 	}
 	
 	/*
@@ -69,6 +69,8 @@ public class EnstaFeedController {
 
 	@RequestMapping(value = "/api/feed/remove", method = { RequestMethod.POST, RequestMethod.GET })
 	public void removeFeed(@RequestParam Integer feed_num) {
+		File file = new File("./src/main/resources/static" + enstaService.getFeedFileName(feed_num));
+		file.delete();
 		enstaService.removeFeed(feed_num);
 	}
 	

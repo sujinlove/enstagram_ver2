@@ -45,6 +45,10 @@
 		SELECT feed_num FROM ensta_feed WHERE accnt_num = #{accnt_num}
 	</select>
 	
+	<select id="getFeedFileName" resultType="String">
+		SELECT file_name FROM ensta_feed WHERE feed_num = #{feed_num}
+	</select>
+	
 	<select id="removeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		DELETE FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>

@@ -92,6 +92,14 @@ public class EnstaService {
 	}
 	
 	/*
+	 * Get Feed File Name
+	 */
+	
+	public String getFeedFileName(Integer feed_num) {
+		return enstaMapper.getFeedFileName(feed_num);
+	}
+	
+	/*
 	 * Upload feed
 	 */
 	
