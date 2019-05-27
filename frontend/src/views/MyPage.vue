@@ -70,7 +70,7 @@ export default {
     },
     profileRemove () {
       var params = new URLSearchParams()
-      params.append('filePath', 'profile/default.jpg')
+      params.append('filePath', '/profile/default.jpg')
       axios.post('/api/profile/remove', params, {
       }).then(response => {
         this.$store.commit('setUser')

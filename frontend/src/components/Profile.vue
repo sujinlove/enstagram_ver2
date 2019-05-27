@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <div class="my-pic">
-      <div class="my-pic-inner" v-if="this.$store.state.user.profile =='profile/default.jpg'" >
+      <div class="my-pic-inner" v-if="this.$store.state.user.profile =='/profile/default.jpg'" >
         <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="UploadBtn"/>
       </div>
       <div class="my-pic-inner" v-else>
