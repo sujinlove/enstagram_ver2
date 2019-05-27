@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
@@ -32,7 +33,7 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/feedUpload", method = { RequestMethod.POST, RequestMethod.GET })
-	public void createFeed(@ModelAttribute EnstaFeed enstaFeed, @RequestParam MultipartFile file) {
+	public Integer createFeed(@ModelAttribute EnstaFeed enstaFeed, @RequestParam MultipartFile file) {
 		String profileName = RandomStringUtils.randomAlphanumeric(12);
 		enstaFeed.setFile_name("/upload/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]);
 		FileOutputStream fos;
@@ -43,8 +44,8 @@ public class EnstaFeedController {
 			e.printStackTrace();
 		}
 		enstaService.createFeed(enstaFeed);
+		return enstaFeed.getFeed_num();
 	}
-	
 
 	/*
 	 * Get Feed
