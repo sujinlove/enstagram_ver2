@@ -39,7 +39,7 @@
 	</select>
 	
 	<select id="getMyFeedList" resultType="String">
-		SELECT feed_num FROM ensta_feed WHERE accnt_num = #{accnt_num}
+		SELECT feed_num FROM ensta_feed WHERE accnt_num = #{accnt_num} ORDER BY feed_num DESC
 	</select>
 	
 	<select id="getFeedFileName" resultType="String">
