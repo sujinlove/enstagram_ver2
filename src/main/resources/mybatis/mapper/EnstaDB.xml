@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="getAccountInfo" resultType="java.util.HashMap">
-		SELECT * FROM ensta_account WHERE id=#{id}
+		SELECT * FROM ensta_account WHERE accnt_num=#{accnt_num}
 	</select>
 	
 	<select id="editProfile" parameterType="com.enstagram.model.EnstaAccount">

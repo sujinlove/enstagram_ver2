@@ -36,8 +36,8 @@ public class EnstaService {
 		return enstaMapper.getAccountNum(id);
 	}
 	
-	public Map<String, Object> getAccountInfo(String id) {
-		return enstaMapper.getAccountInfo(id);
+	public Map<String, Object> getAccountInfo(int accnt_num) {
+		return enstaMapper.getAccountInfo(accnt_num);
 	}
 
 	/*

@@ -20,7 +20,7 @@ public interface EnstaMapper {
 
 //	EnstaAccount getEnstaAccount(EnstaAccount enstaAccount);
 
-	public Map<String, Object> getAccountInfo(String id);
+	public Map<String, Object> getAccountInfo(int accnt_num);
 	
 	EnstaAccount getAccount(String id);
 	
