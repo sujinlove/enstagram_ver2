@@ -6,7 +6,7 @@ import AccountPage from '@/views/AccountPage'
 import FeedPage from '@/views/FeedPage'
 import NotFound from '@/views/NotFound'
 import FeedUploadPage from '@/views/FeedUploadPage'
-
+import UserPage from '@/views/UserPage'
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +42,12 @@ export default new Router({
       path: '/feedUpload',
       name: 'FeedUploadPage',
       component: FeedUploadPage
+    },
+    {
+      path: '/user/:user_id',
+      name: 'UserPage',
+      component: UserPage,
+      props: true
     }
 
   ]
