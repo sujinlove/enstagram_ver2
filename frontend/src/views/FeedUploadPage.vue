@@ -48,7 +48,7 @@ export default {
       formData.append('accnt_num', this.$store.state.user.accnt_num)
       axios.post('/api/feedUpload', formData, {
       }).then(response => {
-        console.log('1: ' + this.file_name, this.description)
+        this.$router.push('/feed/' + response.data)
       }).catch(e => {
         console.log('error: ' + e)
       })
