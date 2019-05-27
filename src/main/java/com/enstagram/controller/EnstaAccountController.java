@@ -88,17 +88,17 @@ public class EnstaAccountController {
 	public Map<String, Object> currentUserInfo(@ModelAttribute EnstaAccount enstaAccount) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
-		enstaService.getAccount(currentUser);
+		enstaService.getAccount(currentUser); 
 		enstaAccount.setId(currentUser);
 
-		Map<String, Object> map = enstaService.getAccountInfo(currentUser);
+		Map<String, Object> map = enstaService.getAccountInfo(enstaService.getAccountNum(currentUser));
 		map.put("heartList", enstaService.getMyHeartList(enstaService.getAccountNum(currentUser)));
 		map.put("feedList", enstaService.getMyFeedList(enstaService.getAccountNum(currentUser)));
 
 		return map;
 	}
 
-	@RequestMapping(value = "/api/user/{acccnt_num}", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/api/user/{accnt_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getAccountInfo(@PathVariable int accnt_num) {
 		return enstaService.getAccountInfo(accnt_num);
 	}
