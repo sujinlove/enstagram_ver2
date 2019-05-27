@@ -2,10 +2,10 @@
   <div class="profile">
     <div class="my-pic">
       <div class="my-pic-inner" v-if="this.$store.state.user.profile =='/profile/default.jpg'" >
-        <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="UploadBtn"/>
+        <img :src="this.$store.state.user.profile" :alt="this.$store.state.user.id + '님의 프로필 사진'" @click="UploadBtn"/>
       </div>
       <div class="my-pic-inner" v-else>
-        <img :src="this.$store.state.user.profile" :alt="profile_alt" @click="editUserProfile"/>
+        <img :src="this.$store.state.user.profile" :alt="this.$store.state.user.id + '님의 프로필 사진'" @click="editUserProfile"/>
       </div>
       <form :style="{display: 'none'}">
         <input type="file" name="file" ref="file" accept="image/jpeg,image/png" @change="fileUpload"/>
@@ -44,7 +44,6 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      profile_alt: this.$store.state.user.id + '님의 프로필 사진',
       file: ''
     }
   },

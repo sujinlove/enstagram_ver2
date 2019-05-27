@@ -1,5 +1,6 @@
 package com.enstagram.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -142,7 +143,7 @@ public class EnstaService {
 	 * Get Feed Heart List
 	 */
 	
-	public String[] getFeedHeartList(Integer feed_num) {
+	public List<EnstaAccount> getFeedHeartList(Integer feed_num) {
 		return enstaMapper.getFeedHeartList(feed_num);
 	}
 	

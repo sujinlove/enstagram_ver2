@@ -4,6 +4,7 @@ import MainPage from '@/views/MainPage'
 import MyPage from '@/views/MyPage'
 import AccountPage from '@/views/AccountPage'
 import FeedPage from '@/views/FeedPage'
+import Heart from '@/components/Heart'
 import NotFound from '@/views/NotFound'
 import FeedUploadPage from '@/views/FeedUploadPage'
 import UserPage from '@/views/UserPage'
@@ -36,6 +37,12 @@ export default new Router({
       path: '/feed/:feed_num',
       name: 'FeedPage',
       component: FeedPage,
+      props: true
+    },
+    {
+      path: '/feed/:feed_num/heart',
+      name: 'HeartPage',
+      component: Heart,
       props: true
     },
     {

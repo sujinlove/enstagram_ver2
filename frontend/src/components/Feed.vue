@@ -2,12 +2,12 @@
 <article class="feed">
   <header class="feed-header">
     <div class="user-pic">
-      <a href="">
-        <img src="https://scontent-hkg3-1.cdninstagram.com/vp/10f87370152bb3d796a1bb4088410993/5D4FEB78/t51.2885-19/s150x150/55734804_1068234573371318_7617162252218531840_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com"  alt="lalalalisa_m님의 프로필 사진"/>
-      </a>
+      <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
+        <img :src="this.user.profile"  :alt="this.user.id + '님의 프로필 사진'"/>
+      </router-link>
     </div>
-    <div class="user-name">
-      <a href="">lalalalisa_m</a>
+    <div class="user-id">
+      <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">{{this.user.id}}</router-link>
     </div>
     <button class="icon-sprite ico-glyph-2 more" type="button" @click="feedService"><span>more</span></button>
   </header>
@@ -19,7 +19,7 @@
       <div class="feed-comment" v-if="page == 'FeedPage'">
         <ul>
             <li class="user-comment">
-              <span class="user-name">jennierubyjane</span>
+              <span class="user-id">jennierubyjane</span>
               <span class="user-text">나는 피드 제니!</span>
             </li>
         </ul>
@@ -37,9 +37,9 @@
       <div class="content-view">
         <ul>
           <li class="feed-comment" v-if="page == 'MainPage'">
-            <router-link to= "" class="user-name">lalalalisa_m</router-link>
+            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
             <span class="feed-text">블라블라블라</span>
-            <router-link to= "/feed">더보기</router-link>
+            <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}">더보기</router-link>
           </li>
           <li class="more-comment" v-if="page == 'MainPage'">
             <router-link to= "/feed">
@@ -69,7 +69,8 @@ export default {
   props: ['page', 'feed_num'],
   data () {
     return {
-      feed: {}
+      feed: {},
+      user: {}
     }
   },
   created () {
@@ -80,6 +81,17 @@ export default {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
+        if (this.page === 'FeedPage' || this.page === 'MainPage' || this.page === 'UserPage') {
+          this.getUserInfo()
+        }
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    getUserInfo () {
+      axios.post('/api/user/' + this.feed.accnt_num, {
+      }).then(response => {
+        this.user = response.data
       }).catch(e => {
         console.log('error: ' + e)
       })

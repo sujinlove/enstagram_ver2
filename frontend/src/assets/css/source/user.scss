@@ -6,8 +6,21 @@
 //  Common
 //  _____________________________________________
 @if ($media-common == true) {
+  .user-list {
+    padding: $indent__s $indent__base;
+    background-color: $panel__background-color;
+
+    .user-name {
+      color: #999;
+    }
+
+    ol {
+      @extend %abs-reset-list;
+    }
+  }
+  
   .profile,
-  .follower,
+  .user,
   .feed-header,
   .my-count ul {
     @include abs-item-align($item-align__margin-left: $indent__base);
@@ -17,7 +30,6 @@
     }
   }
 
-  .follower-pic,
   .my-pic-inner,
   .user-pic {
     display: inline-block;
@@ -27,14 +39,12 @@
     vertical-align: middle;
   }
 
-  .follower-name,
-  .my-name,
-  .user-name {
+  .user-id,
+  .my-name {
     font-weight: 600;
   }
 
-  .user-pic,
-  .follower-pic {
+  .user-pic {
     height: 34px;
 
     img {
@@ -44,8 +54,7 @@
   }
 
   .my-pic,
-  .user-pic,
-  .follower-pic {
+  .user-pic{
     img {
       display: block;
     }
