@@ -29,10 +29,15 @@
         <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart" v-else><span>heart</span></button>
         <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
-      <div class="heart-count">
-        <span>좋아요 </span>
-        <span>{{this.feed.heart}}</span>
-        <span>개</span>
+      <div class="heart-count" v-if="this.feed.heart > 0">
+        <router-link :to= "{ name: 'HeartPage', params: { feed_num: this.feed_num }}">
+          <span>좋아요</span>
+          <span>{{this.feed.heart}}</span>
+          <span>개</span>
+        </router-link>
+      </div>
+      <div class="heart-count" v-else>
+        가장 먼저 <span @click="addHeart">좋아요</span>를 눌러보세요
       </div>
       <div class="content-view">
         <ul>
