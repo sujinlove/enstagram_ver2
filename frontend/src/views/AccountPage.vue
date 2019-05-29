@@ -3,7 +3,7 @@
 <template>
   <section>
     <one-column>
-      <div class="phone-container">
+      <div class="service-preview">
         <img src="https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png" alt=""/>
         <!-- <div class="img-slider" id="imgSlider">
           <img :src="images[currentNumber % images.length]" />
@@ -61,9 +61,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.phone-container {
-    width: 50%;
-    display: inline-block;
-    vertical-align: middle;
-}
 </style>

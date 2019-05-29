@@ -90,8 +90,23 @@ $active-nav-indent: 54px;
       ul {
         li {
           display: inline-block;
+
+          a,
+          a:active,
+          a:visited {
+            color: $color-gray78;
+          }
         }
       }
+    }
+  }
+
+  footer {
+    font-size: 11px;
+    color: $color-gray78;
+
+    nav + span {
+      text-transform: uppercase;
     }
   }
 }
@@ -126,10 +141,6 @@ $active-nav-indent: 54px;
 //  _____________________________________________
 @media only screen and (min-width: ($screen__m)) {
   footer {
-    .container {
-      display: flex;
-    }
-
     nav + span {
       margin-left: auto;
     }

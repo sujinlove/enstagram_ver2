@@ -21,7 +21,6 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
             @include lib-vendor-prefix-flex-grow(1);
             @include lib-vendor-prefix-order(1);
             width: 100%;
-            padding-bottom: $indent__xl;
         }
 
         .column.sidebar {

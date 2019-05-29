@@ -60,12 +60,22 @@
     &-pic {
       img {
         display: block;
+        position: absolute;
+        top: 0;
         width: 100%;
+      }
+
+      &-inner {
+        position: relative;
+        padding-bottom: 100%;
+        background: #efefef;
       }
     }
   }
 
   .feed-list {
+    width: 100%;
+
     .grid-mode-view {
       .feed-header,
       .feed-content {
@@ -110,7 +120,7 @@
 
     .feed-pic {
       order: 1;
-      max-width: 600px;
+      background: $color-white-dark-smoke;
     }
 
     .feed-content {
@@ -128,6 +138,10 @@
 //  Desktop
 //  _____________________________________________
 @media only screen and (min-width: ($screen__m)) {
+  .feed {
+    width: 100%;
+  }
+
   .feed-view {
     .feed {
         display: flex;
@@ -139,6 +153,10 @@
       right: 0;
       width: calc(100% - 600px);
       box-sizing: border-box;
+    }
+
+    .feed-pic {
+      width: 600px;
     }
   }
 }

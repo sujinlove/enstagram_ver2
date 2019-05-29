@@ -105,8 +105,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scope>
-@import '../assets/css/source/feeds.scss';
-@media only screen and (max-width: ($screen__m - 1)) {
+@media only screen and (min-width: 768px) {
+  footer {
+    .container {
+      display: flex;
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
   main {
     padding-left: 0;
     padding-right: 0;

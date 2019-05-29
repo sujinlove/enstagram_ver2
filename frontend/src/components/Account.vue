@@ -10,30 +10,30 @@
             <fieldset name="fieldset">
               <input name="accnt_num" type="hidden" v-model="accnt_num"/>{{ accnt_num }}
               <div class="field email">
-                <label>이메일 주소</label>
-                <input name="email" type="email" v-model="email"/>
+                <label for="login-email">이메일 주소</label>
+                <input id="login-email" name="email" type="email" v-model="email"/>
               </div>
               <div class="field name">
-                <label>성명</label>
-                <input name="name" type="text" v-model="name"/>
+                <label for="login-name">성명</label>
+                <input id="login-name" name="name" type="text" v-model="name"/>
               </div>
-              <div class="field user">
-                <label>사용자 이름</label>
-                <input name="id" type="text" v-model="id"/>
+              <div class="field id">
+                <label for="login-id">사용자 이름</label>
+                <input id="login-id" name="id" type="text" maxlength="30" v-model="id"/>
               </div>
               <div class="field passwd">
-                <label>비밀번호</label>
-                <input name="passwd" type="password" v-model="passwd"/>
+                <label for="login-passwd">비밀번호</label>
+                <input id="login-passwd" name="passwd" type="password" v-model="passwd"/>
               </div>
               <div class="field account_btn">
-                <button name="account_btn" type="button" @click="addSubmit">가입</button>
+                <button name="account_btn" type="button" @click="addSubmit" class="action primary">가입</button>
               </div>
             </fieldset>
           </form>
         </div>
       </div>
-      <div class="login">
-        <div class="my-account my-login">계정이 있으신가요? <a href="/login">로그인</a></div>
+      <div class="others">
+        <p>계정이 있으신가요? <a href="/login">로그인</a></p>
       </div>
   </div>
 </template>
@@ -51,7 +51,28 @@ export default {
       account: []
     }
   },
+  watch: {
+    id: function (newValue) {
+      this.changeValue('id', newValue)
+    },
+    name: function (newValue) {
+      this.changeValue('name', newValue)
+    },
+    email: function (newValue) {
+      this.changeValue('email', newValue)
+    },
+    passwd: function (newValue) {
+      this.changeValue('passwd', newValue)
+    }
+  },
   methods: {
+    changeValue (inputId, value) {
+      if (value !== '') {
+        document.querySelector('.field.' + inputId).classList.add('active')
+      } else {
+        document.querySelector('.field.' + inputId).classList.remove('active')
+      }
+    },
     addSubmit () {
       axios.post('/api/account', {
         accnt_num: this.accnt_num,
@@ -71,71 +92,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.account {
-      width: 350px;
-      display: inline-block;
-      vertical-align: middle;
-    .my-account {
-        background-color: #fff;
-        border: 1px solid #e6e6e6;
-        border-radius: 1px;
-        margin: 0 0 10px;
-        padding: 10px 0;
-        text-align: center;
-        overflow: hidden;
-        height: 365px;
-        padding: 6px 40px;
-
-        .logo {
-          margin: 22px auto 12px;
-        }
-
-        h2 {
-          font-weight: 600;
-          line-height: 20px;
-          font-size: 17px;
-          margin: 0 0 20px;
-          color: #999;
-        }
-
-        &.my-login {
-          height: auto;
-
-            a {
-              color: #3897f0;
-              text-decoration: none;
-            }
-        }
-    }
-
-  .account-form {
-    .form {
-      fieldset {
-        input {
-            background: #fafafa;
-            border: 0;
-            padding: 9px 0;
-            font-size: 16px;
-            width: 100%;
-            box-sizing: border-box;
-            border-radius: 3px;
-            border: 1px solid #efefef;
-        }
-
-        label {
-          position: absolute;
-          font-size: 12px;
-          color: #999;
-          padding: 0 8px;
-          line-height: 35px;
-          pointer-events: none;
-        }
-      }
-
-      .field {
-        margin: 0 0 6px;
-      }
-    }
-  }
-}
 </style>

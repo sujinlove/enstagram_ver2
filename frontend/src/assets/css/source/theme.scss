@@ -41,8 +41,7 @@ $indent__base: 16px;
 //  Colors
 //  ---------------------------------------------
 
-$active__color: #EB3349;
-$active__color__light: #F45C43;
+$active__color: #3897f0;
 $border-color__base: #e6e6e6;
 $page__background-color: #fafafa;
 $panel__background-color: $color-white;
@@ -69,7 +68,7 @@ $button__color: $active__color;
 $button__font-size: 15px;
 $button__font-weight: $font-weight__bold;
 $button__padding: 8px 15px;
-$button__border-radius: 0;
+$button__border-radius: 4px;
 $button__border: 1px solid $active__color;
 $button__background: $color-white;
 $button__hover__color: $active__color;
@@ -81,6 +80,8 @@ $button__font-size__l: 20px;
 $button__padding__l: 20px 0;
 
 //  Primary button
+$button-primary__width: 100%;
+$button-primary__margin: 8px 0;
 $button-primary__line-height: $button__line-height;
 $button-primary__background: $active__color;
 $button-primary__border: 1px solid $active__color;

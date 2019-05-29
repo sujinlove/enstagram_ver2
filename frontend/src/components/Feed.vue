@@ -12,7 +12,9 @@
     <button class="icon-sprite ico-glyph-2 more" type="button" @click="feedService"><span>more</span></button>
   </header>
   <div class="feed-pic">
-    <img :src="this.feed.file_name" alt="feed" />
+    <div class="feed-pic-inner">
+      <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
+    </div>
   </div>
   <div class="feed-content">
     <div class="feed-content-inner">
