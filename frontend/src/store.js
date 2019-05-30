@@ -11,7 +11,9 @@ export default new Vuex.Store({
       feedList: []
     },
     popupContent: '',
-    selectFeed: ''
+    selectFeed: '',
+    // pageImages: [],
+    uploadFile: ''
   },
   mutations: {
     setUser (state) {
@@ -26,7 +28,30 @@ export default new Vuex.Store({
     },
     selectFeed (state, data) {
       state.selectFeed = data
+    },
+    // setPreImages (state, data) {
+    //   const image = new Image()
+    //   image.src = data
+    //   state.pageImages.push(image)
+    //   console.log(state.pageImages)
+    // },
+    // resetImages (state) {
+    //   state.pageImages = []
+    // },
+    uploadFile (state, data) {
+      state.uploadFile = data
     }
   },
-  actions: {}
+  actions: {
+    // preload () {
+    //   this.state.pageImages.every(function (item) {
+    //     item.onload = function () {
+    //       document.querySelector('.app-wrapper').classList.add('active')
+    //       document.querySelector('#load').classList.remove('active')
+    //       this.commit('resetImages')
+    //       console.log('load')
+    //     }
+    //   })
+    // }
+  }
 })

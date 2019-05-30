@@ -18,14 +18,6 @@
   </div>
   <div class="feed-content">
     <div class="feed-content-inner">
-      <div class="feed-comment" v-if="page == 'FeedPage'">
-        <ul>
-            <li class="user-comment">
-              <span class="user-id">jennierubyjane</span>
-              <span class="user-text">나는 피드 제니!</span>
-            </li>
-        </ul>
-      </div>
       <div class="feed-btn">
         <button class="icon-sprite ico-glyph-3 heart" @click="addHeart"  v-if="this.$store.state.user.heartList.indexOf(this.feed_num) === -1"><span>heart</span></button>
         <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart" v-else><span>heart</span></button>
