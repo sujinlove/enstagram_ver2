@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<link href=/static/css/enstagram.css rel=stylesheet />
     <title>로그인 • Enstagram</title>
   </head>
@@ -21,12 +22,12 @@
 					          <form class="form" name="form" th:action="@{/login}" method="post">
 					            <fieldset name="fieldset">
 					              <div class="field id">
-					                <label>휴대폰번호 또는 이메일 주소</label>
-					                <input name="id" type="text"/>
+					                <label for="login-id">휴대폰번호 또는 이메일 주소</label>
+					                <input id="login-id" name="id" type="text"/>
 					              </div>
 					              <div class="field passwd">
-					                <label>비밀번호</label>
-					                <input name="passwd" type="password"/>
+					                <label for="login-passwd">비밀번호</label>
+					                <input id="login-passwd" name="passwd" type="password"/>
 					              </div>
 					              <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}" />
 					              <div class="field login_btn">
@@ -48,5 +49,21 @@
 	  		</main>
 	  	</div>
  	</section>
+ 	<script>
+	 	$("#login-id").on("propertychange change keyup paste input", function() {
+	 		if ($(this).val() !== '') {
+		 		$('.field.id').addClass('active')
+	 		} else {
+		 		$('.field.id').removeClass('active')
+	 		}
+		});
+	 	$("#login-passwd").on("propertychange change keyup paste input", function() {
+	 		if ($(this).val() !== '') {
+		 		$('.field.passwd').addClass('active')
+	 		} else {
+		 		$('.field.passwd').removeClass('active')
+	 		}
+		});
+ 	</script>
   </body>
 </html>
