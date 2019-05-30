@@ -43,9 +43,9 @@
       </div>
       <div class="content-view">
         <ul>
-          <li class="feed-comment" v-if="page == 'MainPage'">
+          <li class="feed-comment" v-if="page !== 'FeedPage'">
             <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
-            <span class="feed-text">블라블라블라</span>
+            <span class="feed-text">{{this.feed.description}}</span>
             <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}">더보기</router-link>
           </li>
           <li class="more-comment" v-if="page == 'MainPage'">
@@ -88,9 +88,7 @@ export default {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
-        if (this.page === 'FeedPage' || this.page === 'MainPage' || this.page === 'UserPage') {
-          this.getUserInfo()
-        }
+        this.getUserInfo()
       }).catch(e => {
         console.log('error: ' + e)
       })

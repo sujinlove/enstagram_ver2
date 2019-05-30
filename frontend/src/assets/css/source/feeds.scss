@@ -20,14 +20,20 @@
   }
 
   .feed {
+    background: #fff;
+    
     &-header {
       position: relative;
       padding: $indent__base;
 
-      .icon-sprite.more {
-        position: absolute;
-        top: 21px;
-        right: 12px;
+      .icon-sprite {
+        margin-right: 8px;
+
+        &.more {
+          position: absolute;
+          top: 21px;
+          right: 12px;
+        }
       }
     }
 
@@ -70,6 +76,10 @@
         padding-bottom: 100%;
         background: #efefef;
       }
+    }
+
+    .heart-count {
+      margin: 8px 0;
     }
   }
 

@@ -104,7 +104,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scope>
+<style lang="scss" scoped>
+.feed {
+  border: 0;
+}
 @media only screen and (min-width: 768px) {
   footer {
     .container {

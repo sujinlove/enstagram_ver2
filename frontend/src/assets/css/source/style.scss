@@ -151,9 +151,8 @@
 //  _____________________________________________
 
 @media only screen and (min-width: ($screen__m)) {
-  .main-page .feed,
+  .feed,
   .follow-list {
-    background: #fff;
     border: 1px solid $border-color__base;
     border-radius: 3px;
   }
@@ -166,5 +165,11 @@
 @media only screen and (max-width: ($screen__m - 1)) {
   .service-preview {
     display: none;
+  }
+
+  .column.sidebar {
+    > .profile, .user-list {
+      display: none;
+    }
   }
 }
