@@ -8,6 +8,11 @@
 //  Common
 //  _____________________________________________
 @if ($media-common == true) {
+
+  /*
+  **  Feed mode view
+  */
+
   .modes {
     display: none;
 
@@ -19,9 +24,25 @@
     }
   }
 
+  /*
+  **  Feed Upload
+  */
+
+  .upload-feed {
+    display: flex;
+    padding: 16px;
+    background: $panel__background-color;
+
+    textarea {
+      padding: 0;
+      border: 0;
+      resize: none;
+    }
+  }
+
   .feed {
     background: #fff;
-    
+
     &-header {
       position: relative;
       padding: $indent__base;
@@ -139,7 +160,6 @@
       flex-grow: 1;
       flex-direction: column;
       align-self: flex-end;
-      margin-top: 77px;
     }
   }
 }

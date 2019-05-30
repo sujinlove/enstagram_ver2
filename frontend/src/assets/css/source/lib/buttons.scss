@@ -154,7 +154,7 @@
     line-height: $_line-height;
     margin: $_margin;
     padding: $_padding;
-    @include lib-link();
+    color: $_link-color;
     background: none;
     border: 0;
     display: inline;
