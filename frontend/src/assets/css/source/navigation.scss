@@ -33,6 +33,7 @@ $active-nav-indent: 54px;
 
         li {
           position: relative;
+          margin-bottom: 0;
 
           &.logo,
           &.others {
@@ -79,6 +80,22 @@ $active-nav-indent: 54px;
                 margin-left: 30px;
               }
             }
+          }
+
+          &.back {
+            flex: 1;
+          }
+
+          &.page-title {
+            flex: 2;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+          }
+
+          &.complete {
+            flex: 1;
+            text-align: right;
 
             .upload-btn {
               @include lib-button-as-link(

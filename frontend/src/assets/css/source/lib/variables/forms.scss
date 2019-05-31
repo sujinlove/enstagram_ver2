@@ -145,7 +145,7 @@ $textarea__font-family: $form-element-input__font-family;
 $textarea__font-weight: $form-element-input__font-weight;
 $textarea__font-style: $form-element-input__font-style;
 $textarea__line-height: $form-element-input__line-height;
-$textarea__resize: vertical; // [none|both|horizontal|vertical|inherit]
+$textarea__resize: none; // [none|both|horizontal|vertical|inherit]
 
 //  Placeholder
 $textarea-placeholder__color: $form-element-input-placeholder__color;
