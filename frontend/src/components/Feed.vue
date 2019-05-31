@@ -1,9 +1,19 @@
 <template>
 <article class="feed">
+  <div class="feed-hover" v-if="page == 'MyPage'">
+    <div v-if="this.feed.heart > 0">
+      <button class="icon-sprite ico-core heart"><span>heart</span></button>
+      <span>{{this.feed.heart}}</span>
+    </div>
+    <div>
+      <button class="icon-sprite ico-core chat"><span>chat</span></button>
+      <span>0</span>
+    </div>
+  </div>
   <header class="feed-header">
     <div class="user-pic">
       <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
-        <img :src="this.user.profile"  :alt="this.user.id + '님의 프로필 사진'"/>
+        <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
       </router-link>
     </div>
     <div class="user-id">

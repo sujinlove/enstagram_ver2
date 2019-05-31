@@ -91,6 +91,16 @@
 
   .ico-core {
     background: url("assets/images/common/icon-sprite-core.png");
+
+    &.heart {
+      background-size: 425px auto;
+      background-position: 34px 129px;
+    }
+
+    &.chat {
+      background-size: 425px auto;
+      background-position: 34px 171px;
+    }
   }
 
   .ico-core-2 {
