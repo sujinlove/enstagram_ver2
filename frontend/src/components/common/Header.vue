@@ -61,9 +61,6 @@ export default {
     return {
     }
   },
-  created () {
-    this.$store.commit('editFeed', false)
-  },
   methods: {
     goToBack () {
       this.$router.go(-1)
