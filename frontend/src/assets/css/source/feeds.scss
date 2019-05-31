@@ -48,9 +48,11 @@
     position: relative;
     background: #fff;
 
-    &:hover {
-      .feed-hover {
-        display: flex;
+    .grid-mode-view & {
+      &:hover {
+        .feed-hover {
+          display: flex;
+        }
       }
     }
 
