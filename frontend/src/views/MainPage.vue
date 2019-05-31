@@ -54,7 +54,7 @@ export default {
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
   .profile {
     width: 100%;
     margin-bottom: 12px;
@@ -66,20 +66,12 @@ export default {
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     box-sizing: border-box;
+    color: red;
   }
 
   footer {
     .container {
       padding: 0;
-
-      nav li {
-        &:not(:last-child) {
-          &:after {
-            content: '\00B7';
-            margin: 0 2px;
-          }
-        }
-      }
     }
   }
 

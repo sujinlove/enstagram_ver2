@@ -11,17 +11,20 @@
       </div>
       <account></account>
     </one-column>
+    <footer-layout />
   </section>
 </template>
 
 <script>
 import OneColumn from '../components/common/OneColumn'
 import Account from '../components/Account'
+import Footer from '../components/common/Footer'
 
 export default {
   components: {
     OneColumn,
-    Account
+    Account,
+    'footer-layout': Footer,
   }
 //
 //     el: '#imgSlider',

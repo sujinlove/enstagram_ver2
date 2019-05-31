@@ -3,7 +3,7 @@
   <div class="container">
     <nav>
       <ul>
-        <li><a href="">Instagram 정보</a></li>
+        <li><a href="">Enstagram 정보</a></li>
         <li><a href="">지원</a></li>
         <li><a href="">홍보 센터</a></li>
         <li><a href="">API</a></li>
@@ -16,7 +16,7 @@
         <li><a href="">언어</a></li>
       </ul>
     </nav>
-    <span>© 2019 Instagram</span>
+    <span>© 2019 Enstagram</span>
   </div>
 </footer>
 </template>
