@@ -16,7 +16,7 @@
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
     </div>
   </div>
-  <div class="feed-content">
+  <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <div class="feed-content-inner">
       <div class="feed-btn">
         <button class="icon-sprite ico-glyph-3 heart" @click="addHeart"  v-if="this.$store.state.user.heartList.indexOf(this.feed_num) === -1"><span>heart</span></button>
@@ -35,7 +35,7 @@
       </div>
       <div class="content-view">
         <ul>
-          <li class="feed-comment" v-if="page !== 'FeedPage'">
+          <li class="feed-comment">
             <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
             <span class="feed-text">{{this.feed.description}}</span>
             <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}">더보기</router-link>
@@ -59,6 +59,9 @@
       <button type="button">게시</button>
     </div>
   </div>
+  <div class="feed-content edit-comment" v-else>
+    <textarea placeholder="문구 입력..." v-model="feed.description"/>
+  </div>
 </article>
 </template>
 
@@ -74,6 +77,11 @@ export default {
   },
   created () {
     this.getFeedInfo()
+  },
+  updated () {
+    if (this.$store.state.editFeed === true) {
+      document.querySelector('.edit-comment textarea').focus()
+    }
   },
   methods: {
     getFeedInfo () {
@@ -118,6 +126,17 @@ export default {
       }).then(response => {
         this.getFeedInfo()
         this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    changeFeedInfo () {
+      axios.post('/api/feed/edit', {
+        feed_num: this.feed_num,
+        description: this.feed.description
+      }).then(response => {
+        this.$store.state.editFeed = false
+        this.getFeedInfo()
       }).catch(e => {
         console.log('error: ' + e)
       })

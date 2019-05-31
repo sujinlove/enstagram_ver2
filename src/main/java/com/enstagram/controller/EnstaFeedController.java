@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
@@ -64,6 +63,15 @@ public class EnstaFeedController {
 	@RequestMapping(value = "/api/feed/{feed_num}/heart", method = { RequestMethod.POST, RequestMethod.GET })
 	public List<EnstaAccount> getFeedHeartList(@PathVariable Integer feed_num) {
 		return enstaService.getFeedHeartList(feed_num);
+	}
+	
+	/*
+	 * Edit Feed
+	 */
+
+	@RequestMapping(value = "/api/feed/edit", method = { RequestMethod.POST, RequestMethod.GET })
+	public void editFeed(@RequestBody EnstaFeed enstaFeed) {
+	 	enstaService.editFeed(enstaFeed);
 	}
 	
 	/*

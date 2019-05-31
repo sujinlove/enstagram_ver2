@@ -13,7 +13,8 @@ export default new Vuex.Store({
     popupContent: '',
     selectFeed: '',
     // pageImages: [],
-    uploadFile: ''
+    uploadFile: '',
+    editFeed: false
   },
   mutations: {
     setUser (state) {
@@ -40,6 +41,9 @@ export default new Vuex.Store({
     // },
     uploadFile (state, data) {
       state.uploadFile = data
+    },
+    editFeed (state, data) {
+      state.editFeed = data
     }
   },
   actions: {

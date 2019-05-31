@@ -38,6 +38,8 @@ public interface EnstaMapper {
 	
 	public String getFeedFileName (Integer feed_num);
 	
+	void editFeed(EnstaFeed enstaFeed);
+	
 	void removeFeed(Integer feed_num);
 	
 	void updateHeart(Integer feed_num);

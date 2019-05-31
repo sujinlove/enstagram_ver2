@@ -106,7 +106,14 @@ public class EnstaService {
 	public Map<String, Object> getFeed(Integer feed_num) {
 		return enstaMapper.getFeed(feed_num);
 	}
+
+	/*
+	 * Edit Feed
+	 */
 	
+	public void editFeed(EnstaFeed enstaFeed) {
+		enstaMapper.editFeed(enstaFeed);
+	}
 	/*
 	 * Remove Feed
 	 */

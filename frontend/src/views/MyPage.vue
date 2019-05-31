@@ -2,7 +2,7 @@
   <section>
     <app-header />
     <one-column>
-      <profile ref="editProfile" />
+      <profile ref="profile" />
       <div class="modes">
         <div class="mode grid" @click="changeMode('grid-mode')">
           <button class="icon-sprite ico-glyph-3 grid-mode active"><span>grid</span></button>
@@ -26,7 +26,8 @@
     <popup>
         <button @click="profileUpload" v-if="$store.state.popupContent == 'editUserProfile'">사진 업로드</button>
         <button @click="profileRemove" v-if="$store.state.popupContent == 'editUserProfile'">현재 사진 삭제</button>
-        <button @click="feedRemove($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
+        <button @click="editFeed($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 수정</button>
+        <button @click="removeFeed($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
         <a href="/logout" v-if="$store.state.popupContent == 'editUserInfo'">로그아웃</a>
     </popup>
   </section>
@@ -65,7 +66,7 @@ export default {
   },
   methods: {
     profileUpload () {
-      this.$refs.editProfile.UploadBtn()
+      this.$refs.profile.UploadBtn()
       this.$EventBus.$emit('showPopup')
     },
     profileRemove () {
@@ -79,7 +80,12 @@ export default {
       })
       this.$EventBus.$emit('showPopup')
     },
-    feedRemove (feedNum) {
+    editFeed (feedNum) {
+      this.$router.push('/feed/' + feedNum)
+      this.$EventBus.$emit('showPopup')
+      this.$store.commit('editFeed', true)
+    },
+    removeFeed (feedNum) {
       axios.post('/api/feed/remove', {
         accnt_num: this.$store.state.user.accnt_num,
         feed_num: this.$store.state.selectFeed

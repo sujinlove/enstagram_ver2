@@ -50,6 +50,10 @@
 		SELECT file_name FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>
 	
+	<select id="editFeed" parameterType="com.enstagram.model.EnstaFeed">
+		UPDATE ensta_feed SET description=#{description} WHERE feed_num=#{feed_num}
+	</select>
+	
 	<select id="removeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		DELETE FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>
