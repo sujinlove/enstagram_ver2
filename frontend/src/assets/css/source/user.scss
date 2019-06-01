@@ -22,6 +22,8 @@
 
   .profile,
   .user,
+  .feed-view .user-comment,
+  .feed-view .feed-comment,
   .feed-header,
   .my-count ul {
     @include abs-item-align($item-align__margin-left: $indent__base);
@@ -42,6 +44,7 @@
 
   .user-id,
   .my-name {
+    display: inline-block;
     font-weight: 600;
   }
 

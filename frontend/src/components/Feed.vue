@@ -27,6 +27,32 @@
     </div>
   </div>
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
+    <div class="feed-comments feed-content-inner" v-if="page === 'FeedPage'">
+      <ul>
+        <li class="feed-comment" v-if="this.feed.description !== ''">
+          <div class="user-pic">
+            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
+              <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
+            </router-link>
+          </div>
+          <div class="user-id">
+            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
+            <span class="feed-text">{{this.feed.description}}</span>
+          </div>
+        </li>
+        <li class="user-comment">
+          <div class="user-pic">
+            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
+              <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
+            </router-link>
+          </div>
+          <div class="user-id">
+            <router-link to= "" class="user-id">jennierubyjane</router-link>
+            <span class="user-text">나는 메인 제니!</span>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="feed-content-inner">
       <div class="feed-btn">
         <button class="icon-sprite ico-glyph-3 heart" @click="addHeart"  v-if="this.$store.state.user.heartList.indexOf(this.feed_num) === -1"><span>heart</span></button>
@@ -43,12 +69,11 @@
       <div class="heart-count" v-else>
         가장 먼저 <span @click="addHeart">좋아요</span>를 눌러보세요
       </div>
-      <div class="content-view">
+      <div class="content-view" v-if="page !== 'FeedPage'">
         <ul>
           <li class="feed-comment">
             <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
             <span class="feed-text">{{this.feed.description}}</span>
-            <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}">더보기</router-link>
           </li>
           <li class="more-comment" v-if="page == 'MainPage'">
             <router-link to= "/feed">
@@ -58,7 +83,7 @@
             </router-link>
           </li>
           <li class="user-comment" v-if="page == 'MainPage'">
-            <router-link to= "" class="user-name">jennierubyjane</router-link>
+            <router-link to= "" class="user-id">jennierubyjane</router-link>
             <span class="user-text">나는 메인 제니!</span>
           </li>
         </ul>
