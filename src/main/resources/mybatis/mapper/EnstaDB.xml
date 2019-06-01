@@ -24,6 +24,10 @@
 		SELECT * FROM ensta_account WHERE accnt_num=#{accnt_num}
 	</select>
 	
+	<select id="editAccount" parameterType="com.enstagram.model.EnstaAccount">
+		UPDATE ensta_account SET id=#{id}, name=#{name}, email=#{email}, des=#{des}, passwd=#{passwd} WHERE accnt_num=#{accnt_num}
+	</select>
+	
 	<select id="editProfile" parameterType="com.enstagram.model.EnstaAccount">
 		UPDATE ensta_account SET profile=#{profile} WHERE id=#{id}
 	</select>

@@ -25,6 +25,8 @@ public interface EnstaMapper {
 	EnstaAccount getAccount(String id);
 	
 	public Integer getAccountNum (String id);
+
+	void editAccount(EnstaAccount enstaAccount);
 	
 	EnstaAccount editProfile(EnstaAccount enstaAccount);
 

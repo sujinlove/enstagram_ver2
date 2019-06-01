@@ -76,6 +76,14 @@ public class EnstaService {
 	}
 	
 	/*
+	 * Edit Account
+	 */
+	
+	public void editAccount(EnstaAccount enstaAccount) {
+		enstaMapper.editAccount(enstaAccount);
+	}
+	
+	/*
 	 * Edit Profile
 	 */
 	

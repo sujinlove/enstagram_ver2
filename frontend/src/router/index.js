@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import MainPage from '@/views/MainPage'
 import MyPage from '@/views/MyPage'
 import AccountPage from '@/views/AccountPage'
+import AccountEditPage from '@/views/AccountEditPage'
 import FeedPage from '@/views/FeedPage'
 import Heart from '@/components/Heart'
 import NotFound from '@/views/NotFound'
@@ -32,6 +33,11 @@ export default new Router({
       path: '/account',
       name: 'AccountPage',
       component: AccountPage
+    },
+    {
+      path: '/account/edit',
+      name: 'AccountEditPage',
+      component: AccountEditPage
     },
     {
       path: '/feed/:feed_num',

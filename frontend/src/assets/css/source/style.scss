@@ -144,6 +144,28 @@
       }
     }
   }
+
+  .account-edit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 16px;
+    border: 1px solid #dbdbdb;
+    background: $panel__background-color;
+
+    > .profile,
+    > form {
+      width: 70%;
+    }
+
+    .profile {
+      margin: 20px 0 16px;
+    }
+
+    .action.primary {
+      width: auto;
+    }
+  }
 }
 
 
@@ -156,6 +178,29 @@
   .follow-list {
     border: 1px solid $border-color__base;
     border-radius: 3px;
+  }
+
+  .account-edit {
+    align-items: center;
+    font-size: $font-size__m;
+
+    .profile {
+      .my-pic {
+        width: $form-field-type-label-inline__width;
+        padding-right: 15px;
+        box-sizing: border-box;
+        text-align: right;
+      }
+
+      .my-name {
+        margin-left: 0;
+        font-weight: $font-weight__regular;
+      }
+    }
+
+    .action.primary {
+      margin-left: $form-field-type-label-inline__width;
+    }
   }
 }
 

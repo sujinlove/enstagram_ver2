@@ -52,6 +52,7 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
     .top-container {
         padding-left: $layout__width-xs-indent;
         padding-right: $layout__width-xs-indent;
+        box-sizing: border-box;
     }
 
     .page-main {

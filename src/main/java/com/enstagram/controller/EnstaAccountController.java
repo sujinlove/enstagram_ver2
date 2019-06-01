@@ -102,6 +102,15 @@ public class EnstaAccountController {
 	public Map<String, Object> getAccountInfo(@PathVariable int accnt_num) {
 		return enstaService.getAccountInfo(accnt_num);
 	}
+	
+	/*
+	 * Edit Account
+	 */
+
+	@RequestMapping(value = "/api/account/edit", method = { RequestMethod.POST, RequestMethod.GET })
+	public void editAccount(@RequestBody EnstaAccount enstaAccount) {
+		enstaService.editAccount(enstaAccount);
+	}
 
 	/*
 	 * Edit Profile

@@ -14,6 +14,7 @@
     <div class="my-info">
       <div class="my-profile">
         <div class="my-name"><span>{{ this.$store.state.user.id }}</span></div>
+        <router-link to="/account/edit" class="my-edit-btn">프로필 편집</router-link>
         <div class="my-btn">
           <div class="icon-sprite ico-glyph setting" @click="editUserInfo"><span>setting</span></div>
         </div>
@@ -36,12 +37,30 @@
       </div>
       <div class="my-des">{{ this.$store.state.user.name }}</div>
     </div>
+    <div class="my-des">{{ this.$store.state.user.name }}</div>
+    <div class="my-count" v-if="page === 'MyPage'">
+      <ul>
+        <li>
+          <span class="title">게시물</span>
+          <span class="count">{{ this.$store.state.user.feedList.length }}</span>
+        </li>
+        <li>
+          <span class="title">팔로워</span>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <span class="title">팔로우</span>
+          <span class="count">1</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
+  props: ['page'],
   data () {
     return {
       file: ''

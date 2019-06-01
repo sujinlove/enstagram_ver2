@@ -14,6 +14,11 @@
     margin-bottom: 44px;
     align-items: center;
 
+    > .my-count,
+    > .my-des {
+        display: none;
+    }
+
     .my-pic {
       flex-grow: 1;
       text-align: center;
@@ -32,8 +37,21 @@
         margin-bottom: 20px;
       }
 
-      .my-name, .my-btn {
+      .my-name, .my-edit-btn, .my-btn {
         @extend %abs-item-vertical-align;
+      }
+
+      .my-btn {
+        margin-left: 8px;
+      }
+
+      .my-edit-btn {
+        padding: 5px 9px;
+        border: 1px solid #dbdbdb;
+        border-radius: 4px;
+        text-align: center;
+        font-size: $font-size__base;
+        font-weight: $font-weight__semibold;
       }
 
       .my-name {
@@ -43,16 +61,33 @@
             font-size: 28px;
         }
       }
+    }
 
-      .feed-count,
-      .follower-count,
-      .follow-count {
+    .my-count {
+      .count {
         font-weight: $font-weight__semibold;
       }
+    }
+
+    .my-des {
+      font-weight: $font-weight__semibold;
     }
   }
 }
 
+//
+//  Desktop
+//  _____________________________________________
+
+@media only screen and (min-width: ($screen__m)) {
+  .profile {
+    .my-info {
+      .my-edit-btn {
+          margin-left: 20px;
+      }
+    }
+  }
+}
 
 //
 //  Mobile
@@ -60,8 +95,73 @@
 
 @media only screen and (max-width: ($screen__m - 1)) {
   .profile {
-    margin: 30px 0;
+    flex-wrap: wrap;
+    margin: 30px 0 0;
     padding: 0 16px;
     box-sizing: border-box;
+
+    .my-info {
+      margin-left: 28px;
+
+      .my-des,
+      .my-count {
+        display: none;
+      }
+
+      .my-profile {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .my-edit-btn {
+          order: 1;
+          width: 100%;
+          margin-top: 12px;
+        }
+      }
+    }
+
+    .my-pic {
+      max-width: 77px;
+      text-align: left;
+
+      img {
+        width: 77px;
+        height: 77px;
+      }
+    }
+
+    > .my-count,
+    > .my-des {
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+    }
+
+    > .my-count {
+      ul {
+        display: flex;
+        margin: 0 -16px;
+        padding: 12px 0;
+        border-top: 1px solid $border-color__base;
+
+        li {
+          flex: 1;
+          text-align: center;
+
+          span {
+            display: block;
+
+            &.title {
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+
+    > .my-des {
+      padding: 20px 0;
+    }
   }
 }

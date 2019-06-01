@@ -8,6 +8,7 @@ public class EnstaAccount {
 	private String email;
 	private String passwd;
 	private String profile = "/profile/default.jpg";
+	private String des;
     private int role = 1;
 
 	public EnstaAccount() {}
@@ -63,6 +64,14 @@ public class EnstaAccount {
 
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+	
+	public String getDes() {
+		return des;
+	}
+
+	public void setDes(String des) {
+		this.des = des;
 	}
 	
 	public int getRole() {
