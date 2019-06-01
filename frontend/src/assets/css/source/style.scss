@@ -148,10 +148,13 @@
   .account-edit {
     display: flex;
     flex-direction: column;
-    width: 100%;
     padding-bottom: 16px;
     border: 1px solid #dbdbdb;
     background: $panel__background-color;
+
+    &.container {
+      width: 100%;
+    }
 
     > .profile,
     > form {

@@ -29,6 +29,16 @@
       }
     }
 
+    .my-des {
+      p {
+        margin-bottom: 0;
+
+        &:last-child {
+          font-weight: $font-weight__regular;
+        }
+      }
+    }
+
     .my-info {
       flex-grow: 2;
       font-size: $font-size__m;
@@ -101,6 +111,7 @@
     box-sizing: border-box;
 
     .my-info {
+      flex: 1;
       margin-left: 28px;
 
       .my-des,

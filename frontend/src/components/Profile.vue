@@ -1,5 +1,6 @@
 <template>
   <div class="profile">
+    <!-- Desktop -->
     <div class="my-pic">
       <div class="my-pic-inner" v-if="this.$store.state.user.profile =='/profile/default.jpg'" >
         <img :src="this.$store.state.user.profile" :alt="this.$store.state.user.id + '님의 프로필 사진'" @click="UploadBtn"/>
@@ -35,9 +36,17 @@
           </li>
         </ul>
       </div>
-      <div class="my-des">{{ this.$store.state.user.name }}</div>
+      <div class="my-des">
+        <p>{{ this.$store.state.user.name }}</p>
+        <p>{{ this.$store.state.user.des }}</p>
+      </div>
     </div>
-    <div class="my-des">{{ this.$store.state.user.name }}</div>
+    <!-- Desktop End -->
+    <!-- Mobile -->
+    <div class="my-des">
+      <p>{{ this.$store.state.user.name }}</p>
+      <p>{{ this.$store.state.user.des }}</p>
+    </div>
     <div class="my-count" v-if="page === 'MyPage'">
       <ul>
         <li>
@@ -54,6 +63,7 @@
         </li>
       </ul>
     </div>
+    <!-- Mobile End -->
   </div>
 </template>
 
