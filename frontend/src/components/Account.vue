@@ -7,7 +7,7 @@
         <div class="account-form">
             <h2>친구들의 사진과 동영상을 보려면 가입하세요.</h2>
           <form class="form" name="form">
-            <fieldset name="fieldset">
+            <fieldset class="fieldset">
               <input name="accnt_num" type="hidden" v-model="accnt_num"/>{{ accnt_num }}
               <div class="field email">
                 <label for="login-email">이메일 주소</label>

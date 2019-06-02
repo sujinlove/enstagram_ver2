@@ -23,16 +23,16 @@
       <div class="my-count">
         <ul>
           <li>
-            <span>게시물</span>
-            <span class="feed-count">{{ this.$store.state.user.feedList.length }}</span>
+            <span class="title">게시물</span>
+            <span class="count">{{ this.$store.state.user.feedList.length }}</span>
           </li>
           <li>
-            <span>팔로워</span>
-            <span class="follower-count">1</span>
+            <span class="title">팔로워</span>
+            <span class="count">1</span>
           </li>
           <li>
-            <span>팔로우</span>
-            <span class="follow-count">1</span>
+            <span class="title">팔로우</span>
+            <span class="count">1</span>
           </li>
         </ul>
       </div>

@@ -92,33 +92,27 @@
 
       a {
         color: #3897f0;
-        text-decoration: none;
       }
     }
 
     .account-form {
       .form {
         fieldset {
-          input {
-            width: 100%;
-            height: 38px;
-            padding: 0 8px;
-            background: #fafafa;
-            border: 0;
-            font-size: 12px;
-            box-sizing: border-box;
-            border-radius: 3px;
-            border: 1px solid #efefef;
+          font-size: 12px;
 
-            &:focus {
-              border-color: #b2b2b2;
-            }
+          input {
+            @include lib-form-element-input-text(
+              $_height: 38px,
+              $_padding: 0 8px,
+              $_background: #fafafa,
+              $_border-radius: 3px,
+              $_focus-border: 1px solid #b2b2b2
+            );
           }
 
           label {
             position: absolute;
             left: 8px;
-            font-size: 12px;
             color: #999;
             line-height: 38px;
             pointer-events: none;
@@ -167,6 +161,10 @@
 
     .action.primary {
       @extend %abs-button-desktop;
+
+      &:active {
+        opacity: .7;
+      }
     }
   }
 }
