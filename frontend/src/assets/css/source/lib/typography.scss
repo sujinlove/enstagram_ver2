@@ -19,8 +19,7 @@
         src: url('${font-path}.eot?#iefix') format('embedded-opentype'),
         url('${font-path}.woff2') format('woff2'),
         url('${font-path}.woff') format('woff'),
-        url('${font-path}.ttf') format('truetype'),
-        url('${font-path}.svg#${family-name}') format('svg');
+        url('${font-path}.ttf') format('truetype');
         font-weight: $font-weight;
         font-style: $font-style;
     }
@@ -282,73 +281,6 @@
 }
 
 //
-//  Code (inline and block)
-//  ---------------------------------------------
-
-@mixin lib-typography-code(
-    $_font-family-monospace: $font-family__monospace,
-    $_code-background-color: $code__background-color,
-    $_code-color: $code__color,
-    $_code-font-size: $code__font-size,
-    $_code-padding: $code__padding,
-    $_kbd-background-color: $kbd__background-color,
-    $_kbd-color: $kbd__color,
-    $_kbd-font-size: $code__font-size,
-    $_kbd-padding: $code__padding,
-    $_pre-background-color: $pre__background-color,
-    $_pre-border-color: $pre__border-color,
-    $_pre-border-width: $pre__border-width,
-    $_pre-color: $pre__color,
-    $_pre-font-size: $code__font-size,
-    $_pre-line-height: $line-height__base,
-    $_pre-margin: 0 0 $indent__s,
-    $_pre-padding: $indent__s
-) {
-    code,
-    kbd,
-    pre,
-    samp {
-        font-family: $_font-family-monospace;
-    }
-
-    //  Inline code
-    code {
-        background: $_code-background-color;
-        color: $_code-color;
-        padding: $_code-padding;
-        white-space: nowrap;
-    }
-
-    //  User input typically entered via keyboard
-    kbd {
-        background: $_kbd-background-color;
-        color: $_kbd-color;
-        padding: $_kbd-padding;
-    }
-
-    //  Blocks of code
-    pre {
-        background: $_pre-background-color;
-        border: $_pre-border-width solid $_pre-border-color;
-        color: $_pre-color;
-        line-height: $_pre-line-height;
-        margin: $_pre-margin;
-        padding: $_pre-padding;
-        display: block;
-        word-wrap: break-word;
-
-        code {
-            background-color: transparent;
-            border-radius: 0;
-            color: inherit;
-            font-size: inherit;
-            padding: 0;
-            white-space: pre-wrap;
-        }
-    }
-}
-
-//
 //  All typography
 //  ---------------------------------------------
 
@@ -356,5 +288,4 @@
     @include lib-typography__base();
     @include lib-typography-links();
     @include lib-typography-lists();
-    @include lib-typography-code();
 }

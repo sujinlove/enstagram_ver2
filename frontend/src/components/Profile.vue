@@ -14,7 +14,7 @@
     </div>
     <div class="my-info">
       <div class="my-profile">
-        <div class="my-name"><span>{{ this.$store.state.user.id }}</span></div>
+        <div class="my-id"><span>{{ this.$store.state.user.id }}</span></div>
         <router-link to="/account/edit" class="my-edit-btn">프로필 편집</router-link>
         <div class="my-btn">
           <div class="icon-sprite ico-glyph setting" @click="editUserInfo"><span>setting</span></div>

@@ -207,5 +207,20 @@ $active-nav-indent: 54px;
     nav + span {
       margin-left: auto;
     }
+
+    .page-layout-2columns-right &,
+    .page-layout-2columns-left & {
+      padding-top: 0;
+
+      .container {
+        padding: 0;
+      }
+
+      nav,
+      nav + span {
+        color: #c9c9c9;
+        font-weight: $font-weight__regular;
+      }
+    }
   }
 }

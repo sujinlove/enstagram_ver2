@@ -55,7 +55,7 @@
         margin-bottom: 20px;
       }
 
-      .my-name, .my-edit-btn, .my-btn {
+      .my-id, .my-edit-btn, .my-btn {
         @extend %abs-item-vertical-align;
       }
 
@@ -76,7 +76,7 @@
         }
       }
 
-      .my-name {
+      .my-id {
         font-weight: $font-weight__light;
 
         > span {

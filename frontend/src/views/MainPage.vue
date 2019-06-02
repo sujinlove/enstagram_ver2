@@ -9,7 +9,10 @@
             <img :src="this.$store.state.user.profile" alt="ensta00_1님의 프로필 사진" />
           </div>
         </div>
-        <div class="my-name"><span>{{ this.$store.state.user.id }}</span></div>
+        <div class="my-info">
+          <p class="my-id">{{ this.$store.state.user.id }}</p>
+          <p class="my-name">{{ this.$store.state.user.name }}</p>
+        </div>
       </div>
       <follower-list slot="sidebar"></follower-list>
       <app-footer slot="sidebar"/>
@@ -80,6 +83,19 @@ export default {
       img {
         width: 50px;
         height: 50px;
+      }
+    }
+
+    &-info {
+      p {
+        display: block;
+        margin-bottom: 0;
+
+        &.my-name {
+          font-size: 12px;
+          font-weight: 400;
+          color: #999;
+        }
       }
     }
   }

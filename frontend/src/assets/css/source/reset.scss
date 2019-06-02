@@ -51,6 +51,7 @@ button {
 }
 input, select, textarea, button {
 	outline: none;
+  -webkit-appearance: none;
 }
 @include lib-typography-all();
 @include lib-form-element-all();
