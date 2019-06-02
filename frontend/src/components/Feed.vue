@@ -28,35 +28,10 @@
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
     </div>
   </div>
-  <!--When Not Feed Comment-->
+  <!--When Not Edit Feed-->
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <!--Feed Comment in Feed Page-->
-    <div class="feed-comments feed-content-inner" v-if="page === 'FeedPage'">
-      <ul>
-        <li class="feed-comment" v-if="this.feed.description !== ''">
-          <div class="user-pic">
-            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
-              <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
-            </router-link>
-          </div>
-          <div class="user-id">
-            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
-            <span class="feed-text">{{this.feed.description}}</span>
-          </div>
-        </li>
-        <li class="user-comment">
-          <div class="user-pic">
-            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
-              <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
-            </router-link>
-          </div>
-          <div class="user-id">
-            <router-link to= "" class="user-id">jennierubyjane</router-link>
-            <span class="user-text">나는 메인 제니!</span>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <feed-comments :user="user" :feed="feed" :page="page"/>
     <!--Feed Comment in Feed Page End-->
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
@@ -99,11 +74,13 @@
     </div>
     <!--Feed Content in All Page End-->
     <div class="comment">
-      <textarea placeholder="댓글 달기..."/>
-      <button type="button">게시</button>
+      <form>
+        <textarea placeholder="댓글 달기..."/>
+        <button type="button">게시</button>
+      </form>
     </div>
   </div>
-  <!--When Not Feed Comment End-->
+  <!--When Not Edit Feed End-->
   <!--When Edit Feed Comment-->
   <div class="feed-content edit-comment" v-else>
     <textarea placeholder="문구 입력..." v-model="feed.description"/>
@@ -114,8 +91,12 @@
 
 <script>
 import axios from 'axios'
+import FeedComments from '../components/FeedComments'
 export default {
   props: ['page', 'feed_num'],
+  components: {
+    FeedComments
+  },
   data () {
     return {
       feed: {},

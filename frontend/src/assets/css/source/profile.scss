@@ -8,6 +8,15 @@
 //  Common
 //  _____________________________________________
 @if ($media-common == true) {
+  .my-pic,
+  .user-pic {
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   .profile {
     display: flex;
     width: 100%;
@@ -20,13 +29,9 @@
     }
 
     .my-pic {
-      flex-grow: 1;
+      width: 150px;
+      height: 150px;
       text-align: center;
-
-      img {
-        width: 150px;
-        height: 150px;
-      }
     }
 
     .my-des {
@@ -85,6 +90,17 @@
       }
     }
   }
+
+  .feed-comment-list {
+    .my-pic,
+    .user-pic {
+      width: 32px;
+      height: 32px;
+      .feed-comment-view & {
+        margin-right: 16px;
+      }
+    }
+  }
 }
 
 //
@@ -93,6 +109,10 @@
 
 @media only screen and (min-width: ($screen__m)) {
   .profile {
+    .my-pic {
+      margin: 0 70px;
+    }
+
     .my-info {
       .my-edit-btn {
           margin-left: 20px;
@@ -135,13 +155,10 @@
     }
 
     .my-pic {
+      width: 77px;
       max-width: 77px;
+      height: 77px;
       text-align: left;
-
-      img {
-        width: 77px;
-        height: 77px;
-      }
     }
 
     > .my-count,

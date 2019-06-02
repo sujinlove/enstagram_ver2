@@ -93,23 +93,8 @@
       }
 
       .comment {
-        display: flex;
-        align-items: center;
         height: 56px;
         border-top: 1px solid $border-color__base;
-
-        textarea {
-          height: 18px;
-          max-height: 80px;
-          border: none;
-          box-sizing: content-box;
-          resize: none;
-        }
-
-        button {
-          border: none;
-          white-space: nowrap;
-        }
       }
     }
 
@@ -201,6 +186,68 @@
 
     .feed-comments {
       flex: 1;
+    }
+  }
+
+
+  .comment {
+    display: flex;
+    align-items: center;
+
+    form {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      padding: 12px 16px;
+      background: #fff;
+    }
+
+    textarea {
+      height: 18px;
+      max-height: 80px;
+      padding: 0;
+      border: none;
+      box-sizing: content-box;
+      resize: none;
+
+      &:focus {
+        border: none;
+      }
+    }
+
+    button {
+      border: none;
+      white-space: nowrap;
+    }
+  }
+  .feed-comment-view {
+    .feed-comment {
+      border-bottom: 1px solid $border-color__base;
+    }
+  }
+
+  .feed-comment-list {
+    .comment {
+      padding: 8px 16px;
+      background: #efefef;
+
+      form {
+        border: 1px solid #dbdbdb;
+        border-radius: 30px;
+
+        textarea {
+          height: 18px;
+        }
+
+        button {
+        }
+      }
+    }
+
+    .feed-comment,
+    .user-comment {
+      margin-bottom: 0;
+      padding: 12px 16px;
     }
   }
 }

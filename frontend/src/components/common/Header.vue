@@ -14,6 +14,13 @@
             </button>
           </li>
         </ul>
+        <!--Feed Comment Page-->
+        <ul class="container" v-if="page === 'FeedCommentPage'">
+          <li class="back">
+            <button class="icon-sprite ico-glyph-3 back" @click="goToBack"><span>back</span></button>
+          </li>
+          <li class="page-title"><h1>댓글</h1></li>
+        </ul>
         <!--Feed Edit-->
         <ul class="container" v-if="this.$store.state.editFeed === true">
           <li class="back">
@@ -29,7 +36,7 @@
           </li>
         </ul>
         <!--Common Page-->
-        <ul class="container" v-if="page !== 'FeedUploadPage' && this.$store.state.editFeed !== true">
+        <ul class="container" v-if="page !== 'FeedUploadPage' && page !== 'FeedCommentPage' && this.$store.state.editFeed !== true">
           <li class="logo">
             <router-link to ="/" class="icon-sprite ico-glyph instagram-logo_ver1"><span>logo</span></router-link>
             <div class="bar"><span>bar</span></div>

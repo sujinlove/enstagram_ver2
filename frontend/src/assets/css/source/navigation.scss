@@ -83,7 +83,7 @@ $active-nav-indent: 54px;
           }
 
           &.back {
-            flex: 1;
+            width: 24px;
           }
 
           &.page-title {
@@ -94,7 +94,6 @@ $active-nav-indent: 54px;
           }
 
           &.complete {
-            flex: 1;
             text-align: right;
 
             .upload-btn {
@@ -199,6 +198,11 @@ $active-nav-indent: 54px;
 //  Desktop
 //  _____________________________________________
 @media only screen and (min-width: ($screen__m)) {
+  header {
+    .container {
+      max-width: 100%;
+    }
+  }
   footer {
     .container {
       display: flex;

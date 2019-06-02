@@ -161,10 +161,6 @@
 
     .action.primary {
       @extend %abs-button-desktop;
-
-      &:active {
-        opacity: .7;
-      }
     }
   }
 }
