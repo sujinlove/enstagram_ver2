@@ -349,82 +349,6 @@
 }
 
 //
-//  Blockquotes
-//  ---------------------------------------------
-
-@mixin lib-typography-blockquote(
-    $_blockquote-border-color: $blockquote__border-color,
-    $_blockquote-border-width: $blockquote__border-width,
-    $_blockquote-font-size: $blockquote__font-size,
-    $_blockquote-font-style: $blockquote__font-style,
-    $_blockquote-margin: $blockquote__margin,
-    $_blockquote-padding: $blockquote__padding,
-    $_blockquote-small-before-content: $blockquote__content-before,
-    $_blockquote-small-color: $blockquote-small__color,
-    $_blockquote-small-font-size: $blockquote-small__font-size,
-    $_blockquote-small-line-height: $line-height__base,
-    $_blockquote-cite: $cite__font-style,
-    $_cite: $cite__font-style
-) {
-    blockquote {
-        border-left: $_blockquote-border-width solid $_blockquote-border-color;
-        margin: $_blockquote-margin;
-        padding: $_blockquote-padding;
-        @include lib-typography(
-            $_font-size: $_blockquote-font-size,
-            $_font-style: $_blockquote-font-style
-        );
-
-        p,
-        ul,
-        ol {
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-
-        footer,
-        small,
-        .small {
-            color: $_blockquote-small-color;
-            line-height: $_blockquote-small-line-height;
-            display: block;
-
-            &:before {
-                content: $_blockquote-small-before-content;
-            }
-        }
-
-        cite {
-            font-style: $_blockquote-cite;
-        }
-    }
-
-    //  Quotes
-    blockquote {
-        &:before,
-        &:after {
-            content: '';
-        }
-    }
-
-    q {
-        quotes: none;
-
-        &:before,
-        &:after {
-            content: '';
-            content: none;
-        }
-    }
-
-    //  Undo browser default styling
-    cite {
-        font-style: $_cite;
-    }
-}
-
-//
 //  All typography
 //  ---------------------------------------------
 
@@ -433,5 +357,4 @@
     @include lib-typography-links();
     @include lib-typography-lists();
     @include lib-typography-code();
-    @include lib-typography-blockquote();
 }

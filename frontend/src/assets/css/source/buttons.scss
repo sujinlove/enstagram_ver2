@@ -20,10 +20,6 @@
         }
     }
 
-    a.action.primary {
-        @include lib-link-as-button();
-    }
-
     .action.primary {
         @include lib-button-primary();
     }

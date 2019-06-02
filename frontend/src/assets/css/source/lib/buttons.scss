@@ -32,15 +32,6 @@
     $_button-color-active: $button__active__color,
     $_button-background-active: $button__active__background,
     $_button-border-active: $button__active__border,
-
-    $_button-gradient: $button__gradient,
-    $_button-gradient-direction: $button__gradient-direction,
-    $_button-gradient-color-start: $button__gradient-color-start,
-    $_button-gradient-color-end: $button__gradient-color-end,
-    $_button-gradient-color-start-hover: $button__hover__gradient-color-start,
-    $_button-gradient-color-end-hover: $button__hover__gradient-color-end,
-    $_button-gradient-color-start-active: $button__active__gradient-color-start,
-    $_button-gradient-color-end-active: $button__active__gradient-color-end,
 ) {
     background-image: none; // Reset unusual Firefox-on-Android default style
     background: $_button-background;
@@ -122,21 +113,6 @@
         $_button-padding: $_button-s-padding
     );
     font-size: $_button-s-font-size;
-}
-
-//
-//  Link as button
-//  ---------------------------------------------
-
-@mixin lib-link-as-button() {
-    display: $button__display;
-    text-decoration: none;
-
-    &:hover,
-    &:active,
-    &:focus {
-        text-decoration: none;
-    }
 }
 
 //
@@ -238,20 +214,12 @@
     $_button-color: $button-primary__color,
     $_button-background: $button-primary__background,
     $_button-border: $button-primary__border,
-    $_button-gradient-color-start: $button-primary__gradient-color-start,
-    $_button-gradient-color-end: $button-primary__gradient-color-end,
     $_button-color-hover: $button-primary__hover__color,
     $_button-background-hover: $button-primary__hover__background,
     $_button-border-hover: $button-primary__hover__border,
-    $_button-gradient-color-start-hover: $button-primary__hover__gradient-color-start,
-    $_button-gradient-color-end-hover: $button-primary__hover__gradient-color-end,
     $_button-color-active: $button-primary__active__color,
     $_button-background-active: $button-primary__active__background,
-    $_button-border-active: $button-primary__active__border,
-    $_button-gradient-color-start-active: $button-primary__active__gradient-color-start,
-    $_button-gradient-color-end-active: $button-primary__active__gradient-color-end,
-    $_button-gradient: $button-primary__gradient,
-    $_button-gradient-direction: $button-primary__gradient-direction
+    $_button-border-active: $button-primary__active__border
 ) {
     @include lib-button(
         $_button-line-height: $_button-line-height,
@@ -266,65 +234,6 @@
         $_button-border-hover: $_button-border-hover,
         $_button-color-active: $_button-color-active,
         $_button-background-active: $_button-background-active,
-        $_button-border-active: $_button-border-active,
-        $_button-gradient: $_button-gradient,
-        $_button-gradient-direction: $_button-gradient-direction,
-        $_button-gradient-color-start: $_button-gradient-color-start,
-        $_button-gradient-color-end: $_button-gradient-color-end,
-        $_button-gradient-color-start-hover: $_button-gradient-color-start-hover,
-        $_button-gradient-color-end-hover: $_button-gradient-color-end-hover,
-        $_button-gradient-color-start-active: $_button-gradient-color-start-active,
-        $_button-gradient-color-end-active: $_button-gradient-color-end-active
+        $_button-border-active: $_button-border-active
      );
-}
-
-//
-//  Button revert secondary color
-//  ---------------------------------------------
-
-@mixin lib-button-revert-secondary-color(
-    $_button-color: $button__color,
-    $_button-background: $button__background,
-    $_button-border: $button__border,
-
-    $_button-color-hover: $button__hover__color,
-    $_button-background-hover: $button__hover__background,
-    $_button-border-hover: $button__hover__border,
-
-    $_button-color-active: $button__active__color,
-    $_button-background-active: $button__active__background,
-    $_button-border-active: $button__active__border
-) {
-    background: $_button-background;
-    border: $_button-border;
-    color: $_button-color;
-
-    &:focus,
-    &:active {
-        background: $_button-background-active;
-        border: $_button-border-active;
-        color: $_button-color-active;
-    }
-
-    &:hover {
-        background: $_button-background-hover;
-        border: $_button-border-hover;
-        color: $_button-color-hover;
-    }
-}
-
-//
-//  Button revert secondary size
-//  ---------------------------------------------
-
-@mixin lib-button-revert-secondary-size(
-    $_button-font-size: $button__font-size,
-    $_button-line-height: $button__line-height,
-    $_button-padding: $button__padding
-) {
-    font-size: $_button-font-size;
-    @include lib-button-size(
-        $_button-line-height: $_button-line-height,
-        $_button-padding: $_button-padding
-    )
 }

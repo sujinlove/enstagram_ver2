@@ -34,7 +34,3 @@ $layout-column-main__width-1: 100%;
 $layout-column-main__width-2-left: $layout-column__width - $layout-column__left-width;
 $layout-column-main__width-2-right: $layout-column__width - $layout-column__right-width;
 $layout-column-main__width-3: $layout-column__width - $layout-column__left-width - $layout-column__right-width;
-
-//  Checkout columns width
-$layout-column-checkout__width-left: 3;
-$layout-column-checkout__width-main: $layout-column__width - $layout-column-checkout__width-left;

@@ -57,24 +57,14 @@ $button-primary__gradient-direction: null;
 $button-primary__background: $color-blue1;
 $button-primary__border: 1px solid $color-blue1;
 $button-primary__color: $color-white;
-$button-primary__gradient-color-start: null;
-$button-primary__gradient-color-end: null;
 
 $button-primary__hover__background: $color-blue2;
 $button-primary__hover__border: 1px solid $color-blue2;
 $button-primary__hover__color: $button-primary__color;
-$button-primary__hover__gradient-color-start: null;
-$button-primary__hover__gradient-color-end: null;
 
 $button-primary__active__background: $button-primary__hover__background;
 $button-primary__active__border: $button-primary__hover__border;
 $button-primary__active__color: $button-primary__color;
-$button-primary__active__gradient-color-start: null;
-$button-primary__active__gradient-color-end: null;
-
-//  Gradient button
-$button__gradient: null; // [true|false] - button has a gradient background
-$button__gradient-direction: null; // button gradient direction if button has a gradient background
 
 //  Large button
 $button__font-size__l: $font-size__l;

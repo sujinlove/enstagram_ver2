@@ -74,24 +74,6 @@ $form-calendar-icon__color: $primary__color;
         padding: 0;
     }
 
-    .field {
-        &.date {
-            @extend %abs-field-date;
-
-            .time-picker {
-                display: inline-block;
-                margin-top: $indent__s;
-                white-space: nowrap;
-            }
-        }
-
-        .message {
-            &.warning {
-                margin-top: $indent__s;
-            }
-        }
-    }
-
     .field-error,
     div.mage-error[generated] {
         margin-top: 7px;

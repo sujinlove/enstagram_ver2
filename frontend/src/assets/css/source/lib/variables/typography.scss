@@ -22,8 +22,6 @@ $font-family__base: $font-family__sans-serif;
 $root__font-size: 62.5%; // Defines ratio between root font size and base font size, 1rem = 10px
 $font-size-ratio__base: 1.4; // Defines ratio of the root font-size to the base font-size
 
-$font-size-unit: rem; // The unit to which most typography values will be converted by default
-
 $font-size__base: 14px; // Base font size value in <b>px</b>
 $font-size__xl: ceil(1.5 * $font-size__base); // 21px
 $font-size__l: ceil(1.25 * $font-size__base); // 18px
@@ -80,13 +78,13 @@ $link__color: $text__color;
 $link__text-decoration: none;
 
 $link__visited__color: $link__color;
-$link__visited__text-decoration: none;
+$link__visited__text-decoration: $link__text-decoration;
 
 $link__hover__color: $color-blue2;
-$link__hover__text-decoration: underline;
+$link__hover__text-decoration: $link__text-decoration;
 
 $link__active__color: $active__color;
-$link__active__text-decoration: underline;
+$link__active__text-decoration: $link__text-decoration;
 
 //
 //  Focus
@@ -209,18 +207,6 @@ $pre__color: $primary__color__darker;
 
 $kbd__background-color: $panel__background-color;
 $kbd__color: $primary__color__darker;
-
-//  Blockquote
-$blockquote__border-color: $border-color__base;
-$blockquote__border-width: 0;
-$blockquote__content-before: '\2014 \00A0';
-$blockquote__font-size: $font-size__base;
-$blockquote__font-style: $font-style__emphasis;
-$blockquote__margin: 0 0 $indent__base $indent__xl;
-$blockquote__padding: 0;
-
-$blockquote-small__color: $primary__color;
-$blockquote-small__font-size: $font-size__xs;
 
 $cite__font-style: $font-style__base;
 

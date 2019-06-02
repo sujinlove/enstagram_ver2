@@ -55,8 +55,8 @@ $font-size__base: 14px;
 //  ---------------------------------------------
 
 $link__color: $text-color;
-$link__hover__color: $active__color;
-$link__active__color: $link__hover__color;
+$link__hover__color: $link__color;
+$link__active__color: $link__color;
 $link__text-decoration: none;
 $link__visited__text-decoration: $link__text-decoration;
 

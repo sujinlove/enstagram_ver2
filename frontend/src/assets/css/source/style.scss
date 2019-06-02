@@ -166,7 +166,7 @@
     }
 
     .action.primary {
-      width: auto;
+      @extend %abs-button-desktop;
     }
   }
 }
