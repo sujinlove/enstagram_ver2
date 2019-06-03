@@ -22,6 +22,8 @@ public interface EnstaMapper {
 
 	public Map<String, Object> getAccountInfo(int accnt_num);
 	
+	public Integer checkAccountId (String id);
+	
 	EnstaAccount getAccount(String id);
 	
 	public Integer getAccountNum (String id);

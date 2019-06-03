@@ -238,8 +238,16 @@
     }
 
     button {
+      padding: 0;
       border: none;
       white-space: nowrap;
+      font-size: $font-size__base;
+      font-weight: $font-weight__semibold;
+      color: $active__color;
+
+      &:disabled {
+        opacity: .3;
+      }
     }
   }
 

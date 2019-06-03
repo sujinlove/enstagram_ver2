@@ -56,7 +56,7 @@
 
     .my-account {
       height: 365px;
-      padding: 10px 40px 30px;
+      padding: 10px 40px 50px;
 
       .logo {
         margin: 22px auto 12px;
@@ -91,7 +91,7 @@
       }
 
       a {
-        color: #3897f0;
+        color: $active__color;
       }
     }
 

@@ -173,4 +173,9 @@ public class EnstaAccountController {
 		enstaAccount.setId(authentication.getName());
 		enstaService.editProfile(enstaAccount);
 	}
+	
+	@RequestMapping(value = "/api/check/id", method = { RequestMethod.POST, RequestMethod.GET })
+	public Integer checkAccountId (@RequestBody EnstaAccount enstaAccount) {
+		return enstaService.checkAccountId(enstaAccount.getId());
+	}
 }

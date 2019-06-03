@@ -26,6 +26,14 @@ public class EnstaService {
 //	}
 	
 	/*
+	 * Check Account Id
+	 */
+
+	public Integer checkAccountId(String id) {
+		return enstaMapper.checkAccountId(id);
+	}
+	
+	/*
 	 * Get Account
 	 */
 

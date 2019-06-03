@@ -10,24 +10,25 @@
             <fieldset class="fieldset">
               <input name="accnt_num" type="hidden" v-model="accnt_num"/>{{ accnt_num }}
               <div class="field email">
-                <label for="login-email">이메일 주소</label>
-                <input id="login-email" name="email" type="email" v-model="email"/>
+                <label for="account-email">이메일 주소</label>
+                <input id="account-email" name="email" type="email" v-model="email"/>
               </div>
               <div class="field name">
-                <label for="login-name">성명</label>
-                <input id="login-name" name="name" type="text" v-model="name"/>
+                <label for="account-name">성명</label>
+                <input id="account-name" name="name" type="text" v-model="name"/>
               </div>
               <div class="field id">
-                <label for="login-id">사용자 이름</label>
-                <input id="login-id" name="id" type="text" maxlength="30" v-model="id"/>
+                <label for="account-id">사용자 이름</label>
+                <input id="account-id" name="id" type="text" maxlength="30" v-model="id"/>
               </div>
               <div class="field passwd">
-                <label for="login-passwd">비밀번호</label>
-                <input id="login-passwd" name="passwd" type="password" v-model="passwd"/>
+                <label for="account-passwd">비밀번호</label>
+                <input id="account-passwd" name="passwd" type="password" v-model="passwd"/>
               </div>
               <div class="field account_btn">
                 <button name="account_btn" type="button" @click="addSubmit" class="action primary">가입</button>
               </div>
+              <p class="message error">{{this.errorMsg}}</p>
             </fieldset>
           </form>
         </div>
@@ -48,12 +49,14 @@ export default {
       name: '',
       email: '',
       passwd: '',
-      account: []
+      account: [],
+      countId: 0,
+      errorMsg: ''
     }
   },
   watch: {
     id: function (newValue) {
-      this.changeValue('id', newValue)
+      this.checkId(newValue)
     },
     name: function (newValue) {
       this.changeValue('name', newValue)
@@ -72,16 +75,62 @@ export default {
       } else {
         document.querySelector('.field.' + inputId).classList.remove('active')
       }
+      if (inputId === 'id') {
+        if (value.length > 3 && this.countId === 0) {
+          document.querySelector('.field.' + inputId).classList.remove('error')
+          document.querySelector('.field.' + inputId).classList.add('accept')
+        } else {
+          document.querySelector('.field.' + inputId).classList.remove('accept')
+          document.querySelector('.field.' + inputId).classList.add('error')
+        }
+      }
+      if (inputId === 'passwd') {
+        if (value.length > 5) {
+          document.querySelector('.field.' + inputId).classList.remove('error')
+          document.querySelector('.field.' + inputId).classList.add('accept')
+        } else {
+          document.querySelector('.field.' + inputId).classList.remove('accept')
+          document.querySelector('.field.' + inputId).classList.add('error')
+        }
+      }
+      if (inputId === 'email') {
+        var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+        if (regExp.test(value)) {
+          document.querySelector('.field.' + inputId).classList.remove('error')
+          document.querySelector('.field.' + inputId).classList.add('accept')
+        } else {
+          document.querySelector('.field.' + inputId).classList.remove('accept')
+          document.querySelector('.field.' + inputId).classList.add('error')
+        }
+      }
     },
     addSubmit () {
-      axios.post('/api/account', {
-        accnt_num: this.accnt_num,
-        id: this.id,
-        name: this.name,
-        email: this.email,
-        passwd: this.passwd
+      var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+      if (this.id.length > 3 && regExp.test(this.email) && this.passwd.length > 5) {
+        axios.post('/api/account', {
+          accnt_num: this.accnt_num,
+          id: this.id,
+          name: this.name,
+          email: this.email,
+          passwd: this.passwd
+        }).then(response => {
+          window.location.href = '/'
+        }).catch(e => {
+          console.log('error: ' + e)
+        })
+      } else {
+        document.querySelector('.field.id').classList.add('error')
+        document.querySelector('.field.passwd').classList.add('error')
+        document.querySelector('.field.email').classList.add('error')
+        this.errorMsg = 'This field is required.'
+      }
+    },
+    checkId (value) {
+      axios.post('/api/check/id', {
+        id: value
       }).then(response => {
-        window.location.href = '/'
+        this.countId = response.data
+        this.changeValue('id', value)
       }).catch(e => {
         console.log('error: ' + e)
       })

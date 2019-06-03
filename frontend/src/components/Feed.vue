@@ -75,8 +75,8 @@
     <!--Feed Content in All Page End-->
     <div class="comment">
       <form>
-        <textarea placeholder="댓글 달기..."/>
-        <button type="button">게시</button>
+        <textarea v-model="comment" placeholder="댓글 달기..."/>
+        <button type="button" class="comment-btn" disabled>게시</button>
       </form>
     </div>
   </div>
@@ -100,7 +100,17 @@ export default {
   data () {
     return {
       feed: {},
-      user: {}
+      user: {},
+      comment: ''
+    }
+  },
+  watch: {
+    comment: function (newValue) {
+      if (newValue !== '') {
+        document.querySelector('.comment-btn').disabled = false
+      } else {
+        document.querySelector('.comment-btn').disabled = true
+      }
     }
   },
   created () {

@@ -113,4 +113,36 @@
       height: 51px;
     }
   }
+
+  .field {
+    &.error:after,
+    &.after:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 22px;
+      height: 22px;
+      background: url("assets/images/common/icon-sprite-core.png");
+      background-size: 410px 396px;
+    }
+
+    &.error:after {
+      background-position: -315px -296px;
+    }
+    
+    &.accept:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 22px;
+      height: 22px;
+      background: url("assets/images/common/icon-sprite-core.png");
+      background-size: 410px 396px;
+      background-position: -250px -231px;
+    }
+  }
 }

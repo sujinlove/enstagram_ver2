@@ -11,6 +11,10 @@
 	<insert id="createAccount" parameterType="com.enstagram.model.EnstaAccount">
 		INSERT INTO ensta_account(accnt_num, profile, id, name, email, passwd, role) VALUES(#{accnt_num}, #{profile}, #{id}, #{name}, #{email}, #{passwd}, #{role}) 
 	</insert>
+	
+	<select id="checkAccountId" resultType="Integer">
+		SELECT COUNT(*) FROM ensta_account WHERE id=#{id}
+	</select>
 
 	<select id="getAccount" resultType="com.enstagram.model.EnstaAccount">
 		SELECT * FROM ensta_account WHERE id=#{id}
