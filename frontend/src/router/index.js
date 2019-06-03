@@ -5,6 +5,7 @@ import MyPage from '@/views/MyPage'
 import AccountPage from '@/views/AccountPage'
 import AccountEditPage from '@/views/AccountEditPage'
 import FeedPage from '@/views/FeedPage'
+import FeedCommentPage from '@/views/FeedCommentPage'
 import Heart from '@/components/Heart'
 import NotFound from '@/views/NotFound'
 import FeedUploadPage from '@/views/FeedUploadPage'
@@ -49,6 +50,12 @@ export default new Router({
       path: '/feed/:feed_num/heart',
       name: 'HeartPage',
       component: Heart,
+      props: true
+    },
+    {
+      path: '/feed/:feed_num/comments',
+      name: 'FeedCommentPage',
+      component: FeedCommentPage,
       props: true
     },
     {

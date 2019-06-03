@@ -18,20 +18,27 @@
             <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
           </router-link>
         </div>
-        <div class="user-id">
+        <div class="user-text">
           <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
           <span class="feed-text">{{this.feed.description}}</span>
+          <div class="feed-others">
+            <time>1일</time>
+          </div>
         </div>
       </li>
       <li class="user-comment">
         <div class="user-pic">
-          <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
+          <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">
             <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
           </router-link>
         </div>
-        <div class="user-id">
+        <div class="user-text">
           <router-link to= "" class="user-id">jennierubyjane</router-link>
           <span class="user-text">나는 메인 제니!</span>
+          <div class="feed-others">
+            <time>1일</time>
+            <button>답글 달기</button>
+          </div>
         </div>
       </li>
     </ul>

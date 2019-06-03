@@ -95,10 +95,8 @@
     .my-pic,
     .user-pic {
       width: 32px;
+      min-width: 32px;
       height: 32px;
-      .feed-comment-view & {
-        margin-right: 16px;
-      }
     }
   }
 }

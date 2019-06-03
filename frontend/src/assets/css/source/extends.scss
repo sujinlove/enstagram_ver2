@@ -16,8 +16,10 @@
   $item-align__margin-right: ''
 ) {
     @if ($item-align__margin-left != '') {
+      display: flex;
+      align-items: center;
+
       > * {
-        display: inline-block;
         margin-left: $item-align__margin-left;
         vertical-align: middle;
 

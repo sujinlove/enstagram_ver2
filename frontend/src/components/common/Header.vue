@@ -53,7 +53,7 @@
             <form :style="{display: 'none'}">
               <input type="file" name="file" ref="file" @change="handleFileUpload"/>
             </form>
-            <router-link to ="/mypage" class="icon-sprite ico-glyph user"><span>user</span></router-link>
+            <router-link to ="/mypage" class="icon-sprite ico-glyph mypage"><span>my page</span></router-link>
           </li>
         </ul>
       </div>
