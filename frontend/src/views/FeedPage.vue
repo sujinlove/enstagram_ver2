@@ -7,6 +7,7 @@
       </div>
     </one-column>
     <popup>
+      <button @click="cancelFollow" v-if="$store.state.popupContent == 'feedService'">팔로우 취소</button>
       <button @click="editFeed" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 수정</button>
       <button @click="removeFeed" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 삭제</button>
     </popup>
@@ -50,6 +51,10 @@ export default {
       }).catch(e => {
         console.log('error: ' + e)
       })
+      this.$EventBus.$emit('showPopup')
+    },
+    cancelFollow () {
+      this.$refs.feed.cancelFollow()
       this.$EventBus.$emit('showPopup')
     }
   }

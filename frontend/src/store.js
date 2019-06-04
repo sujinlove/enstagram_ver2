@@ -9,11 +9,11 @@ export default new Vuex.Store({
     user: {
       heartList: [],
       feedList: [],
-      followList: [],
+      followingList: [],
       followerList: []
     },
     popupContent: '',
-    selectFeed: '',
+    selectFeed: {},
     // pageImages: [],
     uploadFile: '',
     editFeed: false

@@ -26,8 +26,9 @@
     <popup>
         <button @click="profileUpload" v-if="$store.state.popupContent == 'editUserProfile'">사진 업로드</button>
         <button @click="profileRemove" v-if="$store.state.popupContent == 'editUserProfile'">현재 사진 삭제</button>
-        <button @click="editFeed($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 수정</button>
-        <button @click="removeFeed($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
+        <button @click="editFeed($store.state.selectFeed.feed_num)" v-if="$store.state.popupContent == 'feedService'">게시물 수정</button>
+        <button @click="removeFeed($store.state.selectFeed.feed_num)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button>
+        <router-link to="/account/edit" v-if="$store.state.popupContent == 'editUserInfo'">비밀번호 변경</router-link>
         <a href="/logout" v-if="$store.state.popupContent == 'editUserInfo'">로그아웃</a>
     </popup>
   </section>

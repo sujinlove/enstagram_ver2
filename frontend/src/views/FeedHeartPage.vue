@@ -1,16 +1,10 @@
 <template>
   <section>
     <app-header />
-    <div class="user-list">
+    <div class="user-list user-heart-list">
       <ol>
         <li class="user" :key="heartAccount" v-for="heartAccount in heartAccountList">
-          <div class="user-pic">
-            <img :src="heartAccount.profile" :alt="heartAccount.id + '님의 프로필 사진'" />
-          </div>
-          <div class="user-info">
-            <router-link :to= "{ name: 'UserPage', params: { user_id: heartAccount.id }}" class="user-id">{{heartAccount.id}}</router-link>
-            <div class="user-name">{{heartAccount.name}}</div>
-          </div>
+          <user-list :user_num="heartAccount" :page="PageName"></user-list>
         </li>
       </ol>
     </div>
@@ -21,15 +15,18 @@
 <script>
 import axios from 'axios'
 import Header from '../components/common/Header.vue'
+import UserList from '../components/UserList'
 import Footer from '../components/common/Footer'
 export default {
   components: {
     'app-header': Header,
-    'app-footer': Footer
+    'app-footer': Footer,
+    UserList
   },
   props: ['feed_num'],
   data () {
     return {
+      PageName: 'FeedHeartPage',
       heartAccountList: []
     }
   },

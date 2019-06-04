@@ -1,0 +1,66 @@
+<template>
+  <li class="user">
+    <div class="user-wrapper">
+      <div class="user-pic">
+        <div class="user-pic-inner">
+          <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'" />
+        </div>
+      </div>
+      <div class="user-info">
+        <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
+        <div class="user-name">{{this.user.name}}</div>
+      </div>
+      <div class="follow-btn" v-if="page === 'AccountFollowingPage' || page === 'AccountFollowerPage' || page === 'FeedHeartPage'">
+        <button @click="addFollow" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
+        <button @click="cancelFollow" class="unfollow" v-else>팔로잉</button>
+      </div>
+    </div>
+  </li>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  props: ['page', 'user_num'],
+  data () {
+    return {
+      user: {}
+    }
+  },
+  created () {
+    axios.get('/api/user/' + this.user_num).then((response) => {
+      this.user = response.data
+    })
+  },
+  methods: {
+    addFollow () {
+      axios.post('/api/user/follow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: this.user.accnt_num
+      }).then(response => {
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    cancelFollow () {
+      axios.post('/api/user/unfollow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: this.user.accnt_num
+      }).then(response => {
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+.follow-btn {
+  text-align: right;
+}
+</style>

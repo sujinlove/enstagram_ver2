@@ -5,9 +5,9 @@
       <div class="feed-view">
         <form class="form" name="form" id="feedForm">
           <div class="upload-feed">
-            <div class="my-pic">
+            <div class="my-pic" :style="{width: '30px', height: '30px'}">
               <div class="my-pic-inner">
-                <img :src="this.$store.state.user.profile" :alt="this.$store.state.id + '님의 프로필 사진'" :style="{width: '30px', height: '30px'}"/>
+                <img :src="this.$store.state.user.profile" :alt="this.$store.state.id + '님의 프로필 사진'"/>
               </div>
             </div>
             <textarea type="textarea" name="description" placeholder="문구 입력..." :style="{height: '48px'}" v-model="description"/>

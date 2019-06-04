@@ -1,8 +1,8 @@
 <template>
   <div class="feed-comments feed-comment-list">
     <div class="comment" v-if="page == 'FeedCommentPage'">
-      <div class="my-pic">
-        <div class="my-pic-inner">
+      <div class="user-pic">
+        <div class="user-pic-inner">
           <img :src="this.$store.state.user.profile" :alt="this.$store.state.user.id + '님의 프로필 사진'"/>
         </div>
       </div>
@@ -14,9 +14,11 @@
     <ul>
       <li class="feed-comment" v-if="this.feed.description !== ''">
         <div class="user-pic">
-          <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
-            <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
-          </router-link>
+          <div class="user-pic-inner">
+            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
+              <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
+            </router-link>
+          </div>
         </div>
         <div class="user-text">
           <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
@@ -28,9 +30,11 @@
       </li>
       <li class="user-comment">
         <div class="user-pic">
-          <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">
-            <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
-          </router-link>
+          <div class="user-pic-inner">
+            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">
+              <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
+            </router-link>
+          </div>
         </div>
         <div class="user-text">
           <router-link to= "" class="user-id">jennierubyjane</router-link>

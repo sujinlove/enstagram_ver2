@@ -4,12 +4,12 @@
     <one-column>
       <div class="account-edit container">
         <div class="profile">
-          <div class="my-pic">
-            <div class="my-pic-inner">
+          <div class="user-pic">
+            <div class="user-pic-inner">
               <img :src="this.$store.state.user.profile" :alt="this.$store.state.user + '님의 프로필 사진'" />
             </div>
           </div>
-          <div class="my-name" @click="testm"><span>{{ this.$store.state.user.id }}</span></div>
+          <div class="user-name" @click="testm"><span>{{ this.$store.state.user.id }}</span></div>
         </div>
         <form class="form" name="form">
           <fieldset class="fieldset">
@@ -81,8 +81,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.my-pic {
-  img {
+.user-pic {
+  &-inner {
     width: 38px;
     height: 38px;
   }

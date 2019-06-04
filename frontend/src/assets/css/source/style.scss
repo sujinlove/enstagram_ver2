@@ -182,14 +182,14 @@
     font-size: $font-size__m;
 
     .profile {
-      .my-pic {
+      .user-pic {
         width: $form-field-type-label-inline__width;
         padding-right: 15px;
         box-sizing: border-box;
         text-align: right;
       }
 
-      .my-name {
+      .user-name {
         margin-left: 0;
         font-weight: $font-weight__regular;
       }

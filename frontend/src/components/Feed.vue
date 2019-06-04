@@ -14,14 +14,16 @@
   <!--When Mouse Over in My Page End-->
   <header class="feed-header">
     <div class="user-pic">
-      <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
-        <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
-      </router-link>
+      <div class="user-pic-inner">
+        <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
+          <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
+        </router-link>
+      </div>
     </div>
     <div class="user-id">
       <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">{{this.user.id}}</router-link>
     </div>
-    <button class="icon-sprite ico-glyph-2 more" type="button" @click="feedService"><span>more</span></button>
+    <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
   <div class="feed-pic" @click="testm">
     <div class="feed-pic-inner" :style="{'padding-bottom': this.ratio}">
@@ -42,7 +44,7 @@
         <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count" v-if="this.feed.heart > 0">
-        <router-link :to= "{ name: 'HeartPage', params: { feed_num: this.feed_num }}">
+        <router-link :to= "{ name: 'FeedHeartPage', params: { feed_num: this.feed_num }}">
           <span>좋아요</span>
           <span>{{this.feed.heart}}</span>
           <span>개</span>
@@ -59,7 +61,7 @@
             <span class="feed-text">{{this.feed.description}}</span>
           </li>
           <li class="more-comment">
-            <router-link to= "/feed">
+            <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}">
                 <span>댓글</span>
                 <span>1231231</span>
                 <span>개 모두 보기</span>
@@ -119,6 +121,7 @@ export default {
     }
   },
   created () {
+    this.$store.commit('setUser')
     this.getFeedInfo()
   },
   updated () {
@@ -154,14 +157,6 @@ export default {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
-        // const image = new Image()
-        // image.src = this.feed.file_name
-        // 
-        // image.onload = function () {
-        //   var width = document.querySelector('.feed-pic img').naturalWidth
-        //   var height = document.querySelector('.feed-pic img').naturalHeight
-        //   this.ratio = height / width * 100 + '%'
-        // }
         this.getUserInfo()
       }).catch(e => {
         console.log('error: ' + e)
@@ -178,8 +173,8 @@ export default {
     feedService () {
       this.$store.commit('setPopupContent', 'feedService')
       this.$EventBus.$emit('showPopup')
-      if (this.page === 'MyPage') {
-        this.$store.commit('selectFeed', this.feed_num)
+      if (this.page === 'MyPage' || this.page === 'MainPage') {
+        this.$store.commit('selectFeed', this.feed)
       }
     },
     addHeart () {
@@ -189,16 +184,29 @@ export default {
       }).then(response => {
         this.getFeedInfo()
         this.$store.commit('setUser')
+        console.log(this.$store.state.user)
       }).catch(e => {
         console.log('error: ' + e)
       })
     },
     cancelHeart () {
+      console.log('cancelHeart')
       axios.post('/api/feed/unlike', {
         accnt_num: this.$store.state.user.accnt_num,
         feed_num: this.feed_num
       }).then(response => {
         this.getFeedInfo()
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    cancelFollow () {
+      console.log('cancelFollow')
+      axios.post('/api/user/unfollow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: this.user.accnt_num
+      }).then(response => {
         this.$store.commit('setUser')
       }).catch(e => {
         console.log('error: ' + e)

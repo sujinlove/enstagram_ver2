@@ -7,7 +7,7 @@
 //  _____________________________________________
 @if ($media-common == true) {
   .user-list {
-    padding: $indent__s $indent__base;
+    padding: 5px $indent__base;
     background-color: $panel__background-color;
 
     .user-name {
@@ -17,6 +17,43 @@
 
     ol {
       @extend %abs-reset-list;
+
+      > li {
+        padding: 8px 0;
+      }
+    }
+
+    .user-info {
+      flex: 1;
+      overflow: hidden;
+
+      > * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-left: 5px;
+        margin-left: -5px;
+      }
+    }
+  }
+
+  .follow-btn {
+    display: inline-block;
+
+    button {
+      line-height: 26px;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      outline: 0;
+      font-size: $font-size__base;
+      font-weight: $font-weight__semibold;
+      cursor: pointer;
+
+      &:not(.unfollow) {
+        border-color: $active__color;
+        background: $active__color;
+        color: $color-white;
+      }
     }
   }
 
@@ -25,7 +62,7 @@
   .user-comment,
   .feed-comment,
   .feed-header,
-  .my-count ul {
+  .user-count ul {
     @include abs-item-align($item-align__margin-left: $indent__base);
 
     li {
@@ -33,8 +70,7 @@
     }
   }
 
-  .my-pic-inner,
-  .user-pic {
+  .user-pic-inner {
     display: inline-block;
     overflow: hidden;
     width: 100%;
@@ -44,19 +80,14 @@
     vertical-align: middle;
   }
 
-  .user-id,
-  .my-id,
-  .my-name {
+  .user-id {
     font-weight: 600;
   }
 
   .user-pic {
     width: 34px;
     height: 34px;
-  }
 
-  .my-pic,
-  .user-pic{
     img {
       display: block;
       width: 100%;

@@ -15,18 +15,18 @@
     margin-bottom: 44px;
     align-items: center;
 
-    > .my-count,
-    > .my-des {
+    > .user-count,
+    > .user-des {
         display: none;
     }
 
-    .my-pic {
+    .user-pic {
       width: 150px;
       height: 150px;
       text-align: center;
     }
 
-    .my-des {
+    .user-des {
       font-weight: $font-weight__semibold;
 
       p {
@@ -38,13 +38,13 @@
       }
     }
 
-    .my-count {
+    .user-count {
       .count {
         font-weight: $font-weight__semibold;
       }
     }
 
-    .my-info {
+    .user-info {
       flex-grow: 2;
       font-size: $font-size__m;
 
@@ -52,15 +52,15 @@
         margin-bottom: 20px;
       }
 
-      .my-id, .my-edit-btn, .my-btn {
+      .user-id, .user-edit-btn, .user-btn {
         @extend %abs-item-vertical-align;
       }
 
-      .my-btn {
+      .user-btn {
         margin-left: 8px;
       }
 
-      .my-edit-btn {
+      .user-edit-btn {
         padding: 5px 9px;
         border: 1px solid #dbdbdb;
         border-radius: 4px;
@@ -73,18 +73,19 @@
         }
       }
 
-      .my-id {
+      .user-id {
         font-weight: $font-weight__light;
 
         > span {
             font-size: 28px;
+            word-break: break-all;
         }
       }
     }
   }
 
   .feed-comment-list {
-    .my-pic,
+    .user-pic,
     .user-pic {
       width: 32px;
       min-width: 32px;
@@ -99,13 +100,20 @@
 
 @media only screen and (min-width: ($screen__m)) {
   .profile {
-    .my-pic {
+    .user-pic {
       margin: 0 70px;
     }
 
-    .my-info {
-      .my-edit-btn {
+    .user-info {
+      .user-edit-btn {
           margin-left: 20px;
+      }
+    }
+
+    .follow-btn {
+      button {
+        margin-left: 20px;
+        padding: 0 24px;
       }
     }
   }
@@ -122,21 +130,26 @@
     padding: 0 16px;
     box-sizing: border-box;
 
-    .my-info {
+    .follow-btn {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .user-info {
       flex: 1;
       margin-left: 28px;
 
-      .my-des,
-      .my-count {
+      .user-des,
+      .user-count {
         display: none;
       }
 
-      .my-profile {
+      .user-profile {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
 
-        .my-edit-btn {
+        .user-edit-btn {
           order: 1;
           width: 100%;
           margin-top: 12px;
@@ -144,21 +157,21 @@
       }
     }
 
-    .my-pic {
+    .user-pic {
       width: 77px;
       max-width: 77px;
       height: 77px;
       text-align: left;
     }
 
-    > .my-count,
-    > .my-des {
+    > .user-count,
+    > .user-des {
         display: inline-block;
         width: 100%;
         margin: 0;
     }
 
-    > .my-count {
+    > .user-count {
       ul {
         display: flex;
         margin: 0 -16px;
@@ -180,7 +193,7 @@
       }
     }
 
-    > .my-des {
+    > .user-des {
       padding: 20px 0;
     }
   }

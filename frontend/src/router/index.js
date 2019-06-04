@@ -4,9 +4,11 @@ import MainPage from '@/views/MainPage'
 import MyPage from '@/views/MyPage'
 import AccountPage from '@/views/AccountPage'
 import AccountEditPage from '@/views/AccountEditPage'
+import AccountFollowerPage from '@/views/AccountFollowerPage'
+import AccountFollowingPage from '@/views/AccountFollowingPage'
 import FeedPage from '@/views/FeedPage'
 import FeedCommentPage from '@/views/FeedCommentPage'
-import Heart from '@/components/Heart'
+import FeedHeartPage from '@/views/FeedHeartPage'
 import NotFound from '@/views/NotFound'
 import FeedUploadPage from '@/views/FeedUploadPage'
 import UserPage from '@/views/UserPage'
@@ -48,8 +50,8 @@ export default new Router({
     },
     {
       path: '/feed/:feed_num/heart',
-      name: 'HeartPage',
-      component: Heart,
+      name: 'FeedHeartPage',
+      component: FeedHeartPage,
       props: true
     },
     {
@@ -68,7 +70,18 @@ export default new Router({
       name: 'UserPage',
       component: UserPage,
       props: true
+    },
+    {
+      path: '/user/:user_id/followers',
+      name: 'AccountFollowerPage',
+      component: AccountFollowerPage,
+      props: true
+    },
+    {
+      path: '/user/:user_id/following',
+      name: 'AccountFollowingPage',
+      component: AccountFollowingPage,
+      props: true
     }
-
   ]
 })

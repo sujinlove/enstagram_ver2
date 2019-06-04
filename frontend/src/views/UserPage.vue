@@ -40,7 +40,8 @@ export default {
   data () {
     return {
       user: {},
-      PageName: 'UserPage'
+      PageName: 'UserPage',
+      feedMode: 'grid-mode'
     }
   },
   created () {
@@ -55,6 +56,14 @@ export default {
       }).catch(e => {
         console.log('error: ' + e)
       })
+    },
+    changeMode (mode) {
+      this.feedMode = mode
+      document.querySelector('.mode button:not(.' + mode + ')').classList.remove('active')
+      document.querySelector('.' + mode).classList.add('active')
+      document.querySelector('.feed-mode').classList.remove('grid-mode-view')
+      document.querySelector('.feed-mode').classList.remove('list-mode-view')
+      document.querySelector('.feed-mode').classList.add(mode + '-view')
     }
   }
 }
