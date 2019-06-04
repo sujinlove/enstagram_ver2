@@ -39,8 +39,8 @@
 		UPDATE ensta_account SET profile=#{profile} WHERE id=#{id}
 	</update>
 	
-	<!-- Get Follow List -->
-	<select id="getFollowList" resultType="Integer">
+	<!-- Get Following List -->
+	<select id="getFollowingList" resultType="Integer">
 		SELECT following_num FROM ensta_follow WHERE accnt_num = #{accnt_num}
 	</select>
 	

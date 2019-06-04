@@ -119,8 +119,8 @@ public class EnstaService {
 	 * Get Following List
 	 */
 	
-	public Integer[] getFollowList(Integer accnt_num) {
-		return enstaMapper.getFollowList(accnt_num);
+	public Integer[] getFollowingList(Integer accnt_num) {
+		return enstaMapper.getFollowingList(accnt_num);
 	}
 	
 	/*

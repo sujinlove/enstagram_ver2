@@ -35,7 +35,7 @@ public interface EnstaMapper {
 	
 	void unfollowUser(EnstaFollow enstaFollow);
 	
-	public Integer[] getFollowList(Integer accnt_num);
+	public Integer[] getFollowingList(Integer accnt_num);
 	
 	public Integer[] getFollowerList(Integer following_num);
 

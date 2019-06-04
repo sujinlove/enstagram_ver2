@@ -95,7 +95,7 @@ public class EnstaAccountController {
 		Map<String, Object> map = enstaService.getAccountInfo(enstaService.getAccountNum(currentUser));
 		map.put("heartList", enstaService.getHeartList(enstaService.getAccountNum(currentUser)));
 		map.put("feedList", enstaService.getFeedList(enstaService.getAccountNum(currentUser)));
-		map.put("followList", enstaService.getFollowList(enstaService.getAccountNum(currentUser)));
+		map.put("followingList", enstaService.getFollowingList(enstaService.getAccountNum(currentUser)));
 		map.put("followerList", enstaService.getFollowerList(enstaService.getAccountNum(currentUser)));
 
 		return map;
@@ -110,7 +110,7 @@ public class EnstaAccountController {
 
 		Map<String, Object> map = enstaService.getAccountInfo(accnt_num);
 		map.put("feedList", enstaService.getFeedList(accnt_num));
-		map.put("followList", enstaService.getFollowList(accnt_num));
+		map.put("followingList", enstaService.getFollowingList(accnt_num));
 		map.put("followerList", enstaService.getFollowerList(accnt_num));
 		
 		return map;
