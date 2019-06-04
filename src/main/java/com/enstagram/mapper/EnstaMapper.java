@@ -29,7 +29,7 @@ public interface EnstaMapper {
 
 	void editAccountInfo(EnstaAccount enstaAccount);
 	
-	EnstaAccount editProfile(EnstaAccount enstaAccount);
+	void editProfile(EnstaAccount enstaAccount);
 	
 	void followUser(EnstaFollow enstaFollow);
 	
