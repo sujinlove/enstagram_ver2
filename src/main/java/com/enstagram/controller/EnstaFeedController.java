@@ -2,7 +2,6 @@ package com.enstagram.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
 import com.enstagram.service.EnstaService;
 
@@ -75,7 +73,7 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/feed/{feed_num}/heart", method = { RequestMethod.POST, RequestMethod.GET })
-	public List<EnstaAccount> getFeedHeartList(@PathVariable Integer feed_num) {
+	public Integer[] getFeedHeartList(@PathVariable Integer feed_num) {
 		return enstaService.getFeedHeartList(feed_num);
 	}
 	

@@ -85,9 +85,9 @@
 		SELECT ef.feed_num FROM ensta_feed ef INNER JOIN ensta_follow f ON ef.accnt_num = f.following_num WHERE f.accnt_num=#{f.accnt_num} ORDER BY feed_num DESC;
 	</select>
 	
-	<!-- Get Heart List of Feed -->
-	<select id="getFeedHeartList" resultType="com.enstagram.model.EnstaAccount">
-		SELECT ac.* FROM ensta_account ac INNER JOIN ensta_heart h ON ac.accnt_num = h.accnt_num WHERE h.feed_num=#{h.feed_num};
+	<!-- Get Heart User List of Feed -->
+	<select id="getFeedHeartList" resultType="Integer">
+		SELECT ac.accnt_num FROM ensta_account ac INNER JOIN ensta_heart h ON ac.accnt_num = h.accnt_num WHERE h.feed_num=#{h.feed_num};
 	</select>
 	
 	<!-- Get File Name of Feed -->
