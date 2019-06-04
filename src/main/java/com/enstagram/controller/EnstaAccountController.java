@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.enstagram.model.EnstaAccount;
+import com.enstagram.model.EnstaFollow;
 import com.enstagram.service.EnstaService;
 
 @RestController
@@ -94,13 +95,33 @@ public class EnstaAccountController {
 		Map<String, Object> map = enstaService.getAccountInfo(enstaService.getAccountNum(currentUser));
 		map.put("heartList", enstaService.getMyHeartList(enstaService.getAccountNum(currentUser)));
 		map.put("feedList", enstaService.getMyFeedList(enstaService.getAccountNum(currentUser)));
+		map.put("followList", enstaService.getFollowList(enstaService.getAccountNum(currentUser)));
+		map.put("followerList", enstaService.getFollowerList(enstaService.getAccountNum(currentUser)));
 
 		return map;
 	}
 
 	@RequestMapping(value = "/api/user/{accnt_num}", method = { RequestMethod.POST, RequestMethod.GET })
-	public Map<String, Object> getAccountInfo(@PathVariable int accnt_num) {
-		return enstaService.getAccountInfo(accnt_num);
+	public Map<String, Object> getAccountInfo(@PathVariable Integer accnt_num) {
+
+		Map<String, Object> map = enstaService.getAccountInfo(accnt_num);
+		map.put("feedList", enstaService.getMyFeedList(accnt_num));
+		map.put("followList", enstaService.getFollowList(accnt_num));
+		map.put("followerList", enstaService.getFollowerList(accnt_num));
+		
+		return map;
+	}
+	
+	@RequestMapping(value = "/api/user/id/{id}", method = { RequestMethod.POST, RequestMethod.GET })
+	public Map<String, Object> getAccountInfoById(@PathVariable String id) {
+		Integer userNum = enstaService.getAccountNum(id);
+		
+		Map<String, Object> map = enstaService.getAccountInfo(userNum);
+		map.put("feedList", enstaService.getMyFeedList(userNum));
+		map.put("followList", enstaService.getFollowList(userNum));
+		map.put("followerList", enstaService.getFollowerList(userNum));
+		
+		return map;
 	}
 	
 	/*
@@ -177,5 +198,24 @@ public class EnstaAccountController {
 	@RequestMapping(value = "/api/check/id", method = { RequestMethod.POST, RequestMethod.GET })
 	public Integer checkAccountId (@RequestBody EnstaAccount enstaAccount) {
 		return enstaService.checkAccountId(enstaAccount.getId());
+	}
+	
+
+	/*
+	 * Follow Account
+	 */
+
+	@RequestMapping(value = "/api/user/follow", method = { RequestMethod.POST, RequestMethod.GET })
+	public void followUser(@RequestBody EnstaFollow enstaFollow) {
+		enstaService.followUser(enstaFollow);
+	}
+	
+	/*
+	 * Unfollow Account
+	 */
+
+	@RequestMapping(value = "/api/user/unfollow", method = { RequestMethod.POST, RequestMethod.GET })
+	public void unfollowUser(@RequestBody EnstaFollow enstaFollow) {
+		enstaService.unfollowUser(enstaFollow);
 	}
 }

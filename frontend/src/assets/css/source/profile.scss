@@ -8,14 +8,6 @@
 //  Common
 //  _____________________________________________
 @if ($media-common == true) {
-  .my-pic,
-  .user-pic {
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
 
   .profile {
     display: flex;

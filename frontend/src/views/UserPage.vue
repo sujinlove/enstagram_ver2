@@ -2,13 +2,15 @@
   <section>
     <app-header />
     <one-column>
-      <user-profile ref="editProfile" :user_id="user_id"/>
+      <profile :user="user" :page="PageName"/>
       <div class="feed-list">
-        <ul>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
-          <li class="feed-item"><img src="https://scontent-icn1-1.cdninstagram.com/vp/8cdc5dfb2d8655371613a490edf22cf1/5D775FB7/t51.2885-15/sh0.08/e35/s640x640/56219791_130014521491636_8631154733078667631_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com" alt="ensta00_1님의 사진" /></li>
+        <ul class="feed-mode grid-mode-view">
+          <li class="feed-item" :key="feed" v-for="feed in this.user.feedList">
+            <router-link :to="{ name: 'FeedPage', params: { feed_num: feed } }" v-if="feedMode == 'grid-mode'">
+              <feed :feed_num="feed" :page="PageName"/>
+            </router-link>
+            <feed :feed_num="feed" :page="PageName" v-else />
+          </li>
         </ul>
       </div>
     </one-column>
@@ -17,9 +19,11 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Header from '../components/common/Header.vue'
 import OneColumn from '../components/common/OneColumn'
-import UserProfile from '../components/UserProfile'
+import Profile from '../components/Profile'
+import Feed from '../components/Feed'
 import Footer from '../components/common/Footer'
 import Popup from '../components/common/Popup'
 
@@ -27,23 +31,35 @@ export default {
   components: {
     'app-header': Header,
     OneColumn,
-    'user-profile': UserProfile,
+    Profile,
+    Feed,
     'footer-layout': Footer,
     Popup
   },
   props: ['user_id'],
   data () {
+    return {
+      user: {},
+      PageName: 'UserPage'
+    }
+  },
+  created () {
+    this.getUserInfo()
+  },
+  methods: {
+    getUserInfo () {
+      axios.post('/api/user/id/' + this.user_id, {
+      }).then(response => {
+        this.user = response.data
+        console.log(this.user)
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scope>
-@import '../assets/css/source/feeds.scss';
-@media only screen and (max-width: ($screen__m - 1)) {
-  main {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
+<style lang="scss" scoped>
 </style>

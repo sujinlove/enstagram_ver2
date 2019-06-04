@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
+import com.enstagram.model.EnstaFollow;
 
 public interface EnstaMapper {
 
@@ -31,6 +32,14 @@ public interface EnstaMapper {
 	void editAccount(EnstaAccount enstaAccount);
 	
 	EnstaAccount editProfile(EnstaAccount enstaAccount);
+	
+	void followUser(EnstaFollow enstaFollow);
+	
+	void unfollowUser(EnstaFollow enstaFollow);
+	
+	public Integer[] getFollowList(Integer accnt_num);
+	
+	public Integer[] getFollowerList(Integer following_num);
 
 	/*
 	 * Ensta Feed
@@ -39,6 +48,8 @@ public interface EnstaMapper {
 	void createFeed(EnstaFeed enstaFeed);
 
 	public Map<String, Object> getFeed(Integer feed_num);
+
+	public Integer[] getFollowFeed(Integer accnt_num);
 	
 	public String getFeedFileName (Integer feed_num);
 	
@@ -54,7 +65,7 @@ public interface EnstaMapper {
 
 	List<EnstaAccount> getFeedHeartList(Integer feed_num);
 	
-	public String[] getMyHeartList(Integer accnt_num);
+	public Integer[] getMyHeartList(Integer accnt_num);
 
 	public String[] getMyFeedList(Integer feed_num);
 

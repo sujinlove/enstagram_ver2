@@ -36,6 +36,22 @@
 		UPDATE ensta_account SET profile=#{profile} WHERE id=#{id}
 	</select>
 	
+	<select id="getFollowList" resultType="Integer">
+		SELECT following_num FROM ensta_followw WHERE accnt_num = #{accnt_num}
+	</select>
+	
+	<select id="getFollowerList" resultType="Integer">
+		SELECT accnt_num FROM ensta_followw WHERE following_num = #{following_num}
+	</select>
+	
+	<insert id="followUser" parameterType="com.enstagram.model.EnstaFollow">
+		INSERT INTO ensta_followw (accnt_num, following_num) SELECT #{accnt_num},#{following_num} FROM DUAL WHERE NOT EXISTS (SELECT * FROM ensta_followw where accnt_num = #{accnt_num} AND following_num = #{following_num})
+	</insert>
+
+	<select id="unfollowUser" parameterType="com.enstagram.model.EnstaFollow">
+		DELETE FROM ensta_followw WHERE accnt_num = #{accnt_num} AND following_num = #{following_num}
+	</select>
+	
 	<!-- Ensta Feed -->
 
 	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed" useGeneratedKeys="true" keyProperty="feed_num">
@@ -48,6 +64,10 @@
 	
 	<select id="getMyFeedList" resultType="String">
 		SELECT feed_num FROM ensta_feed WHERE accnt_num = #{accnt_num} ORDER BY feed_num DESC
+	</select>
+	
+	<select id="getFollowFeed" resultType="Integer">
+		SELECT ef.feed_num FROM ensta_feed ef INNER JOIN ensta_followw f ON ef.accnt_num = f.following_num WHERE f.accnt_num=#{f.accnt_num} ORDER BY feed_num DESC;
 	</select>
 	
 	<select id="getFeedHeartList" resultType="com.enstagram.model.EnstaAccount">
@@ -74,7 +94,7 @@
 		DELETE FROM ensta_heart WHERE accnt_num = #{accnt_num} AND feed_num = #{feed_num}
 	</select>
 	
-	<select id="getMyHeartList" resultType="String">
+	<select id="getMyHeartList" resultType="Integer">
 		SELECT feed_num FROM ensta_heart WHERE accnt_num = #{accnt_num}
 	</select>
 	

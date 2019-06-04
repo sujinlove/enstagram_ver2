@@ -2,7 +2,12 @@
   <section class="main-page">
     <app-header />
     <two-columns>
-      <feed slot="main" :page="PageName"></feed>
+      <div class="feed-list" slot="main">
+        <div class="feed-item" :key="feed" v-for="feed in this.feedList">
+          <feed :feed_num="feed" :page="PageName" />
+        </div>
+      </div>
+      <!-- <feed slot="main" :page="PageName" :feed_num="feed_num"></feed> -->
       <div slot="sidebar" class="profile">
         <div class="my-pic">
           <div class="my-pic-inner">
@@ -14,7 +19,13 @@
           <p class="my-name">{{ this.$store.state.user.name }}</p>
         </div>
       </div>
-      <follower-list slot="sidebar"></follower-list>
+      <div class="user-list" slot="sidebar">
+        <ol>
+          <li class="user" :key="following" v-for="following in this.$store.state.user.followList">
+            <follower-list :following_num="following"></follower-list>
+          </li>
+        </ol>
+      </div>
       <app-footer slot="sidebar"/>
     </two-columns>
   </section>
@@ -31,10 +42,9 @@ export default {
   data () {
     return {
       PageName: 'MainPage',
-      num: '',
-      userName: '',
-      contents: '',
-      values: []
+      feed_num: '',
+      values: [],
+      feedList: []
     }
   },
   components: {
@@ -43,16 +53,19 @@ export default {
     TwoColumns,
     Feed,
     FollowerList
-    // num: num,
-    // userName: userName,
-    // contents: contents
   },
   created () {
-    axios.get('/api/board').then((response) => {
-      if (response.status === 200) {
-        this.values = response.data
-      }
-    })
+    this.getFollowFeed()
+  },
+  methods: {
+    getFollowFeed () {
+      axios.get('/api/feed/follow', {
+      }).then(response => {
+        this.feedList = response.data
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    }
   }
 }
 </script>

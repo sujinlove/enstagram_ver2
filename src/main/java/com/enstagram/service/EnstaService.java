@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.enstagram.mapper.EnstaMapper;
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
+import com.enstagram.model.EnstaFollow;
 
 @Service
 public class EnstaService {
@@ -100,6 +101,38 @@ public class EnstaService {
 	}
 	
 	/*
+	 * Follow User
+	 */
+	
+	public void followUser(EnstaFollow enstaFollow) {
+		enstaMapper.followUser(enstaFollow);
+	}
+	
+	/*
+	 * Unfollow User
+	 */
+	
+	public void unfollowUser(EnstaFollow enstaFollow) {
+		enstaMapper.unfollowUser(enstaFollow);
+	}
+	
+	/*
+	 * Get Following List
+	 */
+	
+	public Integer[] getFollowList(Integer accnt_num) {
+		return enstaMapper.getFollowList(accnt_num);
+	}
+	
+	/*
+	 * Get Follower List
+	 */
+	
+	public Integer[] getFollowerList(Integer following_num) {
+		return enstaMapper.getFollowerList(following_num);
+	}
+	
+	/*
 	 * Get Feed File Name
 	 */
 	
@@ -122,7 +155,15 @@ public class EnstaService {
 	public Map<String, Object> getFeed(Integer feed_num) {
 		return enstaMapper.getFeed(feed_num);
 	}
-
+	
+	/*
+	 * Get Feed List of Follow
+	 */
+	
+	public Integer[] getFollowFeed(Integer accnt_num) {
+		return enstaMapper.getFollowFeed(accnt_num);
+	}
+	
 	/*
 	 * Edit Feed
 	 */
@@ -163,7 +204,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get Feed Heart List
+	 * Get Heart List of Feed
 	 */
 	
 	public List<EnstaAccount> getFeedHeartList(Integer feed_num) {
@@ -174,7 +215,7 @@ public class EnstaService {
 	 * Get My Heart List
 	 */
 	
-	public String[] getMyHeartList(Integer accnt_num) {
+	public Integer[] getMyHeartList(Integer accnt_num) {
 		return enstaMapper.getMyHeartList(accnt_num);
 	}
 	

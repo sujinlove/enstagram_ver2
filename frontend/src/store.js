@@ -8,7 +8,9 @@ export default new Vuex.Store({
   state: {
     user: {
       heartList: [],
-      feedList: []
+      feedList: [],
+      followList: [],
+      followerList: []
     },
     popupContent: '',
     selectFeed: '',

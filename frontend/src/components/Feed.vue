@@ -23,15 +23,16 @@
     </div>
     <button class="icon-sprite ico-glyph-2 more" type="button" @click="feedService"><span>more</span></button>
   </header>
-  <div class="feed-pic">
-    <div class="feed-pic-inner">
+  <div class="feed-pic" @click="testm">
+    <div class="feed-pic-inner" :style="{'padding-bottom': this.ratio}">
+    <!-- <div class="feed-pic-inner"> -->
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
     </div>
   </div>
   <!--When Not Edit Feed-->
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <!--Feed Comment in Feed Page-->
-    <feed-comments :user="user" :feed="feed" :page="page"/>
+    <feed-comments :user="user" :feed="feed" :page="page" v-if="page == 'FeedPage' || page == 'FeedCommentPage'"/>
     <!--Feed Comment in Feed Page End-->
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
@@ -101,7 +102,8 @@ export default {
     return {
       feed: {},
       user: {},
-      comment: ''
+      comment: '',
+      ratio: ''
     }
   },
   watch: {
@@ -111,6 +113,9 @@ export default {
       } else {
         document.querySelector('.comment-btn').disabled = true
       }
+    },
+    ratio: function (newValue) {
+      console.log(newValue)
     }
   },
   created () {
@@ -122,10 +127,41 @@ export default {
     }
   },
   methods: {
+    testm () {
+      console.log('testm')
+      var width = document.querySelector('.feed-pic img').naturalWidth
+      var height = document.querySelector('.feed-pic img').naturalHeight
+      this.ratio = height / width * 100 + '%'
+      console.log(this.ratio)
+
+      // let image = new Image()
+      // image.src = this.feed.file_name
+      //
+      // image.onload = function () {
+      //   // const width = image.naturalWidth
+      //   // const height = image.naturalHeight
+      //   // console.log(width, height)
+      //   if (image.naturalWidth !== image.naturalHeight) {
+      //     this.ratio = image.naturalHeight / image.naturalWidth * 100 + '%'
+      //     console.log('1:' + this.ratio)
+      //   } else {
+      //     this.ratio = '100%'
+      //     console.log('2:' + this.ratio)
+      //   }
+      // }
+    },
     getFeedInfo () {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
+        // const image = new Image()
+        // image.src = this.feed.file_name
+        // 
+        // image.onload = function () {
+        //   var width = document.querySelector('.feed-pic img').naturalWidth
+        //   var height = document.querySelector('.feed-pic img').naturalHeight
+        //   this.ratio = height / width * 100 + '%'
+        // }
         this.getUserInfo()
       }).catch(e => {
         console.log('error: ' + e)

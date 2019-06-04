@@ -1,5 +1,5 @@
 <template>
-  <div class="user-list">
+  <!-- <div class="user-list">
     <ol>
       <li class="user" :key="follower" v-for="follower in followers">
         <div class="user-pic">
@@ -11,6 +11,15 @@
         </div>
       </li>
     </ol>
+  </div> -->
+  <div class="user-wrapper">
+    <div class="user-pic">
+      <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'" />
+    </div>
+    <div class="user-info">
+      <router-link to= "" class="user-id">{{this.user.id}}</router-link>
+      <div class="user-name">{{this.user.name}}</div>
+    </div>
   </div>
 </template>
 
@@ -18,16 +27,15 @@
 import axios from 'axios'
 
 export default {
+  props: ['following_num'],
   data () {
     return {
-      followers: []
+      user: {}
     }
   },
   created () {
-    axios.get('/api/board').then((response) => {
-      if (response.status === 200) {
-        this.followers = response.data
-      }
+    axios.get('/api/user/' + this.following_num).then((response) => {
+      this.user = response.data
     })
   }
 }

@@ -2,7 +2,7 @@
   <section>
     <app-header />
     <one-column>
-      <profile ref="profile" :page="PageName"/>
+      <profile ref="profile" :page="PageName" :user="this.$store.state.user"/>
       <div class="modes">
         <div class="mode grid" @click="changeMode('grid-mode')">
           <button class="icon-sprite ico-glyph-3 grid-mode active"><span>grid</span></button>

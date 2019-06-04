@@ -8,6 +8,8 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,7 +59,19 @@ public class EnstaFeedController {
 	}
 	
 	/*
-	 * Get Feed Heart User List
+	 * Get Feed List of Follow
+	 */
+
+	@RequestMapping(value = "/api/feed/follow", method = { RequestMethod.POST, RequestMethod.GET })
+	public Integer[] getFollowFeed(@ModelAttribute EnstaFeed enstaFeed) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentUser = authentication.getName();
+		
+		return enstaService.getFollowFeed(enstaService.getAccountNum(currentUser));
+	}
+	
+	/*
+	 * Get Heart User List of Feed
 	 */
 
 	@RequestMapping(value = "/api/feed/{feed_num}/heart", method = { RequestMethod.POST, RequestMethod.GET })
