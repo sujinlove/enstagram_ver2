@@ -19,8 +19,6 @@ public interface EnstaMapper {
 
 	void createAccount(EnstaAccount enstaAccount);
 
-//	EnstaAccount getEnstaAccount(EnstaAccount enstaAccount);
-
 	public Map<String, Object> getAccountInfo(int accnt_num);
 	
 	public Integer checkAccountId (String id);
@@ -29,7 +27,7 @@ public interface EnstaMapper {
 	
 	public Integer getAccountNum (String id);
 
-	void editAccount(EnstaAccount enstaAccount);
+	void editAccountInfo(EnstaAccount enstaAccount);
 	
 	EnstaAccount editProfile(EnstaAccount enstaAccount);
 	
@@ -47,7 +45,7 @@ public interface EnstaMapper {
 
 	void createFeed(EnstaFeed enstaFeed);
 
-	public Map<String, Object> getFeed(Integer feed_num);
+	public Map<String, Object> getFeedInfo(Integer feed_num);
 
 	public Integer[] getFollowFeed(Integer accnt_num);
 	
@@ -65,8 +63,8 @@ public interface EnstaMapper {
 
 	List<EnstaAccount> getFeedHeartList(Integer feed_num);
 	
-	public Integer[] getMyHeartList(Integer accnt_num);
+	public Integer[] getHeartList(Integer accnt_num);
 
-	public String[] getMyFeedList(Integer feed_num);
+	public String[] getFeedList(Integer feed_num);
 
 }

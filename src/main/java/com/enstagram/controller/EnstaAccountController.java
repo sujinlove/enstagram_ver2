@@ -82,7 +82,7 @@ public class EnstaAccountController {
 	}
 
 	/*
-	 * Account Info
+	 * Get Current User Info
 	 */
 
 	@RequestMapping(value = "/api/user", method = { RequestMethod.POST, RequestMethod.GET })
@@ -93,44 +93,47 @@ public class EnstaAccountController {
 		enstaAccount.setId(currentUser);
 
 		Map<String, Object> map = enstaService.getAccountInfo(enstaService.getAccountNum(currentUser));
-		map.put("heartList", enstaService.getMyHeartList(enstaService.getAccountNum(currentUser)));
-		map.put("feedList", enstaService.getMyFeedList(enstaService.getAccountNum(currentUser)));
+		map.put("heartList", enstaService.getHeartList(enstaService.getAccountNum(currentUser)));
+		map.put("feedList", enstaService.getFeedList(enstaService.getAccountNum(currentUser)));
 		map.put("followList", enstaService.getFollowList(enstaService.getAccountNum(currentUser)));
 		map.put("followerList", enstaService.getFollowerList(enstaService.getAccountNum(currentUser)));
 
 		return map;
 	}
+	
+	/*
+	 * Get User Info
+	 */
 
 	@RequestMapping(value = "/api/user/{accnt_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getAccountInfo(@PathVariable Integer accnt_num) {
 
 		Map<String, Object> map = enstaService.getAccountInfo(accnt_num);
-		map.put("feedList", enstaService.getMyFeedList(accnt_num));
+		map.put("feedList", enstaService.getFeedList(accnt_num));
 		map.put("followList", enstaService.getFollowList(accnt_num));
 		map.put("followerList", enstaService.getFollowerList(accnt_num));
 		
 		return map;
 	}
 	
+	/*
+	 * Get User Info By Id
+	 */
+	
 	@RequestMapping(value = "/api/user/id/{id}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getAccountInfoById(@PathVariable String id) {
 		Integer userNum = enstaService.getAccountNum(id);
 		
-		Map<String, Object> map = enstaService.getAccountInfo(userNum);
-		map.put("feedList", enstaService.getMyFeedList(userNum));
-		map.put("followList", enstaService.getFollowList(userNum));
-		map.put("followerList", enstaService.getFollowerList(userNum));
-		
-		return map;
+		return getAccountInfo(userNum);
 	}
 	
 	/*
-	 * Edit Account
+	 * Edit Account Info
 	 */
 
 	@RequestMapping(value = "/api/account/edit", method = { RequestMethod.POST, RequestMethod.GET })
-	public void editAccount(@RequestBody EnstaAccount enstaAccount) {
-		enstaService.editAccount(enstaAccount);
+	public void editAccountInfo(@RequestBody EnstaAccount enstaAccount) {
+		enstaService.editAccountInfo(enstaAccount);
 	}
 
 	/*
@@ -202,7 +205,7 @@ public class EnstaAccountController {
 	
 
 	/*
-	 * Follow Account
+	 * Add Follow User
 	 */
 
 	@RequestMapping(value = "/api/user/follow", method = { RequestMethod.POST, RequestMethod.GET })
@@ -211,7 +214,7 @@ public class EnstaAccountController {
 	}
 	
 	/*
-	 * Unfollow Account
+	 * Unfollow User
 	 */
 
 	@RequestMapping(value = "/api/user/unfollow", method = { RequestMethod.POST, RequestMethod.GET })

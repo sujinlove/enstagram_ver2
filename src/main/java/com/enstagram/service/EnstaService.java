@@ -17,17 +17,9 @@ public class EnstaService {
 	
 	@Autowired
 	EnstaMapper enstaMapper;
-
-	/*
-	 * Get Account List
-	 */
-
-//	public List<EnstaAccount> accountList() throws Exception {
-//		return enstaMapper.getAccountList();
-//	}
 	
 	/*
-	 * Check Account Id
+	 * Check Account When Sign Up
 	 */
 
 	public Integer checkAccountId(String id) {
@@ -35,23 +27,31 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get Account
+	 * Check Account When Login
 	 */
 
 	public void getAccount(String id) {
 		enstaMapper.getAccount(id);
 	}
 	
+	/*
+	 * Change Id To Accnt_num
+	 */
+	
 	public Integer getAccountNum(String id) {
 		return enstaMapper.getAccountNum(id);
 	}
+	
+	/*
+	 * Get Account Info
+	 */
 	
 	public Map<String, Object> getAccountInfo(int accnt_num) {
 		return enstaMapper.getAccountInfo(accnt_num);
 	}
 
 	/*
-	 * Create Account
+	 * Create Account When Sign Up
 	 */
 
 	public void createAccount(EnstaAccount enstaAccount) {
@@ -85,11 +85,11 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Edit Account
+	 * Edit Account Info
 	 */
 	
-	public void editAccount(EnstaAccount enstaAccount) {
-		enstaMapper.editAccount(enstaAccount);
+	public void editAccountInfo(EnstaAccount enstaAccount) {
+		enstaMapper.editAccountInfo(enstaAccount);
 	}
 	
 	/*
@@ -101,7 +101,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Follow User
+	 * Add Follow User
 	 */
 	
 	public void followUser(EnstaFollow enstaFollow) {
@@ -133,7 +133,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get Feed File Name
+	 * Get File Name of Feed 
 	 */
 	
 	public String getFeedFileName(Integer feed_num) {
@@ -141,7 +141,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Upload Feed
+	 * Create Feed When Upload File
 	 */
 	
 	public void createFeed(EnstaFeed enstaFeed) {
@@ -149,11 +149,11 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get Feed
+	 * Get Feed Info
 	 */
 	
-	public Map<String, Object> getFeed(Integer feed_num) {
-		return enstaMapper.getFeed(feed_num);
+	public Map<String, Object> getFeedInfo(Integer feed_num) {
+		return enstaMapper.getFeedInfo(feed_num);
 	}
 	
 	/*
@@ -180,7 +180,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Like Feed
+	 * Add Heart to Feed
 	 */
 	
 	public void likeFeed(EnstaFeed enstaFeed) {
@@ -188,7 +188,7 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Unlike Feed
+	 * Cancel Heart to Feed
 	 */
 	
 	public void unlikeFeed(EnstaFeed enstaFeed) {
@@ -212,19 +212,19 @@ public class EnstaService {
 	}
 	
 	/*
-	 * Get My Heart List
+	 * Get Heart List
 	 */
 	
-	public Integer[] getMyHeartList(Integer accnt_num) {
-		return enstaMapper.getMyHeartList(accnt_num);
+	public Integer[] getHeartList(Integer accnt_num) {
+		return enstaMapper.getHeartList(accnt_num);
 	}
 	
 	/*
-	 * Get My Feed List
+	 * Get Feed List
 	 */
 	
-	public String[] getMyFeedList(Integer accnt_num) {
-		return enstaMapper.getMyFeedList(accnt_num);
+	public String[] getFeedList(Integer accnt_num) {
+		return enstaMapper.getFeedList(accnt_num);
 	}
 	
 }

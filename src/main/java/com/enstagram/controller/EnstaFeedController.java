@@ -30,7 +30,7 @@ public class EnstaFeedController {
 	EnstaService enstaService;
 
 	/*
-	 * Create Feed
+	 * Create Feed When Upload File
 	 */
 
 	@RequestMapping(value = "/api/feedUpload", method = { RequestMethod.POST, RequestMethod.GET })
@@ -54,7 +54,7 @@ public class EnstaFeedController {
 
 	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
-		Map<String, Object> map = enstaService.getFeed(feed_num);
+		Map<String, Object> map = enstaService.getFeedInfo(feed_num);
 		return map;	
 	}
 	
@@ -102,7 +102,7 @@ public class EnstaFeedController {
 	}
 	
 	/*
-	 * Like Feed
+	 * Add Heart to Feed
 	 */
 
 	@RequestMapping(value = "/api/feed/like", method = { RequestMethod.POST, RequestMethod.GET })
@@ -112,7 +112,7 @@ public class EnstaFeedController {
 	}
 	
 	/*
-	 * Unlike Feed
+	 * Cancel Heart to Feed
 	 */
 
 	@RequestMapping(value = "/api/feed/unlike", method = { RequestMethod.POST, RequestMethod.GET })

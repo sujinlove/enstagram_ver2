@@ -3,104 +3,127 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.enstagram.mapper.EnstaMapper">
-
-	<select id="getAccountList" resultType="com.enstagram.model.EnstaAccount">
-		SELECT * FROM ensta_account
-	</select>
-
+	
+	<!-- Create Account When Sign Up -->
 	<insert id="createAccount" parameterType="com.enstagram.model.EnstaAccount">
 		INSERT INTO ensta_account(accnt_num, profile, id, name, email, passwd, role) VALUES(#{accnt_num}, #{profile}, #{id}, #{name}, #{email}, #{passwd}, #{role}) 
 	</insert>
 	
+	<!-- Check Account Id When Sign Up -->
 	<select id="checkAccountId" resultType="Integer">
 		SELECT COUNT(*) FROM ensta_account WHERE id=#{id}
 	</select>
 
+	<!-- Check Account When Login -->
 	<select id="getAccount" resultType="com.enstagram.model.EnstaAccount">
 		SELECT * FROM ensta_account WHERE id=#{id}
 	</select>
 	
+	<!-- Change Id To Accnt_num -->
 	<select id="getAccountNum" resultType="Integer">
 		SELECT accnt_num FROM ensta_account WHERE id=#{id}
 	</select>
 	
+	<!-- Get Account Info -->
 	<select id="getAccountInfo" resultType="java.util.HashMap">
-		SELECT * FROM ensta_account WHERE accnt_num=#{accnt_num}
+		SELECT accnt_num, id, profile, name, email, des FROM ensta_account WHERE accnt_num=#{accnt_num}
 	</select>
 	
-	<select id="editAccount" parameterType="com.enstagram.model.EnstaAccount">
+	<!-- Edit Account Info -->
+	<update id="editAccountInfo" parameterType="com.enstagram.model.EnstaAccount">
 		UPDATE ensta_account SET id=#{id}, name=#{name}, email=#{email}, des=#{des}, passwd=#{passwd} WHERE accnt_num=#{accnt_num}
-	</select>
+	</update>
 	
-	<select id="editProfile" parameterType="com.enstagram.model.EnstaAccount">
+	<!-- Edit Account Profile -->
+	<update id="editProfile" parameterType="com.enstagram.model.EnstaAccount">
 		UPDATE ensta_account SET profile=#{profile} WHERE id=#{id}
-	</select>
+	</update>
 	
+	<!-- Get Follow List -->
 	<select id="getFollowList" resultType="Integer">
-		SELECT following_num FROM ensta_followw WHERE accnt_num = #{accnt_num}
+		SELECT following_num FROM ensta_follow WHERE accnt_num = #{accnt_num}
 	</select>
 	
+	<!-- Get Follower List -->
 	<select id="getFollowerList" resultType="Integer">
-		SELECT accnt_num FROM ensta_followw WHERE following_num = #{following_num}
+		SELECT accnt_num FROM ensta_follow WHERE following_num = #{following_num}
 	</select>
 	
+	<!-- Add Follow User -->
 	<insert id="followUser" parameterType="com.enstagram.model.EnstaFollow">
-		INSERT INTO ensta_followw (accnt_num, following_num) SELECT #{accnt_num},#{following_num} FROM DUAL WHERE NOT EXISTS (SELECT * FROM ensta_followw where accnt_num = #{accnt_num} AND following_num = #{following_num})
+		INSERT INTO ensta_follow (accnt_num, following_num) SELECT #{accnt_num},#{following_num} FROM DUAL WHERE NOT EXISTS (SELECT * FROM ensta_follow where accnt_num = #{accnt_num} AND following_num = #{following_num})
 	</insert>
 
-	<select id="unfollowUser" parameterType="com.enstagram.model.EnstaFollow">
-		DELETE FROM ensta_followw WHERE accnt_num = #{accnt_num} AND following_num = #{following_num}
-	</select>
+	<!-- Unfollow User -->
+	<delete id="unfollowUser" parameterType="com.enstagram.model.EnstaFollow">
+		DELETE FROM ensta_follow WHERE accnt_num = #{accnt_num} AND following_num = #{following_num}
+	</delete>
+	
+	
+	
+	
 	
 	<!-- Ensta Feed -->
 
+	<!-- Create Feed When File Upload -->
 	<insert id="createFeed" parameterType="com.enstagram.model.EnstaFeed" useGeneratedKeys="true" keyProperty="feed_num">
 		INSERT INTO ensta_feed (feed_num, file_name, description, heart, regdate, accnt_num) VALUES (#{feed_num}, #{file_name}, #{description}, #{heart}, NOW(), #{accnt_num}) 
 	</insert>
 
-	<select id="getFeed" resultType="java.util.HashMap">
+	<!-- Get Feed Info -->
+	<select id="getFeedInfo" resultType="java.util.HashMap">
 		SELECT * FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>
 	
-	<select id="getMyFeedList" resultType="String">
+	<!-- Get Feed List -->
+	<select id="getFeedList" resultType="String">
 		SELECT feed_num FROM ensta_feed WHERE accnt_num = #{accnt_num} ORDER BY feed_num DESC
 	</select>
 	
+	<!-- Get Feed of Follow User -->
 	<select id="getFollowFeed" resultType="Integer">
-		SELECT ef.feed_num FROM ensta_feed ef INNER JOIN ensta_followw f ON ef.accnt_num = f.following_num WHERE f.accnt_num=#{f.accnt_num} ORDER BY feed_num DESC;
+		SELECT ef.feed_num FROM ensta_feed ef INNER JOIN ensta_follow f ON ef.accnt_num = f.following_num WHERE f.accnt_num=#{f.accnt_num} ORDER BY feed_num DESC;
 	</select>
 	
+	<!-- Get Heart List of Feed -->
 	<select id="getFeedHeartList" resultType="com.enstagram.model.EnstaAccount">
 		SELECT ac.* FROM ensta_account ac INNER JOIN ensta_heart h ON ac.accnt_num = h.accnt_num WHERE h.feed_num=#{h.feed_num};
 	</select>
 	
+	<!-- Get File Name of Feed -->
 	<select id="getFeedFileName" resultType="String">
 		SELECT file_name FROM ensta_feed WHERE feed_num = #{feed_num}
 	</select>
 	
-	<select id="editFeed" parameterType="com.enstagram.model.EnstaFeed">
+	<!-- Edit Feed -->
+	<update id="editFeed" parameterType="com.enstagram.model.EnstaFeed">
 		UPDATE ensta_feed SET description=#{description} WHERE feed_num=#{feed_num}
-	</select>
+	</update>
 	
-	<select id="removeFeed" parameterType="com.enstagram.model.EnstaFeed">
+	<!-- Remove Feed -->
+	<delete id="removeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		DELETE FROM ensta_feed WHERE feed_num = #{feed_num}
-	</select>
+	</delete>
 	
+	<!-- Add Heart to Feed -->
 	<insert id="likeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		INSERT INTO ensta_heart (accnt_num, feed_num) SELECT #{accnt_num},#{feed_num} FROM DUAL WHERE NOT EXISTS (SELECT * FROM ensta_heart where accnt_num = #{accnt_num} AND feed_num = #{feed_num})
 	</insert>
 
-	<select id="unlikeFeed" parameterType="com.enstagram.model.EnstaFeed">
+	<!-- Cancel Heart to Feed -->
+	<delete id="unlikeFeed" parameterType="com.enstagram.model.EnstaFeed">
 		DELETE FROM ensta_heart WHERE accnt_num = #{accnt_num} AND feed_num = #{feed_num}
-	</select>
+	</delete>
 	
-	<select id="getMyHeartList" resultType="Integer">
+	<!-- Get Heart List -->
+	<select id="getHeartList" resultType="Integer">
 		SELECT feed_num FROM ensta_heart WHERE accnt_num = #{accnt_num}
 	</select>
 	
-	<select id="updateHeart" parameterType="com.enstagram.model.EnstaFeed">
+	<!-- Update Heart -->
+	<update id="updateHeart" parameterType="com.enstagram.model.EnstaFeed">
 		UPDATE ensta_feed SET heart=(select count(feed_num) from ensta_heart where feed_num = #{feed_num}) WHERE feed_num=#{feed_num}
-	</select>
+	</update>
 
 	<!-- Ensta Reply -->
 <!-- 	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">
