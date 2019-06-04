@@ -21,8 +21,8 @@
       </div>
       <div class="user-list" slot="sidebar">
         <ol>
-          <li class="user" :key="following" v-for="following in this.$store.state.user.followList">
-            <user-list :user_num="following"></user-list>
+          <li class="user" :key="following" v-for="following in this.$store.state.user.followingList">
+            <user-list :user_num="following" />
           </li>
         </ol>
       </div>
