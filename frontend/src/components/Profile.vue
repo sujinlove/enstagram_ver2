@@ -47,13 +47,13 @@
             <span class="count">{{ this.user.feedList.length }}</span>
           </li>
           <li>
-            <router-link :to= "{ name: 'AccountFollowerPage', params: { user_id: this.user.id }}">
+            <router-link :to="'/user/' + this.user.id + '/followers'">
               <span class="title">팔로워</span>
               <span class="count">{{ this.user.followerList.length }}</span>
             </router-link>
           </li>
           <li>
-            <router-link :to= "{ name: 'AccountFollowingPage', params: { user_id: this.user.id }}">
+            <router-link :to="'/user/' + this.user.id + '/following'">
               <span class="title">팔로우</span>
               <span class="count">{{ this.user.followingList.length }}</span>
             </router-link>
@@ -78,13 +78,13 @@
           <span class="count">{{ this.user.feedList.length }}</span>
         </li>
         <li>
-          <router-link :to= "{ name: 'AccountFollowerPage', params: { user_id: this.user.id }}">
+          <router-link :to="'/user/' + this.user.id + '/followers'">
             <span class="title">팔로워</span>
             <span class="count">{{ this.user.followerList.length }}</span>
           </router-link>
         </li>
         <li>
-          <router-link :to= "{ name: 'AccountFollowingPage', params: { user_id: this.user.id }}">
+          <router-link :to="'/user/' + this.user.id + '/following'">
             <span class="title">팔로우</span>
             <span class="count">{{ this.user.followingList.length }}</span>
           </router-link>

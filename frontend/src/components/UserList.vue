@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="user-info">
-        <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
+        <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
         <div class="user-name">{{this.user.name}}</div>
       </div>
       <div class="follow-btn" v-if="page === 'AccountFollowingPage' || page === 'AccountFollowerPage' || page === 'FeedHeartPage'">

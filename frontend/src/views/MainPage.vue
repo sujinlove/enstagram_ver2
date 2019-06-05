@@ -3,11 +3,10 @@
     <app-header />
     <two-columns>
       <div class="feed-list" slot="main">
-        <div class="feed-item" :key="feed" v-for="feed in this.feedList">
+        <div class="feed-item" :key="feed" v-for="feed in this.showList">
           <feed :feed_num="feed" :page="PageName"/>
         </div>
       </div>
-      <!-- <feed slot="main" :page="PageName" :feed_num="feed_num"></feed> -->
       <div slot="sidebar" class="profile">
         <div class="user-pic">
           <div class="user-pic-inner">
@@ -49,7 +48,10 @@ export default {
       PageName: 'MainPage',
       feed_num: '',
       values: [],
-      feedList: []
+      feedList: [],
+      showList: [],
+      bottom: false,
+      count: 0
     }
   },
   components: {
@@ -61,13 +63,39 @@ export default {
     Popup
   },
   created () {
+    window.addEventListener('scroll', () => {
+      this.bottom = this.bottomVisible()
+    })
     this.getFollowFeed()
   },
+  watch: {
+    bottom (bottom) {
+      if (bottom) {
+        this.addFeed()
+      }
+    }
+  },
   methods: {
+    bottomVisible () {
+      const scrollY = window.scrollY
+      const visible = document.documentElement.clientHeight
+      const pageHeight = document.documentElement.scrollHeight
+      const bottomOfPage = visible + scrollY >= pageHeight
+      if (scrollY > 0) {
+        return bottomOfPage || pageHeight < visible
+      }
+    },
+    addFeed () {
+      if (this.feedList[this.count]) {
+        this.showList.push(this.feedList[this.count])
+        this.count++
+      }
+    },
     getFollowFeed () {
       axios.get('/api/feed/follow', {
       }).then(response => {
         this.feedList = response.data
+        this.addFeed()
       }).catch(e => {
         console.log('error: ' + e)
       })

@@ -14,7 +14,7 @@
     @include lib-typography-links();
   }
 
-  .app-wrapper:not(.active) {
+  #app-wrapper:not(.active) {
     display: none;
   }
 

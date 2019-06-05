@@ -6,7 +6,7 @@
       <div class="feed-list">
         <ul class="feed-mode grid-mode-view">
           <li class="feed-item" :key="feed" v-for="feed in this.user.feedList">
-            <router-link :to="{ name: 'FeedPage', params: { feed_num: feed } }" v-if="feedMode == 'grid-mode'">
+            <router-link :to="'/feed/' + feed" v-if="feedMode == 'grid-mode'">
               <feed :feed_num="feed" :page="PageName"/>
             </router-link>
             <feed :feed_num="feed" :page="PageName" v-else />
