@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="countId !== 0">
     <app-header />
     <one-column>
       <profile :user="user" :page="PageName"/>
@@ -16,6 +16,7 @@
     </one-column>
     <footer-layout />
   </section>
+  <not-found v-else />
 </template>
 
 <script>
@@ -26,6 +27,7 @@ import Profile from '../components/Profile'
 import Feed from '../components/Feed'
 import Footer from '../components/common/Footer'
 import Popup from '../components/common/Popup'
+import NotFound from './NotFound.vue'
 
 export default {
   components: {
@@ -34,25 +36,38 @@ export default {
     Profile,
     Feed,
     'footer-layout': Footer,
-    Popup
+    Popup,
+    NotFound
   },
   props: ['user_id'],
   data () {
     return {
       user: {},
       PageName: 'UserPage',
-      feedMode: 'grid-mode'
+      feedMode: 'grid-mode',
+      countId: ''
     }
   },
   created () {
-    this.getUserInfo()
+    this.checkId()
   },
   methods: {
+    checkId () {
+      axios.post('/api/check/id', {
+        id: this.user_id
+      }).then(response => {
+        this.countId = response.data
+        if (this.countId !== 0) {
+          this.getUserInfo()
+        }
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
     getUserInfo () {
       axios.post('/api/user/id/' + this.user_id, {
       }).then(response => {
         this.user = response.data
-        console.log(this.user)
       }).catch(e => {
         console.log('error: ' + e)
       })
