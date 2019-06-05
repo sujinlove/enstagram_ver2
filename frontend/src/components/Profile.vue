@@ -43,19 +43,19 @@
       <div class="user-count">
         <ul>
           <li>
-            <span class="title" @click="testm">게시물</span>
-            <span class="count">{{ this.user.feedList.length }}</span>
+            <span class="title">게시물</span>
+            <span class="count" v-if="this.user.feedList">{{ this.user.feedList.length }}</span>
           </li>
           <li>
             <router-link :to="'/user/' + this.user.id + '/followers'">
               <span class="title">팔로워</span>
-              <span class="count">{{ this.user.followerList.length }}</span>
+              <span class="count" v-if="this.user.feedList">{{ this.user.followerList.length }}</span>
             </router-link>
           </li>
           <li>
             <router-link :to="'/user/' + this.user.id + '/following'">
               <span class="title">팔로우</span>
-              <span class="count">{{ this.user.followingList.length }}</span>
+              <span class="count" v-if="this.user.feedList">{{ this.user.followingList.length }}</span>
             </router-link>
           </li>
         </ul>
@@ -75,18 +75,18 @@
       <ul>
         <li>
           <span class="title">게시물</span>
-          <span class="count">{{ this.user.feedList.length }}</span>
+          <span class="count" v-if="this.user.feedList">{{ this.user.feedList.length }}</span>
         </li>
         <li>
           <router-link :to="'/user/' + this.user.id + '/followers'">
             <span class="title">팔로워</span>
-            <span class="count">{{ this.user.followerList.length }}</span>
+            <span class="count" v-if="this.user.feedList">{{ this.user.followerList.length }}</span>
           </router-link>
         </li>
         <li>
           <router-link :to="'/user/' + this.user.id + '/following'">
             <span class="title">팔로우</span>
-            <span class="count">{{ this.user.followingList.length }}</span>
+            <span class="count" v-if="this.user.feedList">{{ this.user.followingList.length }}</span>
           </router-link>
         </li>
       </ul>
@@ -105,10 +105,6 @@ export default {
     }
   },
   methods: {
-    testm () {
-      console.log(this.user)
-      console.log(this.$store.state.user)
-    },
     fileUpload () {
       this.file = this.$refs.file.files[0]
       var formData = new FormData()
