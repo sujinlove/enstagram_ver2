@@ -234,7 +234,7 @@ public class EnstaAccountController {
 
 		for (int i = 0; i < accnt_num.length; i++) {
 			int n = (int) (Math.random() * enstaService.getRecommendUser().length);
-			accnt_num[i] = n;
+			accnt_num[i] = enstaService.getRecommendUser()[n];
 			for (int j = 0; j < i; j++) {
 				if (accnt_num[i] == accnt_num[j]) {
 					i--;
