@@ -2,6 +2,9 @@ package com.enstagram.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
 import com.enstagram.service.EnstaService;
 
@@ -37,7 +41,8 @@ public class EnstaFeedController {
 		enstaFeed.setFile_name("/upload/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]);
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream(new File("./src/main/resources/static/upload/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]));
+			fos = new FileOutputStream(new File("./src/main/resources/static/upload/" + profileName + "."
+					+ file.getOriginalFilename().split("\\.")[1]));
 			IOUtils.copy(file.getInputStream(), fos);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,9 +58,9 @@ public class EnstaFeedController {
 	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
 		Map<String, Object> map = enstaService.getFeedInfo(feed_num);
-		return map;	
+		return map;
 	}
-	
+
 	/*
 	 * Get Feed List of Follow
 	 */
@@ -64,10 +69,10 @@ public class EnstaFeedController {
 	public Integer[] getFollowFeed(@ModelAttribute EnstaFeed enstaFeed) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
-		
+
 		return enstaService.getFollowFeed(enstaService.getAccountNum(currentUser));
 	}
-	
+
 	/*
 	 * Get Heart User List of Feed
 	 */
@@ -76,16 +81,25 @@ public class EnstaFeedController {
 	public Integer[] getFeedHeartList(@PathVariable Integer feed_num) {
 		return enstaService.getFeedHeartList(feed_num);
 	}
-	
+
 	/*
 	 * Edit Feed
 	 */
 
 	@RequestMapping(value = "/api/feed/edit", method = { RequestMethod.POST, RequestMethod.GET })
 	public void editFeed(@RequestBody EnstaFeed enstaFeed) {
-	 	enstaService.editFeed(enstaFeed);
+		enstaService.editFeed(enstaFeed);
 	}
-	
+
+	/*
+	 * 
+	 */
+
+	@RequestMapping(value = "/api/check/feedNum", method = { RequestMethod.POST, RequestMethod.GET })
+	public Integer checkFeedNum(@RequestBody EnstaFeed enstaFeed) {
+		return enstaService.checkFeedNum(enstaFeed.getFeed_num());
+	}
+
 	/*
 	 * Remove Feed
 	 */
@@ -98,7 +112,7 @@ public class EnstaFeedController {
 		enstaService.unlikeFeed(enstaFeed);
 		enstaService.removeFeed(feed_num);
 	}
-	
+
 	/*
 	 * Add Heart to Feed
 	 */
@@ -108,7 +122,7 @@ public class EnstaFeedController {
 		enstaService.likeFeed(enstaFeed);
 		enstaService.updateHeart(enstaFeed.getFeed_num());
 	}
-	
+
 	/*
 	 * Cancel Heart to Feed
 	 */
@@ -118,4 +132,5 @@ public class EnstaFeedController {
 		enstaService.unlikeFeed(enstaFeed);
 		enstaService.updateHeart(enstaFeed.getFeed_num());
 	}
+
 }

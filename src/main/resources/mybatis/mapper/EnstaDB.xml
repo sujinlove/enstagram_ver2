@@ -122,8 +122,19 @@
 	
 	<!-- Update Heart -->
 	<update id="updateHeart" parameterType="com.enstagram.model.EnstaFeed">
-		UPDATE ensta_feed SET heart=(select count(feed_num) from ensta_heart where feed_num = #{feed_num}) WHERE feed_num=#{feed_num}
+		UPDATE ensta_feed SET heart=(select COUNT(feed_num) FROM ensta_heart WHERE feed_num = #{feed_num}) WHERE feed_num=#{feed_num}
 	</update>
+
+	<!-- Check Feed Num When Sign Up -->
+	<select id="checkFeedNum" resultType="Integer">
+		SELECT COUNT(*) FROM ensta_feed WHERE feed_num=#{feed_num}
+	</select>
+
+	<!-- Get Recommend Friends -->
+	<select id="getRecommendUser" resultType="Integer">
+		SELECT accnt_num FROM ensta_account
+	</select>
+
 
 	<!-- Ensta Reply -->
 <!-- 	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">

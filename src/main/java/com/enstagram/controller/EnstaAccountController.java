@@ -3,8 +3,10 @@ package com.enstagram.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -89,7 +91,7 @@ public class EnstaAccountController {
 	public Map<String, Object> currentUserInfo(@ModelAttribute EnstaAccount enstaAccount) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
-		enstaService.getAccount(currentUser); 
+		enstaService.getAccount(currentUser);
 		enstaAccount.setId(currentUser);
 
 		Map<String, Object> map = enstaService.getAccountInfo(enstaService.getAccountNum(currentUser));
@@ -100,7 +102,7 @@ public class EnstaAccountController {
 
 		return map;
 	}
-	
+
 	/*
 	 * Get User Info
 	 */
@@ -112,21 +114,21 @@ public class EnstaAccountController {
 		map.put("feedList", enstaService.getFeedList(accnt_num));
 		map.put("followingList", enstaService.getFollowingList(accnt_num));
 		map.put("followerList", enstaService.getFollowerList(accnt_num));
-		
+
 		return map;
 	}
-	
+
 	/*
 	 * Get User Info By Id
 	 */
-	
+
 	@RequestMapping(value = "/api/user/id/{id}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getAccountInfoById(@PathVariable String id) {
 		Integer userNum = enstaService.getAccountNum(id);
-		
+
 		return getAccountInfo(userNum);
 	}
-	
+
 	/*
 	 * Edit Account Info
 	 */
@@ -197,12 +199,11 @@ public class EnstaAccountController {
 		enstaAccount.setId(authentication.getName());
 		enstaService.editProfile(enstaAccount);
 	}
-	
+
 	@RequestMapping(value = "/api/check/id", method = { RequestMethod.POST, RequestMethod.GET })
-	public Integer checkAccountId (@RequestBody EnstaAccount enstaAccount) {
+	public Integer checkAccountId(@RequestBody EnstaAccount enstaAccount) {
 		return enstaService.checkAccountId(enstaAccount.getId());
 	}
-	
 
 	/*
 	 * Add Follow User
@@ -212,7 +213,7 @@ public class EnstaAccountController {
 	public void followUser(@RequestBody EnstaFollow enstaFollow) {
 		enstaService.followUser(enstaFollow);
 	}
-	
+
 	/*
 	 * Unfollow User
 	 */
@@ -221,4 +222,30 @@ public class EnstaAccountController {
 	public void unfollowUser(@RequestBody EnstaFollow enstaFollow) {
 		enstaService.unfollowUser(enstaFollow);
 	}
+
+	/*
+	 * Recommend Friends
+	 */
+
+	@RequestMapping(value = "/api/recommendUser", method = { RequestMethod.POST, RequestMethod.GET })
+	public Map<String, Object> recommendUser() {
+		Map<String, Object> map = new HashMap<>();
+		Integer[] accnt_num = new Integer[6];
+
+		for (int i = 0; i < accnt_num.length; i++) {
+			int n = (int) (Math.random() * enstaService.getRecommendUser().length);
+			accnt_num[i] = n;
+			for (int j = 0; j < i; j++) {
+				if (accnt_num[i] == accnt_num[j]) {
+					i--;
+					break;
+				}
+			}
+			System.out.println("accnt_num[i]" + accnt_num[i]);
+			map.put("accnt_num", accnt_num);
+		}
+		System.out.println("-------------------------------------");
+		return map;
+	}
+
 }
