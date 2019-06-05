@@ -15,13 +15,15 @@
   <header class="feed-header">
     <div class="user-pic">
       <div class="user-pic-inner">
-        <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">
+        <router-link :to="'/user/' + this.user.id">
           <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
         </router-link>
       </div>
     </div>
     <div class="user-id">
-      <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}">{{this.user.id}}</router-link>
+      <router-link :to="'/user/' + this.user.id">
+        {{this.user.id}}
+    </router-link>
     </div>
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
@@ -41,10 +43,10 @@
       <div class="feed-btn">
         <button class="icon-sprite ico-glyph-3 heart" @click="addHeart"  v-if="this.$store.state.user.heartList.indexOf(this.feed_num) === -1"><span>heart</span></button>
         <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart" v-else><span>heart</span></button>
-        <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
+        <router-link :to="'/feed/' + this.feed_num" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count" v-if="this.feed.heart > 0">
-        <router-link :to= "{ name: 'FeedHeartPage', params: { feed_num: this.feed_num }}">
+        <router-link :to="'/feed/' + this.feed_num + '/heart'">
           <span>좋아요</span>
           <span>{{this.feed.heart}}</span>
           <span>개</span>
@@ -57,11 +59,13 @@
       <div class="content-view" v-if="page !== 'FeedPage'">
         <ul>
           <li class="feed-comment" v-if="this.feed.description !== ''">
-            <router-link :to= "{ name: 'UserPage', params: { user_id: this.user.id }}" class="user-id">{{this.user.id}}</router-link>
+            <router-link :to="'/user/' + this.user.id" class="user-id">
+              {{this.user.id}}
+            </router-link>
             <span class="feed-text">{{this.feed.description}}</span>
           </li>
           <li class="more-comment">
-            <router-link :to= "{ name: 'FeedPage', params: { feed_num: this.feed_num }}">
+            <router-link :to="'/feed/' + this.feed_num">
                 <span>댓글</span>
                 <span>1231231</span>
                 <span>개 모두 보기</span>
@@ -120,7 +124,7 @@ export default {
       console.log(newValue)
     }
   },
-  created () {
+  mounted () {
     this.$store.commit('setUser')
     this.getFeedInfo()
   },
