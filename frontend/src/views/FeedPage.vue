@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="countFeed !== 0">
     <app-header v-on:changeFeedInfo="changeFeedInfo"/>
     <one-column>
       <div class="feed-view">
@@ -12,6 +12,7 @@
       <button @click="removeFeed" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 삭제</button>
     </popup>
   </section>
+  <not-found v-else />
 </template>
 
 <script>
@@ -20,21 +21,37 @@ import Header from '../components/common/Header.vue'
 import OneColumn from '../components/common/OneColumn'
 import Feed from '../components/Feed'
 import Popup from '../components/common/Popup'
+import NotFound from './NotFound.vue'
 
 export default {
   props: ['feed_num'],
   data () {
     return {
-      PageName: 'FeedPage'
+      PageName: 'FeedPage',
+      countFeed: ''
     }
   },
   components: {
     'app-header': Header,
     OneColumn,
     Feed,
-    Popup
+    Popup,
+    NotFound
+  },
+  created () {
+    this.checkFeed()
   },
   methods: {
+    checkFeed () {
+      axios.post('/api/check/feedNum', {
+        feed_num: this.feed_num
+      }).then(response => {
+        this.countFeed = response.data
+        console.log(response.data)
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
     changeFeedInfo () {
       this.$refs.feed.changeFeedInfo()
     },
