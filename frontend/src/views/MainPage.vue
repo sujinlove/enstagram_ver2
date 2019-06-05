@@ -1,7 +1,7 @@
 <template>
   <section class="main-page">
     <app-header />
-    <two-columns>
+    <two-columns v-if="this.$store.state.user.followingList.length > 0">
       <div class="feed-list" slot="main">
         <div class="feed-item" :key="feed" v-for="feed in this.showList">
           <feed :feed_num="feed" :page="PageName"/>
@@ -18,15 +18,32 @@
           <p class="user-name">{{ this.$store.state.user.name }}</p>
         </div>
       </div>
-      <div class="user-list" slot="sidebar">
+      <div class="user-list following-user" slot="sidebar">
         <ol>
           <li class="user" :key="following" v-for="following in this.$store.state.user.followingList">
             <user-list :user_num="following" />
           </li>
         </ol>
       </div>
+      <div class="user-list recommend-user" slot="sidebar">
+        <ol>
+          <li class="user" :key="recommend" v-for="recommend in this.recommendList">
+            <user-list :user_num="recommend" />
+          </li>
+        </ol>
+      </div>
       <app-footer slot="sidebar"/>
     </two-columns>
+    <!-- When no follow user-->
+    <one-column v-else>
+      <div class="user-list recommend-user">
+        <ol>
+          <li class="user" :key="recommend" v-for="recommend in this.recommendList">
+            <user-list :user_num="recommend" :list="'recommend'"/>
+          </li>
+        </ol>
+      </div>
+    </one-column>
     <popup>
       <button @click="cancelFollow($store.state.selectFeed.accnt_num)" v-if="$store.state.popupContent == 'feedService'">팔로우 취소</button>
       <!-- <button @click="removeFeed($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button> -->
@@ -36,6 +53,7 @@
 
 <script>
 import Header from '../components/common/Header.vue'
+import OneColumn from '../components/common/OneColumn'
 import TwoColumns from '../components/common/TwoColumns'
 import Feed from '../components/Feed'
 import UserList from '../components/UserList'
@@ -49,6 +67,7 @@ export default {
       feed_num: '',
       values: [],
       feedList: [],
+      recommendList: [],
       showList: [],
       bottom: false,
       count: 0
@@ -57,6 +76,7 @@ export default {
   components: {
     'app-header': Header,
     'app-footer': Footer,
+    OneColumn,
     TwoColumns,
     Feed,
     UserList,
@@ -67,6 +87,7 @@ export default {
       this.bottom = this.bottomVisible()
     })
     this.getFollowFeed()
+    this.getRecommendList()
   },
   watch: {
     bottom (bottom) {
@@ -109,6 +130,15 @@ export default {
         this.$store.commit('selectFeed', '')
         this.getFollowFeed()
         this.$EventBus.$emit('showPopup')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    getRecommendList () {
+      axios.get('/api/recommendUser', {
+      }).then(response => {
+        this.recommendList = response.data.accnt_num
+        console.log(response.data)
       }).catch(e => {
         console.log('error: ' + e)
       })
