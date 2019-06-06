@@ -229,6 +229,8 @@ public class EnstaAccountController {
 
 	@RequestMapping(value = "/api/recommendUser", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> recommendUser() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentUser = authentication.getName();
 		Map<String, Object> map = new HashMap<>();
 		Integer[] accnt_num = new Integer[6];
 
@@ -237,6 +239,10 @@ public class EnstaAccountController {
 			accnt_num[i] = enstaService.getRecommendUser()[n];
 			for (int j = 0; j < i; j++) {
 				if (accnt_num[i] == accnt_num[j]) {
+					i--;
+					break;
+				}
+				if (accnt_num[i] == enstaService.getAccountNum(currentUser)) {
 					i--;
 					break;
 				}
