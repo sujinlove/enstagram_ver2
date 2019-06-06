@@ -66,7 +66,6 @@ export default {
     }
   },
   beforeUpdate () {
-    console.log('updated')
     var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
     if (this.$store.state.user.id.length > 3 && regExp.test(this.$store.state.user.email)) {
       if (this.passwd.length === 0 || this.passwd.length > 5) {
@@ -100,7 +99,6 @@ export default {
             console.log('error: ' + e)
           })
         } else if (this.passwd.length === 0) {
-          console.log('me')
           axios.post('/api/account/edit', {
             accnt_num: this.$store.state.user.accnt_num,
             id: this.$store.state.user.id,

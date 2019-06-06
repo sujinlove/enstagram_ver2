@@ -10,7 +10,7 @@
         <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
         <div class="user-name">{{this.user.name}}</div>
       </div>
-      <div class="follow-btn" v-if="list === 'recommend' || list === 'following' || list === 'follower' || list === 'heartAccount'">
+      <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && (list === 'recommend' || list === 'following' || list === 'follower' || list === 'heartAccount')">
         <button @click="addFollow(user.accnt_num)" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
         <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로잉</button>
       </div>
