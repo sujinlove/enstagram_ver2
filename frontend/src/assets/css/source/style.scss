@@ -41,6 +41,13 @@
     }
   }
 
+  .content-title {
+    margin-bottom: 16px;
+    font-size: $font-size__m;
+    font-weight: $font-weight__semibold;
+    line-height: 24px;
+  }
+
   .service-preview {
     display: inline-block;
     width: 50%;
@@ -163,6 +170,22 @@
       @extend %abs-button-desktop;
     }
   }
+
+
+  /*
+  **  Feed mode view
+  */
+
+  .modes {
+    display: none;
+
+    .mode {
+      flex: 1 1 auto;
+      line-height: 44px;
+      text-align: center;
+      border-top: 1px solid $border-color__base;
+    }
+  }
 }
 
 
@@ -206,6 +229,10 @@
 //  _____________________________________________
 
 @media only screen and (max-width: ($screen__m - 1)) {
+  .modes {
+    display: flex;
+  }
+  
   .service-preview {
     display: none;
   }

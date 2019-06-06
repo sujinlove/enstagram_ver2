@@ -26,22 +26,26 @@
         </ol>
       </div>
       <div class="user-list recommend-user" slot="sidebar">
+        <strong class="content-title">회원님을 위한 추천</strong>
         <ol>
           <li class="user" :key="recommend" v-for="recommend in this.recommendList">
-            <user-list :user_num="recommend" />
+            <user-list :user_num="recommend" :list="'recommend'" />
           </li>
         </ol>
       </div>
       <app-footer slot="sidebar"/>
     </two-columns>
     <!-- When no follow user-->
-    <one-column v-else>
-      <div class="user-list recommend-user">
-        <ol>
-          <li class="user" :key="recommend" v-for="recommend in this.recommendList">
-            <user-list :user_num="recommend" :list="'recommend'"/>
-          </li>
-        </ol>
+    <one-column v-if="this.$store.state.user.followingList.length == 0">
+      <div class="container">
+        <div class="content-title">회원님을 위한 추천</div>
+        <div class="user-list recommend-user">
+          <ol>
+            <li class="user" :key="recommend" v-for="recommend in this.recommendList">
+              <user-list :user_num="recommend" :list="'recommend'"/>
+            </li>
+          </ol>
+        </div>
       </div>
     </one-column>
     <popup>
@@ -148,9 +152,8 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  .profile {
+  .container {
     width: 100%;
-    margin-bottom: 12px;
   }
 
   .user-list {
@@ -159,7 +162,10 @@ export default {
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     box-sizing: border-box;
-    color: red;
+
+    &.following-user {
+      margin-top: 12px;
+    }
   }
 
   footer {

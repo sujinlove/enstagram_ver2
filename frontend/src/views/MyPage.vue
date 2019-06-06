@@ -11,7 +11,7 @@
           <button class="icon-sprite ico-glyph-3 list-mode"><span>list</span></button>
         </div>
       </div>
-      <div class="feed-list">
+      <div class="feed-list" v-if="this.$store.state.user.feedList.length > 0">
         <ul class="feed-mode grid-mode-view">
           <li class="feed-item" :key="feed" v-for="feed in this.$store.state.user.feedList">
             <router-link :to="'/feed/' + feed" v-if="feedMode == 'grid-mode'">
@@ -20,6 +20,17 @@
             <feed :feed_num="feed" :page="PageName" v-else />
           </li>
         </ul>
+      </div>
+      <div class="service-start" v-else>
+        <strong class="content-title">시작하기</strong>
+        <div class="container">
+          <div class="icon-circle">
+            <div class="icon-sprite ico-glyph-3 feed"><span>feed</span></div>
+          </div>
+          <div class="content-title">사진 공유</div>
+          <p>사진을 공유하면 회원님의 프로필에 표시됩니다.</p>
+          <button class="action primary">첫 사진을 공유해보세요</button>
+        </div>
       </div>
     </one-column>
     <footer-layout />
@@ -112,16 +123,37 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.service-start {
+  padding: 15px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 14px;
+    padding: 12px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  .content-title {
+    margin-top: 16px;
+  }
+
+  p {
+    color: #999;
+  }
+
+  button {
+    width: auto;
+  }
+}
+
 .feed {
   border: 0;
 }
-@media only screen and (min-width: 768px) {
-  footer {
-    .container {
-      display: flex;
-    }
-  }
-}
+
 @media only screen and (max-width: 767px) {
   main {
     padding-left: 0;
