@@ -24,6 +24,11 @@
 		SELECT accnt_num FROM ensta_account WHERE id=#{id}
 	</select>
 	
+	<!-- Get My Account Info -->
+	<select id="getMyAccountInfo" resultType="java.util.HashMap">
+		SELECT * FROM ensta_account WHERE accnt_num=#{accnt_num}
+	</select>
+	
 	<!-- Get Account Info -->
 	<select id="getAccountInfo" resultType="java.util.HashMap">
 		SELECT accnt_num, id, profile, name, email, des FROM ensta_account WHERE accnt_num=#{accnt_num}

@@ -91,10 +91,8 @@ public class EnstaAccountController {
 	public Map<String, Object> currentUserInfo(@ModelAttribute EnstaAccount enstaAccount) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
-		enstaService.getAccount(currentUser);
-		enstaAccount.setId(currentUser);
 
-		Map<String, Object> map = enstaService.getAccountInfo(enstaService.getAccountNum(currentUser));
+		Map<String, Object> map = enstaService.getMyAccountInfo(enstaService.getAccountNum(currentUser));
 		map.put("heartList", enstaService.getHeartList(enstaService.getAccountNum(currentUser)));
 		map.put("feedList", enstaService.getFeedList(enstaService.getAccountNum(currentUser)));
 		map.put("followingList", enstaService.getFollowingList(enstaService.getAccountNum(currentUser)));
