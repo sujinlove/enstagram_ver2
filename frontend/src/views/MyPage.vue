@@ -25,7 +25,7 @@
         <strong class="content-title">시작하기</strong>
         <div class="container">
           <div class="icon-circle">
-            <div class="icon-sprite ico-glyph-3 feed"><span>feed</span></div>
+            <div class="icon-sprite ico-glyph-3 image"><span>image</span></div>
           </div>
           <div class="content-title">사진 공유</div>
           <p>사진을 공유하면 회원님의 프로필에 표시됩니다.</p>

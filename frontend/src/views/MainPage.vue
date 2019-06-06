@@ -1,7 +1,7 @@
 <template>
   <section class="main-page">
     <app-header />
-    <two-columns v-if="this.$store.state.user.followingList.length > 0">
+    <two-columns v-if="this.feedList.length > 0">
       <div class="feed-list" slot="main">
         <div class="feed-item" :key="feed" v-for="feed in this.showList">
           <feed :feed_num="feed" :page="PageName"/>
@@ -36,7 +36,7 @@
       <app-footer slot="sidebar"/>
     </two-columns>
     <!-- When no follow user-->
-    <one-column v-if="this.$store.state.user.followingList.length == 0">
+    <one-column v-else>
       <div class="container">
         <div class="content-title">회원님을 위한 추천</div>
         <div class="user-list recommend-user">
@@ -142,7 +142,6 @@ export default {
       axios.get('/api/recommendUser', {
       }).then(response => {
         this.recommendList = response.data.accnt_num
-        console.log(response.data)
       }).catch(e => {
         console.log('error: ' + e)
       })

@@ -39,6 +39,22 @@
     &.error {
       color: red;
     }
+
+    &-box {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #262626;
+      color: $color-white;
+
+      p {
+        margin: 0;
+        padding: 0 20px;
+        line-height: 50px;
+        font-size: $font-size__base;
+      }
+    }
   }
 
   .content-title {
@@ -232,7 +248,7 @@
   .modes {
     display: flex;
   }
-  
+
   .service-preview {
     display: none;
   }
