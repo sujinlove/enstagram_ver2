@@ -1,8 +1,8 @@
 <template>
   <section>
-    <app-header />
+    <app-header ref="header"/>
     <one-column>
-      <profile ref="profile" :page="PageName" :user="this.$store.state.user"/>
+      <profile ref="profile" :page="PageName" :user="this.$store.state.user" />
       <div class="modes">
         <div class="mode grid" @click="changeMode('grid-mode')">
           <button class="icon-sprite ico-glyph-3 grid-mode active"><span>grid</span></button>
@@ -29,7 +29,7 @@
           </div>
           <div class="content-title">사진 공유</div>
           <p>사진을 공유하면 회원님의 프로필에 표시됩니다.</p>
-          <button class="action primary">첫 사진을 공유해보세요</button>
+          <button class="action primary" @click="$refs.header.uploadBtn()">첫 사진을 공유해보세요</button>
         </div>
       </div>
     </one-column>
@@ -98,16 +98,10 @@ export default {
       this.$store.commit('editFeed', true)
     },
     removeFeed (feedNum) {
-      axios.post('/api/feed/remove', {
-        accnt_num: this.$store.state.user.accnt_num,
-        feed_num: this.$store.state.selectFeed
-      }).then(response => {
-        this.$store.commit('setUser')
-        this.$store.commit('selectFeed', '')
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
-      this.$EventBus.$emit('showPopup')
+      this.$store.dispatch('removeFeed', {feedNum}).then(
+        this.$store.commit('selectFeed', ''),
+        this.$EventBus.$emit('showPopup')
+      )
     },
     changeMode (mode) {
       this.feedMode = mode

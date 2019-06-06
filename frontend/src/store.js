@@ -49,6 +49,77 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    removeFeed ({commit, state}, {feedNum}) {
+      axios.post('/api/feed/remove', {
+        accnt_num: state.user.accnt_num,
+        feed_num: feedNum
+      }).then(response => {
+        commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    addHeart ({commit, state}, {feedNum}) {
+      axios.post('/api/feed/like', {
+        accnt_num: state.user.accnt_num,
+        feed_num: feedNum
+      }).then(response => {
+        commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    cancelHeart ({commit, state}, {feedNum}) {
+      axios.post('/api/feed/unlike', {
+        accnt_num: state.user.accnt_num,
+        feed_num: feedNum
+      }).then(response => {
+        commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    addFollow ({commit, state}, {accntNum}) {
+      axios.post('/api/user/follow', {
+        accnt_num: state.user.accnt_num,
+        following_num: accntNum
+      }).then(response => {
+        commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    },
+    cancelFollow ({commit, state}, {accntNum}) {
+      axios.post('/api/user/unfollow', {
+        accnt_num: state.user.accnt_num,
+        following_num: accntNum
+      }).then(response => {
+        commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
+    }
+    // getFeedInfo ({commit, state}, {feedNum}) {
+    //   axios.post('/api/feed/' + feedNum, {
+    //   }).then(response => {
+    //     this.feed = response.data
+    //     this.getUserInfo()
+    //   }).catch(e => {
+    //     console.log('error: ' + e)
+    //   })
+    // },
+    // addHeart ({commit, state}, feed_num) {
+    //   axios.post('/api/feed/like', {
+    //     accnt_num: this.$store.state.user.accnt_num,
+    //     feed_num: this.feed_num
+    //   }).then(response => {
+    //     this.getFeedInfo()
+    //     this.$store.commit('setUser')
+    //     console.log(this.$store.state.user)
+    //   }).catch(e => {
+    //     console.log('error: ' + e)
+    //   })
+    // },
     // preload () {
     //   this.state.pageImages.every(function (item) {
     //     item.onload = function () {

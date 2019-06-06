@@ -9,7 +9,7 @@
     <popup>
       <button @click="cancelFollow" v-if="$store.state.popupContent == 'feedService'">팔로우 취소</button>
       <button @click="editFeed" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 수정</button>
-      <button @click="removeFeed" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 삭제</button>
+      <button @click="removeFeed(feed_num)" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 삭제</button>
     </popup>
   </section>
   <not-found v-else />
@@ -59,16 +59,11 @@ export default {
       this.$store.commit('editFeed', true)
       this.$EventBus.$emit('showPopup')
     },
-    removeFeed () {
-      axios.post('/api/feed/remove', {
-        accnt_num: this.$store.state.user.accnt_num,
-        feed_num: this.feed_num
-      }).then(response => {
-        this.$router.push('/mypage')
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
-      this.$EventBus.$emit('showPopup')
+    removeFeed (feedNum) {
+      this.$store.dispatch('removeFeed', {feedNum}).then(
+        this.$router.push('/mypage'),
+        this.$EventBus.$emit('showPopup')
+      )
     },
     cancelFollow () {
       this.$refs.feed.cancelFollow()

@@ -125,18 +125,11 @@ export default {
         console.log('error: ' + e)
       })
     },
-    cancelFollow (followingNum) {
-      axios.post('/api/user/unfollow', {
-        accnt_num: this.$store.state.user.accnt_num,
-        following_num: followingNum
-      }).then(response => {
-        this.$store.commit('setUser')
+    cancelFollow (accntNum) {
+      this.$store.dispatch('cancelFollow', {accntNum}).then(
+        this.$EventBus.$emit('showPopup'),
         this.$store.commit('selectFeed', '')
-        this.getFollowFeed()
-        this.$EventBus.$emit('showPopup')
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
+      )
     },
     getRecommendList () {
       axios.get('/api/recommendUser', {
