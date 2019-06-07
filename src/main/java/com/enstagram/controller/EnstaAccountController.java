@@ -91,10 +91,8 @@ public class EnstaAccountController {
 	public Map<String, Object> currentUserInfo(@ModelAttribute EnstaAccount enstaAccount) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
-		enstaService.getAccount(currentUser);
-		enstaAccount.setId(currentUser);
 
-		Map<String, Object> map = enstaService.getAccountInfo(enstaService.getAccountNum(currentUser));
+		Map<String, Object> map = enstaService.getMyAccountInfo(enstaService.getAccountNum(currentUser));
 		map.put("heartList", enstaService.getHeartList(enstaService.getAccountNum(currentUser)));
 		map.put("feedList", enstaService.getFeedList(enstaService.getAccountNum(currentUser)));
 		map.put("followingList", enstaService.getFollowingList(enstaService.getAccountNum(currentUser)));
@@ -229,20 +227,28 @@ public class EnstaAccountController {
 
 	@RequestMapping(value = "/api/recommendUser", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> recommendUser() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentUser = authentication.getName();
 		Map<String, Object> map = new HashMap<>();
 		Integer[] accnt_num = new Integer[6];
 
 		for (int i = 0; i < accnt_num.length; i++) {
-			int n = (int) (Math.random() * enstaService.getRecommendUser().length) + 1;
-			accnt_num[i] = n;
+			int n = (int) (Math.random() * enstaService.getRecommendUser().length);
+			accnt_num[i] = enstaService.getRecommendUser()[n];
 			for (int j = 0; j < i; j++) {
 				if (accnt_num[i] == accnt_num[j]) {
-					i--;
+					i—-;
+					break;
+				}
+				if (accnt_num[i] == enstaService.getAccountNum(currentUser)) {
+					i—-;
 					break;
 				}
 			}
+			System.out.println("accnt_num[i]" + accnt_num[i]);
 			map.put("accnt_num", accnt_num);
 		}
+		System.out.println("——————————————————");
 		return map;
 	}
 
