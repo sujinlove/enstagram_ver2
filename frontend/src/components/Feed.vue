@@ -23,17 +23,16 @@
     <div class="user-id">
       <router-link :to="'/user/' + this.user.id">
         {{this.user.id}}
-    </router-link>
+      </router-link>
+      <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && page == 'FeedPage'">
+        <button @click="addFollow(user.accnt_num)" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
+        <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로잉</button>
+      </div>
     </div>
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
-<<<<<<< HEAD
   <div :id="'feed' + this.feed_num" class="feed-pic" @click="resizeFeedPic">
     <div class="feed-pic-inner">
-=======
-  <div class="feed-pic" @click="testm">
-    <div class="feed-pic-inner" :style="{'padding-bottom': this.ratio}">
->>>>>>> 6e071752db8dc2bb857f0ead623979be3cd2b21b
     <!-- <div class="feed-pic-inner"> -->
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
     </div>
@@ -46,8 +45,8 @@
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
       <div class="feed-btn">
-        <button class="icon-sprite ico-glyph-3 heart" @click="addHeart"  v-if="this.$store.state.user.heartList.indexOf(this.feed_num) === -1"><span>heart</span></button>
-        <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart" v-else><span>heart</span></button>
+        <button class="icon-sprite ico-glyph-3 heart" @click="addHeart(feed_num)"  v-if="this.$store.state.user.heartList.indexOf(Number(this.feed_num)) === -1"><span>heart</span></button>
+        <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart(feed_num)" v-else><span>heart</span></button>
         <router-link :to="'/feed/' + this.feed_num" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
       </div>
       <div class="heart-count" v-if="this.feed.heart > 0">
@@ -58,7 +57,7 @@
         </router-link>
       </div>
       <div class="heart-count" v-else>
-        가장 먼저 <span @click="addHeart">좋아요</span>를 눌러보세요
+        가장 먼저 <span @click="addHeart(feed_num)">좋아요</span>를 눌러보세요
       </div>
       <!--Feed Content in Main Page, My Page-->
       <div class="content-view" v-if="page !== 'FeedPage'">
@@ -114,7 +113,7 @@ export default {
       feed: {},
       user: {},
       comment: '',
-      ratio: ''
+      ratio: '100%'
     }
   },
   watch: {
@@ -124,9 +123,6 @@ export default {
       } else {
         document.querySelector('.comment-btn').disabled = true
       }
-    },
-    ratio: function (newValue) {
-      console.log(newValue)
     }
   },
   mounted () {
@@ -139,7 +135,6 @@ export default {
     }
   },
   methods: {
-<<<<<<< HEAD
     resizeFeedPic () {
       var feedNum = this.feed_num
       var img = new Image()
@@ -148,37 +143,13 @@ export default {
         this.ratio = img.height / img.width * 100 + '%'
         document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
       }
-=======
-    testm () {
-      console.log('testm')
-      var width = document.querySelector('.feed-pic img').naturalWidth
-      var height = document.querySelector('.feed-pic img').naturalHeight
-      this.ratio = height / width * 100 + '%'
-      console.log(this.ratio)
-
-      // let image = new Image()
-      // image.src = this.feed.file_name
-      //
-      // image.onload = function () {
-      //   // const width = image.naturalWidth
-      //   // const height = image.naturalHeight
-      //   // console.log(width, height)
-      //   if (image.naturalWidth !== image.naturalHeight) {
-      //     this.ratio = image.naturalHeight / image.naturalWidth * 100 + '%'
-      //     console.log('1:' + this.ratio)
-      //   } else {
-      //     this.ratio = '100%'
-      //     console.log('2:' + this.ratio)
-      //   }
-      // }
->>>>>>> 6e071752db8dc2bb857f0ead623979be3cd2b21b
     },
     getFeedInfo () {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
         this.getUserInfo()
-        this.resizeFeedPic ()
+        this.resizeFeedPic()
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -198,40 +169,25 @@ export default {
         this.$store.commit('selectFeed', this.feed)
       }
     },
-    addHeart () {
-      axios.post('/api/feed/like', {
-        accnt_num: this.$store.state.user.accnt_num,
-        feed_num: this.feed_num
-      }).then(response => {
-        this.getFeedInfo()
-        this.$store.commit('setUser')
-        console.log(this.$store.state.user)
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
+    addHeart (feedNum) {
+      this.$store.dispatch('addHeart', {feedNum}).then(
+        setTimeout(() => {
+          this.getFeedInfo()
+        }, 100)
+      )
     },
-    cancelHeart () {
-      console.log('cancelHeart')
-      axios.post('/api/feed/unlike', {
-        accnt_num: this.$store.state.user.accnt_num,
-        feed_num: this.feed_num
-      }).then(response => {
-        this.getFeedInfo()
-        this.$store.commit('setUser')
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
+    cancelHeart (feedNum) {
+      this.$store.dispatch('cancelHeart', {feedNum}).then(
+        setTimeout(() => {
+          this.getFeedInfo()
+        }, 100)
+      )
     },
-    cancelFollow () {
-      console.log('cancelFollow')
-      axios.post('/api/user/unfollow', {
-        accnt_num: this.$store.state.user.accnt_num,
-        following_num: this.user.accnt_num
-      }).then(response => {
-        this.$store.commit('setUser')
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
+    addFollow (accntNum) {
+      this.$store.dispatch('addFollow', {accntNum})
+    },
+    cancelFollow (accntNum) {
+      this.$store.dispatch('cancelFollow', {accntNum})
     },
     changeFeedInfo () {
       axios.post('/api/feed/edit', {
@@ -249,6 +205,21 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scope>
-@import '../assets/css/source/feeds.scss';
+<style lang="scss" scoped>
+.follow-btn button {
+  padding: 0;
+  background: none;
+  border: none;
+  line-height: 1;
+  color: #333;
+
+  &.unfollow {
+    color: #3897f0;
+  }
+  &:before {
+    content: '•';
+    margin: 0 4px;
+    color: #333;
+  }
+}
 </style>
