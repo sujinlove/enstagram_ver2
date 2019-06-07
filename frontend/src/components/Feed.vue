@@ -24,15 +24,11 @@
       <router-link :to="'/user/' + this.user.id">
         {{this.user.id}}
       </router-link>
-      <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && page == 'FeedPage'">
-        <button @click="addFollow(user.accnt_num)" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
-        <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로잉</button>
-      </div>
     </div>
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
-  <div :id="'feed' + this.feed_num" class="feed-pic" @click="resizeFeedPic">
-    <div class="feed-pic-inner">
+  <div class="feed-pic">
+    <div class="feed-pic-inner" :style="{'padding-bottom': this.ratio}">
     <!-- <div class="feed-pic-inner"> -->
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
     </div>
@@ -136,20 +132,20 @@ export default {
   },
   methods: {
     resizeFeedPic () {
-      var feedNum = this.feed_num
-      var img = new Image()
-      img.src = this.feed.file_name
-      img.onload = function () {
-        this.ratio = img.height / img.width * 100 + '%'
-        document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
-      }
+      // var file = new File()
+      // file.src='this.feed_file_name'
+      // var width = this.feed.file_name.naturalWidth
+      // var height = this.feed.file_name.naturalHeight
+      // this.ratio = height / width * 100 + '%'
+      // console.log(width)
+      // console.log(height)
+      // console.log(this.ratio)
     },
     getFeedInfo () {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
         this.getUserInfo()
-        this.resizeFeedPic()
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -183,12 +179,6 @@ export default {
         }, 100)
       )
     },
-    addFollow (accntNum) {
-      this.$store.dispatch('addFollow', {accntNum})
-    },
-    cancelFollow (accntNum) {
-      this.$store.dispatch('cancelFollow', {accntNum})
-    },
     changeFeedInfo () {
       axios.post('/api/feed/edit', {
         feed_num: this.feed_num,
@@ -206,20 +196,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.follow-btn button {
-  padding: 0;
-  background: none;
-  border: none;
-  line-height: 1;
-  color: #333;
-
-  &.unfollow {
-    color: #3897f0;
-  }
-  &:before {
-    content: '•';
-    margin: 0 4px;
-    color: #333;
-  }
-}
 </style>
