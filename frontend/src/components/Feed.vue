@@ -31,8 +31,8 @@
     </div>
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
-  <div class="feed-pic">
-    <div class="feed-pic-inner" :style="{'padding-bottom': this.ratio}">
+  <div :id="'feed' + this.feed_num" class="feed-pic">
+    <div class="feed-pic-inner">
     <!-- <div class="feed-pic-inner"> -->
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
     </div>
@@ -136,20 +136,20 @@ export default {
   },
   methods: {
     resizeFeedPic () {
-      // var file = new File()
-      // file.src='this.feed_file_name'
-      // var width = this.feed.file_name.naturalWidth
-      // var height = this.feed.file_name.naturalHeight
-      // this.ratio = height / width * 100 + '%'
-      // console.log(width)
-      // console.log(height)
-      // console.log(this.ratio)
+      var feedNum = this.feed_num
+      var img = new Image()
+      img.src = this.feed.file_name
+      img.onload = function () {
+        this.ratio = img.height / img.width * 100 + '%'
+        document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
+      }
     },
     getFeedInfo () {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
         this.getUserInfo()
+        this.resizeFeedPic()
       }).catch(e => {
         console.log('error: ' + e)
       })
