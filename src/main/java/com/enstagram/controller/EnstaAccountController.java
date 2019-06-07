@@ -230,13 +230,13 @@ public class EnstaAccountController {
 
 		for (int i = 0; i < accntNum.length; i++) {
 			int n = (int) (Math.random() * enstaService.getRecommendUser().length);
-			accntNum[i] = enstaService.getRecommendUser()[n];
+			if (enstaService.getAccountNum(currentUser) != enstaService.getRecommendUser()[n]) {
+				accntNum[i] = enstaService.getRecommendUser()[n];
+			} else {
+				i--;
+			}
 			for (int j = 0; j < i; j++) {
 				if (accntNum[i] == accntNum[j]) {
-					i--;
-					break;
-				}
-				if (accntNum[i] == enstaService.getAccountNum(currentUser)) {
 					i--;
 					break;
 				}
