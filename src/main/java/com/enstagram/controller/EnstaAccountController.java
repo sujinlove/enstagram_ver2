@@ -233,7 +233,7 @@ public class EnstaAccountController {
 		Integer[] accnt_num = new Integer[6];
 
 		for (int i = 0; i < accnt_num.length; i++) {
-			int n = (int) (Math.random() * enstaService.getRecommendUser().length);
+			int n = (int) (Math.random() * enstaService.getRecommendUser().length) + 1;
 			accnt_num[i] = n;
 			for (int j = 0; j < i; j++) {
 				if (accnt_num[i] == accnt_num[j]) {
@@ -241,10 +241,8 @@ public class EnstaAccountController {
 					break;
 				}
 			}
-			System.out.println("accnt_num[i]" + accnt_num[i]);
 			map.put("accnt_num", accnt_num);
 		}
-		System.out.println("-------------------------------------");
 		return map;
 	}
 
