@@ -308,8 +308,7 @@
 
   .feed-view {
     .feed {
-        display: flex;
-        align-items: center;
+      display: flex;
     }
 
     .feed-header {
@@ -321,7 +320,18 @@
     }
 
     .feed-pic {
+      align-self: center;
       width: 600px;
+    }
+
+    .feed-comments {
+      position: relative;
+      overflow-y: scroll;
+
+      ul {
+        position: absolute;
+        width: 100%;
+      }
     }
   }
 }

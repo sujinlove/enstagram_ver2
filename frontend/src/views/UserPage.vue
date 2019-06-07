@@ -51,6 +51,13 @@ export default {
   created () {
     this.checkId()
   },
+  updated () {
+    this.$nextTick(function () {
+      if (this.user_id === this.$store.state.user.id) {
+        this.$router.push('/mypage')
+      }
+    })
+  },
   methods: {
     checkId () {
       axios.post('/api/check/id', {

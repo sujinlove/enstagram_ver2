@@ -1,12 +1,19 @@
 <template>
   <section>
     <app-header />
-    <div class="user-list user-follower-list">
+    <div class="user-list user-follower-list" v-if="this.FollowerList.length > 0">
       <ol>
         <li class="user" :key="Follower" v-for="Follower in FollowerList">
           <user-list :user_num="Follower" :list="'follower'"></user-list>
         </li>
       </ol>
+    </div>
+    <div class="service-start follow" v-else>
+      <div class="container">
+        <div class="icon-sprite ico-core-2 follow"><span>follow</span></div>
+        <div class="content-title">팔로워</div>
+        <p>회원님을 팔로우하는 모든 사람이 여기에 표시됩니다.</p>
+      </div>
     </div>
     <app-footer />
   </section>
@@ -48,4 +55,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+
 </style>

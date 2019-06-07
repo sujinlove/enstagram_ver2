@@ -64,6 +64,20 @@
     line-height: 24px;
   }
 
+  .service-start {
+    padding: 15px;
+
+    &.follow {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      .content-title {
+        margin-top: 16px;
+      }
+    }
+  }
+
   .service-preview {
     display: inline-block;
     width: 50%;

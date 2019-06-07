@@ -126,6 +126,13 @@
       width: 175px;
       height: 51px;
     }
+
+    &.follow {
+      width: 100px;
+      height: 100px;
+      background-position: 0 0;
+      background-size: 308px;
+    }
   }
 
   .field {
