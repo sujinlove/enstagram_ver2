@@ -42,6 +42,14 @@ public class EnstaService {
 	}
 
 	/*
+	 * Get My Account Info
+	 */
+
+	public Map<String, Object> getMyAccountInfo(int accnt_num) {
+		return enstaMapper.getMyAccountInfo(accnt_num);
+	}
+
+	/*
 	 * Get Account Info
 	 */
 
@@ -239,6 +247,14 @@ public class EnstaService {
 
 	public Integer[] getRecommendUser() {
 		return enstaMapper.getRecommendUser();
+	}
+
+	/*
+	 * Get Feed Time
+	 */
+
+	public String getFeedTime(int accnt_num, int feed_num) {
+		return enstaMapper.getFeedTime(accnt_num, feed_num);
 	}
 
 }

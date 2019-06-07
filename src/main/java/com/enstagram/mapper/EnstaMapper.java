@@ -19,6 +19,8 @@ public interface EnstaMapper {
 
 	void createAccount(EnstaAccount enstaAccount);
 
+	public Map<String, Object> getMyAccountInfo(int accnt_num);
+
 	public Map<String, Object> getAccountInfo(int accnt_num);
 
 	public Integer checkAccountId(String id);
@@ -68,6 +70,13 @@ public interface EnstaMapper {
 	public String[] getFeedList(Integer feed_num);
 
 	public Integer checkFeedNum(Integer feed_num);
+
+	/*
+	 * Get Feed Time
+	 */
+
+	public String getFeedTime(int accnt_num, int feed_num);
+
 	/*
 	 * Recommend Friends
 	 */

@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFollow;
 import com.enstagram.service.EnstaService;
@@ -230,25 +226,23 @@ public class EnstaAccountController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUser = authentication.getName();
 		Map<String, Object> map = new HashMap<>();
-		Integer[] accnt_num = new Integer[6];
+		Integer[] accntNum = new Integer[6];
 
-		for (int i = 0; i < accnt_num.length; i++) {
+		for (int i = 0; i < accntNum.length; i++) {
 			int n = (int) (Math.random() * enstaService.getRecommendUser().length);
-			accnt_num[i] = enstaService.getRecommendUser()[n];
+			accntNum[i] = enstaService.getRecommendUser()[n];
 			for (int j = 0; j < i; j++) {
-				if (accnt_num[i] == accnt_num[j]) {
-					i—-;
+				if (accntNum[i] == accntNum[j]) {
+					i--;
 					break;
 				}
-				if (accnt_num[i] == enstaService.getAccountNum(currentUser)) {
-					i—-;
+				if (accntNum[i] == enstaService.getAccountNum(currentUser)) {
+					i--;
 					break;
 				}
 			}
-			System.out.println("accnt_num[i]" + accnt_num[i]);
-			map.put("accnt_num", accnt_num);
+			map.put("accnt_num", accntNum);
 		}
-		System.out.println("——————————————————");
 		return map;
 	}
 
