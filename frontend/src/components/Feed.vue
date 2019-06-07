@@ -24,6 +24,10 @@
       <router-link :to="'/user/' + this.user.id">
         {{this.user.id}}
       </router-link>
+      <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && page == 'FeedPage'">
+        <button @click="addFollow(user.accnt_num)" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
+        <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로잉</button>
+      </div>
     </div>
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
@@ -179,6 +183,12 @@ export default {
         }, 100)
       )
     },
+    addFollow (accntNum) {
+      this.$store.dispatch('addFollow', {accntNum})
+    },
+    cancelFollow (accntNum) {
+      this.$store.dispatch('cancelFollow', {accntNum})
+    },
     changeFeedInfo () {
       axios.post('/api/feed/edit', {
         feed_num: this.feed_num,
@@ -196,4 +206,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.follow-btn button {
+  padding: 0;
+  background: none;
+  border: none;
+  line-height: 1;
+  color: #333;
+
+  &.unfollow {
+    color: #3897f0;
+  }
+  &:before {
+    content: '•';
+    margin: 0 4px;
+    color: #333;
+  }
+}
 </style>

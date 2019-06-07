@@ -2,7 +2,7 @@
   <section v-if="countId !== 0">
     <app-header />
     <one-column>
-      <profile :user="user" :page="PageName"/>
+      <profile :user="user" :page="PageName" v-on:get-user="getUserInfo"/>
       <div class="feed-list">
         <ul class="feed-mode grid-mode-view">
           <li class="feed-item" :key="feed" v-for="feed in this.user.feedList">
