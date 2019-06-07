@@ -100,24 +100,6 @@
         padding-bottom: 100%;
         background: $color-white;
       }
-
-      .feed-list & {
-        overflow: hidden;
-
-        .grid-mode-view & {
-          &-inner {
-            padding-bottom: 100% !important;
-          }
-
-          img {
-            top: 50%;
-            left: 50%;
-            width: auto;
-            height: 100%;
-            transform: translateX(-50%) translateY(-50%);
-          }
-        }
-      }
     }
 
     &-others {
@@ -180,6 +162,10 @@
     width: 100%;
 
     .grid-mode-view {
+      .feed {
+        border: 0;
+      }
+
       .feed-header,
       .feed-content {
         display: none;
@@ -187,6 +173,19 @@
 
       .feed-item {
         flex: 0 0 33.333%;
+      }
+
+      .feed-pic-inner {
+        overflow: hidden;
+        padding-bottom: 100% !important;
+      }
+
+      img {
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: 100%;
+        transform: translateX(-50%) translateY(-50%);
       }
     }
 
@@ -310,6 +309,7 @@
   .feed-view {
     .feed {
         display: flex;
+        align-items: center;
     }
 
     .feed-header {
