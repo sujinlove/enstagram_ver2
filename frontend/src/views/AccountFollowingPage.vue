@@ -4,7 +4,7 @@
     <div class="user-list user-following-list">
       <ol>
         <li class="user" :key="Following" v-for="Following in FollowingList">
-          <user-list :user_num="Following" :list="'following'"></user-list>
+          <user-list :user_num="Following" :page="PageName"></user-list>
         </li>
       </ol>
     </div>

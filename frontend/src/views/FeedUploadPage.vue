@@ -5,8 +5,8 @@
       <div class="feed-view">
         <form class="form" name="form" id="feedForm">
           <div class="upload-feed">
-            <div class="user-pic" :style="{width: '30px', height: '30px'}">
-              <div class="user-pic-inner">
+            <div class="my-pic" :style="{width: '30px', height: '30px'}">
+              <div class="my-pic-inner">
                 <img :src="this.$store.state.user.profile" :alt="this.$store.state.id + '님의 프로필 사진'"/>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.user-pic {
+.my-pic {
   margin-right: 6px;
 }
 </style>

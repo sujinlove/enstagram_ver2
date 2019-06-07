@@ -2,11 +2,27 @@
 //  * Copyright © Enstagram, Inc. All rights reserved.
 //  * See COPYING.txt for license details.
 //  */
+@import 'variables.scss';
 
 //
 //  Common
 //  _____________________________________________
 @if ($media-common == true) {
+
+  /*
+  **  Feed mode view
+  */
+
+  .modes {
+    display: none;
+
+    .mode {
+      flex: 1 1 auto;
+      line-height: 44px;
+      text-align: center;
+      border-top: 1px solid $border-color__base;
+    }
+  }
 
   /*
   **  Feed Upload
@@ -100,6 +116,25 @@
         padding-bottom: 100%;
         background: $color-white;
       }
+<<<<<<< HEAD
+=======
+
+      .feed-list & {
+        overflow: hidden;
+
+        &-inner {
+          padding-bottom: 100% !important;
+        }
+
+        img {
+          top: 50%;
+          left: 50%;
+          width: auto;
+          height: 100%;
+          transform: translateX(-50%) translateY(-50%);
+        }
+      }
+>>>>>>> 6e071752db8dc2bb857f0ead623979be3cd2b21b
     }
 
     &-others {
@@ -330,6 +365,10 @@
 //  _____________________________________________
 
 @media only screen and (max-width: ($screen__m - 1)) {
+  .modes {
+    display: flex;
+  }
+
   .feed-list {
     ul {
       margin: 0 -2px;

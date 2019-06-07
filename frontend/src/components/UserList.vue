@@ -10,9 +10,9 @@
         <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
         <div class="user-name">{{this.user.name}}</div>
       </div>
-      <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && (list === 'recommend' || list === 'following' || list === 'follower' || list === 'heartAccount')">
-        <button @click="addFollow(user.accnt_num)" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
-        <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로잉</button>
+      <div class="follow-btn" v-if="page === 'AccountFollowingPage' || page === 'AccountFollowerPage' || page === 'FeedHeartPage'">
+        <button @click="addFollow" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
+        <button @click="cancelFollow" class="unfollow" v-else>팔로잉</button>
       </div>
     </div>
   </li>
@@ -22,7 +22,7 @@
 import axios from 'axios'
 
 export default {
-  props: ['page', 'user_num', 'list'],
+  props: ['page', 'user_num'],
   data () {
     return {
       user: {}
@@ -34,11 +34,25 @@ export default {
     })
   },
   methods: {
-    addFollow (accntNum) {
-      this.$store.dispatch('addFollow', {accntNum})
+    addFollow () {
+      axios.post('/api/user/follow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: this.user.accnt_num
+      }).then(response => {
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
     },
-    cancelFollow (accntNum) {
-      this.$store.dispatch('cancelFollow', {accntNum})
+    cancelFollow () {
+      axios.post('/api/user/unfollow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: this.user.accnt_num
+      }).then(response => {
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
     }
   }
 }

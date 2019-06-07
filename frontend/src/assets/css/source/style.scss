@@ -39,29 +39,6 @@
     &.error {
       color: red;
     }
-
-    &-box {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #262626;
-      color: $color-white;
-
-      p {
-        margin: 0;
-        padding: 0 20px;
-        line-height: 50px;
-        font-size: $font-size__base;
-      }
-    }
-  }
-
-  .content-title {
-    margin-bottom: 16px;
-    font-size: $font-size__m;
-    font-weight: $font-weight__semibold;
-    line-height: 24px;
   }
 
   .service-preview {
@@ -186,22 +163,6 @@
       @extend %abs-button-desktop;
     }
   }
-
-
-  /*
-  **  Feed mode view
-  */
-
-  .modes {
-    display: none;
-
-    .mode {
-      flex: 1 1 auto;
-      line-height: 44px;
-      text-align: center;
-      border-top: 1px solid $border-color__base;
-    }
-  }
 }
 
 
@@ -245,10 +206,6 @@
 //  _____________________________________________
 
 @media only screen and (max-width: ($screen__m - 1)) {
-  .modes {
-    display: flex;
-  }
-
   .service-preview {
     display: none;
   }

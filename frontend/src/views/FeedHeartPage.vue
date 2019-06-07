@@ -4,7 +4,7 @@
     <div class="user-list user-heart-list">
       <ol>
         <li class="user" :key="heartAccount" v-for="heartAccount in heartAccountList">
-          <user-list :user_num="heartAccount" :list="'heartAccount'"></user-list>
+          <user-list :user_num="heartAccount" :page="PageName"></user-list>
         </li>
       </ol>
     </div>

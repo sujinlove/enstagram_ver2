@@ -35,8 +35,8 @@
       <div class="user-profile" v-else>
         <div class="user-id"><span>{{ this.user.id }}</span></div>
         <div class="follow-btn">
-          <button @click="addFollow(user.accnt_num)" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
-          <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로우</button>
+          <button @click="addFollow" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
+          <button @click="cancelFollow" class="unfollow" v-else>팔로우</button>
         </div>
       </div>
       <!-- in User Page End -->
@@ -127,13 +127,25 @@ export default {
       this.$store.commit('setPopupContent', 'editUserInfo')
       this.$EventBus.$emit('showPopup')
     },
-    addFollow (accntNum) {
-      this.$store.dispatch('addFollow', {accntNum})
-      this.$emit('get-user')
+    addFollow () {
+      axios.post('/api/user/follow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: this.user.accnt_num
+      }).then(response => {
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
     },
-    cancelFollow (accntNum) {
-      this.$store.dispatch('cancelFollow', {accntNum})
-      this.$emit('get-user')
+    cancelFollow () {
+      axios.post('/api/user/unfollow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: this.user.accnt_num
+      }).then(response => {
+        this.$store.commit('setUser')
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
     }
   }
 }

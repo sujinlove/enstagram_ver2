@@ -237,18 +237,18 @@ public class EnstaAccountController {
 			accnt_num[i] = enstaService.getRecommendUser()[n];
 			for (int j = 0; j < i; j++) {
 				if (accnt_num[i] == accnt_num[j]) {
-					i--;
+					i—-;
 					break;
 				}
 				if (accnt_num[i] == enstaService.getAccountNum(currentUser)) {
-					i--;
+					i—-;
 					break;
 				}
 			}
 			System.out.println("accnt_num[i]" + accnt_num[i]);
 			map.put("accnt_num", accnt_num);
 		}
-		System.out.println("-------------------------------------");
+		System.out.println("——————————————————");
 		return map;
 	}
 

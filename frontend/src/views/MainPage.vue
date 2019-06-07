@@ -1,7 +1,7 @@
 <template>
   <section class="main-page">
     <app-header />
-    <two-columns v-if="this.feedList.length > 0">
+    <two-columns>
       <div class="feed-list" slot="main">
         <div class="feed-item" :key="feed" v-for="feed in this.showList">
           <feed :feed_num="feed" :page="PageName"/>
@@ -18,36 +18,15 @@
           <p class="user-name">{{ this.$store.state.user.name }}</p>
         </div>
       </div>
-      <div class="user-list following-user" slot="sidebar">
+      <div class="user-list" slot="sidebar">
         <ol>
           <li class="user" :key="following" v-for="following in this.$store.state.user.followingList">
             <user-list :user_num="following" />
           </li>
         </ol>
       </div>
-      <div class="user-list recommend-user" slot="sidebar">
-        <strong class="content-title">회원님을 위한 추천</strong>
-        <ol>
-          <li class="user" :key="recommend" v-for="recommend in this.recommendList">
-            <user-list :user_num="recommend" :list="'recommend'" />
-          </li>
-        </ol>
-      </div>
       <app-footer slot="sidebar"/>
     </two-columns>
-    <!-- When no follow user-->
-    <one-column v-else>
-      <div class="container">
-        <div class="content-title">회원님을 위한 추천</div>
-        <div class="user-list recommend-user">
-          <ol>
-            <li class="user" :key="recommend" v-for="recommend in this.recommendList">
-              <user-list :user_num="recommend" :list="'recommend'"/>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </one-column>
     <popup>
       <button @click="cancelFollow($store.state.selectFeed.accnt_num)" v-if="$store.state.popupContent == 'feedService'">팔로우 취소</button>
       <!-- <button @click="removeFeed($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button> -->
@@ -57,7 +36,6 @@
 
 <script>
 import Header from '../components/common/Header.vue'
-import OneColumn from '../components/common/OneColumn'
 import TwoColumns from '../components/common/TwoColumns'
 import Feed from '../components/Feed'
 import UserList from '../components/UserList'
@@ -71,7 +49,6 @@ export default {
       feed_num: '',
       values: [],
       feedList: [],
-      recommendList: [],
       showList: [],
       bottom: false,
       count: 0
@@ -80,7 +57,6 @@ export default {
   components: {
     'app-header': Header,
     'app-footer': Footer,
-    OneColumn,
     TwoColumns,
     Feed,
     UserList,
@@ -91,7 +67,6 @@ export default {
       this.bottom = this.bottomVisible()
     })
     this.getFollowFeed()
-    this.getRecommendList()
   },
   watch: {
     bottom (bottom) {
@@ -125,16 +100,15 @@ export default {
         console.log('error: ' + e)
       })
     },
-    cancelFollow (accntNum) {
-      this.$store.dispatch('cancelFollow', {accntNum}).then(
-        this.$EventBus.$emit('showPopup'),
-        this.$store.commit('selectFeed', '')
-      )
-    },
-    getRecommendList () {
-      axios.get('/api/recommendUser', {
+    cancelFollow (followingNum) {
+      axios.post('/api/user/unfollow', {
+        accnt_num: this.$store.state.user.accnt_num,
+        following_num: followingNum
       }).then(response => {
-        this.recommendList = response.data.accnt_num
+        this.$store.commit('setUser')
+        this.$store.commit('selectFeed', '')
+        this.getFollowFeed()
+        this.$EventBus.$emit('showPopup')
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -144,8 +118,9 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  .container {
+  .profile {
     width: 100%;
+    margin-bottom: 12px;
   }
 
   .user-list {
@@ -154,10 +129,7 @@ export default {
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     box-sizing: border-box;
-
-    &.following-user {
-      margin-top: 12px;
-    }
+    color: red;
   }
 
   footer {
