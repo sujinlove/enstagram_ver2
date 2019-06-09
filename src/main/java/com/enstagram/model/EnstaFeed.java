@@ -2,12 +2,16 @@ package com.enstagram.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class EnstaFeed {
 
 	private int feed_num;
 	private String file_name;
 	private String description;
 	private int heart = 0;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private Date regdate;
 	private int accnt_num;
 
