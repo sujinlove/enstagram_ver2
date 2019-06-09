@@ -24,7 +24,7 @@
           <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
           <span class="feed-text">{{this.feed.description}}</span>
           <div class="feed-others">
-            <time>1일</time>
+            <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
           </div>
         </div>
       </li>
@@ -50,34 +50,35 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
-  props: ['page', 'feed', 'user'],
+  props: ['page', 'feedTime', 'feed', 'user'],
   data () {
     return {
     }
   },
-  created () {
-    this.getFeedInfo()
+  mounted () {
+    // this.getTime()
   },
   methods: {
-    getFeedInfo () {
-      axios.post('/api/feed/' + this.feed_num, {
-      }).then(response => {
-        this.feed = response.data
-        this.getUserInfo()
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
-    },
-    getUserInfo () {
-      axios.post('/api/user/' + this.feed.accnt_num, {
-      }).then(response => {
-        this.user = response.data
-      }).catch(e => {
-        console.log('error: ' + e)
-      })
-    }
+    // getFeedInfo () {
+    //   axios.post('/api/feed/' + this.feed.feed_num, {
+    //   }).then(response => {
+    //     this.feed = response.data
+    //     // this.getUserInfo()
+    //     // this.getTime()
+    //   }).catch(e => {
+    //     console.log('error: ' + e)
+    //   })
+    // },
+    // getUserInfo () {
+    //   axios.post('/api/user/' + this.feed.accnt_num, {
+    //   }).then(response => {
+    //     this.user = response.data
+    //   }).catch(e => {
+    //     console.log('error: ' + e)
+    //   })
+    // },
   }
 }
 </script>

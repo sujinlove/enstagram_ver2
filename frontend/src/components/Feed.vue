@@ -40,7 +40,7 @@
   <!--When Not Edit Feed-->
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <!--Feed Comment in Feed Page-->
-    <feed-comments :user="user" :feed="feed" :page="page" v-if="page == 'FeedPage' || page == 'FeedCommentPage'"/>
+    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :page="page" v-if="page == 'FeedPage' || page == 'FeedCommentPage'"/>
     <!--Feed Comment in Feed Page End-->
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
@@ -80,6 +80,7 @@
             <span class="user-text">나는 메인 제니!</span>
           </li>
         </ul>
+        <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
       </div>
       <!--Feed Content in Main Page, My Page End-->
     </div>
@@ -113,6 +114,7 @@ export default {
       feed: {},
       user: {},
       comment: '',
+      feedTime: '',
       ratio: '100%'
     }
   },
@@ -149,6 +151,7 @@ export default {
       }).then(response => {
         this.feed = response.data
         this.getUserInfo()
+        this.getTime()
         this.resizeFeedPic()
       }).catch(e => {
         console.log('error: ' + e)
@@ -188,6 +191,25 @@ export default {
     },
     cancelFollow (accntNum) {
       this.$store.dispatch('cancelFollow', {accntNum})
+    },
+    getTime () {
+      var uploadTime = new Date(this.feed.regdate)
+      var now = new Date()
+      var time = (now - uploadTime) / 1000
+      if (time > 60) {
+        this.feedTime = Math.floor(time / 60) + '분 전'
+        if (time >= 3600) {
+          this.feedTime = Math.floor(time / 60 / 60) + '시간 전'
+        }
+        if (time >= 86400) {
+          this.feedTime = Math.floor(time / 60 / 60 / 24) + '일 전'
+        }
+        if (time >= 604800) {
+          this.feedTime = uploadTime.getMonth() + 1 + '월 ' + uploadTime.getDate() + '일'
+        }
+      } else {
+        this.feedTime = Math.floor(time) + '초 전'
+      }
     },
     changeFeedInfo () {
       axios.post('/api/feed/edit', {
