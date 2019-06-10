@@ -1,5 +1,6 @@
 package com.enstagram.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -262,8 +263,15 @@ public class EnstaService {
 	 * Get Reply Num
 	 */
 
-	public void getReplyList(Integer feed_num) {
-		enstaMapper.getReplyList(feed_num);
+	public List<EnstaReply> getReplyList(Integer feed_num) {
+		return enstaMapper.getReplyList(feed_num);
 	}
 
+	/*
+	 * Remove Reply Info
+	 */
+
+	public void removeReplyInfo(Integer reply_num) {
+		enstaMapper.removeReplyInfo(reply_num);
+	}
 }

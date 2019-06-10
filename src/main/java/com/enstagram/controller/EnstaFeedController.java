@@ -150,8 +150,17 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/replyList", method = { RequestMethod.POST, RequestMethod.GET })
-	public void getReplyList(@RequestBody EnstaReply enstaReply) {
-		enstaService.getReplyList(enstaReply.getFeed_num());
+	public List<EnstaReply> getReplyList(@RequestBody EnstaReply enstaReply) {
+		return enstaService.getReplyList(enstaReply.getFeed_num());
+	}
+
+	/*
+	 * Remove Reply Info
+	 */
+
+	@RequestMapping(value = "/api/reply/remove", method = { RequestMethod.POST, RequestMethod.GET })
+	public void removeReplyInfo(@RequestBody EnstaReply enstaReply) {
+		enstaService.removeReplyInfo(enstaReply.getReply_num());
 	}
 
 }

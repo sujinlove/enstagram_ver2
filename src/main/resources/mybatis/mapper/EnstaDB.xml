@@ -142,12 +142,17 @@
 
 	<!-- Add Comment -->	
 	<insert id="createReply" parameterType="com.enstagram.model.EnstaReply" useGeneratedKeys="true" keyProperty="reply_num">
-		INSERT INTO ensta_reply (accnt_num, feed_num, comment, regdate) VALUES (#{accnt_num}, #{feed_num}, #{comment}, NOW()) 
+		INSERT INTO ensta_reply (accnt_num, feed_num, comment, regdate, parent_num) VALUES (#{accnt_num}, #{feed_num}, #{comment}, NOW(), #{parent_num}) 
 	</insert>
 	
-	<!-- Get Reply Num -->
+	<!-- Get Reply List -->
  	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">
 		SELECT * FROM ensta_reply WHERE feed_num = #{feed_num}
 	</select>
+
+	<!-- Delete Reply Info -->
+ 	<delete id="removeReplyInfo" parameterType="Integer">
+		DELETE from ensta_reply WHERE reply_num = #{reply_num}
+	</delete>
 	
 </mapper>
