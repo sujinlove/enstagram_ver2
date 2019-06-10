@@ -140,18 +140,14 @@
 		SELECT accnt_num FROM ensta_account
 	</select>
 
-	<!-- Get Feed Time -->
-	<select id="getFeedTime" resultType="String">
-		SELECT CONVERT_TZ(regdate, "+0:00", "+9:00") FROM ensta_feed WHERE accnt_num = #{accnt_num} AND feed_num = #{feed_num}
-	</select>
-
-	<!-- Ensta Reply -->
-<!-- 	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">
-		SELECT * FROM ensta_reply
-	</select>
-
-	<insert id="createReply" parameterType="com.enstagram.model.EnstaReply">
-		INSERT INTO ensta_reply (reply_num, feed_num, content, date) VALUES (#{reply_num}, #{feed_num}, #{content}, NOW()) 
+	<!-- Add Comment -->	
+	<insert id="createReply" parameterType="com.enstagram.model.EnstaReply" useGeneratedKeys="true" keyProperty="reply_num">
+		INSERT INTO ensta_reply (accnt_num, feed_num, comment, regdate) VALUES (#{accnt_num}, #{feed_num}, #{comment}, NOW()) 
 	</insert>
- -->
+	
+	<!-- Get Reply Num -->
+ 	<select id="getReplyNum" resultType="com.enstagram.model.EnstaReply">
+		SELECT * FROM ensta_reply WHERE feed_num = #{feed_num}
+	</select>
+	
 </mapper>

@@ -9,6 +9,7 @@ import com.enstagram.mapper.EnstaMapper;
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
 import com.enstagram.model.EnstaFollow;
+import com.enstagram.model.EnstaReply;
 
 @Service
 public class EnstaService {
@@ -250,11 +251,19 @@ public class EnstaService {
 	}
 
 	/*
-	 * Get Feed Time
+	 * Create Reply
 	 */
 
-	public String getFeedTime(int accnt_num, int feed_num) {
-		return enstaMapper.getFeedTime(accnt_num, feed_num);
+	public void createReply(EnstaReply enstaReply) {
+		enstaMapper.createReply(enstaReply);
+	}
+
+	/*
+	 * Get Reply Num
+	 */
+
+	public EnstaReply getReplyNum(Integer feed_num) {
+		return enstaMapper.getReplyNum(feed_num);
 	}
 
 }

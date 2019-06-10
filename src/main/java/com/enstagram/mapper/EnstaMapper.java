@@ -8,6 +8,7 @@ import java.util.Map;
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
 import com.enstagram.model.EnstaFollow;
+import com.enstagram.model.EnstaReply;
 
 public interface EnstaMapper {
 
@@ -72,15 +73,16 @@ public interface EnstaMapper {
 	public Integer checkFeedNum(Integer feed_num);
 
 	/*
-	 * Get Feed Time
-	 */
-
-	public String getFeedTime(int accnt_num, int feed_num);
-
-	/*
 	 * Recommend Friends
 	 */
 
 	public Integer[] getRecommendUser();
 
+	/*
+	 * Ensta Reply
+	 */
+
+	void createReply(EnstaReply enstaReply);
+
+	EnstaReply getReplyNum(Integer feed_num);
 }

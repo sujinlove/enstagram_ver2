@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -23,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.enstagram.model.EnstaAccount;
 import com.enstagram.model.EnstaFeed;
+import com.enstagram.model.EnstaReply;
 import com.enstagram.service.EnstaService;
 
 @RestController
@@ -131,6 +133,29 @@ public class EnstaFeedController {
 	public void unlikeFeed(@RequestBody EnstaFeed enstaFeed) {
 		enstaService.unlikeFeed(enstaFeed);
 		enstaService.updateHeart(enstaFeed.getFeed_num());
+	}
+
+	/*
+	 * Add Reply to Feed
+	 */
+
+	@RequestMapping(value = "/api/reply", method = { RequestMethod.POST, RequestMethod.GET })
+	public Integer createReply(@RequestBody EnstaReply enstaReply) {
+		enstaService.createReply(enstaReply);
+		return enstaReply.getReply_num();
+	}
+
+	/*
+	 * Get Reply Num
+	 */
+
+	@RequestMapping(value = "/api/replyNum", method = { RequestMethod.POST, RequestMethod.GET })
+	public Map<String, Object> getReplyNum(@RequestBody EnstaReply enstaReply) {
+		System.out.println("feed_num: " + enstaReply.getFeed_num());
+		Map<String, Object> map = new HashMap<>();
+		map.put("replyList", enstaService.getReplyNum(enstaReply.getFeed_num()));
+
+		return map;
 	}
 
 }
