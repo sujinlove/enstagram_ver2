@@ -150,7 +150,7 @@
 		SELECT * FROM ensta_reply WHERE feed_num = #{feed_num}
 	</select>
 
-	<!-- Delete Reply Info -->
+	<!-- Remove Reply Info -->
  	<delete id="removeReplyInfo" parameterType="Integer">
 		DELETE from ensta_reply WHERE reply_num = #{reply_num}
 	</delete>

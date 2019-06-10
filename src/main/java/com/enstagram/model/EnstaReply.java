@@ -12,6 +12,7 @@ public class EnstaReply {
 	private String comment;
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private Date regdate;
+	private int parent_num;
 
 	public int getReply_num() {
 		return reply_num;
@@ -51,6 +52,14 @@ public class EnstaReply {
 
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+
+	public int getParent_num() {
+		return parent_num;
+	}
+
+	public void setParent_num(int parent_num) {
+		this.parent_num = parent_num;
 	}
 
 }
