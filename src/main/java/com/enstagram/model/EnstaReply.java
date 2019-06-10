@@ -2,7 +2,7 @@ package com.enstagram.model;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class EnstaReply {
 
@@ -10,7 +10,7 @@ public class EnstaReply {
 	private int accnt_num;
 	private int feed_num;
 	private String comment;
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private Date regdate;
 	private int parent_num;
 
