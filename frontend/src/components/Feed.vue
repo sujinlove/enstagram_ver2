@@ -40,7 +40,7 @@
   <!--When Not Edit Feed-->
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <!--Feed Comment in Feed Page-->
-    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :page="page" v-if="page == 'FeedPage' || page == 'FeedCommentPage'"/>
+    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :commentList="commentList" :page="page" v-if="page == 'FeedPage' || page == 'FeedCommentPage'"/>
     <!--Feed Comment in Feed Page End-->
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
@@ -68,17 +68,14 @@
             </router-link>
             <span class="feed-text">{{this.feed.description}}</span>
           </li>
-          <li class="more-comment">
+          <li class="more-comment" v-if="this.commentList.length > 0">
             <router-link :to="'/feed/' + this.feed_num">
                 <span>댓글</span>
-                <span>1231231</span>
+                <span>{{this.commentList.length}}</span>
                 <span>개 모두 보기</span>
             </router-link>
           </li>
-          <li class="user-comment">
-            <router-link to= "" class="user-id">jennierubyjane</router-link>
-            <span class="user-text">나는 메인 제니!</span>
-          </li>
+          <user-list :key="comment.reply_num" v-for="comment in this.commentList" :user_num="comment.accnt_num" :list="'comment'" :comment="comment" :page="page"/>
         </ul>
         <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
       </div>
@@ -88,7 +85,7 @@
     <div class="comment">
       <form>
         <textarea v-model="comment" placeholder="댓글 달기..."/>
-        <button type="button" class="comment-btn" disabled @click="addComment">게시</button>
+        <button type="button" class="comment-btn" disabled @click="addComment(feed_num, comment)">게시</button>
       </form>
     </div>
   </div>
@@ -104,18 +101,21 @@
 <script>
 import axios from 'axios'
 import FeedComments from '../components/FeedComments'
+import UserList from '../components/UserList'
 export default {
   props: ['page', 'feed_num'],
   components: {
-    FeedComments
+    FeedComments,
+    UserList
   },
   data () {
     return {
       feed: {},
       user: {},
       comment: '',
+      commentList: [],
+      showCommentList: [],
       feedTime: '',
-      replyList: [],
       ratio: '100%'
     }
   },
@@ -151,9 +151,10 @@ export default {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
+        this.feedTime = this.getTime(this.feed.regdate)
         this.getUserInfo()
-        this.getTime()
         this.resizeFeedPic()
+        this.getCommentList(this.feed.feed_num)
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -193,24 +194,26 @@ export default {
     cancelFollow (accntNum) {
       this.$store.dispatch('cancelFollow', {accntNum})
     },
-    getTime () {
-      var uploadTime = new Date(this.feed.regdate)
+    getTime (uploadTime) {
+      uploadTime = new Date(uploadTime)
       var now = new Date()
       var time = (now - uploadTime) / 1000
+      var returnTime
       if (time > 60) {
-        this.feedTime = Math.floor(time / 60) + '분 전'
+        returnTime = Math.floor(time / 60) + '분 전'
         if (time >= 3600) {
-          this.feedTime = Math.floor(time / 60 / 60) + '시간 전'
+          returnTime = Math.floor(time / 60 / 60) + '시간 전'
         }
         if (time >= 86400) {
-          this.feedTime = Math.floor(time / 60 / 60 / 24) + '일 전'
+          returnTime = Math.floor(time / 60 / 60 / 24) + '일 전'
         }
         if (time >= 604800) {
-          this.feedTime = uploadTime.getMonth() + 1 + '월 ' + uploadTime.getDate() + '일'
+          returnTime = uploadTime.getMonth() + 1 + '월 ' + uploadTime.getDate() + '일'
         }
       } else {
-        this.feedTime = Math.floor(time) + '초 전'
+        returnTime = Math.floor(time) + '초 전'
       }
+      return returnTime
     },
     changeFeedInfo () {
       axios.post('/api/feed/edit', {
@@ -223,23 +226,19 @@ export default {
         console.log('error: ' + e)
       })
     },
-    addComment () {
-      axios.post('/api/reply', {
-        accnt_num: this.$store.state.user.accnt_num,
-        feed_num: this.feed_num,
-        comment: this.comment
-      }).then(response => {
-        this.getCommentList()
-        console.log('accnt_num: ' + this.$store.state.user.accnt_num)
-      })
+    addComment (feedNum, comment) {
+      this.$store.dispatch('addComment', {feedNum, comment}).then(
+        this.getCommentList(this.feed.feed_num),
+        this.comment = ''
+      )
     },
-    getCommentList () {
+    getCommentList (feedNum) {
       axios.post('/api/replyList', {
-        feed_num: this.feed_num
+        feed_num: feedNum
       }).then(response => {
-        this.replyList = response.data
-        console.log('feed_num: ' + this.feed_num)
-        console.log('replyList: ' + this.replyList)
+        this.commentList = response.data
+        this.showCommentList.push(this.commentList[0])
+        this.showCommentList.push(this.commentList[1])
       })
     }
   }

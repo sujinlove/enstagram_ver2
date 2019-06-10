@@ -2,7 +2,7 @@
   <section>
     <app-header :page="PageName"/>
     <div class="feed-comment-view">
-      <feed-comments :feed="feed" :user="user" :page="PageName"/>
+      <feed-comments :feedTime="feedTime" :feed="feed" :user="user" :commentList="commentList" :page="PageName"/>
     </div>
   </section>
 </template>
@@ -18,7 +18,8 @@ export default {
     return {
       PageName: 'FeedCommentPage',
       feed: {},
-      user: {}
+      user: {},
+      commentList: []
     }
   },
   components: {
@@ -34,6 +35,7 @@ export default {
       }).then(response => {
         this.feed = response.data
         this.getUserInfo()
+        this.getCommentList(this.feed.feed_num)
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -44,6 +46,14 @@ export default {
         this.user = response.data
       }).catch(e => {
         console.log('error: ' + e)
+      })
+    },
+    getCommentList (feedNum) {
+      axios.post('/api/replyList', {
+        feed_num: feedNum
+      }).then(response => {
+        this.commentList = response.data
+        console.log(response.data)
       })
     }
   }

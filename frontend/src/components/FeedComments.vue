@@ -23,62 +23,37 @@
         <div class="user-text">
           <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
           <span class="feed-text">{{this.feed.description}}</span>
-          <div class="feed-others">
-            <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
-          </div>
+        </div>
+        <div class="feed-others">
+          <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
         </div>
       </li>
-      <li class="user-comment">
-        <div class="user-pic">
-          <div class="user-pic-inner">
-            <router-link :to="'/user/' + this.user.id" class="user-id">
-              <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'"/>
-            </router-link>
-          </div>
-        </div>
-        <div class="user-text">
-          <router-link to= "" class="user-id">jennierubyjane</router-link>
-          <span class="user-text">나는 메인 제니!</span>
-          <div class="feed-others">
-            <time>1일</time>
-            <button>답글 달기</button>
-          </div>
-        </div>
-      </li>
+      <user-list :key="comment.reply_num" v-for="comment in this.commentList" :user_num="comment.accnt_num" :list="'comment'" :page="page" :comment="comment"/>
     </ul>
   </div>
 </template>
 
 <script>
 // import axios from 'axios'
+import UserList from '../components/UserList'
 export default {
-  props: ['page', 'feedTime', 'feed', 'user'],
+  props: ['page', 'feedTime', 'feed', 'user', 'commentList'],
+  components: {
+    UserList
+  },
   data () {
     return {
     }
   },
-  mounted () {
-    // this.getTime()
-  },
   methods: {
-    // getFeedInfo () {
-    //   axios.post('/api/feed/' + this.feed.feed_num, {
+    // getCommentList (feedNum) {
+    //   axios.post('/api/replyList', {
+    //     feed_num: feedNum
     //   }).then(response => {
-    //     this.feed = response.data
-    //     // this.getUserInfo()
-    //     // this.getTime()
-    //   }).catch(e => {
-    //     console.log('error: ' + e)
+    //     this.commentList = response.data
+    //     console.log(response.data)
     //   })
-    // },
-    // getUserInfo () {
-    //   axios.post('/api/user/' + this.feed.accnt_num, {
-    //   }).then(response => {
-    //     this.user = response.data
-    //   }).catch(e => {
-    //     console.log('error: ' + e)
-    //   })
-    // },
+    // }
   }
 }
 </script>

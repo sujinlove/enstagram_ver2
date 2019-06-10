@@ -6,6 +6,7 @@
         <feed :page="PageName" :feed_num="feed_num" ref="feed"/>
       </div>
     </one-column>
+    <app-footer />
     <popup>
       <button @click="cancelFollow(feed.accnt_num)" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.followingList.indexOf(this.feed.accnt_num) !== -1">팔로우 취소</button>
       <button @click="editFeed" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 수정</button>
@@ -18,6 +19,7 @@
 <script>
 import axios from 'axios'
 import Header from '../components/common/Header.vue'
+import Footer from '../components/common/Footer.vue'
 import OneColumn from '../components/common/OneColumn'
 import Feed from '../components/Feed'
 import Popup from '../components/common/Popup'
@@ -34,6 +36,7 @@ export default {
   },
   components: {
     'app-header': Header,
+    'app-footer': Footer,
     OneColumn,
     Feed,
     Popup,

@@ -59,6 +59,14 @@ export default new Vuex.Store({
         console.log('error: ' + e)
       })
     },
+    addComment ({commit, state}, {feedNum, comment}) {
+      axios.post('/api/reply', {
+        accnt_num: state.user.accnt_num,
+        feed_num: feedNum,
+        comment: comment
+      }).then(response => {
+      })
+    },
     addHeart ({commit, state}, {feedNum}) {
       axios.post('/api/feed/like', {
         accnt_num: state.user.accnt_num,
