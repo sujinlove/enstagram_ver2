@@ -84,5 +84,5 @@ public interface EnstaMapper {
 
 	void createReply(EnstaReply enstaReply);
 
-	EnstaReply getReplyNum(Integer feed_num);
+	public List<EnstaReply> getReplyList(Integer feed_num);
 }

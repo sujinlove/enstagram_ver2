@@ -88,7 +88,7 @@
     <div class="comment">
       <form>
         <textarea v-model="comment" placeholder="댓글 달기..."/>
-        <button type="button" class="comment-btn" disabled>게시</button>
+        <button type="button" class="comment-btn" disabled @click="addComment">게시</button>
       </form>
     </div>
   </div>
@@ -115,6 +115,7 @@ export default {
       user: {},
       comment: '',
       feedTime: '',
+      replyList: [],
       ratio: '100%'
     }
   },
@@ -220,6 +221,25 @@ export default {
         this.getFeedInfo()
       }).catch(e => {
         console.log('error: ' + e)
+      })
+    },
+    addComment () {
+      axios.post('/api/reply', {
+        accnt_num: this.$store.state.user.accnt_num,
+        feed_num: this.feed_num,
+        comment: this.comment
+      }).then(response => {
+        this.getCommentList()
+        console.log('accnt_num: ' + this.$store.state.user.accnt_num)
+      })
+    },
+    getCommentList () {
+      axios.post('/api/replyList', {
+        feed_num: this.feed_num
+      }).then(response => {
+        this.replyList = response.data
+        console.log('feed_num: ' + this.feed_num)
+        console.log('replyList: ' + this.replyList)
       })
     }
   }

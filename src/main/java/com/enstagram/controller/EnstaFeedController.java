@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -140,22 +141,18 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/reply", method = { RequestMethod.POST, RequestMethod.GET })
-	public Integer createReply(@RequestBody EnstaReply enstaReply) {
+	public void createReply(@RequestBody EnstaReply enstaReply) {
 		enstaService.createReply(enstaReply);
-		return enstaReply.getReply_num();
 	}
 
 	/*
 	 * Get Reply Num
 	 */
 
-	@RequestMapping(value = "/api/replyNum", method = { RequestMethod.POST, RequestMethod.GET })
-	public Map<String, Object> getReplyNum(@RequestBody EnstaReply enstaReply) {
-		System.out.println("feed_num: " + enstaReply.getFeed_num());
-		Map<String, Object> map = new HashMap<>();
-		map.put("replyList", enstaService.getReplyNum(enstaReply.getFeed_num()));
-
-		return map;
+	@RequestMapping(value = "/api/replyList", method = { RequestMethod.POST, RequestMethod.GET })
+	public void getReplyList(Integer feed_num) {
+		System.out.println("feed_num: " + feed_num);
+		enstaService.getReplyList(feed_num);
 	}
 
 }

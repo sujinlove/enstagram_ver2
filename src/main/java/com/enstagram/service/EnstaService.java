@@ -262,8 +262,8 @@ public class EnstaService {
 	 * Get Reply Num
 	 */
 
-	public EnstaReply getReplyNum(Integer feed_num) {
-		return enstaMapper.getReplyNum(feed_num);
+	public void getReplyList(Integer feed_num) {
+		enstaMapper.getReplyList(feed_num);
 	}
 
 }

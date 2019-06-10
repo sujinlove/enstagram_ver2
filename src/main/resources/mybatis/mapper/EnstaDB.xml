@@ -146,7 +146,7 @@
 	</insert>
 	
 	<!-- Get Reply Num -->
- 	<select id="getReplyNum" resultType="com.enstagram.model.EnstaReply">
+ 	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">
 		SELECT * FROM ensta_reply WHERE feed_num = #{feed_num}
 	</select>
 	
