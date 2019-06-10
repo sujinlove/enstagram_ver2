@@ -150,9 +150,8 @@ public class EnstaFeedController {
 	 */
 
 	@RequestMapping(value = "/api/replyList", method = { RequestMethod.POST, RequestMethod.GET })
-	public void getReplyList(Integer feed_num) {
-		System.out.println("feed_num: " + feed_num);
-		enstaService.getReplyList(feed_num);
+	public void getReplyList(@RequestBody EnstaReply enstaReply) {
+		enstaService.getReplyList(enstaReply.getFeed_num());
 	}
 
 }
