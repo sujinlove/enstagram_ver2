@@ -149,6 +149,11 @@
  	<select id="getReplyList" resultType="com.enstagram.model.EnstaReply">
 		SELECT * FROM ensta_reply WHERE feed_num = #{feed_num}
 	</select>
+	
+	<!-- Get Reply List -->
+ 	<select id="getReplyListByParentNum" resultType="com.enstagram.model.EnstaReply">
+		SELECT * FROM ensta_reply WHERE parent_num = #{parent_num}
+	</select>
 
 	<!-- Remove Reply Info -->
  	<delete id="removeReplyInfo" parameterType="Integer">

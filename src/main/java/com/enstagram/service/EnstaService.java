@@ -266,6 +266,14 @@ public class EnstaService {
 	public List<EnstaReply> getReplyList(Integer feed_num) {
 		return enstaMapper.getReplyList(feed_num);
 	}
+	
+	/*
+	 * Get Reply Num By Parent Num
+	 */
+
+	public List<EnstaReply> getReplyListByParentNum(Integer parent_num) {
+		return enstaMapper.getReplyListByParentNum(parent_num);
+	}
 
 	/*
 	 * Remove Reply Info

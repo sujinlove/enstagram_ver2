@@ -86,5 +86,7 @@ public interface EnstaMapper {
 
 	public List<EnstaReply> getReplyList(Integer feed_num);
 	
+	public List<EnstaReply> getReplyListByParentNum(Integer parent_num);
+	
 	void removeReplyInfo(Integer reply_num);
 }

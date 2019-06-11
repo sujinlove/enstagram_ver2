@@ -61,6 +61,8 @@ public class EnstaFeedController {
 	@RequestMapping(value = "/api/feed/{feed_num}", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
 		Map<String, Object> map = enstaService.getFeedInfo(feed_num);
+		map.put("commentList", enstaService.getReplyList(feed_num));
+		
 		return map;
 	}
 
@@ -152,6 +154,15 @@ public class EnstaFeedController {
 	@RequestMapping(value = "/api/replyList", method = { RequestMethod.POST, RequestMethod.GET })
 	public List<EnstaReply> getReplyList(@RequestBody EnstaReply enstaReply) {
 		return enstaService.getReplyList(enstaReply.getFeed_num());
+	}
+	
+	/*
+	 * Get Reply Num
+	 */
+
+	@RequestMapping(value = "/api/replyList/{parent_num}", method = { RequestMethod.POST, RequestMethod.GET })
+	public List<EnstaReply> getReplyListByParentNum(@PathVariable Integer parent_num) {
+		return enstaService.getReplyListByParentNum(parent_num);
 	}
 
 	/*

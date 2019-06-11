@@ -82,7 +82,7 @@ export default {
       this.$store.dispatch('removeComment', {replyNum}).then(
         this.$EventBus.$emit('showPopup'),
         setTimeout(() => {
-          this.$refs.feed.getCommentList(this.feed_num)
+          this.$refs.feed.getFeedInfo()
         }, 100)
       )
     },

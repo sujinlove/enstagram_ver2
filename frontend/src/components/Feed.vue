@@ -8,7 +8,7 @@
     </div>
     <div>
       <button class="icon-sprite ico-core chat"><span>chat</span></button>
-      <span>{{this.commentList.length}}</span>
+      <span>{{this.feed.commentList.length}}</span>
     </div>
   </div>
   <!--When Mouse Over in My Page End-->
@@ -40,7 +40,7 @@
   <!--When Not Edit Feed-->
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <!--Feed Comment in Feed Page-->
-    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :commentList="commentList" :page="page" v-if="width > 767 && (page == 'FeedPage' || page == 'FeedCommentPage')"/>
+    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :commentList="feed.commentList" :page="page" v-if="width > 767 && (page == 'FeedPage' || page == 'FeedCommentPage')" v-on:setParentComment="setParentComment"/>
     <!--Feed Comment in Feed Page End-->
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
@@ -68,10 +68,10 @@
             </router-link>
             <span class="feed-text">{{this.feed.description}}</span>
           </li>
-          <li class="more-comment" v-if="this.commentList.length > 0">
+          <li class="more-comment" v-if="this.feed.commentList.length !== 0">
             <router-link :to="'/feed/' + this.feed_num">
                 <span>댓글</span>
-                <span>{{this.commentList.length}}</span>
+                <span>{{this.feed.commentList.length}}</span>
                 <span>개 모두 보기</span>
             </router-link>
           </li>
@@ -83,9 +83,9 @@
     </div>
     <!--Feed Content in All Page End-->
     <div class="comment">
-      <form @submit="addComment(feed_num, comment)">
+      <form @submit="addComment(feed_num, comment, parentComment)">
         <textarea v-model="comment" placeholder="댓글 달기..."/>
-        <button type="button" class="comment-btn" disabled @click="addComment(feed_num, comment)">게시</button>
+        <button type="button" class="comment-btn" disabled @click="addComment(feed_num, comment, parentComment)">게시</button>
       </form>
     </div>
   </div>
@@ -110,8 +110,11 @@ export default {
   },
   data () {
     return {
-      feed: {},
+      feed: {
+        commentList: []
+      },
       user: {},
+      parentComment: 0,
       comment: '',
       commentList: [],
       showCommentList: [],
@@ -162,7 +165,15 @@ export default {
         this.feedTime = this.getTime(this.feed.regdate)
         this.getUserInfo()
         this.resizeFeedPic()
-        this.getCommentList(this.feed_num)
+        if (this.feed.commentList.length > 0) {
+          this.showCommentList[0] = this.feed.commentList[0]
+          if (this.feed.commentList.length > 2) {
+            this.showCommentList[1] = this.feed.commentList[1]
+          }
+        }
+        this.feed.commentList = this.feed.commentList.filter(function (comment) {
+          return comment.parent_num === 0
+        })
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -237,24 +248,21 @@ export default {
         console.log('error: ' + e)
       })
     },
-    addComment (feedNum, comment) {
-      this.$store.dispatch('addComment', {feedNum, comment}).then(
-        this.getCommentList(this.feed.feed_num),
-        this.comment = ''
-      )
+    addComment (feedNum, comment, parentNum) {
+      if (this.parentComment === 0) {
+        this.$store.dispatch('addComment', {feedNum, comment}).then(
+          this.getFeedInfo(),
+          this.comment = ''
+        )
+      } else {
+        this.$store.dispatch('addRecomment', {feedNum, comment, parentNum}).then(
+          this.getFeedInfo(),
+          this.comment = ''
+        )
+      }
     },
-    getCommentList (feedNum) {
-      axios.post('/api/replyList', {
-        feed_num: feedNum
-      }).then(response => {
-        this.commentList = response.data
-        if (this.commentList.length > 0) {
-          this.showCommentList[0] = this.commentList[0]
-          if (this.commentList.length > 2) {
-            this.showCommentList[1] = this.commentList[1]
-          }
-        }
-      })
+    setParentComment (parentNum) {
+      this.parentComment = parentNum
     }
   }
 }

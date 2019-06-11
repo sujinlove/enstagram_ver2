@@ -30,26 +30,35 @@
     </div>
     <div class="feed-others" v-if="page !== 'MyPage' && page !== 'MainPage'">
       <time :datetime="this.comment.regdate">{{this.getTime(this.comment.regdate)}}</time>
-      <button>답글 달기</button>
+      <button @click="$emit('setParentComment')">답글 달기</button>
     </div>
     <button class="icon-sprite ico-glyph-2 comment-more" @click="commentService" v-if="page === 'FeedPage' && (this.$store.state.user.accnt_num == this.comment.accnt_num || this.$store.state.user.feedList.indexOf(String(this.comment.feed_num)) !== -1)"><span>more</span></button>
+    <feed-recomments v-if="reCommentList.length > 0 && (page == 'FeedPage' || page == 'FeedCommentPage')" :key="recomment.reply_num" v-for="recomment in this.reCommentList" :user_num="recomment.accnt_num" :comment="recomment"></feed-recomments>
   </li>
   <!-- Feed comment End -->
 </template>
 
 <script>
 import axios from 'axios'
+import FeedReComments from '../components/FeedReComments'
 
 export default {
   props: ['page', 'user_num', 'list', 'comment'],
+  components: {
+    'feed-recomments': FeedReComments
+  },
   data () {
     return {
-      user: {}
+      user: {},
+      reCommentList: []
     }
   },
   created () {
     axios.get('/api/user/' + this.user_num).then((response) => {
       this.user = response.data
+      if (this.list === 'comment') {
+        this.getReCommentList()
+      }
     })
   },
   methods: {
@@ -87,6 +96,12 @@ export default {
       this.$store.commit('setPopupContent', 'commentService')
       this.$EventBus.$emit('showPopup')
       this.$store.commit('selectComment', this.comment)
+    },
+    getReCommentList () {
+      axios.post('/api/replyList/' + this.comment.reply_num, {
+      }).then(response => {
+        this.reCommentList = response.data
+      })
     }
   }
 }

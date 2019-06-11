@@ -287,7 +287,8 @@
     }
 
     .feed-comment,
-    .user-comment {
+    .user-comment,
+    .user-recomment {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
@@ -299,7 +300,8 @@
         align-items: start;
       }
 
-      .feed-others {
+      .feed-others,
+      .user-recomment {
         width: 100%;
         margin-left: 50px;
       }
@@ -322,6 +324,10 @@
           display: block;
         }
       }
+    }
+
+    .user-recomment {
+      padding-left: 0;
     }
   }
 }

@@ -71,6 +71,15 @@ export default new Vuex.Store({
       }).then(response => {
       })
     },
+    addRecomment ({state}, {feedNum, comment, parentNum}) {
+      axios.post('/api/reply', {
+        accnt_num: state.user.accnt_num,
+        feed_num: feedNum,
+        parent_num: parentNum,
+        comment: comment
+      }).then(response => {
+      })
+    },
     removeComment ({commit, state}, {replyNum}) {
       axios.post('/api/reply/remove', {
         reply_num: replyNum

@@ -8,7 +8,7 @@
       </div>
       <form>
         <textarea v-model="comment" placeholder="댓글 달기..."/>
-        <button type="button" @click="addComment(feed.feed_num, comment)">게시</button>
+        <button type="button" @click="addComment(feed.feed_num, comment, parentComment)">게시</button>
       </form>
     </div>
     <ul>
@@ -28,7 +28,7 @@
           <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
         </div>
       </li>
-      <user-list :key="comment.reply_num" v-for="comment in this.commentList" :user_num="comment.accnt_num" :list="'comment'" :page="page" :comment="comment"/>
+      <user-list :key="comment.reply_num" v-for="comment in feed.commentList" :user_num="comment.accnt_num" :list="'comment'" :page="page" :comment="comment" v-on:setParentComment="setParentComment(comment.reply_num)"/>
     </ul>
   </div>
 </template>
@@ -36,22 +36,35 @@
 <script>
 import UserList from '../components/UserList'
 export default {
-  props: ['page', 'feedTime', 'feed', 'user', 'commentList'],
+  props: ['page', 'feedTime', 'feed', 'user'],
   components: {
     UserList
   },
   data () {
     return {
-      comment: ''
+      comment: '',
+      parentComment: 0
     }
   },
   methods: {
-    addComment (feedNum, comment) {
-      console.log('addComment')
-      this.$store.dispatch('addComment', {feedNum, comment}).then(
-        this.$emit('getCommentList'),
-        this.comment = ''
-      )
+    addComment (feedNum, comment, parentNum) {
+      if (this.parentComment === 0) {
+        this.$store.dispatch('addComment', {feedNum, comment}).then(
+          this.$emit('getFeedInfo'),
+          this.comment = ''
+        )
+      } else {
+        this.$store.dispatch('addRecomment', {feedNum, comment, parentNum}).then(
+          this.$emit('getFeedInfo'),
+          this.comment = ''
+        )
+      }
+    },
+    setParentComment (parentNum) {
+      this.parentComment = parentNum
+      if (this.page === 'FeedPage') {
+        this.$emit('setParentComment', parentNum)
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
   <section>
     <app-header :page="PageName"/>
     <div class="feed-comment-view">
-      <feed-comments :feedTime="this.getTime(this.feed.regdate)" :feed="feed" :user="user" :commentList="commentList" :page="PageName" v-on:getCommentList="getCommentList"/>
+      <feed-comments :feedTime="this.getTime(this.feed.regdate)" :feed="feed" :user="user" :commentList="feed.commentList" :page="PageName" v-on:getFeedInfo="getFeedInfo"/>
     </div>
   </section>
 </template>
@@ -34,8 +34,10 @@ export default {
       axios.post('/api/feed/' + this.feed_num, {
       }).then(response => {
         this.feed = response.data
+        this.feed.commentList = this.feed.commentList.filter(function (comment) {
+          return comment.parent_num === 0
+        })
         this.getUserInfo()
-        this.getCommentList()
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -46,15 +48,6 @@ export default {
         this.user = response.data
       }).catch(e => {
         console.log('error: ' + e)
-      })
-    },
-    getCommentList () {
-      console.log('getCommentList')
-      axios.post('/api/replyList', {
-        feed_num: this.feed.feed_num
-      }).then(response => {
-        this.commentList = response.data
-        console.log(this.commentList)
       })
     },
     getTime (uploadTime) {
