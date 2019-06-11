@@ -32,6 +32,7 @@
       <time :datetime="this.comment.regdate">{{this.commentTime}}</time>
       <button>답글 달기</button>
     </div>
+    <button class="icon-sprite ico-glyph-2 comment-more" @click="commentService" v-if="page === 'FeedPage' && (this.$store.state.user.accnt_num == this.comment.accnt_num || this.$store.state.user.feedList.indexOf(String(this.comment.feed_num)) !== -1)"><span>more</span></button>
   </li>
   <!-- Feed comment End -->
 </template>
@@ -50,8 +51,8 @@ export default {
   created () {
     axios.get('/api/user/' + this.user_num).then((response) => {
       this.user = response.data
+      this.commentTime = this.getTime(this.comment.regdate)
     })
-    this.commentTime = this.getTime(this.comment.regdate)
   },
   methods: {
     addFollow (accntNum) {
@@ -78,8 +79,16 @@ export default {
         }
       } else {
         returnTime = Math.floor(time) + '초 전'
+        if (Math.floor(time) === 0) {
+          returnTime = '방금 전'
+        }
       }
       return returnTime
+    },
+    commentService () {
+      this.$store.commit('setPopupContent', 'commentService')
+      this.$EventBus.$emit('showPopup')
+      this.$store.commit('selectComment', this.comment)
     }
   }
 }

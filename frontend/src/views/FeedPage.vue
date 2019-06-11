@@ -10,6 +10,7 @@
     <popup>
       <button @click="cancelFollow(feed.accnt_num)" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.followingList.indexOf(this.feed.accnt_num) !== -1">팔로우 취소</button>
       <button @click="editFeed" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 수정</button>
+      <button @click="removeComment($store.state.selectComment.reply_num)" v-if="$store.state.popupContent == 'commentService'">댓글 삭제</button>
       <button @click="removeFeed(feed_num)" v-if="$store.state.popupContent == 'feedService' && this.$store.state.user.feedList.indexOf(this.feed_num) !== -1">게시물 삭제</button>
     </popup>
   </section>
@@ -75,6 +76,14 @@ export default {
       this.$store.dispatch('removeFeed', {feedNum}).then(
         this.$router.push('/mypage'),
         this.$EventBus.$emit('showPopup')
+      )
+    },
+    removeComment (replyNum) {
+      this.$store.dispatch('removeComment', {replyNum}).then(
+        this.$EventBus.$emit('showPopup'),
+        setTimeout(() => {
+          this.$refs.feed.getCommentList(this.feed_num)
+        }, 100)
       )
     },
     cancelFollow (accntNum) {

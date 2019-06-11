@@ -34,7 +34,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
 import UserList from '../components/UserList'
 export default {
   props: ['page', 'feedTime', 'feed', 'user', 'commentList'],
@@ -46,14 +45,6 @@ export default {
     }
   },
   methods: {
-    // getCommentList (feedNum) {
-    //   axios.post('/api/replyList', {
-    //     feed_num: feedNum
-    //   }).then(response => {
-    //     this.commentList = response.data
-    //     console.log(response.data)
-    //   })
-    // }
   }
 }
 </script>

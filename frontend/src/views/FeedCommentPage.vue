@@ -53,7 +53,6 @@ export default {
         feed_num: feedNum
       }).then(response => {
         this.commentList = response.data
-        console.log(response.data)
       })
     }
   }

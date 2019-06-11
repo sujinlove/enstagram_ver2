@@ -40,7 +40,7 @@
   <!--When Not Edit Feed-->
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <!--Feed Comment in Feed Page-->
-    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :commentList="commentList" :page="page" v-if="page == 'FeedPage' || page == 'FeedCommentPage'"/>
+    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :commentList="commentList" :page="page" v-if="width > 767 && (page == 'FeedPage' || page == 'FeedCommentPage')"/>
     <!--Feed Comment in Feed Page End-->
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
@@ -116,6 +116,7 @@ export default {
       commentList: [],
       showCommentList: [],
       feedTime: '',
+      width: '',
       ratio: '100%'
     }
   },
@@ -128,6 +129,10 @@ export default {
       }
     }
   },
+  created () {
+    window.addEventListener('resize', this.windowResize)
+    this.windowResize()
+  },
   mounted () {
     this.$store.commit('setUser')
     this.getFeedInfo()
@@ -138,6 +143,9 @@ export default {
     }
   },
   methods: {
+    windowResize () {
+      this.width = screen.width
+    },
     resizeFeedPic () {
       var feedNum = this.feed_num
       var img = new Image()
@@ -212,6 +220,9 @@ export default {
         }
       } else {
         returnTime = Math.floor(time) + '초 전'
+        if (Math.floor(time) === 0) {
+          returnTime = '방금 전'
+        }
       }
       return returnTime
     },
@@ -233,6 +244,7 @@ export default {
       )
     },
     getCommentList (feedNum) {
+      console.log('getCommentList')
       axios.post('/api/replyList', {
         feed_num: feedNum
       }).then(response => {

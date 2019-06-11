@@ -14,6 +14,7 @@ export default new Vuex.Store({
     },
     popupContent: '',
     selectFeed: {},
+    selectComment: {},
     // pageImages: [],
     uploadFile: '',
     editFeed: false
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     },
     selectFeed (state, data) {
       state.selectFeed = data
+    },
+    selectComment (state, data) {
+      state.selectComment = data
     },
     // setPreImages (state, data) {
     //   const image = new Image()
@@ -65,6 +69,13 @@ export default new Vuex.Store({
         feed_num: feedNum,
         comment: comment
       }).then(response => {
+      })
+    },
+    removeComment ({commit, state}, {replyNum}) {
+      axios.post('/api/reply/remove', {
+        reply_num: replyNum
+      }).then(response => {
+        console.log('hh')
       })
     },
     addHeart ({commit, state}, {feedNum}) {
