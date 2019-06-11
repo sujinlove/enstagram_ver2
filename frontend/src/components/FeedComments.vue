@@ -7,8 +7,8 @@
         </div>
       </div>
       <form>
-        <textarea placeholder="댓글 달기..."/>
-        <button type="button">게시</button>
+        <textarea v-model="comment" placeholder="댓글 달기..."/>
+        <button type="button" @click="addComment(feed.feed_num, comment)">게시</button>
       </form>
     </div>
     <ul>
@@ -42,9 +42,17 @@ export default {
   },
   data () {
     return {
+      comment: ''
     }
   },
   methods: {
+    addComment (feedNum, comment) {
+      console.log('addComment')
+      this.$store.dispatch('addComment', {feedNum, comment}).then(
+        this.$emit('getCommentList'),
+        this.comment = ''
+      )
+    }
   }
 }
 </script>

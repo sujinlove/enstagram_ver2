@@ -75,7 +75,7 @@
                 <span>개 모두 보기</span>
             </router-link>
           </li>
-          <user-list :key="comment.reply_num" v-for="comment in this.showCommentList" :user_num="comment.accnt_num" :list="'comment'" :comment="comment" :page="page"/>
+          <user-list v-if="showCommentList.length > 0" :key="comment.reply_num" v-for="comment in this.showCommentList" :user_num="comment.accnt_num" :list="'comment'" :comment="comment" :page="page"/>
         </ul>
         <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
       </div>
@@ -162,7 +162,7 @@ export default {
         this.feedTime = this.getTime(this.feed.regdate)
         this.getUserInfo()
         this.resizeFeedPic()
-        this.getCommentList(this.feed.feed_num)
+        this.getCommentList(this.feed_num)
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -244,14 +244,14 @@ export default {
       )
     },
     getCommentList (feedNum) {
-      console.log('getCommentList')
       axios.post('/api/replyList', {
         feed_num: feedNum
       }).then(response => {
         this.commentList = response.data
-        this.showCommentList[0] = this.commentList[0]
-        this.showCommentList[1] = this.commentList[1]
-        console.log(this.showCommentList)
+        if (this.commentList.length > 0) {
+          this.showCommentList[0] = this.commentList[0]
+          this.showCommentList[1] = this.commentList[1]
+        }
       })
     }
   }
