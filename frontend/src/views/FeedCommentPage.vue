@@ -2,7 +2,7 @@
   <section>
     <app-header :page="PageName"/>
     <div class="feed-comment-view">
-      <feed-comments :feedTime="feedTime" :feed="feed" :user="user" :commentList="commentList" :page="PageName"/>
+      <feed-comments :feedTime="this.getTime(this.feed.regdate)" :feed="feed" :user="user" :commentList="commentList" :page="PageName"/>
     </div>
   </section>
 </template>
@@ -54,6 +54,30 @@ export default {
       }).then(response => {
         this.commentList = response.data
       })
+    },
+    getTime (uploadTime) {
+      uploadTime = new Date(uploadTime)
+      var now = new Date()
+      var time = (now - uploadTime) / 1000
+      var returnTime
+      if (time > 60) {
+        returnTime = Math.floor(time / 60) + '분 전'
+        if (time >= 3600) {
+          returnTime = Math.floor(time / 60 / 60) + '시간 전'
+        }
+        if (time >= 86400) {
+          returnTime = Math.floor(time / 60 / 60 / 24) + '일 전'
+        }
+        if (time >= 604800) {
+          returnTime = uploadTime.getMonth() + 1 + '월 ' + uploadTime.getDate() + '일'
+        }
+      } else {
+        returnTime = Math.floor(time) + '초 전'
+        if (Math.floor(time) === 0) {
+          returnTime = '방금 전'
+        }
+      }
+      return returnTime
     }
   }
 }

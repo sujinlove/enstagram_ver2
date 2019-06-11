@@ -75,7 +75,7 @@
                 <span>개 모두 보기</span>
             </router-link>
           </li>
-          <user-list :key="comment.reply_num" v-for="comment in this.commentList" :user_num="comment.accnt_num" :list="'comment'" :comment="comment" :page="page"/>
+          <user-list :key="comment.reply_num" v-for="comment in this.showCommentList" :user_num="comment.accnt_num" :list="'comment'" :comment="comment" :page="page"/>
         </ul>
         <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
       </div>
@@ -83,7 +83,7 @@
     </div>
     <!--Feed Content in All Page End-->
     <div class="comment">
-      <form>
+      <form @submit="addComment(feed_num, comment)">
         <textarea v-model="comment" placeholder="댓글 달기..."/>
         <button type="button" class="comment-btn" disabled @click="addComment(feed_num, comment)">게시</button>
       </form>
@@ -249,8 +249,9 @@ export default {
         feed_num: feedNum
       }).then(response => {
         this.commentList = response.data
-        this.showCommentList.push(this.commentList[0])
-        this.showCommentList.push(this.commentList[1])
+        this.showCommentList[0] = this.commentList[0]
+        this.showCommentList[1] = this.commentList[1]
+        console.log(this.showCommentList)
       })
     }
   }
