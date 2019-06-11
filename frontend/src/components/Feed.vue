@@ -1,14 +1,14 @@
 <template>
 <article class="feed">
   <!--When Mouse Over in My Page-->
-  <div class="feed-hover" v-if="page == 'MyPage'">
+  <div class="feed-hover" v-if="page == 'MyPage' || page == 'UserPage'">
     <div v-if="this.feed.heart > 0">
       <button class="icon-sprite ico-core heart"><span>heart</span></button>
       <span>{{this.feed.heart}}</span>
     </div>
     <div>
       <button class="icon-sprite ico-core chat"><span>chat</span></button>
-      <span>0</span>
+      <span>{{this.commentList.length}}</span>
     </div>
   </div>
   <!--When Mouse Over in My Page End-->
@@ -250,7 +250,9 @@ export default {
         this.commentList = response.data
         if (this.commentList.length > 0) {
           this.showCommentList[0] = this.commentList[0]
-          this.showCommentList[1] = this.commentList[1]
+          if (this.commentList.length > 2) {
+            this.showCommentList[1] = this.commentList[1]
+          }
         }
       })
     }
