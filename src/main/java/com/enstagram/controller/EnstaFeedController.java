@@ -3,11 +3,13 @@ package com.enstagram.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -62,7 +64,7 @@ public class EnstaFeedController {
 	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
 		Map<String, Object> map = enstaService.getFeedInfo(feed_num);
 		map.put("commentList", enstaService.getReplyList(feed_num));
-		
+
 		return map;
 	}
 
@@ -149,16 +151,16 @@ public class EnstaFeedController {
 	}
 
 	/*
-	 * Get Reply Num
+	 * Get Reply By Feed Num
 	 */
 
 	@RequestMapping(value = "/api/replyList", method = { RequestMethod.POST, RequestMethod.GET })
 	public List<EnstaReply> getReplyList(@RequestBody EnstaReply enstaReply) {
 		return enstaService.getReplyList(enstaReply.getFeed_num());
 	}
-	
+
 	/*
-	 * Get Reply Num
+	 * Get Reply By Parent Num
 	 */
 
 	@RequestMapping(value = "/api/replyList/{parent_num}", method = { RequestMethod.POST, RequestMethod.GET })
@@ -173,6 +175,7 @@ public class EnstaFeedController {
 	@RequestMapping(value = "/api/reply/remove", method = { RequestMethod.POST, RequestMethod.GET })
 	public void removeReplyInfo(@RequestBody EnstaReply enstaReply) {
 		enstaService.removeReplyInfo(enstaReply.getReply_num());
+		enstaService.removeReplyByParentNum(enstaReply.getReply_num());
 	}
 
 }

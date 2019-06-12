@@ -91,4 +91,6 @@ public interface EnstaMapper {
 	void removeReplyInfo(Integer reply_num);
 	
 	void removeReplyByFeedNum(Integer feed_num);
+	
+	void removeReplyByParentNum(Integer reply_num);
 }

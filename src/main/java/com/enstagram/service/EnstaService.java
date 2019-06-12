@@ -290,4 +290,12 @@ public class EnstaService {
 	public void removeReplyByFeedNum(Integer feed_num) {
 		enstaMapper.removeReplyByFeedNum(feed_num);
 	}
+	
+	/*
+	 * Remove Reply By Reply Num
+	 */
+	
+	public void removeReplyByParentNum(Integer reply_num) {
+		enstaMapper.removeReplyByParentNum(reply_num);
+	}
 }

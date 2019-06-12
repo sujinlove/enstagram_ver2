@@ -160,6 +160,11 @@
 		DELETE from ensta_reply WHERE reply_num = #{reply_num}
 	</delete>
 
+	<!-- Remove Reply By Reply Num -->
+ 	<delete id="removeReplyByParentNum" parameterType="Integer">
+		DELETE from ensta_reply WHERE parent_num = #{reply_num}
+	</delete>
+
 	<!-- Remove Reply By Feed Num -->
  	<delete id="removeReplyByFeedNum" parameterType="Integer">
 		DELETE from ensta_reply WHERE feed_num = #{feed_num}
