@@ -80,11 +80,10 @@ export default new Vuex.Store({
       }).then(response => {
       })
     },
-    removeComment ({commit, state}, {replyNum}) {
+    removeComment ({state}, {replyNum}) {
       axios.post('/api/reply/remove', {
         reply_num: replyNum
       }).then(response => {
-        console.log('hh')
       })
     },
     addHeart ({commit, state}, {feedNum}) {

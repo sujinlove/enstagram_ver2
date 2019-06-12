@@ -3,6 +3,14 @@
     <app-header />
     <one-column>
       <profile :user="user" :page="PageName" v-on:get-user="getUserInfo"/>
+      <div class="modes">
+        <div class="mode grid" @click="changeMode('grid-mode')">
+          <button class="icon-sprite ico-glyph-3 grid-mode active"><span>grid</span></button>
+        </div>
+        <div class="mode list" @click="changeMode('list-mode')">
+          <button class="icon-sprite ico-glyph-3 list-mode"><span>list</span></button>
+        </div>
+      </div>
       <div class="feed-list">
         <ul class="feed-mode grid-mode-view">
           <li class="feed-item" :key="feed" v-for="feed in this.user.feedList">

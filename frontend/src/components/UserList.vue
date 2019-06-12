@@ -17,22 +17,24 @@
     </div>
   </li>
   <!-- Feed comment -->
-  <li class="user user-comment" v-else>
-    <div class="user-pic" v-if="page == 'FeedPage' || page == 'FeedCommentPage'">
-      <div class="user-pic-inner">
-        <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'" />
+  <li v-else-if="this.comment.parent_num === 0">
+    <div class="user user-comment">
+      <div class="user-pic" v-if="page == 'FeedPage' || page == 'FeedCommentPage'">
+        <div class="user-pic-inner">
+          <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'" />
+        </div>
       </div>
+      <div class="user-text">
+        <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
+        <router-link to= "" class="user-id"></router-link>
+        <span class="comment-text">{{this.comment.comment}}</span>
+      </div>
+      <div class="feed-others" v-if="page !== 'MyPage' && page !== 'MainPage' && page !== 'UserPage'">
+        <time :datetime="this.comment.regdate">{{this.getTime(this.comment.regdate)}}</time>
+        <button @click="$emit('setParentComment')">답글 달기</button>
+      </div>
+      <button class="icon-sprite ico-glyph-2 comment-more" @click="commentService" v-if="page === 'FeedPage' || page == 'FeedCommentPage' && (this.$store.state.user.accnt_num == this.comment.accnt_num || this.$store.state.user.feedList.indexOf(String(this.comment.feed_num)) !== -1)"><span>more</span></button>
     </div>
-    <div class="user-text">
-      <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
-      <router-link to= "" class="user-id"></router-link>
-      <span class="comment-text">{{this.comment.comment}}</span>
-    </div>
-    <div class="feed-others" v-if="page !== 'MyPage' && page !== 'MainPage'">
-      <time :datetime="this.comment.regdate">{{this.getTime(this.comment.regdate)}}</time>
-      <button @click="$emit('setParentComment')">답글 달기</button>
-    </div>
-    <button class="icon-sprite ico-glyph-2 comment-more" @click="commentService" v-if="page === 'FeedPage' && (this.$store.state.user.accnt_num == this.comment.accnt_num || this.$store.state.user.feedList.indexOf(String(this.comment.feed_num)) !== -1)"><span>more</span></button>
     <feed-recomments v-if="reCommentList.length > 0 && (page == 'FeedPage' || page == 'FeedCommentPage')" :key="recomment.reply_num" v-for="recomment in this.reCommentList" :user_num="recomment.accnt_num" :comment="recomment"></feed-recomments>
   </li>
   <!-- Feed comment End -->
@@ -102,6 +104,9 @@ export default {
       }).then(response => {
         this.reCommentList = response.data
       })
+      if (this.comment.parent_num !== 0) {
+        this.$emit('getReCommentList', this.comment.parent_num)
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-<article class="feed">
+<article :id="'feed' + this.feed_num" class="feed">
   <!--When Mouse Over in My Page-->
   <div class="feed-hover" v-if="page == 'MyPage' || page == 'UserPage'">
     <div v-if="this.feed.heart > 0">
@@ -31,7 +31,7 @@
     </div>
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
-  <div :id="'feed' + this.feed_num" class="feed-pic">
+  <div class="feed-pic">
     <div class="feed-pic-inner">
     <!-- <div class="feed-pic-inner"> -->
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
@@ -40,7 +40,7 @@
   <!--When Not Edit Feed-->
   <div class="feed-content" v-if="this.$store.state.editFeed === false">
     <!--Feed Comment in Feed Page-->
-    <feed-comments :user="user" :feedTime="feedTime" :feed="feed" :commentList="feed.commentList" :page="page" v-if="width > 767 && (page == 'FeedPage' || page == 'FeedCommentPage')" v-on:setParentComment="setParentComment"/>
+    <feed-comments ref="feedComments" :user="user" :feedTime="feedTime" :feed="feed" :commentList="feed.commentList" :page="page" v-if="width > 767 && (page == 'FeedPage' || page == 'FeedCommentPage')" v-on:getFeedInfo="getFeedInfo" v-on:setParentComment="setParentComment"/>
     <!--Feed Comment in Feed Page End-->
     <!--Feed Content in All Page-->
     <div class="feed-content-inner">
@@ -83,7 +83,7 @@
     </div>
     <!--Feed Content in All Page End-->
     <div class="comment">
-      <form @submit="addComment(feed_num, comment, parentComment)">
+      <form @submit="addComment(feed_num, comment, parentComment)" class="add-comment">
         <textarea v-model="comment" placeholder="댓글 달기..."/>
         <button type="button" class="comment-btn" disabled @click="addComment(feed_num, comment, parentComment)">게시</button>
       </form>
@@ -126,9 +126,9 @@ export default {
   watch: {
     comment: function (newValue) {
       if (newValue !== '') {
-        document.querySelector('.comment-btn').disabled = false
+        document.querySelector('#feed' + this.feed_num + ' .comment-btn').disabled = false
       } else {
-        document.querySelector('.comment-btn').disabled = true
+        document.querySelector('#feed' + this.feed_num + ' .comment-btn').disabled = true
       }
     }
   },
@@ -171,9 +171,6 @@ export default {
             this.showCommentList[1] = this.feed.commentList[1]
           }
         }
-        this.feed.commentList = this.feed.commentList.filter(function (comment) {
-          return comment.parent_num === 0
-        })
       }).catch(e => {
         console.log('error: ' + e)
       })
@@ -263,6 +260,10 @@ export default {
     },
     setParentComment (parentNum) {
       this.parentComment = parentNum
+      document.querySelector('.add-comment textarea').focus()
+    },
+    getReCommentList (replyNum) {
+      this.$refs.feedComments.getReCommentList(replyNum)
     }
   }
 }

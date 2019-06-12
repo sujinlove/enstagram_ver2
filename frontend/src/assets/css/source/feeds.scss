@@ -300,8 +300,7 @@
         align-items: start;
       }
 
-      .feed-others,
-      .user-recomment {
+      .feed-others{
         width: 100%;
         margin-left: 50px;
       }
@@ -310,9 +309,7 @@
         flex: 1;
         word-break: break-all;
       }
-    }
 
-    .user-comment {
       .icon-sprite.comment-more {
         display: none;
         position: absolute;
@@ -327,7 +324,9 @@
     }
 
     .user-recomment {
-      padding-left: 0;
+      width: 100%;
+      padding-left: 50px;
+      box-sizing: border-box;
     }
   }
 }

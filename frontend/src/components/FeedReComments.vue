@@ -14,6 +14,7 @@
     <div class="feed-others">
       <time :datetime="this.comment.regdate">{{this.getTime(this.comment.regdate)}}</time>
     </div>
+    <button class="icon-sprite ico-glyph-2 comment-more" @click="commentService" v-if="this.$store.state.user.accnt_num == this.comment.accnt_num || this.$store.state.user.feedList.indexOf(String(this.comment.feed_num)) !== -1"><span>more</span></button>
   </div>
 </template>
 
@@ -37,9 +38,11 @@ export default {
     })
   },
   methods: {
-    // axios.get('/api/user/' + this.user_num).then((response) => {
-    //   this.user = response.data
-    // })
+    commentService () {
+      this.$store.commit('setPopupContent', 'commentService')
+      this.$EventBus.$emit('showPopup')
+      this.$store.commit('selectComment', this.comment)
+    },
     getTime (uploadTime) {
       uploadTime = new Date(uploadTime)
       var now = new Date()
