@@ -116,6 +116,7 @@ public class EnstaFeedController {
 		file.delete();
 		enstaService.unlikeFeed(enstaFeed);
 		enstaService.removeFeed(feed_num);
+		enstaService.removeReplyByFeedNum(feed_num);
 	}
 
 	/*

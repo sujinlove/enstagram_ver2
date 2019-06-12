@@ -282,4 +282,12 @@ public class EnstaService {
 	public void removeReplyInfo(Integer reply_num) {
 		enstaMapper.removeReplyInfo(reply_num);
 	}
+	
+	/*
+	 * Remove Reply By Feed Num
+	 */
+	
+	public void removeReplyByFeedNum(Integer feed_num) {
+		enstaMapper.removeReplyByFeedNum(feed_num);
+	}
 }
