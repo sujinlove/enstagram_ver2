@@ -83,8 +83,8 @@
     </div>
     <!--Feed Content in All Page End-->
     <div class="comment">
-      <form @submit="addComment(feed_num, comment, parentComment)" class="add-comment">
-        <textarea v-model="comment" placeholder="댓글 달기..."/>
+      <form class="add-comment">
+        <textarea @keyup.enter="addComment(feed_num, comment, parentComment)" v-model="comment" placeholder="댓글 달기..."/>
         <button type="button" class="comment-btn" disabled @click="addComment(feed_num, comment, parentComment)">게시</button>
       </form>
     </div>

@@ -300,7 +300,7 @@
         align-items: start;
       }
 
-      .feed-others{
+      .feed-others {
         width: 100%;
         margin-left: 50px;
       }
@@ -327,6 +327,25 @@
       width: 100%;
       padding-left: 50px;
       box-sizing: border-box;
+    }
+
+    .recomment-more {
+      margin-left: 50px;
+      background: none;
+      border: none;
+      font-size: 12px;
+      font-weight: $font-weight__semibold;
+      color: #999;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 24px;
+        height: 1px;
+        margin-right: 16px;
+        vertical-align: middle;
+        background: #999;
+      }
     }
   }
 }

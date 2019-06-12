@@ -7,7 +7,7 @@
         </div>
       </div>
       <form class="add-comment">
-        <textarea v-model="comment" placeholder="댓글 달기..."/>
+        <textarea @keyup.enter="addComment(feed.feed_num, comment, parentComment)" v-model="comment" placeholder="댓글 달기..."/>
         <button type="button" @click="addComment(feed.feed_num, comment, parentComment)">게시</button>
       </form>
     </div>
