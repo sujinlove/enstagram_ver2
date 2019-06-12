@@ -62,7 +62,10 @@ export default {
     axios.get('/api/user/' + this.user_num).then((response) => {
       this.user = response.data
       if (this.list === 'comment') {
-        this.getReCommentList()
+        axios.post('/api/replyList/' + this.comment.reply_num, {
+        }).then(response => {
+          this.reCommentList = response.data
+        })
       }
     })
   },
