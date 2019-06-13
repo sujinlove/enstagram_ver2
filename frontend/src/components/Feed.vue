@@ -186,7 +186,7 @@ export default {
     feedService () {
       this.$store.commit('setPopupContent', 'feedService')
       this.$EventBus.$emit('showPopup')
-      if (this.page === 'MyPage' || this.page === 'MainPage') {
+      if (this.feed.accnt_num === this.$store.state.user.accnt_num) {
         this.$store.commit('selectFeed', this.feed)
       }
     },
