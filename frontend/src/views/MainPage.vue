@@ -49,8 +49,8 @@
       </div>
     </one-column>
     <popup>
-      <button @click="cancelFollow($store.state.selectFeed.accnt_num)" v-if="$store.state.popupContent == 'feedService'">팔로우 취소</button>
-      <!-- <button @click="removeFeed($store.state.selectFeed)" v-if="$store.state.popupContent == 'feedService'">게시물 삭제</button> -->
+      <button @click="cancelFollow($store.state.selectFeed.accnt_num)" v-if="$store.state.popupContent == 'feedService' && $store.state.selectFeed.accnt_num !== $store.state.user.accnt_num">팔로우 취소</button>
+      <button @click="removeFeed($store.state.selectFeed.feed_num)" v-if="$store.state.popupContent == 'feedService' && $store.state.user.feedList.indexOf(String($store.state.selectFeed.feed_num)) !== -1">게시물 삭제</button>
     </popup>
   </section>
 </template>
@@ -116,6 +116,14 @@ export default {
         this.count++
       }
     },
+    removeFeed (feedNum) {
+      this.$store.dispatch('removeFeed', {feedNum}).then(
+        this.$store.commit('selectFeed', ''),
+        this.$EventBus.$emit('showPopup'),
+        this.showList.splice(this.feedList.indexOf(feedNum), 1),
+        this.getFollowFeed()
+      )
+    },
     getFollowFeed () {
       axios.get('/api/feed/follow', {
       }).then(response => {
@@ -126,6 +134,7 @@ export default {
       })
     },
     cancelFollow (accntNum) {
+      console.log(accntNum)
       this.$store.dispatch('cancelFollow', {accntNum}).then(
         this.$EventBus.$emit('showPopup'),
         this.$store.commit('selectFeed', '')

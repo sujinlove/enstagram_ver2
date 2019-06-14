@@ -192,9 +192,13 @@ export default {
     feedService () {
       this.$store.commit('setPopupContent', 'feedService')
       this.$EventBus.$emit('showPopup')
-      if (this.feed.accnt_num === this.$store.state.user.accnt_num) {
+      if (this.feed.accnt_num === this.$store.state.user.accnt_num || this.page === 'MainPage') {
         this.$store.commit('selectFeed', this.feed)
+      } else {
+        this.$store.commit('selectFeed', '')
       }
+      console.log(this.$store.state.selectFeed.feed_num)
+      console.log(this.$store.state.user.feedList)
     },
     addHeart (feedNum) {
       this.$store.dispatch('addHeart', {feedNum}).then(
