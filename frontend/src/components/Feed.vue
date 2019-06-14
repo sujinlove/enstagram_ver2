@@ -252,8 +252,8 @@ export default {
       })
     },
     addComment (feedNum, comment, parentNum) {
-      var enterCheck = comment.replace(/\n/g, '')
-      if (enterCheck !== '') {
+      comment = comment.replace(/\n/g, '')
+      if (comment !== '') {
         if (this.parentComment === 0) {
           this.$store.dispatch('addComment', {feedNum, comment}).then(
             this.getFeedInfo(),
