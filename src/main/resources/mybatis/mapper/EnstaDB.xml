@@ -87,7 +87,7 @@
 	
 	<!-- Get Feed of Follow User -->
 	<select id="getFollowFeed" resultType="Integer">
-		SELECT ef.feed_num FROM ensta_feed ef INNER JOIN ensta_follow f ON ef.accnt_num = f.following_num WHERE f.accnt_num=#{f.accnt_num} ORDER BY feed_num DESC;
+		SELECT ef.feed_num FROM ensta_feed ef INNER JOIN ensta_follow f ON ef.accnt_num = f.following_num WHERE f.accnt_num=#{f.accnt_num} UNION SELECT feed_num FROM ensta_feed WHERE accnt_num = #{f.accnt_num} ORDER BY feed_num DESC;
 	</select>
 	
 	<!-- Get Heart User List of Feed -->
