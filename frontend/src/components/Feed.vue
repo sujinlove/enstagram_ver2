@@ -59,6 +59,11 @@
       <div class="heart-count" v-else>
         가장 먼저 <span @click="addHeart(feed_num)">좋아요</span>를 눌러보세요
       </div>
+      <router-link :to="'/feed/' + this.feed_num + '/comments'" v-if="width < 768 && this.feed.commentList.length > 0">
+          <span>댓글</span>
+          <span>{{this.feed.commentList.length}}</span>
+          <span>개 모두 보기</span>
+      </router-link>
       <!--Feed Content in Main Page, My Page-->
       <div class="content-view" v-if="page !== 'FeedPage'">
         <ul>
@@ -125,7 +130,8 @@ export default {
   },
   watch: {
     comment: function (newValue) {
-      if (newValue !== '') {
+      var enterCheck = newValue.replace(/\n/g, '')
+      if (newValue !== '' && enterCheck !== '') {
         document.querySelector('#feed' + this.feed_num + ' .comment-btn').disabled = false
       } else {
         document.querySelector('#feed' + this.feed_num + ' .comment-btn').disabled = true
@@ -246,16 +252,21 @@ export default {
       })
     },
     addComment (feedNum, comment, parentNum) {
-      if (this.parentComment === 0) {
-        this.$store.dispatch('addComment', {feedNum, comment}).then(
-          this.getFeedInfo(),
-          this.comment = ''
-        )
+      var enterCheck = comment.replace(/\n/g, '')
+      if (enterCheck !== '') {
+        if (this.parentComment === 0) {
+          this.$store.dispatch('addComment', {feedNum, comment}).then(
+            this.getFeedInfo(),
+            this.comment = ''
+          )
+        } else {
+          this.$store.dispatch('addRecomment', {feedNum, comment, parentNum}).then(
+            this.getFeedInfo(),
+            this.comment = ''
+          )
+        }
       } else {
-        this.$store.dispatch('addRecomment', {feedNum, comment, parentNum}).then(
-          this.getFeedInfo(),
-          this.comment = ''
-        )
+        console.log('no')
       }
     },
     setParentComment (parentNum) {
