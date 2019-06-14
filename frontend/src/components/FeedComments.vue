@@ -8,7 +8,7 @@
       </div>
       <form class="add-comment">
         <textarea @keyup.enter="addComment(feed.feed_num, comment, parentComment)" v-model="comment" placeholder="댓글 달기..."/>
-        <button type="button" @click="addComment(feed.feed_num, comment, parentComment)">게시</button>
+        <button type="button" class="comment-btn" @click="addComment(feed.feed_num, comment, parentComment)" disabled>게시</button>
       </form>
     </div>
     <ul>
@@ -46,20 +46,33 @@ export default {
       parentComment: 0
     }
   },
+  watch: {
+    comment: function (newValue) {
+      var enterCheck = newValue.replace(/\n/g, '')
+      if (newValue !== '' && enterCheck !== '') {
+        document.querySelector('.comment-btn').disabled = false
+      } else {
+        document.querySelector('.comment-btn').disabled = true
+      }
+    }
+  },
   methods: {
     addComment (feedNum, comment, parentNum) {
-      if (this.parentComment === 0) {
-        this.$store.dispatch('addComment', {feedNum, comment}).then(
-          console.log('addComment'),
-          this.$emit('getFeedInfo'),
-          this.comment = ''
-        )
-      } else {
-        this.$store.dispatch('addRecomment', {feedNum, comment, parentNum}).then(
-          console.log('addReComment'),
-          this.$emit('getFeedInfo'),
-          this.comment = ''
-        )
+      comment = comment.replace(/\n/g, '')
+      if (comment !== '') {
+        if (this.parentComment === 0) {
+          this.$store.dispatch('addComment', {feedNum, comment}).then(
+            console.log('addComment'),
+            this.$emit('getFeedInfo'),
+            this.comment = ''
+          )
+        } else {
+          this.$store.dispatch('addRecomment', {feedNum, comment, parentNum}).then(
+            console.log('addReComment'),
+            this.$emit('getFeedInfo'),
+            this.comment = ''
+          )
+        }
       }
     },
     setParentComment (parentNum) {
