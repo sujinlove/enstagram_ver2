@@ -74,7 +74,7 @@ export default {
     },
     removeFeed (feedNum) {
       this.$store.dispatch('removeFeed', {feedNum}).then(
-        this.$router.push('/mypage'),
+        this.$router.push('/user/' + this.$store.state.user.id),
         this.$EventBus.$emit('showPopup')
       )
     },

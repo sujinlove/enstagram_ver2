@@ -59,7 +59,7 @@
       <div class="heart-count" v-else>
         가장 먼저 <span @click="addHeart(feed_num)">좋아요</span>를 눌러보세요
       </div>
-      <router-link :to="'/feed/' + this.feed_num + '/comments'" v-if="width < 768 && this.feed.commentList.length > 0">
+      <router-link :to="'/feed/' + this.feed_num + '/comments'" v-if="width < 768 && this.feed.commentList.length > 0 && page === 'FeedPage'">
           <span>댓글</span>
           <span>{{this.feed.commentList.length}}</span>
           <span>개 모두 보기</span>

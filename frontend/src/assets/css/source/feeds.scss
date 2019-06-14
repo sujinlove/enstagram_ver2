@@ -220,6 +220,18 @@
         display: block;
       }
     }
+
+    .feed-comment {
+      flex-wrap: wrap;
+
+      .user-id {
+        margin-right: 16px;
+      }
+
+      .feed-text {
+        margin-left: 0;
+      }
+    }
   }
 
   .comment {

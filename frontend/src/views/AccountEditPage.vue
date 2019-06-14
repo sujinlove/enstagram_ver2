@@ -18,7 +18,7 @@
           <fieldset class="fieldset">
             <div class="field name">
               <label for="account-name" class="label">이름</label>
-              <input id="account-name" name="name" type="text" class="control" v-model="$store.state.user.name"/>
+              <input id="account-name" name="name" type="text" class="control" maxlength="30" v-model="$store.state.user.name"/>
             </div>
             <div class="field id">
               <label for="account-id" class="label">사용자 이름</label>
@@ -26,15 +26,15 @@
             </div>
             <div class="field des">
               <label for="account-des" class="label">소개</label>
-              <textarea id="account-des" name="des" class="control" maxlength="30" v-model="$store.state.user.des"/>
+              <textarea id="account-des" name="des" class="control" maxlength="60" v-model="$store.state.user.des"/>
             </div>
             <div class="field passwd">
               <label for="account-passwd" class="label">새 비밀번호</label>
-              <input id="account-passwd" name="passwd" type="password" class="control" v-model="passwd"/>
+              <input id="account-passwd" name="passwd" type="password" class="control" maxlength="45" v-model="passwd"/>
             </div>
             <div class="field email">
               <label for="account-email" class="label">이메일 주소</label>
-              <input id="account-email" name="email" type="email" class="control" v-model="$store.state.user.email"/>
+              <input id="account-email" name="email" type="email" class="control" maxlength="45" v-model="$store.state.user.email"/>
             </div>
             <div class="field btn">
               <button id="account-edit-btn" name="account-edit-btn" type="button" @click="editAccount" disabled class="action primary">제출</button>
@@ -67,8 +67,8 @@ export default {
   },
   beforeUpdate () {
     var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
-    if (this.$store.state.user.id.length > 3 && regExp.test(this.$store.state.user.email)) {
-      if (this.passwd.length === 0 || this.passwd.length > 5) {
+    if (this.$store.state.user.name.length < 31 && this.$store.state.user.id.length > 3 && regExp.test(this.$store.state.user.email)) {
+      if (this.passwd.length === 0 || (this.passwd.length > 5 && this.passwd.length < 46)) {
         document.querySelector('#account-edit-btn').disabled = false
       } else {
         document.querySelector('#account-edit-btn').disabled = true
@@ -80,8 +80,8 @@ export default {
   methods: {
     editAccount () {
       var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
-      if (this.$store.state.user.id.length > 3 && regExp.test(this.$store.state.user.email)) {
-        if (this.passwd.length > 5) {
+      if (this.$store.state.user.name.length < 31 && this.$store.state.user.id.length > 3 && this.$store.state.user.id.length < 31 && regExp.test(this.$store.state.user.email) && this.$store.state.user.email.length < 46) {
+        if (this.passwd.length > 5 && this.passwd.length < 46) {
           axios.post('/api/account/edit', {
             accnt_num: this.$store.state.user.accnt_num,
             id: this.$store.state.user.id,

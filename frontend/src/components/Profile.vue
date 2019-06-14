@@ -49,13 +49,13 @@
           <li>
             <router-link :to="'/user/' + this.user.id + '/followers'">
               <span class="title">팔로워</span>
-              <span class="count" v-if="this.user.feedList">{{ this.user.followerList.length }}</span>
+              <span class="count" v-if="this.user.followerList">{{ this.user.followerList.length }}</span>
             </router-link>
           </li>
           <li>
             <router-link :to="'/user/' + this.user.id + '/following'">
               <span class="title">팔로우</span>
-              <span class="count" v-if="this.user.feedList">{{ this.user.followingList.length }}</span>
+              <span class="count" v-if="this.user.followingList">{{ this.user.followingList.length }}</span>
             </router-link>
           </li>
         </ul>
@@ -80,13 +80,13 @@
         <li>
           <router-link :to="'/user/' + this.user.id + '/followers'">
             <span class="title">팔로워</span>
-            <span class="count" v-if="this.user.feedList">{{ this.user.followerList.length }}</span>
+            <span class="count" v-if="this.user.followerList">{{ this.user.followerList.length }}</span>
           </router-link>
         </li>
         <li>
           <router-link :to="'/user/' + this.user.id + '/following'">
             <span class="title">팔로우</span>
-            <span class="count" v-if="this.user.feedList">{{ this.user.followingList.length }}</span>
+            <span class="count" v-if="this.user.followingList">{{ this.user.followingList.length }}</span>
           </router-link>
         </li>
       </ul>

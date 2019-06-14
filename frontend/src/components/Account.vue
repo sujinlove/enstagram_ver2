@@ -11,11 +11,11 @@
               <input name="accnt_num" type="hidden" v-model="accnt_num"/>{{ accnt_num }}
               <div class="field email">
                 <label for="account-email">이메일 주소</label>
-                <input id="account-email" name="email" type="email" v-model="email"/>
+                <input id="account-email" name="email" type="email" maxlength="45" v-model="email"/>
               </div>
               <div class="field name">
                 <label for="account-name">성명</label>
-                <input id="account-name" name="name" type="text" v-model="name"/>
+                <input id="account-name" name="name" type="text" maxlength="30" v-model="name"/>
               </div>
               <div class="field id">
                 <label for="account-id">사용자 이름</label>
@@ -23,7 +23,7 @@
               </div>
               <div class="field passwd">
                 <label for="account-passwd">비밀번호</label>
-                <input id="account-passwd" name="passwd" type="password" v-model="passwd"/>
+                <input id="account-passwd" name="passwd" type="password" maxlength="45" v-model="passwd"/>
               </div>
               <div class="field account_btn">
                 <button name="account_btn" type="button" @click="addSubmit" class="action primary">가입</button>
@@ -76,7 +76,7 @@ export default {
         document.querySelector('.field.' + inputId).classList.remove('active')
       }
       if (inputId === 'id') {
-        if (value.length > 3 && this.countId === 0) {
+        if (value.length > 3 && value.length < 31 && this.countId === 0) {
           document.querySelector('.field.' + inputId).classList.remove('error')
           document.querySelector('.field.' + inputId).classList.add('accept')
         } else {
@@ -85,7 +85,7 @@ export default {
         }
       }
       if (inputId === 'passwd') {
-        if (value.length > 5) {
+        if (value.length > 5 && value.length < 46) {
           document.querySelector('.field.' + inputId).classList.remove('error')
           document.querySelector('.field.' + inputId).classList.add('accept')
         } else {
@@ -95,7 +95,7 @@ export default {
       }
       if (inputId === 'email') {
         var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
-        if (regExp.test(value)) {
+        if (regExp.test(value) && value.length < 46) {
           document.querySelector('.field.' + inputId).classList.remove('error')
           document.querySelector('.field.' + inputId).classList.add('accept')
         } else {
@@ -106,7 +106,7 @@ export default {
     },
     addSubmit () {
       var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
-      if (this.id.length > 3 && regExp.test(this.email) && this.passwd.length > 5) {
+      if (this.id.length > 3 && this.id.length < 31 && this.countId === 0 && regExp.test(this.email) && this.email.length < 46 && this.passwd.length < 46 && this.passwd.length > 5) {
         axios.post('/api/account', {
           accnt_num: this.accnt_num,
           id: this.id,
