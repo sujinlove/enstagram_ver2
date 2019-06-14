@@ -1,6 +1,7 @@
 <template>
   <section v-if="countId !== 0">
     <app-header ref="header"/>
+    <!-- when user page -->
     <one-column v-if="this.user.id !== this.$store.state.user.id">
       <profile :user="user" :page="PageName" v-on:get-user="getUserInfo"/>
       <div class="modes">
@@ -11,7 +12,7 @@
           <button class="icon-sprite ico-glyph-3 list-mode"><span>list</span></button>
         </div>
       </div>
-      <div class="feed-list">
+      <div class="feed-list" v-if="this.user.feedList.length > 0">
         <ul class="feed-mode grid-mode-view">
           <li class="feed-item" :key="feed" v-for="feed in this.user.feedList">
             <router-link :to="'/feed/' + feed" v-if="feedMode == 'grid-mode'">
@@ -21,7 +22,14 @@
           </li>
         </ul>
       </div>
+      <div class="service user" v-else>
+        <div class="icon-circle">
+          <div class="icon-sprite ico-glyph-3 image"><span>image</span></div>
+        </div>
+        <div class="content-title">게시물 없음</div>
+      </div>
     </one-column>
+    <!-- when user page end -->
     <!-- when my page -->
     <one-column v-if="this.user.id === this.$store.state.user.id">
       <profile ref="profile" :page="PageName" :user="this.$store.state.user" />
@@ -43,7 +51,7 @@
           </li>
         </ul>
       </div>
-      <div class="service-start" v-else>
+      <div class="service start" v-else>
         <strong class="content-title">시작하기</strong>
         <div class="container">
           <div class="icon-circle">
@@ -94,7 +102,9 @@ export default {
   props: ['user_id'],
   data () {
     return {
-      user: {},
+      user: {
+        feedList: []
+      },
       PageName: 'UserPage',
       feedMode: 'grid-mode',
       countId: '',
@@ -170,18 +180,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.service-start {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 14px;
-    padding: 12px;
-    border: 1px solid #e6e6e6;
-    border-radius: 4px;
-    background: #fff;
-  }
-
+.profile {
+  padding-bottom: 44px;
+  border-bottom: 1px solid #efefef;
+}
+.service {
   .content-title {
     margin-top: 16px;
   }
