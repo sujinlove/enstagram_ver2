@@ -210,6 +210,14 @@ public class EnstaService {
 	public void unlikeFeed(EnstaFeed enstaFeed) {
 		enstaMapper.unlikeFeed(enstaFeed);
 	}
+	
+	/*
+	 * Cancel Heart to Feed
+	 */
+
+	public void unlikeAllHeart(Integer feed_num) {
+		enstaMapper.unlikeAllHeart(feed_num);
+	}
 
 	/*
 	 * Update heart

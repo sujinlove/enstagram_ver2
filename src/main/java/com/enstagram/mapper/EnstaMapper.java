@@ -63,6 +63,8 @@ public interface EnstaMapper {
 	void likeFeed(EnstaFeed enstaFeed);
 
 	void unlikeFeed(EnstaFeed enstaFeed);
+	
+	void unlikeAllHeart(Integer feed_num);
 
 	public Integer[] getFeedHeartList(Integer feed_num);
 

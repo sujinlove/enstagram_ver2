@@ -116,7 +116,7 @@ public class EnstaFeedController {
 		Integer feed_num = enstaFeed.getFeed_num();
 		File file = new File("./src/main/resources/static" + enstaService.getFeedFileName(feed_num));
 		file.delete();
-		enstaService.unlikeFeed(enstaFeed);
+		enstaService.unlikeAllHeart(enstaFeed.getFeed_num());
 		enstaService.removeFeed(feed_num);
 		enstaService.removeReplyByFeedNum(feed_num);
 	}

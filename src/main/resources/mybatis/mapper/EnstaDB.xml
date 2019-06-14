@@ -120,6 +120,11 @@
 		DELETE FROM ensta_heart WHERE accnt_num = #{accnt_num} AND feed_num = #{feed_num}
 	</delete>
 	
+	<!-- Cancel Heart to Feed When Remove Feed -->
+	<delete id="unlikeAllHeart" parameterType="Integer">
+		DELETE FROM ensta_heart WHERE feed_num = #{feed_num}
+	</delete>
+	
 	<!-- Get Heart List -->
 	<select id="getHeartList" resultType="Integer">
 		SELECT feed_num FROM ensta_heart WHERE accnt_num = #{accnt_num}
