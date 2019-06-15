@@ -7,7 +7,7 @@
 //  _____________________________________________
 @if ($media-common == true) {
   .user-list {
-    padding: 5px $indent__base;
+    padding: 0 $indent__base;
     background-color: $panel__background-color;
 
     .user-name {
@@ -20,6 +20,14 @@
 
       > li {
         padding: 8px 0;
+
+        &:first-child {
+          padding-top: 13px;
+        }
+
+        &:last-child {
+          padding-bottom: 13px;
+        }
       }
     }
 
@@ -33,6 +41,16 @@
         white-space: nowrap;
         padding-left: 5px;
         margin-left: -5px;
+      }
+    }
+
+    &.recommend-user {
+      .content-title {
+        display: inline-block;
+        margin-bottom: 0;
+        padding-top: 10px;
+        color: #999;
+        font-size: $font-size__base;
       }
     }
   }

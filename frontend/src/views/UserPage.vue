@@ -185,10 +185,6 @@ export default {
   border-bottom: 1px solid #efefef;
 }
 .service {
-  .content-title {
-    margin-top: 16px;
-  }
-
   p {
     color: #999;
   }

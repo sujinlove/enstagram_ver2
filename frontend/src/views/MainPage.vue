@@ -18,7 +18,7 @@
           <p class="user-name">{{ this.$store.state.user.name }}</p>
         </div>
       </div>
-      <div class="user-list following-user" slot="sidebar">
+      <div class="user-list following-user" slot="sidebar" v-if="this.$store.state.user.followingList.length > 0">
         <ol>
           <li class="user" :key="following" v-for="following in this.$store.state.user.followingList">
             <user-list :user_num="following" />
@@ -134,10 +134,10 @@ export default {
       })
     },
     cancelFollow (accntNum) {
-      console.log(accntNum)
       this.$store.dispatch('cancelFollow', {accntNum}).then(
         this.$EventBus.$emit('showPopup'),
-        this.$store.commit('selectFeed', '')
+        this.$store.commit('selectFeed', ''),
+        this.getFollowFeed()
       )
     },
     getRecommendList () {
@@ -159,7 +159,7 @@ export default {
 
   .user-list {
     width: 100%;
-    margin-bottom: 14px;
+    margin-top: 14px;
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     box-sizing: border-box;
@@ -192,6 +192,12 @@ export default {
           color: #999;
         }
       }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .container {
+      padding-top: 40px;
+      padding-bottom: 40px;
     }
   }
 </style>

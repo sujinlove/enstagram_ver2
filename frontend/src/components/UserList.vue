@@ -35,9 +35,9 @@
       </div>
       <button class="icon-sprite ico-glyph-2 comment-more" @click="commentService" v-if="page === 'FeedPage' || page == 'FeedCommentPage' && (this.$store.state.user.accnt_num == this.comment.accnt_num || this.$store.state.user.feedList.indexOf(String(this.comment.feed_num)) !== -1)"><span>more</span></button>
     </div>
-    <button class="recomment-more" v-if="reCommentList.length > 0 && recommentStatus === false" @click="changeRecommentStatus(true)">답글 보기 ({{this.reCommentList.length}}개)</button>
-    <button class="recomment-more" v-if="reCommentList.length > 0 && recommentStatus === true" @click="changeRecommentStatus(false)">답글 숨기기</button>
-    <feed-recomments v-show="recommentStatus === true" v-if="reCommentList.length > 0 && (page == 'FeedPage' || page == 'FeedCommentPage')" :key="recomment.reply_num" v-for="recomment in this.reCommentList" :user_num="recomment.accnt_num" :comment="recomment"></feed-recomments>
+    <button class="recomment-more" v-if="reCommentList.length > 0 && recommentStatus === false && (page === 'FeedPage' || page === 'FeedCommentPage')" @click="changeRecommentStatus(true)">답글 보기 ({{this.reCommentList.length}}개)</button>
+    <button class="recomment-more" v-if="reCommentList.length > 0 && recommentStatus === true && (page === 'FeedPage' || page === 'FeedCommentPage')" @click="changeRecommentStatus(false)">답글 숨기기</button>
+    <feed-recomments v-show="recommentStatus === true" v-if="reCommentList.length > 0 && (page === 'FeedPage' || page === 'FeedCommentPage')" :key="recomment.reply_num" v-for="recomment in this.reCommentList" :user_num="recomment.accnt_num" :comment="recomment"></feed-recomments>
   </li>
   <!-- Feed comment End -->
 </template>
