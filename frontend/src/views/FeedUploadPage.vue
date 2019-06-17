@@ -11,7 +11,7 @@
               </div>
             </div>
             <textarea type="textarea" name="description" placeholder="문구 입력..." :style="{height: '48px'}" v-model="description"/>
-            <img id="feed-file" :style="{width: '48px', height: '48px'}"/>
+            <img id="feed-file" :style="{width: '48px', height: '48px'}" onerror="this.style.display='none'"/>
           </div>
         </form>
       </div>

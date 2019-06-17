@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     fileUpload () {
-      console.log(this.feed_num)
       axios.get('/api/feed/' + this.feed_num + '/heart', {
       }).then(response => {
         this.heartAccountList = response.data

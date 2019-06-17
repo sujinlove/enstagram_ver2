@@ -21,11 +21,11 @@
 					        <div class="account-form">
 					          <form class="form" name="form" th:action="@{/login}" method="post">
 					            <fieldset class="fieldset">
-					              <div class="field id">
+					              <div class="field id active">
 					                <label for="login-id">휴대폰번호 또는 이메일 주소</label>
 					                <input id="login-id" name="id" type="text"/>
 					              </div>
-					              <div class="field passwd">
+					              <div class="field passwd active">
 					                <label for="login-passwd">비밀번호</label>
 					                <input id="login-passwd" name="passwd" type="password"/>
 					              </div>
@@ -70,6 +70,8 @@
 		</footer>
  	</section>
  	<script>
+	 	$("#login-id").val('user01');
+	 	$("#login-passwd").val('user01');
 	 	$("#login-id").on("propertychange change keyup paste input", function() {
 	 		if ($(this).val() !== '') {
 		 		$('.field.id').addClass('active')
