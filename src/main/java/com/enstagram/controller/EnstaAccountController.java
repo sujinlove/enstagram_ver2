@@ -130,6 +130,7 @@ public class EnstaAccountController {
 	@RequestMapping(value = "/api/account/edit", method = { RequestMethod.POST, RequestMethod.GET })
 	public void editAccountInfo(@RequestBody EnstaAccount enstaAccount) {
 		enstaService.editAccountInfo(enstaAccount);
+		autoLogin(enstaAccount.getId(), enstaAccount.getPasswd());
 	}
 
 	/*
