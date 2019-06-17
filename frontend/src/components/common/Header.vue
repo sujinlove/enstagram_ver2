@@ -43,9 +43,17 @@
             <router-link to ="/" class="icon-sprite ico-glyph instagram-logo_ver2"><span>logo</span></router-link>
           </li>
           <li class="search">
-            <input type="text" placeholder="검색"/>
+            <input type="text" placeholder="검색" v-model="searchText"/>
             <div class="searchIcon ico-core icon-sprite"><span>search</span></div>
-            <div class="searchClear ico-core icon-sprite"><span>search clear</span></div>
+            <div class="searchClear ico-core icon-sprite" @click="searchText = ''"><span>search clear</span></div>
+            <div class="search-user user-list" v-if="searchText !== ''">
+              <div class="search-box">
+                <ol v-if="this.searchList.length > 0">
+                  <user-list class="user" :key="search" v-for="search in this.searchList" :user_num="search" :list="'search'"/>
+                </ol>
+                <p v-else>검색 결과가 없습니다.</p>
+              </div>
+            </div>
           </li>
           <li class="others">
             <!-- <router-link to ="/feedUpload" class="icon-sprite ico-glyph upload"><span>upload</span></router-link> -->
@@ -62,10 +70,27 @@
 </template>
 
 <script>
+import axios from 'axios'
+import UserList from '../UserList'
+
 export default {
   props: ['page'],
+  components: {
+    UserList
+  },
   data () {
     return {
+      searchText: '',
+      searchList: []
+    }
+  },
+  watch: {
+    searchText: function (newValue) {
+      if (newValue === '') {
+        this.searchList = []
+      } else {
+        this.searchUser(newValue)
+      }
     }
   },
   methods: {
@@ -85,6 +110,15 @@ export default {
       this.file = this.$refs.file.files[0]
       this.$store.commit('uploadFile', this.file)
       this.$router.push('/feedUpload')
+    },
+    searchUser (userId) {
+      axios.post('/api/searchId', {
+        id: userId
+      }).then(response => {
+        this.searchList = response.data
+      }).catch(e => {
+        console.log('error: ' + e)
+      })
     }
   }
 }

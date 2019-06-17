@@ -1,5 +1,5 @@
 <template>
-  <li class="user" v-if="list !== 'comment'">
+  <li class="user" v-if="list !== 'comment' && list !=='search'">
     <div class="user-wrapper">
       <div class="user-pic">
         <div class="user-pic-inner">
@@ -16,8 +16,27 @@
       </div>
     </div>
   </li>
+  <li class="user" v-else-if="list === 'search'">
+    <router-link :to="'/user/' + this.user.id" >
+      <div class="user-wrapper">
+        <div class="user-pic">
+          <div class="user-pic-inner">
+            <img :src="this.user.profile" :alt="this.user.id + '님의 프로필 사진'" />
+          </div>
+        </div>
+        <div class="user-info">
+          <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
+          <div class="user-name">{{this.user.name}}</div>
+        </div>
+        <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && (list === 'recommend' || list === 'following' || list === 'follower' || list === 'heartAccount')">
+          <button @click="addFollow(user.accnt_num)" class="follow" v-if="this.$store.state.user.followingList.indexOf(this.user.accnt_num) === -1">팔로우</button>
+          <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로잉</button>
+        </div>
+      </div>
+    </router-link>
+  </li>
   <!-- Feed comment -->
-  <li v-else-if="this.comment.parent_num === 0">
+  <li v-else-if="list === 'comment' && this.comment.parent_num === 0">
     <div class="user user-comment">
       <div class="user-pic" v-if="page == 'FeedPage' || page == 'FeedCommentPage'">
         <div class="user-pic-inner">

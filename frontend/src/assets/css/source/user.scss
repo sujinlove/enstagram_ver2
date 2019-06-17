@@ -44,6 +44,60 @@
       }
     }
 
+    &.search-user {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      right: 0;
+      padding: 0;
+      box-shadow: 0 0 5px rgba(0,0,0,.0975);
+
+      &:after,
+      &:before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        z-index: 3;
+        transform: translateX(-50%);
+      }
+
+      &:before{
+        top: -10px;
+        left: 50%;
+        border-width: 0 11px 10px;
+        border-color: transparent transparent $border-color__base;
+      }
+
+      &:after {
+        top: -9px;
+        left: 50%;
+        border-width: 0 9px 9px;
+        border-color: transparent transparent #fff;
+      }
+
+      .search-box {
+        overflow-y: scroll;
+        max-height: 362px;
+
+        > p {
+          margin: 0;
+          padding: 10px 16px;
+          color: #999;
+          text-align: center;
+        }
+      }
+
+      .user {
+        padding: 10px 16px;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $border-color__base;
+        }
+      }
+    }
+
     &.recommend-user {
       .content-title {
         display: inline-block;
