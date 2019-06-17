@@ -71,7 +71,7 @@
       <p>{{ this.user.name }}</p>
       <p>{{ this.user.des }}</p>
     </div>
-    <div class="user-count" v-if="page === 'MyPage' || page === 'UserPage'">
+    <div class="user-count" v-if="page === 'UserPage'">
       <ul>
         <li>
           <span class="title">게시물</span>

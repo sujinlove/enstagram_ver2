@@ -1,7 +1,7 @@
 <template>
 <article :id="'feed' + this.feed_num" class="feed">
   <!--When Mouse Over in My Page-->
-  <div class="feed-hover" v-if="page == 'MyPage' || page == 'UserPage'">
+  <div class="feed-hover" v-if="page == 'UserPage'">
     <div v-if="this.feed.heart > 0">
       <button class="icon-sprite ico-core heart"><span>heart</span></button>
       <span>{{this.feed.heart}}</span>
@@ -34,7 +34,8 @@
   <div class="feed-pic">
     <div class="feed-pic-inner">
     <!-- <div class="feed-pic-inner"> -->
-      <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'"/>
+      <video autoplay controls :src="this.feed.file_name" type="video/mp4" v-show="this.feedType === 'video'"/>
+      <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'" v-show="this.feedType === 'image'"/>
     </div>
   </div>
   <!--When Not Edit Feed-->
@@ -125,6 +126,7 @@ export default {
       commentList: [],
       showCommentList: [],
       feedTime: '',
+      feedType: '',
       width: '',
       ratio: '100%'
     }
@@ -158,11 +160,21 @@ export default {
     },
     resizeFeedPic () {
       var feedNum = this.feed_num
-      var img = new Image()
-      img.src = this.feed.file_name
-      img.onload = function () {
-        this.ratio = img.height / img.width * 100 + '%'
-        document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
+      if (this.feed.file_name.split('.')[1] === 'mp4') {
+        this.feedType = 'video'
+        var video = document.querySelector('#feed' + feedNum + ' video')
+        video.onloadeddata = function () {
+          this.ratio = video.clientHeight / video.clientWidth * 100 + '%'
+          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
+        }
+      } else {
+        this.feedType = 'image'
+        var img = new Image()
+        img.src = this.feed.file_name
+        img.onload = function () {
+          this.ratio = img.height / img.width * 100 + '%'
+          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
+        }
       }
     },
     getFeedInfo () {

@@ -25,7 +25,7 @@
           </li>
         </ol>
       </div>
-      <div class="user-list recommend-user" slot="sidebar">
+      <div class="user-list recommend-user" slot="sidebar" v-if="this.recommendList.length > 0">
         <strong class="content-title">회원님을 위한 추천</strong>
         <ol>
           <li class="user" :key="recommend" v-for="recommend in this.recommendList">
@@ -164,8 +164,8 @@ export default {
     border-radius: 3px;
     box-sizing: border-box;
 
-    &.following-user {
-      margin-top: 12px;
+    &.recommend-user {
+      margin-bottom: 14px;
     }
   }
 

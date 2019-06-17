@@ -29,7 +29,7 @@
         <router-link to= "" class="user-id"></router-link>
         <span class="comment-text">{{this.comment.comment}}</span>
       </div>
-      <div class="feed-others" v-if="page !== 'MyPage' && page !== 'MainPage' && page !== 'UserPage'">
+      <div class="feed-others" v-if="page !== 'MainPage' && page !== 'UserPage'">
         <time :datetime="this.comment.regdate">{{this.getTime(this.comment.regdate)}}</time>
         <button @click="$emit('setParentComment')">답글 달기</button>
       </div>

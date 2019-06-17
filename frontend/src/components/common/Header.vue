@@ -51,7 +51,7 @@
             <!-- <router-link to ="/feedUpload" class="icon-sprite ico-glyph upload"><span>upload</span></router-link> -->
             <button class="icon-sprite ico-glyph upload" @click="uploadBtn"><span>upload</span></button>
             <form :style="{display: 'none'}">
-              <input type="file" name="file" ref="file" @change="handleFileUpload"/>
+              <input type="file" name="file" ref="file" accept="image/jpeg,image/png,video/mp4" @change="handleFileUpload"/>
             </form>
             <a :href="'/user/' + this.$store.state.user.id" class="icon-sprite ico-glyph mypage"><span>my page</span></a>
           </li>
