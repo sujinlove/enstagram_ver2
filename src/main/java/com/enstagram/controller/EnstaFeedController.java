@@ -189,7 +189,6 @@ public class EnstaFeedController {
 		String re = null;
 
 		while (matcher.find()) {
-			System.out.println(matcher.group());
 			re = sepcialCharacter_replace(matcher.group());
 			hashTag.add(re);
 		}
