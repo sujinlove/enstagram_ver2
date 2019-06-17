@@ -62,13 +62,11 @@ export default {
       if (comment !== '') {
         if (this.parentComment === 0) {
           this.$store.dispatch('addComment', {feedNum, comment}).then(
-            console.log('addComment'),
             this.$emit('getFeedInfo'),
             this.comment = ''
           )
         } else {
           this.$store.dispatch('addRecomment', {feedNum, comment, parentNum}).then(
-            console.log('addReComment'),
             this.$emit('getFeedInfo'),
             this.comment = ''
           )

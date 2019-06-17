@@ -47,7 +47,8 @@
       <div class="feed-btn">
         <button class="icon-sprite ico-glyph-3 heart" @click="addHeart(feed_num)"  v-if="this.$store.state.user.heartList.indexOf(Number(this.feed_num)) === -1"><span>heart</span></button>
         <button class="icon-sprite ico-glyph-3 noheart" @click="cancelHeart(feed_num)" v-else><span>heart</span></button>
-        <router-link :to="'/feed/' + this.feed_num" class="icon-sprite ico-glyph chat"><span>chat</span></router-link>
+        <router-link :to="'/feed/' + this.feed_num + '/comments'" class="icon-sprite ico-glyph chat" v-if="page === 'FeedPage'"><span>chat</span></router-link>
+        <router-link :to="'/feed/' + this.feed_num" class="icon-sprite ico-glyph chat" v-else><span>chat</span></router-link>
       </div>
       <div class="heart-count" v-if="this.feed.heart > 0">
         <router-link :to="'/feed/' + this.feed_num + '/heart'">
@@ -197,8 +198,6 @@ export default {
       } else {
         this.$store.commit('selectFeed', '')
       }
-      console.log(this.$store.state.selectFeed.feed_num)
-      console.log(this.$store.state.user.feedList)
     },
     addHeart (feedNum) {
       this.$store.dispatch('addHeart', {feedNum}).then(
@@ -269,8 +268,6 @@ export default {
             this.comment = ''
           )
         }
-      } else {
-        console.log('no')
       }
     },
     setParentComment (parentNum) {
