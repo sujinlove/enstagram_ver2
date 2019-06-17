@@ -247,4 +247,13 @@ public class EnstaAccountController {
 		return map;
 	}
 
+	/*
+	 * Search Account Id
+	 */
+
+	@RequestMapping(value = "/api/searchId", method = { RequestMethod.POST, RequestMethod.GET })
+	public Integer[] searchAccountId(@RequestBody EnstaAccount enstaAccount) {
+		return enstaService.searchAccountId(enstaAccount.getId());
+	}
+
 }

@@ -175,4 +175,9 @@
 		DELETE from ensta_reply WHERE feed_num = #{feed_num}
 	</delete>
 	
+	<!-- Search id -->
+	<select id="searchAccountId" resultType="Integer">
+		SELECT accnt_num FROM ensta_account WHERE INSTR(id, #{id}) > 0
+	</select>
+	
 </mapper>

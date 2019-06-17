@@ -210,7 +210,7 @@ public class EnstaService {
 	public void unlikeFeed(EnstaFeed enstaFeed) {
 		enstaMapper.unlikeFeed(enstaFeed);
 	}
-	
+
 	/*
 	 * Cancel Heart to Feed
 	 */
@@ -274,7 +274,7 @@ public class EnstaService {
 	public List<EnstaReply> getReplyList(Integer feed_num) {
 		return enstaMapper.getReplyList(feed_num);
 	}
-	
+
 	/*
 	 * Get Reply Num By Parent Num
 	 */
@@ -290,20 +290,28 @@ public class EnstaService {
 	public void removeReplyInfo(Integer reply_num) {
 		enstaMapper.removeReplyInfo(reply_num);
 	}
-	
+
 	/*
 	 * Remove Reply By Feed Num
 	 */
-	
+
 	public void removeReplyByFeedNum(Integer feed_num) {
 		enstaMapper.removeReplyByFeedNum(feed_num);
 	}
-	
+
 	/*
 	 * Remove Reply By Reply Num
 	 */
-	
+
 	public void removeReplyByParentNum(Integer reply_num) {
 		enstaMapper.removeReplyByParentNum(reply_num);
+	}
+
+	/*
+	 * Search Account Id
+	 */
+
+	public Integer[] searchAccountId(String id) {
+		return enstaMapper.searchAccountId(id);
 	}
 }

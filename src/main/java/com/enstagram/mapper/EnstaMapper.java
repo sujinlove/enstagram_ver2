@@ -95,4 +95,9 @@ public interface EnstaMapper {
 	void removeReplyByFeedNum(Integer feed_num);
 	
 	void removeReplyByParentNum(Integer reply_num);
+	
+	/*
+	 * Search Account Id
+	 */
+	public Integer[] searchAccountId(String id);
 }
