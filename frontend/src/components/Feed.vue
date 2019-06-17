@@ -34,7 +34,8 @@
   <div class="feed-pic">
     <div class="feed-pic-inner">
     <!-- <div class="feed-pic-inner"> -->
-      <video autoplay controls :src="this.feed.file_name" type="video/mp4" v-show="this.feedType === 'video'"/>
+      <video autoplay controls :src="this.feed.file_name" type="video/mp4" v-if="page !== 'UserPage'" v-show="this.feedType === 'video'"/>
+      <video :src="this.feed.file_name" type="video/mp4" v-if="page === 'UserPage'" v-show="this.feedType === 'video'"/>
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'" v-show="this.feedType === 'image'"/>
     </div>
   </div>
