@@ -116,9 +116,11 @@
       &-inner {
         position: relative;
         padding-bottom: 100%;
-        background: #efefef;
+        background: $color-white;
 
         &.load {
+          background: #efefef;
+
           > img,
           > video {
             display: none;
