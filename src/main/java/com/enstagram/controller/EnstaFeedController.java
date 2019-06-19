@@ -39,12 +39,12 @@ public class EnstaFeedController {
 
 	@RequestMapping(value = "/api/feedUpload", method = { RequestMethod.POST, RequestMethod.GET })
 	public Integer createFeed(@ModelAttribute EnstaFeed enstaFeed, @RequestParam MultipartFile file) {
-		String profileName = RandomStringUtils.randomAlphanumeric(12);
-		enstaFeed.setFile_name("/upload/" + profileName + "." + file.getOriginalFilename().split("\\.")[1]);
+		String fileName = RandomStringUtils.randomAlphanumeric(12);
+		enstaFeed.setFile_name("/upload/" + fileName + "." + file.getOriginalFilename().split("\\.")[1].toLowerCase());
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream(new File("./src/main/resources/static/upload/" + profileName + "."
-					+ file.getOriginalFilename().split("\\.")[1]));
+			fos = new FileOutputStream(new File("./src/main/resources/static/upload/" + fileName + "."
+					+ file.getOriginalFilename().split("\\.")[1].toLowerCase()));
 			IOUtils.copy(file.getInputStream(), fos);
 		} catch (Exception e) {
 			e.printStackTrace();
