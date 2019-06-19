@@ -175,7 +175,7 @@ export default {
         var img = new Image()
         img.src = this.feed.file_name
         img.onload = function () {
-        document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('loading')
+          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('loading')
           this.ratio = img.height / img.width * 100 + '%'
           document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
         }
