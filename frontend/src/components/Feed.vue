@@ -32,8 +32,8 @@
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
   <div class="feed-pic">
-    <div class="feed-pic-inner">
-    <!-- <div class="feed-pic-inner"> -->
+    <div class="feed-pic-inner loading">
+      <div id="feed-loading"></div>
       <video autoplay controls :src="this.feed.file_name" type="video/mp4" v-if="page !== 'UserPage'" v-show="this.feedType === 'video'"/>
       <video :src="this.feed.file_name" type="video/mp4" v-if="page === 'UserPage'" v-show="this.feedType === 'video'"/>
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'" v-show="this.feedType === 'image'"/>
@@ -129,7 +129,8 @@ export default {
       feedTime: '',
       feedType: '',
       width: '',
-      ratio: '100%'
+      ratio: '100%',
+      loading: false
     }
   },
   watch: {
@@ -165,6 +166,7 @@ export default {
         this.feedType = 'video'
         var video = document.querySelector('#feed' + feedNum + ' video')
         video.onloadeddata = function () {
+          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('loading')
           this.ratio = video.clientHeight / video.clientWidth * 100 + '%'
           document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
         }
@@ -173,6 +175,7 @@ export default {
         var img = new Image()
         img.src = this.feed.file_name
         img.onload = function () {
+        document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('loading')
           this.ratio = img.height / img.width * 100 + '%'
           document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
         }
@@ -261,7 +264,7 @@ export default {
         feed_num: this.feed_num,
         description: this.feed.description
       }).then(response => {
-        this.$store.state.editFeed = false
+        this.$store.commit('editFeed', false)
         this.getFeedInfo()
       }).catch(e => {
         console.log('error: ' + e)
