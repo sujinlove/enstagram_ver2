@@ -9,6 +9,7 @@
           </li>
           <li class="page-title"><h1>새 게시물</h1></li>
           <li class="complete">
+            <div class="upload-loading loading" v-if="loading === true"></div>
             <button class="upload-btn" @click="fileUpload">
               공유하기
             </button>
@@ -81,7 +82,8 @@ export default {
   data () {
     return {
       searchText: '',
-      searchList: []
+      searchList: [],
+      loading: false
     }
   },
   watch: {
@@ -105,6 +107,7 @@ export default {
       this.$emit('upload')
     },
     uploadBtn () {
+      this.loading = true
       this.$refs.file.click()
     },
     handleFileUpload () {

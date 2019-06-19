@@ -118,14 +118,14 @@
         padding-bottom: 100%;
         background: $color-white;
 
-        &.loading {
+        &.load {
           > img,
           > video {
             display: none;
           }
         }
 
-        &:not(.loading) {
+        &:not(.load) {
           #feed-loading {
             display: none;
           }

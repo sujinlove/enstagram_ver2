@@ -32,8 +32,8 @@
     <button class="icon-sprite ico-glyph-2 more more2" type="button" @click="feedService"><span>more</span></button>
   </header>
   <div class="feed-pic">
-    <div class="feed-pic-inner loading">
-      <div id="feed-loading"></div>
+    <div class="feed-pic-inner load">
+      <div class="feed-loading loading"></div>
       <video autoplay controls :src="this.feed.file_name" type="video/mp4" v-if="page !== 'UserPage'" v-show="this.feedType === 'video'"/>
       <video :src="this.feed.file_name" type="video/mp4" v-if="page === 'UserPage'" v-show="this.feedType === 'video'"/>
       <img :src="this.feed.file_name" alt="feed" onerror="this.style.display='none'" v-show="this.feedType === 'image'"/>
@@ -129,8 +129,7 @@ export default {
       feedTime: '',
       feedType: '',
       width: '',
-      ratio: '100%',
-      loading: false
+      ratio: '100%'
     }
   },
   watch: {
@@ -162,11 +161,11 @@ export default {
     },
     resizeFeedPic () {
       var feedNum = this.feed_num
-      if (this.feed.file_name.split('.')[1] === 'mp4') {
+      if (this.feed.file_name.split('.')[1] === 'mp4' || this.feed.file_name.split('.')[1] === 'mov') {
         this.feedType = 'video'
         var video = document.querySelector('#feed' + feedNum + ' video')
         video.onloadeddata = function () {
-          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('loading')
+          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('load')
           this.ratio = video.clientHeight / video.clientWidth * 100 + '%'
           document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
         }
@@ -175,7 +174,7 @@ export default {
         var img = new Image()
         img.src = this.feed.file_name
         img.onload = function () {
-          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('loading')
+          document.querySelector('#feed' + feedNum + ' .feed-pic-inner').classList.remove('load')
           this.ratio = img.height / img.width * 100 + '%'
           document.querySelector('#feed' + feedNum + ' .feed-pic-inner').style.paddingBottom = this.ratio
         }
