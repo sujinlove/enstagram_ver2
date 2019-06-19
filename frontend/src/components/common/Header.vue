@@ -96,6 +96,7 @@ export default {
   methods: {
     goToBack () {
       this.$router.go(-1)
+      this.$store.commit('editFeed', false)
     },
     changeFeedInfo () {
       this.$emit('changeFeedInfo')
