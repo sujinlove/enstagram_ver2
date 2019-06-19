@@ -104,10 +104,10 @@ export default {
       this.$emit('changeFeedInfo')
     },
     fileUpload () {
+      this.loading = true
       this.$emit('upload')
     },
     uploadBtn () {
-      this.loading = true
       this.$refs.file.click()
     },
     handleFileUpload () {
