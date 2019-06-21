@@ -15,7 +15,6 @@ export default new Vuex.Store({
     popupContent: '',
     selectFeed: {},
     selectComment: {},
-    // pageImages: [],
     uploadFile: '',
     editFeed: false
   },
@@ -36,15 +35,6 @@ export default new Vuex.Store({
     selectComment (state, data) {
       state.selectComment = data
     },
-    // setPreImages (state, data) {
-    //   const image = new Image()
-    //   image.src = data
-    //   state.pageImages.push(image)
-    //   console.log(state.pageImages)
-    // },
-    // resetImages (state) {
-    //   state.pageImages = []
-    // },
     uploadFile (state, data) {
       state.uploadFile = data
     },
@@ -126,36 +116,5 @@ export default new Vuex.Store({
         console.log('error: ' + e)
       })
     }
-    // getFeedInfo ({commit, state}, {feedNum}) {
-    //   axios.post('/api/feed/' + feedNum, {
-    //   }).then(response => {
-    //     this.feed = response.data
-    //     this.getUserInfo()
-    //   }).catch(e => {
-    //     console.log('error: ' + e)
-    //   })
-    // },
-    // addHeart ({commit, state}, feed_num) {
-    //   axios.post('/api/feed/like', {
-    //     accnt_num: this.$store.state.user.accnt_num,
-    //     feed_num: this.feed_num
-    //   }).then(response => {
-    //     this.getFeedInfo()
-    //     this.$store.commit('setUser')
-    //     console.log(this.$store.state.user)
-    //   }).catch(e => {
-    //     console.log('error: ' + e)
-    //   })
-    // },
-    // preload () {
-    //   this.state.pageImages.every(function (item) {
-    //     item.onload = function () {
-    //       document.querySelector('.app-wrapper').classList.add('active')
-    //       document.querySelector('#load').classList.remove('active')
-    //       this.commit('resetImages')
-    //       console.log('load')
-    //     }
-    //   })
-    // }
   }
 })
