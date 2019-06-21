@@ -155,6 +155,11 @@
     .heart-count {
       margin: 8px 0;
     }
+
+    .more-comment,
+    .more-comment > a {
+      color: #999;
+    }
   }
 
   .feed-view {
