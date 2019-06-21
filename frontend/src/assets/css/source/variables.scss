@@ -27,7 +27,6 @@ $font-family__base: $font-family-name__base, $font-family__sans-serif;
 
 $sidebar__background-color: $color-white-smoke; // Used in cart sidebar, Checkout sidebar, Tier Prices, My account
 
-@import 'reset.scss';
 @import 'extends.scss';
 @import 'forms.scss';
 @import 'buttons.scss';
