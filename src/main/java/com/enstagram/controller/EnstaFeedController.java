@@ -2,13 +2,9 @@ package com.enstagram.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.log4j.spi.LoggerFactory;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.enstagram.model.EnstaFeed;
 import com.enstagram.model.EnstaReply;
 import com.enstagram.service.EnstaService;
@@ -32,7 +27,6 @@ public class EnstaFeedController {
 	@Autowired
 	EnstaService enstaService;
 
-	private final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 	/*
 	 * Create Feed When Upload File
 	 */
@@ -61,7 +55,6 @@ public class EnstaFeedController {
 	public Map<String, Object> getFeed(@PathVariable Integer feed_num) {
 		Map<String, Object> map = enstaService.getFeedInfo(feed_num);
 		map.put("commentList", enstaService.getReplyList(feed_num));
-		checkHashtag(feed_num);
 		return map;
 	}
 
@@ -173,42 +166,6 @@ public class EnstaFeedController {
 	public void removeReplyInfo(@RequestBody EnstaReply enstaReply) {
 		enstaService.removeReplyInfo(enstaReply.getReply_num());
 		enstaService.removeReplyByParentNum(enstaReply.getReply_num());
-	}
-
-	/*
-	 * Check HashTag
-	 */
-
-	public Map<String, Object> checkHashtag(Integer feed_num) {
-		Map<String, Object> map = enstaService.getFeedInfo(feed_num);
-		String text = new String((String) map.get("description"));
-
-		List<String> hashTag = new ArrayList<>();
-		Pattern pattern = Pattern.compile("\\#([0-9a-zA-Z가-힣]*)");
-		java.util.regex.Matcher matcher = pattern.matcher(text);
-		String re = null;
-
-		while (matcher.find()) {
-			re = sepcialCharacter_replace(matcher.group());
-			hashTag.add(re);
-		}
-
-		if (re != null) {
-			logger.debug("최종 : {}", re);
-		}
-
-		map.put("result", hashTag);
-		return map;
-	}
-
-	public String sepcialCharacter_replace(String str) {
-		str = org.springframework.util.StringUtils.replace(str, "-_+=!@#$%^&*()[]{}|\\;:'\"<>,.?/~`）", "");
-
-		if (str.length() < 1) {
-			return null;
-		}
-
-		return str;
 	}
 
 }
