@@ -22,7 +22,7 @@
         </div>
         <div class="user-text">
           <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
-          <span class="feed-text">{{this.feed.description}}</span>
+          <span class="feed-text" v-html="this.feed.description"></span>
         </div>
         <div class="feed-others">
           <time :datetime="this.feed.regdate">{{this.feedTime}}</time>

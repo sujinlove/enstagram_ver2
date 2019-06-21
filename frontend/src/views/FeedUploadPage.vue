@@ -50,6 +50,7 @@ export default {
   methods: {
     fileUpload () {
       var formData = new FormData()
+      this.description = this.description.replace(/\n/gi, '<br />')
       formData.append('file', this.$store.state.uploadFile)
       formData.append('description', this.description)
       formData.append('accnt_num', this.$store.state.user.accnt_num)

@@ -74,7 +74,7 @@
             <router-link :to="'/user/' + this.user.id" class="user-id">
               {{this.user.id}}
             </router-link>
-            <span class="feed-text">{{this.feed.description}}</span>
+            <span class="feed-text" v-html="this.feed.description"></span>
           </li>
           <li class="more-comment" v-if="this.feed.commentList.length !== 0">
             <router-link :to="'/feed/' + this.feed_num">

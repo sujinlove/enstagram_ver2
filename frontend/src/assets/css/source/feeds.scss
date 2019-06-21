@@ -245,10 +245,10 @@
     }
 
     .feed-comment {
-      flex-wrap: wrap;
+      display: inline-block;
 
       .user-id {
-        margin-right: 16px;
+        margin-right: 12px;
       }
 
       .feed-text {
