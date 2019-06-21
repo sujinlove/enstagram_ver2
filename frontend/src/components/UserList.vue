@@ -93,7 +93,7 @@ export default {
     },
     getTime (uploadTime) {
       uploadTime = new Date(uploadTime)
-      var now = new Date()
+      var now = new Date(Date.parse(new Date()) + 9000 * 60 * 60)
       var time = (now - uploadTime) / 1000
       var returnTime
       if (time > 60) {
