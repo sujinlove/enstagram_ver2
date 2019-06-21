@@ -248,7 +248,7 @@
       display: inline-block;
 
       .user-id {
-        margin-right: 12px;
+        margin-right: 8px;
       }
 
       .feed-text {
@@ -450,9 +450,11 @@
   }
 
   .feed-view {
-    .feed-content {
-      > .feed-comments {
-        // display: none;
+    .feed-comment {
+      display: inline-block;
+
+      > .feed-text {
+        margin-left: 8px;
       }
     }
   }

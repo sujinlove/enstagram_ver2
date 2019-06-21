@@ -68,7 +68,7 @@
           <span>개 모두 보기</span>
       </router-link>
       <!--Feed Content in Main Page, My Page-->
-      <div class="content-view" v-if="page !== 'FeedPage'">
+      <div class="content-view" v-if="page !== 'FeedPage' || (page === 'FeedPage' && width < 768 )">
         <ul>
           <li class="feed-comment" v-if="this.feed.description !== ''">
             <router-link :to="'/user/' + this.user.id" class="user-id">
@@ -76,14 +76,14 @@
             </router-link>
             <span class="feed-text" v-html="this.feed.description"></span>
           </li>
-          <li class="more-comment" v-if="this.feed.commentList.length !== 0">
+          <li class="more-comment" v-if="this.feed.commentList.length !== 0 && page !== 'FeedPage'">
             <router-link :to="'/feed/' + this.feed_num">
                 <span>댓글</span>
                 <span>{{this.feed.commentList.length}}</span>
                 <span>개 모두 보기</span>
             </router-link>
           </li>
-          <user-list v-if="showCommentList.length > 0" :key="comment.reply_num" v-for="comment in this.showCommentList" :user_num="comment.accnt_num" :list="'comment'" :comment="comment" :page="page"/>
+          <user-list v-if="showCommentList.length > 0 && page !== 'FeedPage'" :key="comment.reply_num" v-for="comment in this.showCommentList" :user_num="comment.accnt_num" :list="'comment'" :comment="comment" :page="page"/>
         </ul>
         <time :datetime="this.feed.regdate">{{this.feedTime}}</time>
       </div>
