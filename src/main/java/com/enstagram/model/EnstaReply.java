@@ -10,7 +10,7 @@ public class EnstaReply {
 	private int accnt_num;
 	private int feed_num;
 	private String comment;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
 	private Date regdate;
 	private int parent_num;
 
