@@ -64,10 +64,6 @@
 		DELETE FROM ensta_follow WHERE accnt_num = #{accnt_num} AND following_num = #{following_num}
 	</delete>
 	
-	
-	
-	
-	
 	<!-- Ensta Feed -->
 
 	<!-- Create Feed When File Upload -->
