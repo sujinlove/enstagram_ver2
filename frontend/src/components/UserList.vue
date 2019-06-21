@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="user-info">
-        <a:href="'/user/' + this.user.id" class="user-id">{{this.user.id}}</a>
+        <a :href="'/user/' + this.user.id" class="user-id">{{this.user.id}}</a>
         <div class="user-name">{{this.user.name}}</div>
       </div>
       <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && (list === 'recommend' || list === 'following' || list === 'follower' || list === 'heartAccount')">
