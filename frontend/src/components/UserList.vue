@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="user-info">
-        <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
+        <a:href="'/user/' + this.user.id" class="user-id">{{this.user.id}}</a>
         <div class="user-name">{{this.user.name}}</div>
       </div>
       <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && (list === 'recommend' || list === 'following' || list === 'follower' || list === 'heartAccount')">
@@ -17,7 +17,7 @@
     </div>
   </li>
   <li class="user" v-else-if="list === 'search'">
-    <router-link :to="'/user/' + this.user.id" >
+    <a :href="'/user/' + this.user.id" >
       <div class="user-wrapper">
         <div class="user-pic">
           <div class="user-pic-inner">
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="user-info">
-          <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
+          <a :href="'/user/' + this.user.id" class="user-id">{{this.user.id}}</a>
           <div class="user-name">{{this.user.name}}</div>
         </div>
         <div class="follow-btn" v-if="this.user.accnt_num !== this.$store.state.user.accnt_num && (list === 'recommend' || list === 'following' || list === 'follower' || list === 'heartAccount')">
@@ -33,7 +33,7 @@
           <button @click="cancelFollow(user.accnt_num)" class="unfollow" v-else>팔로잉</button>
         </div>
       </div>
-    </router-link>
+    </a>
   </li>
   <!-- Feed comment -->
   <li v-else-if="list === 'comment' && this.comment.parent_num === 0">
@@ -44,8 +44,7 @@
         </div>
       </div>
       <div class="user-text">
-        <router-link :to="'/user/' + this.user.id" class="user-id">{{this.user.id}}</router-link>
-        <router-link to= "" class="user-id"></router-link>
+        <a :href="'/user/' + this.user.id" class="user-id">{{this.user.id}}</a>
         <span class="comment-text">{{this.comment.comment}}</span>
       </div>
       <div class="feed-others" v-if="page !== 'MainPage' && page !== 'UserPage'">
