@@ -259,6 +259,7 @@ export default {
       return returnTime
     },
     changeFeedInfo () {
+      this.feed.description = this.feed.description.replace(/\n/gi, '<br />')
       axios.post('/api/feed/edit', {
         feed_num: this.feed_num,
         description: this.feed.description
