@@ -10,28 +10,28 @@
 @if ($media-common == true) {
     @include lib-font-face(
         $family-name: $font-family-name__base,
-        $font-path: '../../fonts/AppleSDGothicNeo/AppleSDGothicNeoL',
+        $font-path: '../../../../fonts/AppleSDGothicNeo/AppleSDGothicNeoL',
         $font-weight: 300,
         $font-style: normal
     );
 
     @include lib-font-face(
         $family-name: $font-family-name__base,
-        $font-path: '../..//fonts/AppleSDGothicNeo/AppleSDGothicNeoR',
+        $font-path: '../../../../fonts/AppleSDGothicNeo/AppleSDGothicNeoR',
         $font-weight: 400,
         $font-style: normal
     );
 
     @include lib-font-face(
         $family-name: $font-family-name__base,
-        $font-path: '../..//fonts/AppleSDGothicNeo/AppleSDGothicNeoM',
+        $font-path: '../../../../fonts/AppleSDGothicNeo/AppleSDGothicNeoM',
         $font-weight: 600,
         $font-style: normal
     );
 
     @include lib-font-face(
         $family-name: $font-family-name__base,
-        $font-path: '../../fonts/AppleSDGothicNeo/AppleSDGothicNeoB',
+        $font-path: '../../../../fonts/AppleSDGothicNeo/AppleSDGothicNeoB',
         $font-weight: 700,
         $font-style: normal
     );
