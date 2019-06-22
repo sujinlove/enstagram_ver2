@@ -99,6 +99,9 @@ $layout-column__additional-sidebar-offset: $layout-column-main__sidebar-offset;
 
     .columns {
         display: block;
+        max-width: $layout__max-width;
+        margin-left: auto;
+        margin-right: auto;
         padding: 40px 0;
     }
 

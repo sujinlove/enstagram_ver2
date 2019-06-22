@@ -75,4 +75,7 @@ export default {
 .user-pic {
   margin-right: 6px;
 }
+textarea:focus {
+  border: none;
+}
 </style>
