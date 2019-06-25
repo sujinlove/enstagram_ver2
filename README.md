@@ -4,7 +4,7 @@
 
 1. 팀 구성원
 - [김명유](http://github.com/atheimuz)
-- [이해인](http://github.com/dlgodls530)
+- [이해인](http://github.com/dlgodls)
 
 2. 사이트
 
